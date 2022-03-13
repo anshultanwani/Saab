@@ -1,0 +1,52 @@
+.main-container {
+    margin: auto;
+    margin-top: 40px;
+    min-height: 50px;
+    width: 500px;
+    padding: 20px;
+    border: 2px solid #ededed;
+    border-radius: 10px;
+
+    .dropdown {
+        width: 200px;
+        height: 32px;
+        border-radius: 10px;
+        padding: 0 10px;
+        outline: none;
+        background-color: #fff;
+
+        .placeholder {
+            color: #718190
+        }
+
+        option {
+            height: 20px;
+        }
+    }
+
+    .add-btn {
+        width: 100px;
+        border: 1px solid #0086FF;
+        border-radius: 10px;
+        height: 32px;
+        margin-left: 20px;
+        color: #0086FF;
+        background-color: #fff;
+        cursor: pointer;
+
+        &.cancel {
+            color: #e74f20;
+            border-color: #e74f20;
+
+            &:hover {
+                background-color: #e74f20;;
+                color: #fff;
+            }
+        }
+
+        &:hover {
+            background-color: #0086FF;
+            color: #fff;
+        }
+    }
+}
