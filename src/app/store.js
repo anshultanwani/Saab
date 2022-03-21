@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import countryData from '../reducers/index';
+import foodData from '../reducers/index';
 
 export const store = configureStore({
   reducer: {
-    countryData
+    foodData
   },
 });

@@ -1,5 +1,5 @@
 const initialState = {
-    countryData: []
+    suggestions: []
 };
 
 export default (state = initialState, action) => {
@@ -7,13 +7,7 @@ export default (state = initialState, action) => {
         case 'SET_INITIAL_DATA' : {
             return {
                 ...state,
-                countryData: [...action.payload]
-            }
-        }
-        case 'UPDATE_COUNTRY': {
-            return {
-                ...state,
-                countryData: [...state.countryData,action.payload]
+                suggestions: [...action.payload]
             }
         }
         default: {

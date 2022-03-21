@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { setInitialData } from './actions/index';
 import { connect } from 'react-redux';
-import Main from './pages/Main';
+import HomePage from './pages/HomePage';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -14,8 +14,8 @@ import data from './assets/data/data.json';
 function App(props) {
 
   useEffect(() => {
-    if(!props.countryData.length && window.location.pathname == '/'){
-      props.setInitialData(data.countries);
+    if(!props.suggestions.length && window.location.pathname == '/'){
+      props.setInitialData(data.suggestions);
     }
   },[window.location.pathname])
 
@@ -23,7 +23,7 @@ function App(props) {
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path='/' component={Main}></Route>
+          <Route exact path='/' component={HomePage}></Route>
         </Switch>
       </div>
     </Router>
@@ -32,7 +32,7 @@ function App(props) {
 
 const mapStateToProps = state => {
   return {
-    countryData: state.countryData.countryData
+    suggestions: state.foodData.suggestions
   }
 };
 

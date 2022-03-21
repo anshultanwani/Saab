@@ -1,0 +1,61 @@
+.main-holder {
+    margin: 15px 0;
+
+    .title-holder {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        align-items: center;
+
+        .title {
+            color: #3A423C;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .plan-title {
+            cursor: pointer;
+            color: #E3655B;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+
+    .card-holder {
+        display: flex;
+        justify-content: space-between;
+
+        .card {
+            margin-right: 15px;
+            width: 30%;
+            
+            &:last-child {
+                margin-right: unset;
+            }
+        }
+        
+        .img-holder {
+            margin-bottom: 10px;
+            box-shadow: 0px 0px 7px rgba(146, 175, 184, 0.8);
+            border-radius: 6px;
+            width: 100%;
+            min-height: 85px;
+
+            .dish-img {
+                
+            }
+        }
+
+        .cat-holder {
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .dish {
+            color: #54575B;
+            font-size: 12px;
+            text-overflow: ellipsis;
+        }
+    }
+}
