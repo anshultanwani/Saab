@@ -112,5 +112,28 @@
 			"dishName": "Daal",
 			"image" : "images/most-cooked/daal1.png"
 		}
+	],
+	"favchannel": [
+		{
+			"channelName": "Nisha Madhurika",
+			"thumbnail": "images/nisha.png",
+			"videoCount": 50,
+			"ratings": 4.5,
+			"videoUrl": ""
+		},
+		{
+			"channelName": "Chef Brar",
+			"thumbnail": "images/brar.png",
+			"videoCount": 20,
+			"ratings": 4.5,
+			"videoUrl": ""
+		},
+		{
+			"channelName": "Nisha Madhurika",
+			"thumbnail": "images/nisha.png",
+			"videoCount": 50,
+			"ratings": 4.5,
+			"videoUrl": ""
+		}
 	]
 }

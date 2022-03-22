@@ -7,9 +7,9 @@ import { Button } from '@mui/material';
 
 const MostCooked = props => {
     const [showAll,toggleAll] = useState(false);
-    const dish = props.mostCooked.map(cur => {
+    const dish = props.mostCooked.map((cur,index) => {
         return (
-            <div className='single-dish'>
+            <div className='single-dish' key={index} >
                 <img src={require('../assets/'+cur.image).default} />
                 <div className='dish-title'>{cur.dishName}</div>
             </div>

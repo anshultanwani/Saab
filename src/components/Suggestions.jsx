@@ -15,18 +15,18 @@ const Suggestions = props => {
         alert('Edit Code')
     }
 
-    const cards = props.suggestions.map(cur => {
+    const cards = props.suggestions.map((cur,index) => {
         var comboStr = '';
         cur.dishCombo.map((dish,index) => {
             comboStr = comboStr + dish + (index === cur.dishCombo.length - 1 ? '' : ' + ')
         })
         return (
-            <div className='card'>
+            <div className='card' key={index} >
                 <div className='img-holder'>
                     {
-                        cur.images.map(image => {
+                        cur.images.map((image,index) => {
                             return (
-                                <img src={require('../assets/'+image).default} className={"dish-img"} />
+                                <img key={cur.category+'_'+index} src={require('../assets/'+image).default} className={"dish-img"} />
                             )
                         })
                     }

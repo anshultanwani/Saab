@@ -3,6 +3,7 @@ import './App.css';
 import { setInitialData } from './actions/index';
 import { connect } from 'react-redux';
 import HomePage from './pages/HomePage';
+import Header from './components/Header';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import {
@@ -24,6 +25,7 @@ function App(props) {
   return (
     <Router>
       <div className="App">
+        <Header />
         <Switch>
           <Route exact path='/' component={HomePage}></Route>
         </Switch>
