@@ -9,14 +9,15 @@
 
         .title {
             color: #3A423C;
-            font-size: 14px;
+            font-size: 0.8125rem;
             font-weight: 500;
+            opacity: 0.8;
         }
 
         .plan-title {
             cursor: pointer;
             color: #E3655B;
-            font-size: 12px;
+            font-size: 0.6875rem;
             font-weight: 500;
         }
     }
@@ -35,6 +36,11 @@
             &:last-child {
                 margin-right: unset;
             }
+
+            .assign-btn {
+                background: #E3655B;
+                margin-top: 10px;
+            }
         }
         
         .img-holder {
@@ -51,21 +57,23 @@
             grid-template-columns: 50% 46%;
             padding: 5px;
 
-            .dish-img {
-                
-            }
         }
 
         .cat-holder {
-            font-size: 12px;
+            font-size: 0.6875rem;
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
+
+            .edit-meal {
+                opacity: 0.4;
+            }
         }
         .dish {
             color: #54575B;
-            font-size: 12px;
+            font-size: 0.6875rem;
             text-overflow: ellipsis;
+            opacity: 0.7;
         }
     }
 }

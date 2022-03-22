@@ -2,19 +2,88 @@
 {
 	"suggestions":[
 		{
+			"comboId": 1,
 			"category":"Breakfast",
 			"dishCombo": ["Poha","Paratha","Tea"],
 			"images":["images/tea.png","images/poha.png","images/paratha.png"]
 		},
 		{
+			"comboId": 2,
 			"category":"Lunch",
 			"dishCombo": ["Daal","Roti","Bhindi","Papad"],
 			"images":["images/daal.png","images/roti.png","images/bhindi.png","images/papad.png"]
 		},
 		{
+			"comboId": 3,
 			"category":"Dinner",
 			"dishCombo": ["Rice","Daal","Fried Potato"],
 			"images":["images/rice.png","images/daal2.png","images/potato.png","images/papad.png"]
+		}
+	],
+	"mostcooked": [
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
+		},
+		{
+			"dishName": "Daal",
+			"image" : "images/daal2.png"
 		}
 	]
 }

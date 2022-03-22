@@ -15,7 +15,7 @@ function App(props) {
 
   useEffect(() => {
     if(!props.suggestions.length && window.location.pathname == '/'){
-      props.setInitialData(data.suggestions);
+      props.setInitialData(data);
     }
   },[window.location.pathname])
 

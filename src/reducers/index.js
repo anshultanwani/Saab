@@ -1,5 +1,6 @@
 const initialState = {
-    suggestions: []
+    suggestions: [],
+    mostcooked: []
 };
 
 export default (state = initialState, action) => {
@@ -7,7 +8,7 @@ export default (state = initialState, action) => {
         case 'SET_INITIAL_DATA' : {
             return {
                 ...state,
-                suggestions: [...action.payload]
+                ...action.payload
             }
         }
         default: {
