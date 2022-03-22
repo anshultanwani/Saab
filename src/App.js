@@ -3,6 +3,8 @@ import './App.css';
 import { setInitialData } from './actions/index';
 import { connect } from 'react-redux';
 import HomePage from './pages/HomePage';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import {
 	BrowserRouter as Router,
 	Route,

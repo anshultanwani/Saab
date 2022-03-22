@@ -20,6 +20,33 @@
 			"images":["images/rice.png","images/daal2.png","images/potato.png","images/papad.png"]
 		}
 	],
+	"homeslider":[
+		{
+			"imgPath":"images/homebanner-img/banner1.png",
+			"imgText":"Your Cook/Maid is on",
+			"imgText1":"leave today?"
+		},
+		{
+			"imgPath":"images/homebanner-img/banner1.png",
+			"imgText":"Your Cook/Maid is on",
+			"imgText1":"leave today?"
+		},
+		{
+            "imgPath":"images/homebanner-img/banner1.png",
+			"imgText":"Your Cook/Maid is on",
+			"imgText1":"leave today?"
+		},
+		{
+            "imgPath":"images/homebanner-img/banner1.png",
+			"imgText":"Your Cook/Maid is on",
+			"imgText1":"leave today?"
+		},
+		{
+            "imgPath":"images/homebanner-img/banner1.png",
+			"imgText":"Your Cook/Maid is on",
+			"imgText1":"leave today?"
+		}
+	],
 	"mostcooked": [
 		{
 			"dishName": "Daal",

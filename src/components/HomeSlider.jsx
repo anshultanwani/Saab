@@ -23,7 +23,7 @@ const HomeSlider = (props) => {
                     <img src={require('../assets/'+image.imgPath).default}/>
                     </div>
                     <div className="sec-right slidertext">
-                    <h1>{image.imgText}</h1>
+                    <h1>{image.imgText}<span>{image.imgText1}</span></h1>
                     <Button 
                     variant="outlined"
                     className="slider-btn"
