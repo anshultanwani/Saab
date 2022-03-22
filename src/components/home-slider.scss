@@ -1,0 +1,30 @@
+.sec-left{
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+
+}
+.sec-right{
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+.slick-slider{
+    background-color: #30c2f0;
+    padding: 6px 21px;
+}
+.slick-slide img {
+    max-width: 73%;
+}
+.slidertext h1{
+    padding: 0;
+    color: #fff;
+    font-size: 17px;
+}
+.slider-btn{
+    color: #fff;
+    border: 1px solid #fff;
+}
+.slick-dots {
+    bottom: 0 !important;
+}
