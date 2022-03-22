@@ -23,67 +23,67 @@
 	"mostcooked": [
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
+		},
+		{
+			"dishName": "Rice",
+			"image" : "images/most-cooked/rice2.png"
+		},
+		{
+			"dishName": "Palak Paneer",
+			"image" : "images/most-cooked/palak.png"
+		},
+		{
+			"dishName": "Roti",
+			"image" : "images/most-cooked/roti.png"
+		},
+		{
+			"dishName": "Pizza",
+			"image" : "images/most-cooked/pizza.png"
+		},
+		{
+			"dishName": "Paneer",
+			"image" : "images/most-cooked/paneer.png"
+		},
+		{
+			"dishName": "Chaat",
+			"image" : "images/most-cooked/chaat.png"
+		},
+		{
+			"dishName": "Wrap",
+			"image" : "images/most-cooked/wrap.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/daal2.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/daal2.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/daal2.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/daal2.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/daal2.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/daal2.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/daal2.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/daal2.png"
+			"image" : "images/most-cooked/daal1.png"
 		}
 	]
 }
