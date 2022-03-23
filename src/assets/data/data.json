@@ -134,6 +134,19 @@
 			"videoCount": 50,
 			"ratings": 4.5,
 			"videoUrl": ""
+		}],
+	"mypreferences":[
+		{
+			"comboName":"Breakfast combo",
+			"comboDishName":"Poha+Pratha+Tea"
+		},
+		{
+			"comboName":"Dinner Combo",
+			"comboDishName":"Daal+Rice+Fried+Potato+Potato"
+		},
+		{
+            "comboName":"Lunch Combo",
+			"comboDishName":"Daal+Rice+Fried+Potato+Potato"
 		}
 	]
 }
