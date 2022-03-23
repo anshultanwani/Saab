@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import FollowFav from '../components/FollowFav';
 import HomeSlider from '../components/HomeSlider';
 import MostCooked from '../components/MostCooked';
 import MyPreferences from '../components/MyPreferences';
@@ -13,7 +12,6 @@ const Main = props => {
             <Suggestions />
             <MostCooked />
             <MyPreferences/>
-            <FollowFav/>
        </div>
     )
 };
