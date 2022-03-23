@@ -112,5 +112,19 @@
 			"dishName": "Daal",
 			"image" : "images/most-cooked/daal1.png"
 		}
+	],
+	"mypreferences":[
+		{
+			"comboName":"Breakfast combo",
+			"comboDishName":"Poha+Pratha+Tea"
+		},
+		{
+			"comboName":"Dinner Combo",
+			"comboDishName":"Daal+Rice+Fried+Potato+Potato"
+		},
+		{
+            "comboName":"Lunch Combo",
+			"comboDishName":"Daal+Rice+Fried+Potato+Potato"
+		}
 	]
 }
