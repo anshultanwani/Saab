@@ -1,12 +1,20 @@
-.App {
-  /* text-align: center; */
+.App{
   padding: 0 25px;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
+
+.main-content{
+  margin: 0 auto;
+  max-width: 93%;
+  float: none;
+  /* border: 1px solid; */
+  text-align: left;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

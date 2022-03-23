@@ -1,24 +1,13 @@
 import React from "react";
-import Slider from "react-slick";
 import { connect } from 'react-redux';
 import './my-preference.scss';
 import { Button } from '@mui/material';
 
 const MyPreferences = (props) => {
-        const settings = {
-          dots: true,
-          infinite: true,
-          speed: 500,
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        //   autoplay: true,
-        //   autoplaySpeed: 1500,
-        };
         return (
-          <div>
-        <div className="myPreferences-sec">
+        <div class="preferences">
         <div class="title">My Preferences</div>
-            <Slider {...settings}>
+        <div className="myPreferences-sec">
             {
             props.mypreferencesset.map((item , index)=> {
                     return (
@@ -34,7 +23,6 @@ const MyPreferences = (props) => {
                     </div>
                     )
             })}
-            </Slider>
             </div>
           </div>
         );

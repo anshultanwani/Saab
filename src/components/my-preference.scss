@@ -9,11 +9,24 @@
     font-size: 0.8125rem;
     font-weight: 500;
     opacity: 0.8;
+    margin-bottom: 23px;
 }
 .prefrencesec {
-    border: 2px solid #eee;
+    border: 1px solid #eee;
     border-top: 2px solid #3B8849;
     padding: 14px 1px 10px 8px;
+    display: flex;
+    flex-direction: column;
+    min-width: 44%;
+    justify-content: space-between;
+    margin-right: 5%;
+    box-shadow: 0px 0px 7px rgb(146 175 184 / 80%);
+    border-radius: 8px;
+}
+.myPreferences-sec {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll;
 }
 .prefrencesec h6 {
     font-size: 10px;

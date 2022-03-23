@@ -1,8 +1,10 @@
 const initialState = {
     suggestions: [],
     mostcooked: [] , 
-    homeslider:[] ,
-    mypreferences:[]
+    homeslider: [],
+    favchannel: [],
+    mypreferences:[] ,
+    manageveggies:[]
 };
 
 export default (state = initialState, action) => {

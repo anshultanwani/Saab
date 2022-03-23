@@ -1,0 +1,22 @@
+.manageveggies{
+    .title{
+        margin: 28px 0 21px;
+    }
+    .manageveggies-sec {
+        display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    text-align: center;
+    margin-right: 85px;
+    }
+    .manageveggiessec img {
+        min-width: 70px;
+        border-radius: 42px;
+    }
+    .manageveggiessec {
+        text-align: center;
+        float: none;
+        margin: 0 auto;
+    }
+}

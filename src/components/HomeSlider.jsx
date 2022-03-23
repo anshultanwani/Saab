@@ -14,7 +14,7 @@ const HomeSlider = (props) => {
           slidesToScroll: 1
         };
         return (
-          <div>
+          <div className="homeslider">
             <Slider {...settings}>
             {
             props.homesliderimages.map((image , index)=> {

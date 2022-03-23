@@ -113,6 +113,28 @@
 			"image" : "images/most-cooked/daal1.png"
 		}
 	],
+	"favchannel": [
+		{
+			"channelName": "Nisha Madhurika",
+			"thumbnail": "images/nisha.png",
+			"videoCount": 50,
+			"ratings": 4.5,
+			"videoUrl": ""
+		},
+		{
+			"channelName": "Chef Brar",
+			"thumbnail": "images/brar.png",
+			"videoCount": 20,
+			"ratings": 4.5,
+			"videoUrl": ""
+		},
+		{
+			"channelName": "Nisha Madhurika",
+			"thumbnail": "images/nisha.png",
+			"videoCount": 50,
+			"ratings": 4.5,
+			"videoUrl": ""
+		}],
 	"mypreferences":[
 		{
 			"comboName":"Breakfast combo",
@@ -125,6 +147,28 @@
 		{
             "comboName":"Lunch Combo",
 			"comboDishName":"Daal+Rice+Fried+Potato+Potato"
+		}
+	],
+	"manageveggies":[
+		{
+			"vegName":"Potato",
+			"vegImage":"images/manageveggies/daal2.png",
+			"vegQuantity":"0.5g"
+		},
+		{
+			"vegName":"Onion",
+			"vegImage":"images/manageveggies/daal2.png",
+			"vegQuantity":"1g"
+		},
+		{
+			"vegName":"Tomato",
+			"vegImage":"images/manageveggies/daal2.png",
+			"vegQuantity":"2g"
+		},
+		{
+			"vegName":"Capcicum",
+			"vegImage":"images/manageveggies/daal2.png",
+			"vegQuantity":"1g"
 		}
 	]
 }
