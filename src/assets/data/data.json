@@ -170,5 +170,59 @@
 			"vegImage":"images/manageveggies/daal2.png",
 			"vegQuantity":"1g"
 		}
-	]
+	],
+	"breakfastcombo":[
+		{
+			"recipeName":"Aallu Paratha",
+			"vegImage":"https://youtu.be/r2N8ObqAgy0"
+		},
+		{
+			"recipeName":"Mathi Paratha",
+			"vegImage":"https://youtu.be/YkuXhgei6Uw"
+		},
+		{
+			"recipeName":"Kanda Poha",
+			"vegImage":"https://youtu.be/GbroH9fWueQ"
+		},
+		{
+			"recipeName":"Ginger Milk Tea",
+			"vegImage":"https://youtu.be/ogB4Y3dmODQ"
+		}
+	],
+	"lunchcombo":[
+		{
+			"recipeName":"Aallu Paratha",
+			"vegImage":"https://youtu.be/r2N8ObqAgy0"
+		},
+		{
+			"recipeName":"Mathi Paratha",
+			"vegImage":"https://youtu.be/YkuXhgei6Uw"
+		},
+		{
+			"recipeName":"Kanda Poha",
+			"vegImage":"https://youtu.be/GbroH9fWueQ"
+		},
+		{
+			"recipeName":"Ginger Milk Tea",
+			"vegImage":"https://youtu.be/ogB4Y3dmODQ"
+		}
+	],
+	"dinnercombo":[
+		{
+			"recipeName":"Aallu Paratha",
+			"vegImage":"https://youtu.be/r2N8ObqAgy0"
+		},
+		{
+			"recipeName":"Mathi Paratha",
+			"vegImage":"https://youtu.be/YkuXhgei6Uw"
+		},
+		{
+			"recipeName":"Kanda Poha",
+			"vegImage":"https://youtu.be/GbroH9fWueQ"
+		},
+		{
+			"recipeName":"Ginger Milk Tea",
+			"vegImage":"https://youtu.be/ogB4Y3dmODQ"
+		}
+	]	
 }

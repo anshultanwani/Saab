@@ -3,6 +3,7 @@ import './App.css';
 import { setInitialData } from './actions/index';
 import { connect } from 'react-redux';
 import HomePage from './pages/HomePage';
+import ComboPage from './pages/ComboPage';
 import Header from './components/Header';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -28,6 +29,7 @@ function App(props) {
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage}></Route>
+          <Route exact path='/make-your-combo' component={ComboPage}></Route>
         </Switch>
       </div>
     </Router>

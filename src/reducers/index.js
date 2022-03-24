@@ -4,7 +4,8 @@ const initialState = {
     homeslider: [],
     favchannel: [],
     mypreferences:[] ,
-    manageveggies:[]
+    manageveggies:[] , 
+    makecombo:[]
 };
 
 export default (state = initialState, action) => {
