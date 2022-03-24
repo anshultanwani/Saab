@@ -1,22 +1,26 @@
 import React from 'react';
-import {  Link } from "react-router-dom";
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import Paper from '@mui/material/Paper';
 import './header.scss';
 
 const Footer = props => {
     return (
-        <div className='footer'>
-        <li>
-      <Link to="/">Home</Link>
-    </li>
-    <li>
-      <Link to="/my-ratings">My Ratings</Link>
-    </li>
-    <li>
-      <Link to="/my-dishes">My Dishes</Link>
-    </li>
-    <li>
-      <Link to="/payments">Payment</Link>
-    </li>
+        <div className='footer-ui '>
+          <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+              <BottomNavigation
+                showLabels
+                value={0}
+                onChange={(event, newValue) => {
+                  // setValue(newValue);
+                }}
+              >
+                <BottomNavigationAction label="Home" />
+                <BottomNavigationAction label="My Ratings" />
+                <BottomNavigationAction label="My Dishes" />
+                <BottomNavigationAction label="Payment" />
+              </BottomNavigation>
+          </Paper>
         </div>
     )
 };
