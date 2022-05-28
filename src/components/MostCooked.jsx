@@ -6,8 +6,12 @@ import './most-cooked.scss';
 import { Button } from '@mui/material';
 
 const MostCooked = props => {
+    const {
+        mostCooked
+    } = props;
+
     const [showAll,toggleAll] = useState(false);
-    const dish = props.mostCooked.map((cur,index) => {
+    const dish = mostCooked.map((cur,index) => {
         return (
             <div className='single-dish' key={index} >
                 <img src={require('../assets/'+cur.image).default} />
@@ -28,7 +32,7 @@ const MostCooked = props => {
             <div className={'dish-section '+(showAll?'show-all':'hide')}>
                 {dish}
             </div>
-            {props.mostCooked.length > 8 ? 
+            {mostCooked.length > 8 ? 
             <Button
                 variant="outlined"
                 className="more-less-btn"

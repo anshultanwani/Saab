@@ -1,0 +1,107 @@
+.login-home {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(122.48deg, #9867DA -20.53%, #EE7464 78.78%);
+    overflow: hidden;
+
+    .upper-sec {
+        padding: 30px;
+        .title {
+            font-size: 19px;
+            font-weight: 600;
+            color: #fff;
+
+            span {
+                font-weight: 400;
+                margin-left: 5px;
+            }
+        }
+    }
+    .user-type-holder {
+        margin: 17px 0px 20px;
+        display: flex;
+        justify-content: space-between;
+        
+        .user-type {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+
+            &.selected {
+                .type-card {
+                    background: #FFFFFF;
+                    border: 3px solid rgba(255, 255, 255, 0.25);;
+                }
+            }
+
+            .type-card {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 6px;
+                height: 80px;
+                width: 100%;
+                
+            }
+
+            .user {
+                margin-top: 10px;
+                color: #fff;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .lower-sec {
+        background: #fff;
+        height: 100%;
+        border-radius: 100%/ 100px 100px 0 0;
+        width: 100%;
+        box-sizing: border-box;
+
+        .data-holder {
+            padding: 65px 30px;
+            position: relative;
+
+            .label-div {
+                color: #414141;
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+            
+            .mob-field {
+                margin-left: unset;
+                margin-right: unset;
+                margin-bottom: unset;
+                width: 100%;
+            }
+
+            .bottom-txt {
+                margin-top: 10px;
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 12px;
+                color: #414141;
+                position: absolute;
+                right: 30px;
+
+                span {
+                    color: #ED7768;
+                    margin-left: 5px;
+                    font-weight: 500;
+                }
+            }
+
+            .otp-btn {
+                background : #ED7768;
+                position: fixed;
+                bottom: 32px;
+                right: 30px;
+            }
+        }
+
+    }
+}

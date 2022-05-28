@@ -5,7 +5,7 @@ import Makecombo from '../components/makecombo';
 const Main = props => {
     return (
         <div className='combo-page'>
-        <Makecombo/>
+            <Makecombo/>
        </div>
     )
 };

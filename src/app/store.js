@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import foodData from '../reducers/index';
+import foodData from '../reducers/foodData';
+import session from '../reducers/session';
 
 export const store = configureStore({
   reducer: {
-    foodData
+    foodData,
+    session
   },
 });

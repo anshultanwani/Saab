@@ -1,5 +1,8 @@
 .App{
-  padding: 0 25px;
+
+}
+.App .container {
+  padding: 0 15px;
 }
 .App-logo {
   height: 40vmin;
@@ -8,11 +11,11 @@
 
 
 .main-content{
-  margin: 0 auto;
-  max-width: 93%;
-  float: none;
+  /* margin: 0 auto; */
+  /* max-width: 93%; */
+  /* float: none; */
   /* border: 1px solid; */
-  text-align: left;
+  /* text-align: left; */
 }
 
 

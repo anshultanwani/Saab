@@ -13,6 +13,8 @@ import {
 	Switch
 } from 'react-router-dom';
 import data from './assets/data/data.json';
+import LoginHome from './pages/LoginHome';
+import RegisterUser from './pages/RegisterUser';
 
 
 function App(props) {
@@ -29,7 +31,9 @@ function App(props) {
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage}></Route>
-          <Route exact path='/make-your-combo' component={ComboPage}></Route>
+          <Route exact path='/login' component={LoginHome}></Route>
+          <Route exact path='/signup' component={RegisterUser}></Route>
+          <Route exact path='/editcombo' component={ComboPage}></Route>
         </Switch>
       </div>
     </Router>

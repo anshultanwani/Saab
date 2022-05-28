@@ -4,18 +4,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import './suggestion.scss';
 import { Button } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 
 const Suggestions = props => {
+    const {
+        suggestions
+    } = props;
+    const history = useHistory();
 
     const handleAssign = (comboId) => {
         alert('comboId '+comboId)
     }
 
-    const handleEdit = () => {
-        alert('Edit Code')
+    const handleEdit = (combo) => {
+        console.log(combo)
+        history.push('/editcombo')
     }
 
-    const cards = props.suggestions.map((cur,index) => {
+    const dishData = suggestions.map((cur,index) => {
         var comboStr = '';
         cur.dishCombo.map((dish,index) => {
             comboStr = comboStr + dish + (index === cur.dishCombo.length - 1 ? '' : ' + ')
@@ -33,7 +39,7 @@ const Suggestions = props => {
                 </div>
                 <div className='cat-holder'>
                     <div className='category'>{cur.category}</div>
-                    <div className='edit-meal' onClick={() => handleEdit()}>
+                    <div className='edit-meal' onClick={() => handleEdit(cur)}>
                         <FontAwesomeIcon icon={faPenToSquare} />
                     </div>
                 </div>
@@ -55,7 +61,7 @@ const Suggestions = props => {
                 <div className='plan-title'>Plan Your Meal</div>
             </div>
             <div className='card-holder'>
-                {cards}
+                {dishData}
             </div>
         </div>
     );
