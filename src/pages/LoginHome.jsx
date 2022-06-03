@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Button, TextField, InputAdornment } from '@mui/material';
 import ReplayIcon from '@mui/icons-material/Replay';
 import './login-home.scss';
+import VerificationCode from '../components/VerificationCode';
 import { withRouter } from 'react-router-dom';
 
 const LoginHome = props => {
     const userType = ['Owner','Cook','Helper'];
     const [selectedType,updateUser] = useState(0)
+    const [currentView,updateView] = useState("mobile")
     return (
         <div className={'login-home'}>
             <div className={'upper-sec'}>
@@ -29,6 +31,7 @@ const LoginHome = props => {
                 </div>
             </div>
             <div className={'lower-sec'}>
+                { currentView == "mobile" ? 
                 <div className={'data-holder'}>
                     <div className={'label-div'}>Mobile Number</div>
                     <div className='input-ui'>
@@ -50,9 +53,10 @@ const LoginHome = props => {
                         variant="contained"
                         className="otp-btn"
                     >
-                        Get OTP
+                        <span className='signup-txt' onClick={() => updateView("otp")}>Get OTP</span>
                     </Button>
                 </div>
+                : <VerificationCode/> }
             </div>
         </div>
     )
