@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { setInitialData } from './actions/index';
+import { setInitialData, toggleFeedback } from './actions/index';
 import { connect } from 'react-redux';
 import HomePage from './pages/HomePage';
 import ComboPage from './pages/ComboPage';
@@ -15,6 +15,7 @@ import {
 import data from './assets/data/data.json';
 import LoginHome from './pages/LoginHome';
 import RegisterUser from './pages/RegisterUser';
+import FeedBackDrawer from './common/FeedBackDrawer';
 
 
 function App(props) {
@@ -35,6 +36,7 @@ function App(props) {
           <Route exact path='/signup' component={RegisterUser}></Route>
           <Route exact path='/editcombo' component={ComboPage}></Route>
         </Switch>
+        <FeedBackDrawer open={props.showFeedback} onClose={() => props.toggleFeedback({show: false})} />
       </div>
     </Router>
   );
@@ -42,8 +44,9 @@ function App(props) {
 
 const mapStateToProps = state => {
   return {
-    suggestions: state.foodData.suggestions
+    suggestions: state.foodData.suggestions,
+    showFeedback: state.session.showFeedback
   }
 };
 
-export default connect(mapStateToProps,{setInitialData})(App);
+export default connect(mapStateToProps,{setInitialData,toggleFeedback})(App);

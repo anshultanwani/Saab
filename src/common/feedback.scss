@@ -1,0 +1,89 @@
+.feedback {
+
+    .elipse {
+        position: absolute;
+        right: 20px;
+        top: -20px;
+    }
+    .cross {
+        position: absolute;
+        right: 39px;
+        top: -1px;
+    }
+    .label-txt {
+        color: #2F2726;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .holder {
+        margin-top: 15px;
+
+        .info-txt {
+            margin: 15px 0 15px 0;
+            color: #414141;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .note-field {
+            margin: unset;
+            height: 90px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            outline: none;
+            border: 0.5px solid #292929;
+            border-radius: 6px;
+            opacity: 0.5;
+        }
+
+        .btn-holder {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+
+            .btn-submit {
+                background: #E3655B;
+                height: 42px;
+            }
+            .btn-later {
+                color: #E3655B;
+                height: 42px;
+                border-color: #E3655B;
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.drawer {
+    overflow-y: unset !important;
+    padding: 25px 30px;
+}
+
+// if require will remove in order to create separate component
+
+.rating-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    height: 45px;
+    width: 100%;
+    color: #AD6ABE;
+    font-weight: 600;
+    font-size: 0.875rem;
+    background: #F0F2FF;
+    border-radius: 0px 0px 6px 0px;
+    border-left: 4px solid #AC6ABF;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+
+    .custom-rating {
+        color: #ED7768;
+
+        span {
+            color: #ED7768;
+        }
+    }
+}

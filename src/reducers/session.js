@@ -1,6 +1,7 @@
 const initialState = {
     loggedUser: {},
-    isLoggedIn: false
+    isLoggedIn: false,
+    showFeedback: true
 }
 
 export default (state = initialState, action) => {
@@ -9,6 +10,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload   
+            }
+        }
+        case 'TOGGLE_FEEDBACK': {
+            return {
+                ...state,
+                showFeedback: action.payload.show
             }
         }
         default: {

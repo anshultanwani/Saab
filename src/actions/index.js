@@ -7,3 +7,8 @@ export const updateCountry = payload => ({
     type: 'UPDATE_COUNTRY',
     payload
 });
+
+export const toggleFeedback = payload => ({
+    type: 'TOGGLE_FEEDBACK',
+    payload
+})
