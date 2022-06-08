@@ -9,8 +9,9 @@ import Footer from '../components/Footer';
 
 const Main = props => {
     return (
-        <div className='home-page container'>
+        <div>
             <HomeSlider/>
+        <div className='home-page container'>
             <div className="main-content">
             <Suggestions />
             <MostCooked />
@@ -18,6 +19,8 @@ const Main = props => {
             <ManageVaggie/>
             </div>
        </div>
+        </div>
+        
     )
 };
 

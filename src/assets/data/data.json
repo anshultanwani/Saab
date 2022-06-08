@@ -23,26 +23,31 @@
 	"homeslider":[
 		{
 			"imgPath":"images/homebanner-img/banner1.png",
+			"imgPath1":"images/homebanner-img/cook.png",
 			"imgText":"Your Cook/Maid is on",
 			"imgText1":"leave today?"
 		},
 		{
 			"imgPath":"images/homebanner-img/banner1.png",
+			"imgPath1":"images/homebanner-img/cook.png",
 			"imgText":"Your Cook/Maid is on",
 			"imgText1":"leave today?"
 		},
 		{
             "imgPath":"images/homebanner-img/banner1.png",
+			"imgPath1":"images/homebanner-img/cook.png",
 			"imgText":"Your Cook/Maid is on",
 			"imgText1":"leave today?"
 		},
 		{
             "imgPath":"images/homebanner-img/banner1.png",
+			"imgPath1":"images/homebanner-img/cook.png",
 			"imgText":"Your Cook/Maid is on",
 			"imgText1":"leave today?"
 		},
 		{
             "imgPath":"images/homebanner-img/banner1.png",
+			"imgPath1":"images/homebanner-img/cook.png",
 			"imgText":"Your Cook/Maid is on",
 			"imgText1":"leave today?"
 		}

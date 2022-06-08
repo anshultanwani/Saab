@@ -30,7 +30,7 @@ const Header = props => {
                     edge="start"
                     color="inherit"
                     aria-label="menu"
-                    sx={{ mr: 0.5 }}
+                    sx={{ m: 1 }}
                 >
                     <Sort />
                 </IconButton>
@@ -39,8 +39,12 @@ const Header = props => {
                         "Home"
                     }</div>
                 </Typography>
-                <Button color="inherit" onClick={() => props.history.push('/login')}>Login</Button>
+                <img src={require('../assets/images/Vector.png').default}  />
+                <Button color="inherit" onClick={() => props.history.push('/login')}>
+                <img src={require('../assets/images/login-photo.png').default}  />
+                </Button>
                 </Toolbar>
+               
             </AppBar>
         </div>
         : null
