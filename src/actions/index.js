@@ -8,7 +8,7 @@ export const updateCountry = payload => ({
     payload
 });
 
-export const toggleFeedback = payload => ({
-    type: 'TOGGLE_FEEDBACK',
+export const toggleSliderDrawer = payload => ({
+    type: 'TOGGLE_SLIDER_DRAWERS',
     payload
 })

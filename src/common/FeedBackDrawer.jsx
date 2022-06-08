@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Drawer, Rating, TextareaAutosize } from '@mui/material';
-import {ReactComponent as Ellipse} from '../assets/images/Ellipse.svg';
-import {ReactComponent as Cross} from '../assets/images/Vector.svg';
-import './feedback.scss';
+import { Rating, TextareaAutosize } from '@mui/material';
+import BottomDrawer from './BottomDrawer';
+import { toggleSliderDrawer } from '../actions/index';
+import { connect } from 'react-redux';
 
 const FeedBackDrawer = props => {
     const [infoData,updateInfo] = useState({
@@ -20,7 +20,10 @@ const FeedBackDrawer = props => {
     
     const onSubmit = () => {
         console.table(infoData);
-        props.onClose();
+        props.toggleSliderDrawer({
+            feedbackDrawer: false
+        }); //will change in future according to requirement
+        // props.onClose();
     }
 
     const RatingBox = info => {
@@ -37,46 +40,47 @@ const FeedBackDrawer = props => {
         </div>
         )
     }
+    const content = (
+        <>
+            <RatingBox label={'Taste'} value={infoData.taste} nodeKey={'taste'} />
+            <RatingBox label={'Cleaniness'} value={infoData.cleaniness} nodeKey={'cleaniness'} />
+            <RatingBox label={'Instruction’s Follow'} value={infoData.instruction} nodeKey={'instruction'} />
+            <div className='info-txt'>Additional Notes</div>
+            <TextareaAutosize
+                    className="note-field"
+                    minRows={6}
+                    maxRows={6}
+                    placeholder='Appreciation / Area of Imporvement...'
+                    onChange={(e) => handleChange(e.target.value,'notes')}
+            />
+        </>
+    )
     return (
-        <Drawer
-            anchor='bottom'
-            open={props.open}
-            PaperProps={{className: 'drawer'}}
-        >
-            <div className='feedback'>
-                <Ellipse className='elipse' onClick={() => props.onClose()}/>
-                <Cross className='cross' onClick={() => props.onClose()}/>
-                <div className='label-txt'>Help Your Cook To Grow</div>
-                <div className='holder'>
-                    <RatingBox label={'Taste'} value={infoData.taste} nodeKey={'taste'} />
-                    <RatingBox label={'Cleaniness'} value={infoData.cleaniness} nodeKey={'cleaniness'} />
-                    <RatingBox label={'Instruction’s Follow'} value={infoData.instruction} nodeKey={'instruction'} />
-                    <div className='info-txt'>Additional Notes</div>
-                    <TextareaAutosize
-                         className="note-field"
-                         minRows={6}
-                         maxRows={6}
-                         placeholder='Appreciation / Area of Imporvement...'
-                         onChange={(e) => handleChange(e.target.value,'notes')}
-                    />
-                    <div className='btn-holder'>
-                        <Button
-                            className={'btn-later'}
-                            variant="outlined"
-                            children="REMIND ME LATER"
-                            onClick={props.onClose}
-                        />
-                        <Button
-                            className={'btn-submit'}
-                            variant="contained"
-                            onClick={onSubmit}
-                            children="SUBMIT"
-                        />
-                    </div>
-                </div>
-            </div>
-        </Drawer>
+        <BottomDrawer
+            {...props}
+            onClose={() => props.toggleSliderDrawer({
+                feedbackDrawer: false
+            })}
+            children={content}
+            label={'Rate Your Cook'}
+            btnArr={[
+                {
+                    className: 'btn-later',
+                    variant: "outlined",
+                    children: "REMIND ME LATER",
+                    onClick: () => props.toggleSliderDrawer({
+                        feedbackDrawer: false
+                    })
+                },
+                {
+                    className: 'btn-submit',
+                    variant: "contained",
+                    onClick: onSubmit,
+                    children: "SUBMIT",
+                }
+            ]}
+        />
     );
 };
 
-export default FeedBackDrawer;
+export default connect(null,{toggleSliderDrawer})(FeedBackDrawer);
