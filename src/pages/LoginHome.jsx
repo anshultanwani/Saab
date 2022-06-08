@@ -6,7 +6,11 @@ import VerificationCode from '../components/VerificationCode';
 import { withRouter } from 'react-router-dom';
 
 const LoginHome = props => {
-    const userType = ['Owner','Cook','Helper'];
+    const userType = [
+        { label: 'Owner', image: 'owner.png' } ,
+        { label: 'Helper', image: 'cook.png' },
+        { label: 'Owner', image: 'maid.png' }
+    ];
     const [selectedType,updateUser] = useState(0)
     const [currentView,updateView] = useState("mobile")
     return (
@@ -22,8 +26,9 @@ const LoginHome = props => {
                             <>
                                 <div className={'user-type '+(selectedType == index ? 'selected':'')} key={index}  onClick={() => updateUser(index)}>
                                     <div className={'type-card'}>
+                                     <img src={require("../assets/images/"+cur.image).default}/>
                                     </div>
-                                <div className={'user'}>{cur}</div>
+                                <div className={'user'}>{cur.label}</div>
                                 </div>
                             </>
                         )
@@ -44,10 +49,6 @@ const LoginHome = props => {
                                 placeholder: '000 000 0000'
                             }}
                         />
-                    </div>
-                    <div className='bottom-txt'>
-                        Not Registered?
-                        <span className='signup-txt' onClick={() => props.history.push('/signup')}>Sign Up</span>
                     </div>
                     <Button 
                         variant="contained"

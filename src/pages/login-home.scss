@@ -1,8 +1,8 @@
 .login-home {
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     background: linear-gradient(122.48deg, #9867DA -20.53%, #EE7464 78.78%);
-    overflow: hidden;
+    // overflow: hidden;
 
     .upper-sec {
         padding: 30px;
@@ -30,27 +30,36 @@
 
             &.selected {
                 .type-card {
-                    background: #FFFFFF;
-                    border: 3px solid rgba(255, 255, 255, 0.25);;
+                background: #FFFFFF;
+               // border: 3px solid rgba(255, 255, 255, 0.25);
+                outline: 5px solid palevioletred;
+                box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
+                text-align: center;
                 }
             }
-
             .type-card {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 box-sizing: border-box;
                 background: rgba(255, 255, 255, 0.2);
-                border-radius: 6px;
-                height: 80px;
                 width: 100%;
-                
+                background: #FFFFFF;
+                border: 3px solid rgba(255, 255, 255, 0.25);
+                border-radius: 50%;
+                padding: 15px;
+                text-align: center;
+            img{
+              max-width: 100%;  
+            }   
             }
+
 
             .user {
                 margin-top: 10px;
                 color: #fff;
                 font-size: 14px;
+                font-weight: 500;
             }
         }
     }
@@ -70,6 +79,7 @@
                 color: #414141;
                 font-size: 15px;
                 margin-bottom: 12px;
+                font-weight: 600;
             }
             
             .mob-field {

@@ -1,92 +1,115 @@
 import React, { useState } from 'react';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { Button, InputAdornment, TextField, Switch } from '@mui/material';
+import './register-user.scss';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const RegisterUser = props => {
-    const userType = ['Owner', 'Cook', 'Helper'];
+    const userType = [
+        { label: 'Owner', image: 'owner.png' },
+        { label: 'Helper', image: 'cook.png' },
+        { label: 'Owner', image: 'maid.png' }
+    ];
+
     const [selectedType, updateUser] = useState(0)
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
-    return (
-        <div className={'login-home signup'}>
-            <div className={'upper-sec'}>
-                <div className={'title'}>
-                    Register
-                    <span>As</span>
-                </div>
-                <div className={'user-type-holder'}>
-                    {userType.map((cur, index) => {
-                        return (
-                            <>
-                                <div className={'user-type ' + (selectedType == index ? 'selected' : '')} key={index} onClick={() => updateUser(index)}>
-                                    <div className={'type-card'}>
-                                    </div>
-                                    <div className={'user'}>{cur}</div>
-                                </div>
-                            </>
-                        )
-                    })}
-                </div>
-            </div>
-            <div className={'lower-sec'}>
-                <div className={'data-holder'}>
-                    <div className={'label-div'}>Your Details</div>
-                    <div>
-                        <TextField
-                            className="mob-field"
-                            sx={{ width: 1 }}
-                            placeholder="Your Name"
-                        />
-                        <TextField
-                            className="mon"
-                            sx={{ width: 1 / 2 }}
-                            placeholder="House Number"
-                        />
-                        <TextField
-                            className="mob"
-                            sx={{ width: 1 / 2 }}
-                            placeholder="Apratment"
-                        />
-                    </div>
-                    <div className='searchbar'>
-                        <div className={'label-div'}>Reasonality</div>
-                        {/* <div className='search-ui'>
-                        <SearchBar
-                        value={this.state.value}
-                        onChange={(newValue) => this.setState({ value: newValue })}
-                        onRequestSearch={() => doSomethingWith(this.state.value)}
-                        /> */}
-                    </div>
-                    <div className='have-cook'>
-                        <div className={'label-div'}>Do you have cook?</div>
-                        <Switch {...label} defaultChecked />
-                    </div>
-                    <div className={'cook-details'}>
-                        <div className={'label-div'}>Cook Details
-                        </div>
-                        <TextField
-                            className="mob-field"
-                            sx={{ m: 1 }}
-                            placeholder="Cook Name"
-                        />
-                        <p>cook Number</p>
-                    </div>
-                    <div className='cook-spcl'>
-                        <div className={'label-div'}>Cook Speaciality</div>
-                        {/* <div className='search-ui'>
-                        <SearchBar
-                        value={this.state.value}
-                        onChange={(newValue) => this.setState({ value: newValue })}
-                        onRequestSearch={() => doSomethingWith(this.state.value)}
-                        /> */}
-                    </div>
-                    <div className={'have-heper'}>
-                        <div className={'label-div'}>Do you have Helper</div>
-                        <Switch {...label} defaultChecked />
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-};
+    const REGION = [
+        { name: 'Panjabi'},
+        { name: 'Sindhi' },
+        { name: 'Gujrati' },
+        { name: 'South Indian' },
+        { name: 'North Indian' },
+        { name: 'Panjabi New' },
+        {  name: 'Marwadi' },
+        {  name: 'Bengali' },
+        {  name: 'Bolo' },
+    ];
 
-export default RegisterUser;
+    // the value of the search field 
+    const [name, setName] = useState('');
+
+    // the search result
+    const [foundRegion, setFoundRegion] = useState(REGION);
+
+    const filter = (e) => {
+        const keyword = e.target.value;
+
+        if (keyword !== '') {
+            const results = REGION.filter((user) => {
+                return user.name.toLowerCase().startsWith(keyword.toLowerCase());
+                // Use the toLowerCase() method to make it case-insensitive
+            });
+            setFoundRegion(results);
+        } else {
+            setFoundRegion(REGION);
+            // If the text field is empty, show all users
+        }
+        setName(keyword);
+    }
+        return (
+            <div className={'login-home signup'}>
+                <div className={'upper-sec'}>
+                    <div className={'title'}>
+                        Sign Up
+                    </div>
+                </div>
+                <div className={'lower-sec'}>
+                    <div className={'data-holder'}>
+                        <div className={'label-div'}>Your Details</div>
+                        <div>
+                            <TextField
+                                className="reg-field"
+                                sx={{
+                                    width: 1
+                                }}
+                                placeholder="Your Name"
+                            />
+                            <TextField
+                                className="reg-half-field"
+                                sx={{ width: 1 / 2.09 }}
+                                placeholder="House Number"
+                            />
+                            <TextField
+                                className="reg-half-field"
+                                sx={{ width: 1 / 2.09 }}
+                                placeholder="Apratment"
+                            />
+                        </div>
+                        <div className='reasonality-srchbar'>
+                            <div className={'label-div'}>Reasonality</div>
+                            <TextField
+                                type="search"
+                                value={name}
+                                onChange={filter}
+                                className="input"
+                                placeholder="Search here"
+                                sx={{ width: 1 }}
+                            />
+                            <div className="user-list">
+                                {foundRegion && foundRegion.length > 0 ? (
+                                    foundRegion.map((user) => (
+                                        <li key={user.id} className="user">
+                                            <span className="user-name">{user.name}</span>
+                                        </li>
+                                    ))
+                                ) : (
+                                    <h1>No results found!</h1>
+                                )}
+                            </div>
+                        </div>
+                        <div className="selected-regin"></div>
+                             <span>Do you have cook?</span>  
+                             <span>
+                             <FormControlLabel control={<Switch defaultChecked />} label="No" />    
+                            </span> 
+                        <div className="have-cook">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        )
+    };
+
+    export default RegisterUser;

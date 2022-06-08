@@ -46,13 +46,6 @@ const VerificationCode = props => {
                 <div className={'label-div-right-text'}><b>Resend code</b> in 00:{25}</div>
                     </div>
                     {apiMsg?<div style={{textAlign: 'center'}}><b style={{color: 'red'}}>{apiMsg}</b></div>:null}
-                    {/* <Button 
-                        variant="contained"
-                        className="otp-btn"
-                        onClick={verifyOtp}
-                    >
-                        <span className='signup-txt'>Verify & Proceed</span>
-                    </Button> */}
                     </div>
             </div>
         </div>
