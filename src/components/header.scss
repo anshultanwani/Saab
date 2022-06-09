@@ -1,15 +1,15 @@
 .header-ui {
+    padding: 11px 11px 0px 0;
+    display: flex;
     .fake-div {
         height: 56px;
         width: 100%;
     }
-    
     .header-ui {
         background:linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 80.65%);
-        /* display: inline-block; */
-        /* float: left; */
-        width: 100%;
+        width: calc(100% - 27px );
         left: 0;
+        box-shadow: none;
     }
     
     .header-buttom {
@@ -41,4 +41,19 @@
         color : #E3655B;
 
     }
+}
+
+.homemenu {
+    margin: -7px 7px 20px -4px !important;
+}
+
+.grocey-sec {
+    font-size: 10px;
+}
+.homepage-sec{
+    margin-top: 25%;
+    background-color: #F0F2FF;
+}
+.home-page.container {
+    padding-top: 11px;
 }

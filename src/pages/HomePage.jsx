@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 
 const Main = props => {
     return (
-        <div>
+        <div className='homepage-sec'>
             <HomeSlider/>
         <div className='home-page container'>
             <div className="main-content">
