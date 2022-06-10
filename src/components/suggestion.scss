@@ -4,21 +4,22 @@
     .title-holder {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         align-items: center;
 
         .title {
             color: #3A423C;
-            font-size: 0.8125rem;
+            font-size: 16px;
             font-weight: 500;
-            opacity: 0.8;
+            margin-bottom: 0px;
         }
 
         .plan-title {
             cursor: pointer;
             color: #E3655B;
-            font-size: 0.6875rem;
+            font-size: 12px;
             font-weight: 500;
+            text-transform: uppercase;
         }
     }
 
@@ -33,49 +34,61 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            
+
             &:last-child {
                 margin-right: unset;
             }
 
             .assign-btn {
-                background: #E3655B;
+                background: #AC6ABE;
                 margin-top: 10px;
-                text-transform: none;
+                text-transform: uppercase;
             }
         }
-        
+
         .img-holder {
             margin-bottom: 10px;
-            box-shadow: 0px 0px 7px rgb(146 175 184 / 80%);
+            box-shadow: 0px 0px 9px rgb(177 199 206 / 80%);
             border-radius: 7px;
             height: 22vw;
             display: grid;
             grid-template-rows: 48%;
             grid-template-columns: 50% 46%;
             padding: 4px 0px 0px 5px;
-
+            position: relative;
         }
 
         .cat-holder {
-            font-size: 0.6875rem;
+            font-size: 12px;
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
+            font-weight: 500;
+            color: #414141;
 
             .edit-meal {
                 opacity: 0.4;
             }
         }
+
         .dish {
             color: #54575B;
-            font-size: 0.6875rem;
+            font-size: 12px;
             text-overflow: ellipsis;
-            opacity: 0.7;
+            font-weight: 400;
         }
     }
 }
 
 .img-holder img.dish-img {
     border-radius: 7px;
+}
+
+.edit-meal {
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    padding: 5px 6px 4px 7px;
+    box-shadow: 0px 0px 4px rgb(177 199 206 / 80%);
+    border-radius: 4px;
 }

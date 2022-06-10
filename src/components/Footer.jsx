@@ -2,12 +2,12 @@ import React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Paper from '@mui/material/Paper';
-import './header.scss';
+import './footer.scss';
 
 const Footer = props => {
     return (
         <div className='footer-ui '>
-          <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+          <Paper sx={{ position: 'static', bottom: 0, left: 0, right: 0 }} elevation={3}>
               <BottomNavigation
                 showLabels
                 value={0}

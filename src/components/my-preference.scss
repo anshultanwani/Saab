@@ -5,46 +5,52 @@
     margin: 14px 0 19px;
 }
 .title {
-    color: #3A423C;
-    font-size: 0.8125rem;
+    color:  #414141;
+    font-size: 15px;
     font-weight: 500;
-    opacity: 0.8;
-    margin-bottom: 23px;
 }
 .prefrencesec {
-    border: 1px solid #eee;
-    border-top: 2px solid #3B8849;
-    padding: 14px 1px 10px 8px;
+    border-top: 2px solid #E3655B;
+    padding: 15px 20px 29px;
     display: flex;
     flex-direction: column;
-    min-width: 44%;
+    min-width: 34%;
     justify-content: space-between;
     margin-right: 5%;
     box-shadow: 0px 0px 7px rgb(146 175 184 / 80%);
-    border-radius: 8px;
+    background-color: #fff;
+    text-align: left;
+    border-radius: 5px;
 }
 .myPreferences-sec {
     display: flex;
     justify-content: space-between;
     overflow-x: scroll;
+    margin-top: 20px;
 }
 .prefrencesec h6 {
-    font-size: 10px;
+    font-size: 13px;
     padding: 0;
     margin: 0;
     width: 100%;
     display: inline-block;
 }
 .prefrencesec p {
-    width: 100%;
-    font-size: 11px;
-    padding: 0;
+    width: 91%;
+    font-size: 14px;
+    padding: 6px 0 0 0;
     margin: 0;
     word-break: break-word;
-    min-height: 32px
+    min-height: 32px;
+    color: #414141 !important;
 }
 button.preferences-btn {
-    background-color: #3B8849;
-    font-size: 7px;
+    background-color: #E3655B;
+    font-size: 13px;
     margin: 18px 0 0;
+    /* width: 50% !important; */
+    padding: 7px 25px;
+    width: auto !important;
+    min-width: auto !important;
+    max-width: 95px;
 }

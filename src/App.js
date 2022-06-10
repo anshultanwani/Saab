@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import HomePage from './pages/HomePage';
 import ComboPage from './pages/ComboPage';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import {
@@ -36,6 +37,7 @@ function App(props) {
           <Route exact path='/signup' component={RegisterUser}></Route>
           <Route exact path='/editcombo' component={ComboPage}></Route>
         </Switch>
+        <Footer/>
         <SliderDrawer />
       </div>
     </Router>

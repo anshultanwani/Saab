@@ -29,6 +29,9 @@ const Suggestions = props => {
         return (
             <div className='card' key={index} >
                 <div className='img-holder'>
+                <div className='edit-meal' onClick={() => handleEdit(cur)}>
+                <img src={require('../assets/images/editmeal.png').default} />
+                    </div>
                     {
                         cur.images.map((image,index) => {
                             return (
@@ -37,11 +40,9 @@ const Suggestions = props => {
                         })
                     }
                 </div>
+               
                 <div className='cat-holder'>
                     <div className='category'>{cur.category}</div>
-                    <div className='edit-meal' onClick={() => handleEdit(cur)}>
-                        <FontAwesomeIcon icon={faPenToSquare} />
-                    </div>
                 </div>
                 <div className='dish'>{comboStr}</div>
                 <Button 

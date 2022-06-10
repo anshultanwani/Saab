@@ -23,7 +23,7 @@ const MostCooked = props => {
     return (
         <div className='most-cooked'>
             <div className='heading-holder'>
-                <div className='title'>Most Cooked At Home</div>
+                <div className='title'>Food Categories</div>
                 <div className='dropdown-cat' onClick={() => alert('will redirect to change cat page')}>
                     All
                     <FontAwesomeIcon icon={faSortDown} className="arrow-icon" />

@@ -54,68 +54,60 @@
 	],
 	"mostcooked": [
 		{
+			"dishName": "Chiken",
+			"image" : "images/most-cooked/chiken.png"
+		},
+		{
+			"dishName": "Mutton",
+			"image" : "images/most-cooked/mutton.png"
+		},
+		{
 			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
+			"image" : "images/most-cooked/Daal.png"
 		},
 		{
-			"dishName": "Rice",
-			"image" : "images/most-cooked/rice2.png"
+			"dishName": "Rice/Pulav",
+			"image" : "images/most-cooked/RIce.png"
 		},
 		{
-			"dishName": "Palak Paneer",
-			"image" : "images/most-cooked/palak.png"
+			"dishName": "Panner",
+			"image" : "images/most-cooked/Panner.png"
 		},
 		{
-			"dishName": "Roti",
-			"image" : "images/most-cooked/roti.png"
+			"dishName": "Veggies",
+			"image" : "images/most-cooked/veggies.png"
+		},
+		{
+			"dishName": "Snack",
+			"image" : "images/most-cooked/snacks.png"
 		},
 		{
 			"dishName": "Pizza",
 			"image" : "images/most-cooked/pizza.png"
 		},
 		{
-			"dishName": "Paneer",
-			"image" : "images/most-cooked/paneer.png"
+			"dishName": "Roti",
+			"image" : "images/most-cooked/roti.png"
 		},
 		{
-			"dishName": "Chaat",
-			"image" : "images/most-cooked/chaat.png"
+			"dishName": "Fries",
+			"image" : "images/most-cooked/Fries.png"
 		},
 		{
-			"dishName": "Wrap",
-			"image" : "images/most-cooked/wrap.png"
+			"dishName": "Chinese",
+			"image" : "images/most-cooked/chinese.png"
 		},
 		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
+			"dishName": "Salad",
+			"image" : "images/most-cooked/salad.png"
 		},
 		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
+			"dishName": "Sweets",
+			"image" : "images/most-cooked/sweets.png"
 		},
 		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
-		},
-		{
-			"dishName": "Daal",
-			"image" : "images/most-cooked/daal1.png"
+			"dishName": "Juices",
+			"image" : "images/most-cooked/Juice.png"
 		}
 	],
 	"favchannel": [
@@ -143,37 +135,29 @@
 	"mypreferences":[
 		{
 			"comboName":"Breakfast combo",
-			"comboDishName":"Poha+Pratha+Tea"
+			"comboDishName":"Poha,Pratha,Tea"
 		},
 		{
 			"comboName":"Dinner Combo",
-			"comboDishName":"Daal+Rice+Fried+Potato+Potato"
+			"comboDishName":"Daal,Rice,Fried,Potato"
 		},
 		{
             "comboName":"Lunch Combo",
-			"comboDishName":"Daal+Rice+Fried+Potato+Potato"
+			"comboDishName":"Daal,Rice,Fried Potato"
 		}
 	],
 	"manageveggies":[
 		{
-			"vegName":"Potato",
-			"vegImage":"images/manageveggies/daal2.png",
-			"vegQuantity":"0.5g"
+			"vegName":"Vegetables",
+			"vegImage":"images/manageveggies/vegetables.png"
 		},
 		{
-			"vegName":"Onion",
-			"vegImage":"images/manageveggies/daal2.png",
-			"vegQuantity":"1g"
+			"vegName":"Fruits",
+			"vegImage":"images/manageveggies/Fruits.png"
 		},
 		{
-			"vegName":"Tomato",
-			"vegImage":"images/manageveggies/daal2.png",
-			"vegQuantity":"2g"
-		},
-		{
-			"vegName":"Capcicum",
-			"vegImage":"images/manageveggies/daal2.png",
-			"vegQuantity":"1g"
+			"vegName":"Grocery",
+			"vegImage":"images/manageveggies/Grocery.png"
 		}
 	],
 	"breakfastcombo":[

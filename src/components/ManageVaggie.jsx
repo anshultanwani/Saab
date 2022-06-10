@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 const ManageVaggie = (props) => {
         return (
         <div className="manageveggies">
-        <div className="title">Manage Your Veggies Stock</div>
+        <div className="title">Shop by Categories</div>
         <div className="manageveggies-sec">
             {
             props.manageveggiesset.map((item , index)=> {
@@ -14,7 +14,6 @@ const ManageVaggie = (props) => {
                     <div key={index} class="manageveggiessec">
                     <img src={require('../assets/'+item.vegImage).default}/>
                     <h6>{item.vegName}</h6>
-                    <p>{item.vegQuantity}</p>
                     </div>
                     )
             })}

@@ -10,21 +10,21 @@ import Footer from '../components/Footer';
 const Main = props => {
     return (
         <div className='homepage-sec'>
-            <HomeSlider/>
-        <div className='home-page container'>
-            <div className="main-content">
-            <Suggestions />
-            <MostCooked />
-            <MyPreferences/>
-            <ManageVaggie/>
+            <HomeSlider />
+            <div className='home-page container'>
+                <div className="main-content">
+                    <Suggestions />
+                    <MostCooked />
+                    <MyPreferences />
+                    <ManageVaggie />
+                </div>
             </div>
-       </div>
         </div>
-        
+
     )
 };
 
-const mapStateToProps = (state)  => {
+const mapStateToProps = (state) => {
     return {
         suggestions: state.foodData.suggestions
     }

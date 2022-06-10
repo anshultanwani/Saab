@@ -1,19 +1,29 @@
-.manageveggies{
-    .title{
+.manageveggies {
+    .title {
         margin: 28px 0 21px;
     }
+
     .manageveggies-sec {
         display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100%;
-    text-align: center;
-    margin-right: 85px;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 100%;
+        text-align: center;
+        margin-right: 85px;
+
+        h6 {
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            font-weight: 400;
+        }
     }
+
     .manageveggiessec img {
-        min-width: 70px;
+        filter: drop-shadow(0px 0px 9px rgba(177, 199, 206, 0.6));
         border-radius: 42px;
     }
+
     .manageveggiessec {
         text-align: center;
         float: none;
