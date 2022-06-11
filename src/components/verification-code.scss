@@ -15,6 +15,11 @@
             font-weight: 500;
             color: #292929;
             outline: none;
+
+            &.error {
+                border-color: #B46B7C;
+                background: #FFF4F7;
+            }
         }
     }
 }

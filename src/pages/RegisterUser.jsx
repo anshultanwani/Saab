@@ -1,115 +1,185 @@
 import React, { useState } from 'react';
-import ReplayIcon from '@mui/icons-material/Replay';
-import { Button, InputAdornment, TextField, Switch } from '@mui/material';
+import { Button, InputAdornment, TextField, Switch, getFormControlLabelUtilityClasses } from '@mui/material';
 import './register-user.scss';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import InputWithSearch from '../common/InputWithSearch';
+import CollapsableSwitch from '../components/CollapsableSwitch';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string'
 
 const RegisterUser = props => {
-    const userType = [
-        { label: 'Owner', image: 'owner.png' },
-        { label: 'Helper', image: 'cook.png' },
-        { label: 'Owner', image: 'maid.png' }
-    ];
+    const searchParams = useLocation().search;
+    const phoneNum = queryString.parse(searchParams).phone;
+    const userType = queryString.parse(searchParams).userType;
+    const [switchStatus,updateStatus] = useState({
+        cook: false,
+        maid: false
+    })
+    const [data,updateData] = useState({
+        name : "",
+        email : "",
+        phone : '',
+        address : {
+            houseNo: '',
+            floor : "",
+            society: "",
+            locality : "",
+            pin : 560008,
+            regionality : []
+        },
+        services: {
+            cook : {
+                existing : 1,
+                name : "",
+                phone : '',
+                specialities : []
+            },
+            maid: {
+                existing: 1,
+                name : "",
+                phone : '',
+                specialities : []
+            }
+        },
+    });
 
-    const [selectedType, updateUser] = useState(0)
-    const label = { inputProps: { 'aria-label': 'Switch demo' } };
-    const REGION = [
-        { name: 'Panjabi'},
-        { name: 'Sindhi' },
-        { name: 'Gujrati' },
-        { name: 'South Indian' },
-        { name: 'North Indian' },
-        { name: 'Panjabi New' },
-        {  name: 'Marwadi' },
-        {  name: 'Bengali' },
-        {  name: 'Bolo' },
-    ];
-
-    // the value of the search field 
-    const [name, setName] = useState('');
-
-    // the search result
-    const [foundRegion, setFoundRegion] = useState(REGION);
-
-    const filter = (e) => {
-        const keyword = e.target.value;
-
-        if (keyword !== '') {
-            const results = REGION.filter((user) => {
-                return user.name.toLowerCase().startsWith(keyword.toLowerCase());
-                // Use the toLowerCase() method to make it case-insensitive
-            });
-            setFoundRegion(results);
-        } else {
-            setFoundRegion(REGION);
-            // If the text field is empty, show all users
+    const findAndUpdate = (dataObj,value,parentKey,key) => {
+        for(var cur in dataObj) {
+            if(typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur == parentKey.split('.')[0]) {
+                findAndUpdate(dataObj[cur],value,parentKey.split('.').length > 1 ? parentKey.split('.')[1]: '',key);
+            }else if(cur == key && !parentKey) {
+                dataObj[cur] = value;
+            }
         }
-        setName(keyword);
     }
+    const handleChange = (node,value,subNode) => {
+        let newData = {...data};
+        if(subNode == 'phone' || subNode == 'houseNo'){
+            value = Number(value)
+        }
+        findAndUpdate(newData,value,node,subNode);
+        updateData(newData)
+    }
+
+    const handleSubmit = () => {
+        axios({
+            method: 'post',
+            url: 'https://f4a5-2401-4900-1c68-c170-3427-4bec-1fdc-30ed.in.ngrok.io/v1/users/register',
+            data: {
+            ...data,
+            phone: Number(phoneNum),
+            onboarded: 1,
+            SubscriptionType: null,
+            userType
+        }}).then(res => {
+            console.log(res.data)
+            if(res.status == '200'){
+                
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const cookHelperSection = ({isCook = true}) => {
         return (
-            <div className={'login-home signup'}>
-                <div className={'upper-sec'}>
-                    <div className={'title'}>
-                        Sign Up
-                    </div>
+            <>
+                <div className={'label-div'}>{(isCook?"Cook's":"Helper's")+ "Details"}</div>
+                <TextField
+                    className="reg-field"
+                    sx={{
+                        width: 1
+                    }}
+                    placeholder={(isCook?"Cook":"Helper")+" Name"}
+                    inputProps={{
+                        value: isCook ? data.services.cook.name:data.services.maid.name,
+                        onChange: e => handleChange('services.'+(isCook?'cook':'maid'),e.target.value,'name')
+                    }}
+                />
+                <TextField
+                    className="reg-field"
+                    sx={{
+                        width: 1
+                    }}
+                    placeholder="Contact Number"
+                    inputProps={{
+                        value: isCook ? data.services.cook.phone:data.services.maid.phone,
+                        onChange: e => handleChange('services.'+(isCook?'cook':'maid'),e.target.value,'phone')
+                    }}
+                />
+                <div className={'label-div'}>{(isCook?"Cook's":"Helper's")+" Speciality"}</div>
+                <InputWithSearch selected={data.services[isCook?"cook":"maid"].specialities} updateList={list => handleChange('services.'+(isCook?'cook':'maid'),list,'specialities')} />
+            </>
+        )
+    };
+
+    return (
+        <div className={'login-home signup'}>
+            <div className={'upper-sec'}>
+                <div className={'title'}>
+                    Sign Up
                 </div>
-                <div className={'lower-sec'}>
-                    <div className={'data-holder'}>
-                        <div className={'label-div'}>Your Details</div>
-                        <div>
+            </div>
+            <div className={'lower-sec'}>
+                <div className={'data-holder'}>
+                    <div className={'label-div'}>Your Details</div>
+                    <div>
+                        <TextField
+                            className="reg-field"
+                            sx={{
+                                width: 1
+                            }}
+                            placeholder="Your Name"
+                            inputProps={{
+                                value: data.name,
+                                onChange: e => handleChange('',e.target.value,'name')
+                            }}
+                        />
+                        <div className='field-holder'>
                             <TextField
-                                className="reg-field"
-                                sx={{
-                                    width: 1
+                                className="reg-half-field"
+                                sx={{ width: 1 / 2.09 }}
+                                placeholder="House/Flat/Block No."
+                                inputProps={{
+                                    value: data.address.houseNo,
+                                    onChange: e => handleChange('address',e.target.value,'houseNo')
                                 }}
-                                placeholder="Your Name"
                             />
                             <TextField
                                 className="reg-half-field"
                                 sx={{ width: 1 / 2.09 }}
-                                placeholder="House Number"
-                            />
-                            <TextField
-                                className="reg-half-field"
-                                sx={{ width: 1 / 2.09 }}
-                                placeholder="Apratment"
+                                placeholder="Apartment/Road/Area"
+                                inputProps={{
+                                    value: data.address.society,
+                                    onChange: e => handleChange('address',e.target.value,'society')
+                                }}
                             />
                         </div>
-                        <div className='reasonality-srchbar'>
-                            <div className={'label-div'}>Reasonality</div>
-                            <TextField
-                                type="search"
-                                value={name}
-                                onChange={filter}
-                                className="input"
-                                placeholder="Search here"
-                                sx={{ width: 1 }}
-                            />
-                            <div className="user-list">
-                                {foundRegion && foundRegion.length > 0 ? (
-                                    foundRegion.map((user) => (
-                                        <li key={user.id} className="user">
-                                            <span className="user-name">{user.name}</span>
-                                        </li>
-                                    ))
-                                ) : (
-                                    <h1>No results found!</h1>
-                                )}
-                            </div>
-                        </div>
-                        <div className="selected-regin"></div>
-                             <span>Do you have cook?</span>  
-                             <span>
-                             <FormControlLabel control={<Switch defaultChecked />} label="No" />    
-                            </span> 
-                        <div className="have-cook">
-
-                        </div>
-
+                    </div>
+                    <div className='reasonality-srchbar'>
+                        <div className={'label-div'}>Regionality</div>
+                            <InputWithSearch updateList={list => handleChange('address',list,'regionality')} />
+                    </div>
+                    <div className="selected-regin"></div>
+                        <CollapsableSwitch label={'Do you have a Cook?'} status={switchStatus.cook} updateStatus={status => updateStatus({...switchStatus,cook: status})} >
+                            {switchStatus.cook?cookHelperSection({}):null}
+                        </CollapsableSwitch>
+                    <div className="have-cook">
+                        <CollapsableSwitch label={'Do you have Helper?'} status={switchStatus.maid} updateStatus={status => updateStatus({...switchStatus,maid: status})}>
+                            {switchStatus.maid?cookHelperSection({isCook:false}):null}
+                        </CollapsableSwitch>
+                    </div>
+                    <div className='btn-holder'>
+                        <Button
+                            variant={'contained'}
+                            children={'SIGN UP'}
+                            onClick={handleSubmit}
+                        />
                     </div>
                 </div>
             </div>
-        )
+        </div>
+    )
     };
 
     export default RegisterUser;

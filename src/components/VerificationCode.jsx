@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@mui/material';
 import OtpInput from 'react-otp-input';
 import './verification-code.scss';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { setSession } from '../actions'; 
+import { connect } from 'react-redux';
 
 const VerificationCode = props => {
+    const {
+        phone,
+        userType
+    } = props;
     const [code,updateCode] = useState('');
     const [apiMsg,updateMsg] = useState('');
+    const history = useHistory();
 
     
     useEffect(() => {
@@ -20,8 +28,31 @@ const VerificationCode = props => {
     }
 
     const verifyOtp = () => {
-        updateMsg('OTP FAILED')
+        axios({
+            method: 'post',
+            url: 'https://f4a5-2401-4900-1c68-c170-3427-4bec-1fdc-30ed.in.ngrok.io/v1/users/verify/otp',
+            data: {
+            phone: phone,
+            otp: code,
+            userType: userType
+        }}).then(res => {
+            console.log(res);
+            if(res.data.data) {
+                props.setSession({
+                    token: res.data.data.token,
+                })
+                if(res.data.data.onboarded) {
+                    history.push('/');
+                }else {
+                    history.push('/signup?phone='+phone+'&userType='+userType);
+                }
+            }
         console.log('verify Otp Code')
+    }).catch(err => {
+        if(err.response.data.appErrorCode == 'INVALID_OTP'){
+            updateMsg('Wrong OTP')
+        }
+    })
     }
 
     return (
@@ -36,7 +67,7 @@ const VerificationCode = props => {
                     <OtpInput
                         value={code}
                         containerStyle={'otp-holder'}
-                        inputStyle={'otp-box'}
+                        inputStyle={'otp-box '+(apiMsg === 'Wrong OTP'?'error':'')}
                         onChange={handleChange}
                         numInputs={4}
                         placeholder={'0000'}
@@ -52,4 +83,4 @@ const VerificationCode = props => {
     );
 };
 
-export default VerificationCode;
+export default connect(null,{setSession})(VerificationCode);

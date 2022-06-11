@@ -12,3 +12,8 @@ export const toggleSliderDrawer = payload => ({
     type: 'TOGGLE_SLIDER_DRAWERS',
     payload
 })
+
+export const setSession = payload => ({
+    type: 'SET_SESSION',
+    payload
+})
