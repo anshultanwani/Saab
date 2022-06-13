@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { setInitialData } from './actions/index';
 import { connect } from 'react-redux';
-import HomePage from './pages/HomePage';
-import ComboPage from './pages/ComboPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import "slick-carousel/slick/slick.css"; 
@@ -14,10 +12,13 @@ import {
 	Switch
 } from 'react-router-dom';
 import data from './assets/data/data.json';
-import LoginHome from './pages/LoginHome';
-import RegisterUser from './pages/RegisterUser';
 import SliderDrawer from './common/SliderDrawers';
 
+const HomePage = React.lazy(() => import('./pages/HomePage'));
+const LoginHome = React.lazy(() => import('./pages/LoginHome'));
+const ComboPage = React.lazy(() => import('./pages/ComboPage'));
+const RegisterUser = React.lazy(() => import('./pages/RegisterUser'));
+const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 
 function App(props) {
 
@@ -27,20 +28,25 @@ function App(props) {
     }
   },[])
 
+  const ignoreFooter = ['/login','/signup','/stock-refill'];
+
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route exact path='/' component={HomePage}></Route>
-          <Route exact path='/login' component={LoginHome}></Route>
-          <Route exact path='/signup' component={RegisterUser}></Route>
-          <Route exact path='/editcombo' component={ComboPage}></Route>
-        </Switch>
-        <Footer/>
-        <SliderDrawer />
-      </div>
-    </Router>
+    <React.Suspense fallback={<span>Loading...</span>}>
+      <Router>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route exact path='/' render={() => <HomePage/>}></Route>
+            <Route exact path='/login' component={LoginHome}></Route>
+            <Route exact path='/signup' component={RegisterUser}></Route>
+            <Route exact path='/editcombo' component={ComboPage}></Route>
+            <Route exact path='/stock-refill' component={StockRefill}></Route>
+          </Switch>
+          <Footer ignoreFooter={ignoreFooter} />
+          <SliderDrawer />
+        </div>
+      </Router>
+    </React.Suspense>
   );
 }
 
