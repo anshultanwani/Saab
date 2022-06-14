@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Paper from '@mui/material/Paper';
+import { withRouter } from 'react-router-dom';
 import './footer.scss';
 
 const Footer = props => {
-  const [isLoginPage, updatePage] = useState(window.location.pathname == '/login');
+  const [showFooter, toggleFooter] = useState(window.location.pathname == '/login');
 
     useEffect(() => {
-        if (['/login', '/signup'].includes(window.location.pathname)) {
-            updatePage(true)
+        if (props.ignoreFooter.includes(window.location.pathname)) {
+            toggleFooter(false);
         } else {
-            updatePage(false);
+          toggleFooter(true);
         }
     }, [window.location.pathname])
     
     return (
-      !isLoginPage?
+      showFooter?
         <div className='footer-ui '>
           <Paper sx={{ position: 'static', bottom: 0, left: 0, right: 0 }} elevation={3}>
               <BottomNavigation
@@ -37,4 +38,4 @@ const Footer = props => {
     )
 };
 
-export default Footer;
+export default withRouter(Footer);
