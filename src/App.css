@@ -1,6 +1,9 @@
-.App{
+@import url(https://fonts.googleapis.com);
+@import url(https://fonts.gstatic.com);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-}
+
+
 .App .container {
   padding: 0 15px;
 }
@@ -10,14 +13,9 @@
 }
 
 
-.main-content{
-  /* margin: 0 auto; */
-  /* max-width: 93%; */
-  /* float: none; */
-  /* border: 1px solid; */
-  /* text-align: left; */
+body{
+  font-family: 'Roboto', sans-serif;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

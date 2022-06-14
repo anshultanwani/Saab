@@ -24,91 +24,42 @@ const Header = props => {
             updatePage(false);
         }
     }, [window.location.pathname])
-
-
-
-    const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-        alignItems: 'flex-start',
-        paddingTop: theme.spacing(1),
-        paddingBottom: theme.spacing(2),
-        // Override media queries injected by theme.mixins.toolbar
-        '@media all': {
-            minHeight: 128,
-        },
-    }));
-
-
     return (
         !isLoginPage ?
             <div className='header-ui'>
                 <div className='fake-div' />
-                {/* <AppBar position="fixed" className="header-ui">
-                <Toolbar>
-                <IconButton
-                    size="medium"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ m: 1 }}
-                >
-                    <Sort />
-                </IconButton>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    <div className='heading'>{
-                        "Home"
-                    }</div>
-                </Typography>
-                </Toolbar>
-                <div className='grocey-sec'>
-                <img src={require('../assets/images/Vector.png').default}  />
-                <Button color="inherit" onClick={() => props.history.push('/login')}>
-                <img src={require('../assets/images/login-photo.png').default}  />
-                </Button>
+                <div className='header-top'>
+                    <div className='left'>
+                        <span><img src={require('../assets/images/menu.png').default} /></span>
+                        <span>Home</span>
+                    </div>
+                    <div className='right'>
+                            <Button color="inherit" onClick={() => props.history.push('/login')} className="headerbtn">
+                                <img src={require('../assets/images/Vector.png').default} />
+                                <img src={require('../assets/images/Ellipse.png').default} className="login-icon"/>
+                            </Button>
+                        <span>
+                            <img src={require('../assets/images/login-photo.png').default} className="loginphoto"/>
+                        </span>
+
+                    </div>
                 </div>
-            </AppBar> */}
-                <AppBar position="fixed" className="header-ui">
-                    <StyledToolbar>
-                    <IconButton
-                    size="medium"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ m: 1 }}
-                    className="homemenu"
-                >
-                    <Sort />
-                </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            <div className='heading'>{
-                                "Home"
-                            }</div>
-                        </Typography>
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="div"
-                            sx={{ m: 1, alignSelf: 'flex-end' }}
-                            className="groceysec"
-                        >
-                            <div className='grocey-sec'>
-                                <div className='sec-left'>
-                                    <p>Hi Simran </p>
-                                    <p>you cook requested for stock refill</p>
+                <div className='header-bottom'>
+                <div className='grocey-sec'>
+                                <div className='left'>
+                                    <h1>Hi Simran </h1>
+                                    <p>Your cook requested for stock refill</p>
                                     <Button color="inherit" onClick={() => props.history.push('/stock-reflll')}>
                                     Approve Order
                                     </Button>
                                 </div>
-                                <div className='sec-right'>
+                                <div className='right'>
+                                <img src={require('../assets/images/grocery1.PNG').default} />
+                                <img src={require('../assets/images/gr2.PNG').default} />
                                 <img src={require('../assets/images/approve-banner-icon.png').default} />
                                 </div>
                             </div>
-                        </Typography>
-                        <Button color="inherit" onClick={() => props.history.push('/login')}>
-                            <img src={require('../assets/images/Vector.png').default} />
-                        </Button>
-                        <img src={require('../assets/images/login-photo.png').default} />
-                    </StyledToolbar>
-                </AppBar>
+                </div>
             </div>
             : null
     )

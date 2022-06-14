@@ -1,59 +1,143 @@
+// header css
 .header-ui {
-    padding: 11px 11px 0px 0;
-    display: flex;
-    .fake-div {
-        height: 56px;
-        width: 100%;
+    padding: 23px 19px 10px 22px;
+    color: #fff;
+    background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 80.65%);
+    min-height: 237px;
+    position: relative;
+}
+
+.header-top {
+    display: block;
+
+    .left {
+        display: inline-block;
+        width: 50%;
+        vertical-align: text-top;
+
+        img {
+            width: 23px;
+        }
+
+        span {
+            margin-right: 7px;
+            font-weight: 500;
+        }
+
+        span:nth-child(1) img {
+            margin-top: -3px;
+        }
     }
-    .header-ui {
-        background:linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 80.65%);
-        width: calc(100% - 27px );
-        left: 0;
-        box-shadow: none;
+
+    span {
+        display: inline-block;
+        vertical-align: inherit;
+        padding-right: 15px;
+        color: #fff;
+        font-size: 15px;
+        padding-top: 0px;
     }
-    
-    .header-buttom {
-        padding: 0 44px;
-        .left-sec {
-            font-size: 10px;
-            p {
-                font-size: 17px;
-                padding: 0 0 0px 0;
-                margin: 0;
+
+    .right {
+        display: inline-block;
+        width: 50%;
+        vertical-align: middle;
+        text-align: right;
+
+        span:nth-child(2) img {
+            border: 2px solid #FFD2CE;
+            min-width: 25px;
+        }
+
+        button {
+            min-width: auto;
+            margin-right: 15px;
+            position: relative;
+            padding: 0;
+            margin-top: -5px;
+            min-width: 17px;
+
+            img:nth-child(1) {
+                width: 93%;
             }
-            h1 {
-                padding: 7px 0 10px;
-                margin: 0;
-                font-size: 15px;
-                font-weight: 500;
+
+            .login-icon {
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                min-width: 7PX;
             }
         }
     }
-    
-    .heading {
-        font-size: 1rem;
-        font-weight: 500;
-    }
 }
 
-.footer-ui {
-    .Mui-selected {
-        color : #E3655B;
-
-    }
+.header-bottom {
+    padding: 25px 0 32px;
 }
 
-.homemenu {
-    margin: -7px 7px 20px -4px !important;
+img.loginphoto {
+    border-radius: 17px;
 }
 
 .grocey-sec {
-    font-size: 10px;
-}
-.homepage-sec{
-    margin-top: 25%;
-    background-color: #F0F2FF;
-}
-.home-page.container {
-    padding-top: 11px;
+    padding: 0 13px;
+
+    .left {
+        display: inline-block;
+        /* float: left; */
+        width: 68%;
+        text-align: left;
+        vertical-align: middle;
+
+        button {
+            min-width: auto;
+            background-color: #fff;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #EE7464;
+            padding: 6px 8px 4px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 15px;
+            margin: 0;
+            padding: 10px 0 14px;
+        }
+    }
+
+    .right {
+        display: inline-block;
+        /* float: right; */
+        width: 31%;
+        text-align: right;
+        vertical-align: middle;
+        position: relative;
+
+        img:nth-child(1) {
+            width: 26%;
+            position: absolute;
+            left: 15px;
+            top: 9px;
+        }
+
+        img:nth-child(2) {
+            width: 25px;
+            position: absolute;
+            bottom: -9px;
+            left: 24px;
+        }
+
+        img:nth-child(3) {
+            min-width: 54%;
+        }
+    }
 }

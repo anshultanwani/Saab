@@ -11,14 +11,26 @@
     vertical-align: middle;
     h1{
         font-weight: 500;
-        font-size: 15px;
+        font-size: 16px;
         width: 100%;
         display: inline-block;
+        line-height: 21px;
+        margin: 6px 0 4px;
     span{
-        font-weight: normal;
-        display: inline-block;
+        font-weight: 300;
+    display: inline-block
     }
     }
+}
+.homepage-sec {
+    background-color: #F0F2FF;
+    /* position: absolute; */
+    margin-top: -16%;
+}
+.homeslider {
+    overflow: hidden;
+    border-radius: 40px 40px 4px 0px;
+    box-shadow: 0px -3px 9px rgb(0 0 0 / 12%);
 }
 .slick-slider{
     background-color: #FFE1E6;
@@ -27,11 +39,11 @@
     padding: 25px 33px 9px;
     margin: 0;
     width: 100%;
+    min-height: 168px;
 }
-// .slick-slide img {
-//     max-width: 73%;
-//     margin: 0 auto;
-// }
+.homeslider {
+    overflow: hidden;
+}
 .slick-slide img:first-child {
     max-width: 73%;
     /* margin: 0 auto; */
@@ -69,11 +81,11 @@
     font-weight: 100;
 }
 button.slider-btn {
-    width: 50%;
-    padding: 1px 8px;
+    width: 52%;
+    padding: 3px 6px;
     border: 1px solid #ED7464;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: inherit;
     margin: 4px 0 0;
     background-color: #ED7464;
@@ -87,10 +99,18 @@ button.slider-btn {
     font-size: 9px !important;
 }
 .slick-dots li.slick-active button:before {
-    color: white !important;
+    color: #ED7464 !important;
     opacity: 1 !important;
 }
 .slick-dots li button {
     width: 100% !important;
     padding: 0 7px !important;
+}
+.home-page.container{
+    padding-top: 46px;
+    border-radius: 48px 41px 0px 6px;
+    background: #F0F2FF;
+}
+.slick-dots li button:before{
+    color: #ED7464 !important;
 }
