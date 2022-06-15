@@ -34,6 +34,7 @@ const StockList = props => {
                                 : null}
                             </span>
                         </div>
+                        <div className='min-qty'>{data.minQty}</div>
                     </div>
                 </div>
                 <div className='right-sec'>

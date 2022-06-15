@@ -19,6 +19,20 @@ div {
             align-items: flex-start;
             font-size: 12px;
 
+            .name-price {
+                height: 100%;
+                position: relative;
+
+                .min-qty {
+                    position: absolute;
+                    bottom: 0px;
+                    font-size: 11px;
+                    line-height: 12px;
+                    color: #414141;
+                    opacity: 0.6;
+                }
+            }
+
             .name {
                 font-weight: 500;
                 font-size: 12px;
