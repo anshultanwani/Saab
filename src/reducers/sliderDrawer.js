@@ -1,5 +1,5 @@
 const initialState = {
-    feedbackDrawer: true,
+    feedbackDrawer: false,
     addMemberDrawer: false,
 }
 

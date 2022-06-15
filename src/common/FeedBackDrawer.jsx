@@ -3,6 +3,7 @@ import { Rating, TextareaAutosize } from '@mui/material';
 import BottomDrawer from './BottomDrawer';
 import { toggleSliderDrawer } from '../actions/index';
 import { connect } from 'react-redux';
+import BoxWithSideBorder from '../components/BoxWithSideBorder';
 
 const FeedBackDrawer = props => {
     const [infoData,updateInfo] = useState({
@@ -28,23 +29,25 @@ const FeedBackDrawer = props => {
 
     const RatingBox = info => {
         return (
-        <div className='rating-box'>
-            <label className='box-label'>{info.label}</label>
-            <Rating
-                className='custom-rating'
-                value={info.value}
-                onChange={(event, newValue) => {
-                    handleChange(newValue,info.nodeKey)
-                }}
+            <BoxWithSideBorder
+                {...info}
+                rightSec={
+                    <Rating
+                        className='custom-rating'
+                        value={info.value}
+                        onChange={(event, newValue) => {
+                            handleChange(newValue,info.nodeKey)
+                        }}
+                    />
+                }
             />
-        </div>
         )
     }
     const content = (
         <>
-            <RatingBox label={'Taste'} value={infoData.taste} nodeKey={'taste'} />
-            <RatingBox label={'Cleaniness'} value={infoData.cleaniness} nodeKey={'cleaniness'} />
-            <RatingBox label={'Instruction’s Follow'} value={infoData.instruction} nodeKey={'instruction'} />
+            <RatingBox title={'Taste'} value={infoData.taste} nodeKey={'taste'} />
+            <RatingBox title={'Cleaniness'} value={infoData.cleaniness} nodeKey={'cleaniness'} />
+            <RatingBox title={'Instruction’s Follow'} value={infoData.instruction} nodeKey={'instruction'} />
             <div className='info-txt'>Additional Notes</div>
             <TextareaAutosize
                     className="note-field"

@@ -67,7 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
+    padding: 0 8px;
     height: 45px;
     width: 100%;
     color: #AD6ABE;
@@ -78,6 +78,15 @@
     border-left: 4px solid #AC6ABF;
     margin-bottom: 15px;
     box-sizing: border-box;
+
+    .sub-title {
+        color: #414141;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 12px;
+        opacity: 0.6;
+        margin-left: 5px; 
+    }
 
     .custom-rating {
         color: #ED7768;
