@@ -4,13 +4,16 @@ const BoxWithSideBorder = props => {
     const {
         title,
         subTitle,
-        rightSec
+        rightSec,
+        onClick
     } = props;
     return (
-        <div className='rating-box'>
-            <label className='box-label'>{title}</label>
-            {subTitle ?
-                (<label className='sub-title'>{subTitle}</label>) : null}
+        <div className='rating-box' onClick={onClick}>
+            <div>
+                <label className='box-label'>{title}</label>
+                {subTitle ?
+                    (<label className='sub-title'>{subTitle}</label>) : null}
+            </div>
             {rightSec ?
                 rightSec : null}
         </div>
