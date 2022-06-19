@@ -19,7 +19,7 @@ const LoginHome = props => {
     const getOtp = () => {
         axios({
             method: 'post',
-            url: 'https://f4a5-2401-4900-1c68-c170-3427-4bec-1fdc-30ed.in.ngrok.io/v1/users/login',
+            url: window.apiDomain+'/v1/users/login',
             data: {
             phone: Number(mobileNum),
             userType: userType[selectedType].label.toUpperCase()

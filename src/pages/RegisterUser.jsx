@@ -4,11 +4,13 @@ import './register-user.scss';
 import InputWithSearch from '../common/InputWithSearch';
 import CollapsableSwitch from '../components/CollapsableSwitch';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string'
+import { useHistory, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
+import { setCookie } from '../utils';
 
 const RegisterUser = props => {
     const searchParams = useLocation().search;
+    const history = useHistory();
     const phoneNum = queryString.parse(searchParams).phone;
     const userType = queryString.parse(searchParams).userType;
     const [switchStatus,updateStatus] = useState({
@@ -64,7 +66,7 @@ const RegisterUser = props => {
     const handleSubmit = () => {
         axios({
             method: 'post',
-            url: 'https://f4a5-2401-4900-1c68-c170-3427-4bec-1fdc-30ed.in.ngrok.io/v1/users/register',
+            url: window.apiDomain+'/v1/users/register',
             data: {
             ...data,
             phone: Number(phoneNum),
@@ -72,9 +74,9 @@ const RegisterUser = props => {
             SubscriptionType: null,
             userType
         }}).then(res => {
-            console.log(res.data)
             if(res.status == '200'){
-                
+                setCookie('isLoggedIn',true,30);
+                history.replace('/');
             }
         }).catch(err => {
             console.log(err)

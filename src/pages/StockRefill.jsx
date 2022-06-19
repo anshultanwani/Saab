@@ -3,9 +3,19 @@ import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import BoxWithSideBorder from '../components/BoxWithSideBorder';
 import StockList from '../components/StockList';
+import { connect } from 'react-redux';
 import './stock-refill.scss';
+import { Button } from '@mui/material';
+import {ReactComponent as Info} from '../assets/images/info1.svg';
+import {ReactComponent as Info1} from '../assets/images/info2.svg';
 
 const StockRefill = props => {
+    const {
+        cartList,
+        deliveryCharges,
+        highDemandCharges
+    } = props;
+
     const [catSection,toggleSection] = useState({
         Veggies: {
             show: true,
@@ -24,65 +34,45 @@ const StockRefill = props => {
     const sortList = () => {
         let obj = {...catSection};
         Object.keys(catSection).map(curKey => {
-            obj[curKey].list = dummyCart.filter(cur => cur.category === curKey.toLowerCase());
+            obj[curKey].list = cartList.filter(cur => cur.category === curKey.toLowerCase());
         })
         toggleSection(obj);
     }
-    const dummyCart = [
-        {
-            name: 'Potato',
-            quantity: 1,
-            minQty: '1 kg',
-            actualPrice: 50,
-            price: 60,
-            category: 'veggies'
-        },
-        {
-            name: 'Onion',
-            quantity: 1,
-            minQty: '1 kg',
-            actualPrice: 50,
-            price: 60,
-            category: 'veggies'
-        },
-        {
-            name: 'Capsium',
-            quantity: 1,
-            minQty: '500 gram',
-            actualPrice: 50,
-            price: 60,
-            category: 'veggies'
-        },
-        {
-            name: 'Banana',
-            quantity: 1,
-            minQty: '1 kg',
-            actualPrice: 50,
-            price: 60,
-            category: 'fruits'
-        },
-        {
-            name: 'Papaya',
-            quantity: 1,
-            minQty: '1 kg',
-            actualPrice: 50,
-            price: 60,
-            category: 'fruits'
-        },
-        {
-            name: 'Watermelon',
-            quantity: 1,
-            minQty: '500 gram',
-            actualPrice: 50,
-            price: 60,
-            category: 'fruits'
-        }
-    ]
 
     useEffect(() => {
         sortList()
     },[])
 
+    const BillingSection = props => {
+        const {
+            data
+        } = props;
+        let mrp = 0;
+        let discount = 0;
+        let total = 0;
+        data.map(cur => {
+            mrp += cur.price;
+            discount += (cur.price - cur.actualPrice);
+            total += cur.actualPrice;
+        })
+        return (
+            <div className='billing-holder'>
+                <label className='heading'>Billing Details</label>
+                <div className='holder'>
+                    <label className='title'>MRP</label>
+                    <div className='value'><span>₹</span>{mrp}</div>
+                    <label className='title'>Product Discount</label>
+                    <div className='value discount'><span>-</span>{discount}</div>
+                    <label className='title'>Delivery Charges</label>
+                    <div className='value'><span>₹</span>{deliveryCharges}</div>
+                    <label className='title'>High Demand Surge Charges</label>
+                    <div className='value'><span>₹</span>{highDemandCharges}</div>
+                    <label className='title heading'>Bill Total</label>
+                    <div className='value total'><span>₹</span>{total+highDemandCharges+deliveryCharges}</div>
+                </div>
+            </div>
+        )
+    }
     const  section = () => {
         let arr = [];
         Object.keys(catSection).map(cur => {
@@ -111,9 +101,32 @@ const StockRefill = props => {
     
     return (
         <div className='stock-refill'>
-            {section()}
+            <div className='border-card'>
+                {section()}
+                <BillingSection data={cartList} />
+                <div className='btn-holder'>
+                    <Button
+                        variant='contained'
+                        className='enable-btn'
+                        children={(
+                            <div className='btn-content'>
+                                ENABLE AUTO APPROVE
+                                <Info style={{marginLeft: '5px',position: 'relative',top: '1px'}}/>
+                                <Info1 />
+                            </div>
+                        )}
+                    />
+                </div>
+            </div>
         </div>
     )
 };
 
-export default withRouter(StockRefill);
+const mapStateToProps = state => {
+    return {
+        cartList: state.cart.cartList,
+        deliveryCharges: state.cart.deliveryCharges,
+        highDemandCharges: state.cart.highDemandCharges
+    }
+}
+export default connect(mapStateToProps)(withRouter(StockRefill));
