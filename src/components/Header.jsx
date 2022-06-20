@@ -49,7 +49,7 @@ const Header = props => {
                                 <div className='left'>
                                     <h1>Hi Simran </h1>
                                     <p>Your cook requested for stock refill</p>
-                                    <Button color="inherit" onClick={() => props.history.push('/stock-reflll')}>
+                                    <Button color="inherit" onClick={() => props.history.push('/stock-refill')}>
                                     Approve Order
                                     </Button>
                                 </div>
