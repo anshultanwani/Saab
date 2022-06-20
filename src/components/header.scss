@@ -1,10 +1,24 @@
 // header css
 .header-ui {
-    padding: 23px 19px 10px 22px;
+    padding: 15px 19px 10px 22px;
     color: #fff;
     background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 80.65%);
     min-height: 237px;
     position: relative;
+
+    &.no-groc {
+        min-height: unset;
+
+        .header-bottom {
+            padding: unset;
+        }
+
+        .left {
+            img {
+                width: 19px;
+            }
+        }
+    }
 }
 
 .header-top {
@@ -12,7 +26,7 @@
 
     .left {
         display: inline-block;
-        width: 50%;
+        width: 60%;
         vertical-align: text-top;
 
         img {
@@ -40,7 +54,7 @@
 
     .right {
         display: inline-block;
-        width: 50%;
+        width: 40%;
         vertical-align: middle;
         text-align: right;
 

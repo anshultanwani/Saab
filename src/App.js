@@ -9,10 +9,12 @@ import "slick-carousel/slick/slick-theme.css";
 import {
 	BrowserRouter as Router,
 	Route,
-	Switch
+	Switch,
+  useHistory
 } from 'react-router-dom';
 import data from './assets/data/data.json';
 import SliderDrawer from './common/SliderDrawers';
+import { getCookie } from './utils';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
@@ -21,6 +23,7 @@ const RegisterUser = React.lazy(() => import('./pages/RegisterUser'));
 const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 
 function App(props) {
+  window.apiDomain = 'https://4946-122-161-86-152.in.ngrok.io';
 
   useEffect(() => {
     if(!props.suggestions.length && window.location.pathname == '/'){
@@ -29,12 +32,13 @@ function App(props) {
   },[])
 
   const ignoreFooter = ['/login','/signup','/stock-refill'];
+  const customHeader = ['/stock-refill'];
 
   return (
     <React.Suspense fallback={<span>Loading...</span>}>
       <Router>
         <div className="App">
-          <Header />
+          <Header customHeader={customHeader} />
           <Switch>
             <Route exact path='/' render={() => <HomePage/>}></Route>
             <Route exact path='/login' component={LoginHome}></Route>

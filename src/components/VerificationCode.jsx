@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { setSession } from '../actions'; 
 import { connect } from 'react-redux';
+import { setCookie } from '../utils';
 
 const VerificationCode = props => {
     const {
@@ -30,7 +31,7 @@ const VerificationCode = props => {
     const verifyOtp = () => {
         axios({
             method: 'post',
-            url: 'https://f4a5-2401-4900-1c68-c170-3427-4bec-1fdc-30ed.in.ngrok.io/v1/users/verify/otp',
+            url: window.apiDomain+'/v1/users/verify/otp',
             data: {
             phone: phone,
             otp: code,
@@ -42,6 +43,7 @@ const VerificationCode = props => {
                     token: res.data.data.token,
                 })
                 if(res.data.data.onboarded) {
+                    setCookie('isLoggedIn',true,30)
                     history.push('/');
                 }else {
                     history.push('/signup?phone='+phone+'&userType='+userType);
