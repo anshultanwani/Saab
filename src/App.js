@@ -23,7 +23,7 @@ const RegisterUser = React.lazy(() => import('./pages/RegisterUser'));
 const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 
 function App(props) {
-  window.apiDomain = 'https://4946-122-161-86-152.in.ngrok.io';
+  window.apiDomain = 'https://f405-223-190-81-121.in.ngrok.io';
 
   useEffect(() => {
     if(!props.suggestions.length && window.location.pathname == '/'){
