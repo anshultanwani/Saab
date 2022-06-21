@@ -33,7 +33,7 @@ const Header = props => {
     }, [location.pathname])
 
     const headings= {
-        '/': 'HOME',
+        '/': 'Home',
         '/stock-refill' : 'STOCK REFILL'
     }
 
@@ -70,15 +70,16 @@ const Header = props => {
                 <div className='grocey-sec'>
                     <div className='left'>
                         <h1>Hi Simran </h1>
-                        <p>Your cook requested for stock refill</p>
+                        <p>Your cook requested stock refill</p>
                         <Button color="inherit" onClick={() => props.history.push('/stock-refill')}>
                         Approve Order
                         </Button>
                     </div>
                     <div className='right'>
-                    <img src={require('../assets/images/grocery1.PNG').default} />
+                    <img src={require('../assets/images/groceyrightimg.svg').default} />
+                    {/* <img src={require('../assets/images/grocery1.PNG').default} />
                     <img src={require('../assets/images/gr2.PNG').default} />
-                    <img src={require('../assets/images/approve-banner-icon.png').default} />
+                    <img src={require('../assets/images/approve-banner-icon.png').default} /> */}
                     </div>
                 </div>: null}
                 </div>

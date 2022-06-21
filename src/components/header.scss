@@ -95,13 +95,9 @@ img.loginphoto {
 
 .grocey-sec {
     padding: 0 13px;
+    display: flex;
 
     .left {
-        display: inline-block;
-        /* float: left; */
-        width: 68%;
-        text-align: left;
-        vertical-align: middle;
 
         button {
             min-width: auto;
@@ -121,26 +117,21 @@ img.loginphoto {
         }
 
         p {
-            font-weight: 500;
+            font-weight: 400;
             font-size: 15px;
             margin: 0;
             padding: 10px 0 14px;
+            letter-spacing: .5px;
         }
     }
 
     .right {
-        display: inline-block;
-        /* float: right; */
-        width: 31%;
-        text-align: right;
-        vertical-align: middle;
+        padding: 16px 0 0;
+        width: 34%;
         position: relative;
 
         img:nth-child(1) {
-            width: 26%;
-            position: absolute;
-            left: 15px;
-            top: 9px;
+            width: 100%;
         }
 
         img:nth-child(2) {
