@@ -1,0 +1,17 @@
+.stockcat-sec-outer {
+    padding: 0 0 23px 0;
+    display: flex;
+    .stockcat-sec {
+        img {
+            width: 100%;
+            border-radius: 169px !important;
+        }
+        h6 {
+            margin: 0;
+            text-align: center;
+            color: #414141;
+            font-size: 13px;
+        }
+    }
+    
+}

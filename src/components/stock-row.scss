@@ -84,11 +84,21 @@ div {
         }
     
         .prod-img {
-            height: 68px;
-            width: 68px;
-            margin-right: 10px;
-            opacity: 0.1;
-            border: 1px solid #414141
+            
+                height: 68px;
+                width: 68px;
+                margin-right: 10px;
+                border: 1px solid #ddd4d4;
+                position: relative;
+                img{
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
+                        top: 50%;
+                        transform: translateY(-50%);
+                }
+
         }
     }
 }

@@ -1,18 +1,17 @@
 import React from "react";
 import { connect } from 'react-redux';
+import './stockRefillHead.scss';
+
 
 const StockRefillHead = (props) => {
     return(
-        // <div className="stockrefillhead">
-        //     <h1>harsha</h1>
-        // </div>
-         <div className="manageveggies-sec">
+         <div className="stockcat-sec-outer">
          {
-         props.StockRefillHeadset.map((item , index)=> {
+         Object.keys(props.stockRefillHeadset).map((item , index)=> {
                  return (
-                 <div key={index} class="manageveggiessec">
-                 <img src={require('../assets/'+item.vegImage).default}/>
-                 <h6>{item.vegName}</h6>
+                 <div key={index} class="stockcat-sec">
+                 <img src={require('../assets/'+ props.stockRefillHeadset[item].displayImage).default}/>
+                 <h6>{props.stockRefillHeadset[item].displayName}</h6>
                  </div>
                  )
          })}
@@ -23,7 +22,7 @@ const StockRefillHead = (props) => {
 
 const mapStateToProps = state => {
     return {
-        StockRefillHeadset: state.foodData.manageveggies
+        stockRefillHeadset: state.cart.stockCat
     }
 }
 

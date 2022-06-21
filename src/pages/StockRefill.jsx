@@ -8,6 +8,8 @@ import './stock-refill.scss';
 import { Button } from '@mui/material';
 import {ReactComponent as Info} from '../assets/images/info1.svg';
 import {ReactComponent as Info1} from '../assets/images/info2.svg';
+import StockRefillHead from '../components/StockRefillHead';
+import StockRefillButton from '../components/StockRefillButton';
 
 const StockRefill = props => {
     const {
@@ -38,6 +40,9 @@ const StockRefill = props => {
         })
         toggleSection(obj);
     }
+
+    const enbleautoApprove = () => {}
+
 
     useEffect(() => {
         sortList()
@@ -102,22 +107,28 @@ const StockRefill = props => {
     return (
         <div className='stock-refill'>
             <div className='border-card'>
+                <StockRefillHead/>
                 {section()}
                 <BillingSection data={cartList} />
                 <div className='btn-holder'>
                     <Button
                         variant='contained'
                         className='enable-btn'
+                        onClick={enbleautoApprove}
                         children={(
                             <div className='btn-content'>
                                 ENABLE AUTO APPROVE
                                 <Info style={{marginLeft: '5px',position: 'relative',top: '1px'}}/>
                                 <Info1 />
+
                             </div>
                         )}
                     />
-                </div>
+                </div> 
             </div>
+            <div className='address-details'>
+                <StockRefillButton/>
+                </div>
         </div>
     )
 };

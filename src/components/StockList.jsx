@@ -19,7 +19,9 @@ const StockList = props => {
         return (
             <div className='prod-row'>
                 <div className='left-sec'>
-                    <div className='prod-img' />
+                    <div className='prod-img'>
+                    <img src={require('../assets/'+ data.image).default}/>
+                    </div>
                     <div className='name-price'>
                         <div className='name'>{data.name}</div>
                         <div className='price-sec'>

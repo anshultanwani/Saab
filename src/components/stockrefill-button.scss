@@ -1,0 +1,38 @@
+.address-details {
+    background-color: #fff;
+    padding: 39px 21px 38px;
+    margin: 0px 0 0;
+    .stockrefill-button-sec {
+        background-color: #AC6ABE;
+        padding: 0;
+        color: #fff;
+        border-radius: 1px 0px 10px 10px;
+        margin: 0;
+    }
+    .stockrefillebtn-label-holder {
+        display: flex;
+        .button-text {
+            width: 55%;
+            text-align: center;
+            padding: 15px 10px 10px 10px;
+            text-align: left;
+            font-size: 14px;
+            span {
+                font-size: 12px;
+                margin-left: 5px;
+                color: #FDFEFF;
+            }
+        }
+        .btn-holder {
+            width: 50%;
+          button {
+                background-color: #7B438A;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+                padding: 12px 10px 12px 10px;
+                text-align: center;
+            }
+        }
+    }
+}
