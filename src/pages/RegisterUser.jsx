@@ -57,7 +57,7 @@ const RegisterUser = props => {
     const handleChange = (node,value,subNode) => {
         let newData = {...data};
         if(subNode == 'phone' || subNode == 'houseNo'){
-            value = Number(value)
+            value = isNaN(Number(value)) ? newData[node][subNode]: Number(value);
         }
         findAndUpdate(newData,value,node,subNode);
         updateData(newData)
@@ -143,7 +143,7 @@ const RegisterUser = props => {
                                 sx={{ width: 1 / 2.09 }}
                                 placeholder="House/Flat/Block No."
                                 inputProps={{
-                                    value: data.address.houseNo,
+                                    value: data.address.houseNo || '',
                                     onChange: e => handleChange('address',e.target.value,'houseNo')
                                 }}
                             />

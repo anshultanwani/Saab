@@ -119,8 +119,7 @@ const StockRefill = props => {
                             <div className='btn-content'>
                                 ENABLE AUTO APPROVE
                                 <Info style={{marginLeft: '5px',position: 'relative',top: '1px'}}/>
-                                <Info1 />
-
+                                <Info1 style={{ width: '6px',height: '14px',position: 'absolute',top: '11px',right: '19px'}} />
                             </div>
                         )}
                     />

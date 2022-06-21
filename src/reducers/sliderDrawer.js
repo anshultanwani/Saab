@@ -1,6 +1,7 @@
 const initialState = {
     feedbackDrawer: false,
     addMemberDrawer: false,
+    autoApprove: false
 }
 
 export default (state = initialState, action) => {
