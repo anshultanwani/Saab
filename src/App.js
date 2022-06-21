@@ -26,7 +26,7 @@ function App(props) {
   window.apiDomain = 'https://f405-223-190-81-121.in.ngrok.io';
 
   useEffect(() => {
-    if(!props.suggestions.length && window.location.pathname == '/'){
+    if(!props.suggestions.length){
       props.setInitialData(data);
     }
   },[])
