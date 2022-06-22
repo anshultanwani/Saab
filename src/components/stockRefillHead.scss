@@ -11,16 +11,22 @@
         height: 85px;
     }
     .stockcat-sec {
+        border-radius: 50%;
+        overflow: hidden;
+        height: 70px;
+        width: 70px;
+        border: 4px solid #fff;
         img {
             width: 100%;
-            border-radius: 169px !important;
+            height: 75px;
+            transform: scale(1.25);
         }
-        h6 {
-            margin: 0;
-            text-align: center;
-            color: #414141;
-            font-size: 13px;
-        }
+    }
+    h6 {
+        margin: unset;
+        text-align: center;
+        color: #414141;
+        font-size: 13px;
     }
     
 }

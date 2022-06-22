@@ -20,7 +20,7 @@ const Header = props => {
     const [sectionToShow,updateSection] = useState([]);
     let showSection = {
         '/': ['burger','notification','profile'],
-        '/stock-refill': ['back','burger','search','notification','profile']
+        '/stock-refill': ['back','search','notification','profile']
     }
 
     useEffect(() => {
@@ -45,7 +45,7 @@ const Header = props => {
                     <div className='left'>
                         {sectionToShow?.includes('back')?
                             <BackIcon style={{height: '12px',width: '12px',marginRight: '10px'}} onClick={() => history.goBack()}/> : null}
-                        <span><img src={require('../assets/images/menu.png').default} /></span>
+                        {sectionToShow?.includes('burger')?<span><img src={require('../assets/images/menu.png').default} /></span>: null}
                         <span>{headings[location.pathname]}</span>
                     </div>
                     <div className='right'>

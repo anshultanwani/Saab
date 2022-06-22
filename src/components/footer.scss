@@ -1,3 +1,18 @@
 .footer-ui {
     background: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    .Mui-selected {
+        color: #E3655B;
+    } 
+    .selection-line {
+        width: 25%;
+        position: relative;
+        left: 0;
+        border-bottom: 4px solid #E3655B;
+        border-radius: 4px;
+        transition: left linear 0.2s;
+    }
 }

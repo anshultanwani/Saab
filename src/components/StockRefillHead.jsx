@@ -9,7 +9,7 @@ const StockRefillHead = (props) => {
 
     const getSection = () => {
         let arr = [(
-            <Tab label={(
+            <Tab className='an' label={(
                 <div className={"cart-sec " }>
         
                 </div>
@@ -18,12 +18,12 @@ const StockRefillHead = (props) => {
         arr.push(
             Object.keys(props.stockRefillHeadset).map((item , index)=> {
                 return (
-                    <Tab label={
+                    <Tab classes="abc" label={
                         <>
                         <div key={index} class="stockcat-sec">
-                        <img src={require('../assets/'+ props.stockRefillHeadset[item].displayImage).default} />
-                        <h6>{props.stockRefillHeadset[item].displayName}</h6>
+                            <img src={require('../assets/'+ props.stockRefillHeadset[item].displayImage).default} />
                         </div>
+                        <h6 className="head-title">{props.stockRefillHeadset[item].displayName}</h6>
                         </>
                     }
                     />
@@ -31,7 +31,13 @@ const StockRefillHead = (props) => {
                 })
                 )
         return (
-            <Tabs value={curSection} onChange={(e,newVal) => updateSection(newVal)} aria-label="icon tabs example">
+            <Tabs 
+                value={curSection}
+                onChange={(e,newVal) => updateSection(newVal)}
+                variant="scrollable"
+                className="abc"
+                classes={'abc'}
+                aria-label="icon tabs example">
                 {arr}
             </Tabs>
         );

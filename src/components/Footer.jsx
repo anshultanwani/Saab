@@ -7,6 +7,7 @@ import './footer.scss';
 
 const Footer = props => {
   const [showFooter, toggleFooter] = useState(window.location.pathname == '/login');
+  const [selectedTab,updateTab] = useState(0)
 
     useEffect(() => {
         if (props.ignoreFooter.includes(window.location.pathname)) {
@@ -19,17 +20,20 @@ const Footer = props => {
     return (
       showFooter?
         <div className='footer-ui '>
+          <div className={'selection-line'} style={{
+            left: Number(selectedTab * 25)+'%'
+          }}/>
           <Paper sx={{ position: 'static', bottom: 0, left: 0, right: 0 }} elevation={3}>
               <BottomNavigation
                 showLabels
-                value={0}
+                value={selectedTab}
                 onChange={(event, newValue) => {
-                  // setValue(newValue);
+                  updateTab(newValue);
                 }}
               >
                 <BottomNavigationAction label="Home" />
-                <BottomNavigationAction label="My Ratings" />
-                <BottomNavigationAction label="My Dishes" />
+                <BottomNavigationAction label="Assign Dish" />
+                <BottomNavigationAction label="Stock" />
                 <BottomNavigationAction label="Payment" />
               </BottomNavigation>
           </Paper>
