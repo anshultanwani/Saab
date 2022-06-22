@@ -43,7 +43,7 @@ const Header = props => {
                 <div className='fake-div' />
                 <div className='header-top'>
                     <div className='left'>
-                        {sectionToShow.includes('back')?
+                        {sectionToShow?.includes('back')?
                             <BackIcon style={{height: '12px',width: '12px',marginRight: '10px'}} onClick={() => history.goBack()}/> : null}
                         <span><img src={require('../assets/images/menu.png').default} /></span>
                         <span>{headings[location.pathname]}</span>

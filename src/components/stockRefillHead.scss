@@ -1,6 +1,15 @@
 .stockcat-sec-outer {
     padding: 0 0 23px 0;
-    display: flex;
+    
+    .tab-holder {
+        display: flex;
+        align-items: flex-end;
+    }
+    .cart-sec {
+        background: #ED7768;
+        width: 85px;
+        height: 85px;
+    }
     .stockcat-sec {
         img {
             width: 100%;
