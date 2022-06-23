@@ -18,6 +18,7 @@ const StockRefill = props => {
         highDemandCharges
     } = props;
 
+    const [currentView,updateView] = useState('cart');
     const [catSection,toggleSection] = useState({
         Veggies: {
             show: true,
@@ -45,8 +46,10 @@ const StockRefill = props => {
 
 
     useEffect(() => {
-        sortList()
+        if(currentView == 'cart')
+            sortList()
     },[])
+
 
     const BillingSection = props => {
         const {
@@ -80,36 +83,42 @@ const StockRefill = props => {
     }
     const  section = () => {
         let arr = [];
-        Object.keys(catSection).map(cur => {
+        if(currentView == 'cart') {
+            Object.keys(catSection).map(cur => {
+                arr.push(
+                <>
+                    <BoxWithSideBorder
+                        title={cur}
+                        subTitle={'('+ catSection[cur].list.length +' items)'}
+                        rightSec={(
+                            <div className='add-more'>ADD MORE </div>
+                        )}
+                        onClick={() => toggleSection({...catSection,[cur]: {...catSection[cur],show: !catSection[cur].show}})}
+                    />
+                    {catSection[cur].show && catSection[cur].list?.length ?
+                        <StockList list={catSection[cur].list} updateQty={(qty,index) => {
+                            let data = {...catSection};
+                            data[cur].list[index].quantity = Number(qty) < 0 ? 0 : qty;
+                            toggleSection(data);
+                        }} />
+                    :null}
+                </>
+                );
+            })
+            arr.push(<BillingSection data={cartList} />);
+        }else {
             arr.push(
-            <>
-                <BoxWithSideBorder
-                    title={cur}
-                    subTitle={'('+ catSection[cur].list.length +' items)'}
-                    rightSec={(
-                        <div className='add-more'>ADD MORE </div>
-                    )}
-                    onClick={() => toggleSection({...catSection,[cur]: {...catSection[cur],show: !catSection[cur].show}})}
-                />
-                {catSection[cur].show && catSection[cur].list?.length ?
-                    <StockList list={catSection[cur].list} updateQty={(qty,index) => {
-                        let data = {...catSection};
-                        data[cur].list[index].quantity = Number(qty) < 0 ? 0 : qty;
-                        toggleSection(data);
-                    }} />
-                :null}
-            </>
-            );
-        })
+                <StockList list={props.stockCat[currentView].list} />
+            )
+        }
         return arr;
     }
     
     return (
         <div className='stock-refill'>
             <div className='border-card'>
-                <StockRefillHead/>
+                <StockRefillHead onTabChange={(val) => updateView(val)} />
                 {section()}
-                <BillingSection data={cartList} />
                 <div className='btn-holder'>
                     <Button
                         variant='contained'
@@ -145,7 +154,8 @@ const mapStateToProps = state => {
     return {
         cartList: state.cart.cartList,
         deliveryCharges: state.cart.deliveryCharges,
-        highDemandCharges: state.cart.highDemandCharges
+        highDemandCharges: state.cart.highDemandCharges,
+        stockCat: state.cart.stockCat
     }
 }
 export default connect(mapStateToProps)(withRouter(StockRefill));

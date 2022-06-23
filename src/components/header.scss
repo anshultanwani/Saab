@@ -1,13 +1,14 @@
 // header css
+div { box-sizing: border-box;}
 .header-ui {
-    padding: 15px 19px 10px 22px;
+    // padding: 15px 19px 10px 22px;
     color: #fff;
     background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 80.65%);
     min-height: 237px;
     position: relative;
 
     &.no-groc {
-        min-height: unset;
+        min-height: 53px;
 
         .header-bottom {
             padding: unset;
@@ -19,10 +20,19 @@
             }
         }
     }
+    .fake-div {
+        height: 40px;
+    }
 }
 
 .header-top {
+    position: fixed;
+    top: 0;
+    width: 100vw;
     display: block;
+    background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 95.65%);
+    padding: 15px 19px 5px 22px;
+    z-index: 3;
 
     .left {
         display: inline-block;
@@ -86,7 +96,7 @@
 }
 
 .header-bottom {
-    padding: 25px 0 32px;
+    padding: 25px 19px 32px 22px;
 }
 
 img.loginphoto {

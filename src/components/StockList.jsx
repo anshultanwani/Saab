@@ -46,7 +46,7 @@ const StockList = props => {
                             className="mob-field"
                             sx={{ m: 1}}
                             InputProps={{
-                                value: data.quantity,
+                                value: data.quantity || 0,
                                 type: 'number',
                                 onChange: (e) => updateQty(Number(e.target.value),index)
                             }}

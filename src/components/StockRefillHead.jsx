@@ -1,24 +1,31 @@
 import { Tab, Tabs } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux';
+import {ReactComponent as Cart} from '../assets/images/cart.svg';
 import './stockRefillHead.scss';
 
 
 const StockRefillHead = (props) => {
+    const {
+        count
+    } = props;
+
     const [curSection,updateSection] = useState(0);
 
     const getSection = () => {
         let arr = [(
-            <Tab className='an' label={(
+            <Tab className='single-tab cart' id={'cart'} label={(
                 <div className={"cart-sec " }>
-        
+                    <div className="circle">
+                        <Cart />
+                    </div>
                 </div>
             )} />
         )];
         arr.push(
             Object.keys(props.stockRefillHeadset).map((item , index)=> {
                 return (
-                    <Tab classes="abc" label={
+                    <Tab className="single-tab" id={item} label={
                         <>
                         <div key={index} class="stockcat-sec">
                             <img src={require('../assets/'+ props.stockRefillHeadset[item].displayImage).default} />
@@ -33,10 +40,12 @@ const StockRefillHead = (props) => {
         return (
             <Tabs 
                 value={curSection}
-                onChange={(e,newVal) => updateSection(newVal)}
+                onChange={(e,newVal) => {
+                    updateSection(newVal);
+                    props.onTabChange(e.currentTarget.id);
+                }}
                 variant="scrollable"
-                className="abc"
-                classes={'abc'}
+                className="tabs-sec"
                 aria-label="icon tabs example">
                 {arr}
             </Tabs>

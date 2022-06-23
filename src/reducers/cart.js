@@ -63,23 +63,27 @@ const initialState = {
             list: [
                 {
                     "name":"apple",
-                    "image":"images/manageveggies/apple.png",
-                    "price": "300"
+                    "image":"images/apple.png",
+                    "price": "300",
+                    "actualPrice":"240"
                 },
                 {
                     "name":"Grapes",
-                    "image":"images/manageveggies/grapes.png",
-                    "price": "200"
+                    "image":"images/grapes.png",
+                    "price": "200",
+                    "actualPrice":"180"
                 }, 
                 {
                     "name":"banana",
-                    "image":"images/manageveggies/banna.png",
-                    "price": "200"
+                    "image":"images/banna.png",
+                    "price": "200",
+                    "actualPrice":"190"
                 },
                 {
                     "name":"Dragon Fruit",
-                    "image":"images/manageveggies/dragon-fruit.png",
-                    "price": "200"
+                    "image":"images/dragon-fruit.png",
+                    "price": "200",
+                    "actualPrice":"195"
                 },
             ],
         },
@@ -90,18 +94,21 @@ const initialState = {
             list: [
                 {
                     "name":"Onion",
-                    "image":"images/manageveggies/Onion.png",
-                    "price": "300"
+                    "image":"images/Onion.png",
+                    "price": "300",
+                    "actualPrice":"240"
                 },
                 {
                     "name":"Potato",
-                    "image":"images/manageveggies/Potato-veggie.png",
-                    "price": "200"
+                    "image":"images/Potato-veggie.png",
+                    "price": "200",
+                    "actualPrice":"180"
                 },
                 {
                     "name":"Tomato",
-                    "image":"images/manageveggies/Capcicum.png",
-                    "price": "200"
+                    "image":"images/Capcicum.png",
+                    "price": "200",
+                    "actualPrice":"195"
                 },
             ],
         },
@@ -112,18 +119,21 @@ const initialState = {
             list: [
                 {
                     "name":"Soap",
-                    "image":"images/manageveggies/vegetables.png",
-                    "price": "300"
+                    "image":"images/Capcicum.png",
+                    "price": "300",
+                    "actualPrice":"240"
                 },
                 {
                     "name":"Milk",
-                    "image":"images/manageveggies/vegetables.png",
-                    "price": "200"
+                    "image":"images/Capcicum.png",
+                    "price": "200",
+                    "actualPrice":"195"
                 },
                 {
                     "name":"curd",
-                    "image":"images/manageveggies/vegetables.png",
-                    "price": "200"
+                    "image":"images/Capcicum.png",
+                    "price": "200",
+                    "actualPrice":"195"
                 },
             ],
         }

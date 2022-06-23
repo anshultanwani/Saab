@@ -1,14 +1,45 @@
 .stockcat-sec-outer {
-    padding: 0 0 23px 0;
+    margin: 0 0 23px 0;
+    border-bottom: 1px solid #00000025;
     
     .tab-holder {
         display: flex;
         align-items: flex-end;
+
+        .css-1aquho2-MuiTabs-indicator {
+            height: 4px;
+            border-radius: 5px;
+            background: #E3655B;
+        }
+
+        .single-tab {
+            padding: 0 0 10px;
+
+            &.cart {
+                padding: unset;
+            }
+        }
     }
     .cart-sec {
         background: #ED7768;
-        width: 85px;
-        height: 85px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.07);
+        border-radius: 4px;
+
+        .circle {
+            border: 4px solid #F0F2FF;
+            border-radius: 50%;
+            width: 60%;
+            height: 55%;
+            position: relative;
+            top: -2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
     .stockcat-sec {
         border-radius: 50%;
@@ -23,10 +54,18 @@
         }
     }
     h6 {
-        margin: unset;
+        margin: 5px 0 0;
         text-align: center;
         color: #414141;
-        font-size: 13px;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 13px;
+        /* identical to box height */
+        
+        
+        color: #414141;
+        
+        opacity: 0.9;
     }
     
 }

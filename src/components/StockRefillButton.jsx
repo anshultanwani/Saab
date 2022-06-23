@@ -11,7 +11,7 @@ const StockRefillButton = props => {
         <div className='stockrefill-button-sec'>
             <div className='stockrefillebtn-label-holder'>
                 <div className='button-text'>
-                    Rps 600
+                    ₹ 600
                     <span>(6 items)</span>
                 </div>
                 <div className='btn-holder'>
