@@ -1,7 +1,54 @@
 .address-details {
     background-color: #fff;
-    padding: 39px 21px 38px;
+    padding: 10px 21px 25px;
     margin: 0px 0 0;
+    box-shadow: 0px 0px 9px rgb(0 0 0 / 23%);
+    border-radius: 0px 0px 6px 6px;
+
+    .address {
+        display: flex;
+        margin-bottom: 14px;
+
+        .left {
+            width: 50%;
+            text-align: left;
+
+            p {
+                margin: 0;
+                padding: 0;
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+            p:first-child {
+                margin-bottom: 0px;
+                color: #414141;
+                font-size: 13px;
+                line-height: 8px;
+
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 8px;
+                }
+            }
+
+            p:nth-child(2) {
+                opacity: 0.5;
+                padding-left: 20px;
+                font-size: 12px;
+            }
+        }
+
+        .right {
+            width: 50%;
+            text-align: right;
+            font-size: 12px;
+            color: #ED7768;
+            padding-top: 3px;
+        }
+    }
+
     .stockrefill-button-sec {
         background-color: #AC6ABE;
         padding: 0;
@@ -9,29 +56,35 @@
         border-radius: 1px 0px 10px 10px;
         margin: 0;
     }
+
     .stockrefillebtn-label-holder {
         display: flex;
+
         .button-text {
             width: 55%;
             text-align: center;
             padding: 15px 10px 10px 10px;
             text-align: left;
             font-size: 14px;
+
             span {
                 font-size: 12px;
                 margin-left: 5px;
                 color: #FDFEFF;
             }
         }
+
         .btn-holder {
             width: 50%;
-          button {
+
+            button {
                 background-color: #7B438A;
                 width: 100%;
                 margin: 0;
                 box-shadow: none;
                 padding: 12px 10px 12px 10px;
                 text-align: center;
+                border-radius: 0 0 6px 6px;
             }
         }
     }
