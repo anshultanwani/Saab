@@ -17,7 +17,8 @@ const StockRefillHead = (props) => {
             <Tab className='single-tab cart' id={'cart'} label={(
                 <div className={"cart-sec " }>
                     <div className="circle">
-                        <Cart />
+                        <p><img src={require('../assets/images/'+ "cart.svg").default}/></p>
+                        <p>Cart(0)</p>
                     </div>
                 </div>
             )} />

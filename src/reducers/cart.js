@@ -14,7 +14,7 @@ const initialState = {
         minQty: '1 kg',
         actualPrice: 50,
         price: 60,
-        image:"images/Onion.png",
+        image: "images/Onion.png",
         category: 'veggies'
     },
     {
@@ -23,7 +23,7 @@ const initialState = {
         minQty: '500 gram',
         actualPrice: 50,
         price: 60,
-        image:"images/Capcicum.png",
+        image: "images/Capcicum.png",
         category: 'veggies'
     },
     {
@@ -32,7 +32,7 @@ const initialState = {
         minQty: '1 kg',
         actualPrice: 50,
         price: 60,
-        image:"images/Capcicum.png",
+        image: "images/Capcicum.png",
         category: 'fruits'
     },
     {
@@ -41,7 +41,7 @@ const initialState = {
         minQty: '1 kg',
         actualPrice: 50,
         price: 60,
-        image:"images/Capcicum.png",
+        image: "images/Capcicum.png",
         category: 'fruits'
     },
     {
@@ -50,90 +50,97 @@ const initialState = {
         minQty: '500 gram',
         actualPrice: 50,
         price: 60,
-        image:"images/Capcicum.png",
+        image: "images/Capcicum.png",
         category: 'fruits'
     }],
     deliveryCharges: 60,
     highDemandCharges: 50,
-    stockCat : {
+    stockCat: {
         "fruits":
         {
-            displayName:"Fruits",
-            displayImage:"images/manageveggies/Fruits.png" ,
+            displayName: "Fruits",
+            displayImage: "images/manageveggies/Fruits.png",
             list: [
                 {
-                    "name":"apple",
-                    "image":"images/apple.png",
-                    "price": "300",
-                    "actualPrice":"240"
+                    name: "apple",
+                    minQty: '500 gram',
+                    image: "images/apple.png",
+                    price: "300",
+                    actualPrice: "240"
                 },
                 {
-                    "name":"Grapes",
-                    "image":"images/grapes.png",
-                    "price": "200",
-                    "actualPrice":"180"
-                }, 
-                {
-                    "name":"banana",
-                    "image":"images/banna.png",
-                    "price": "200",
-                    "actualPrice":"190"
+                    name: "Grapes",
+                    image: "images/grapes.png",
+                    price: "200",
+                    minQty: '500 gram',
+                    actualPrice: "180"
                 },
                 {
-                    "name":"Dragon Fruit",
-                    "image":"images/dragon-fruit.png",
-                    "price": "200",
-                    "actualPrice":"195"
+                    name: "banana",
+                    image: "images/banna.png",
+                    price: "200",
+                    minQty: '1kg',
+                    actualPrice: "190"
+                },
+                {
+                    name: "Dragon Fruit",
+                    image: "images/dragon-fruit.png",
+                    price: "200",
+                    actualPrice: "195",
+                    minQty: '1kg'
                 },
             ],
         },
         "veggies":
         {
-            displayName:"Vegetables",
-            displayImage:"images/manageveggies/vegetables.png" ,
+            displayName: "Vegetables",
+            displayImage: "images/manageveggies/vegetables.png",
             list: [
                 {
-                    "name":"Onion",
-                    "image":"images/Onion.png",
-                    "price": "300",
-                    "actualPrice":"240"
+                    name: 'Onion',
+                    minQty: '1 kg',
+                    actualPrice: 50,
+                    price: 60,
+                    image: "images/Onion.png"
                 },
                 {
-                    "name":"Potato",
-                    "image":"images/Potato-veggie.png",
-                    "price": "200",
-                    "actualPrice":"180"
+                    name: 'Potato',
+                    minQty: '1 kg',
+                    actualPrice: 50,
+                    price: 60,
+                    image: "images/Potato-veggie.png"
                 },
                 {
-                    "name":"Tomato",
-                    "image":"images/Capcicum.png",
-                    "price": "200",
-                    "actualPrice":"195"
+                    name: "Tomato",
+                    minQty: "2kg",
+                    image: "images/Capcicum.png",
+                    price: "200",
+                    actualPrice: "195"
                 },
             ],
         },
         "grocery":
         {
-            displayName:"Grocery",
-            displayImage:"images/manageveggies/Grocery.png" ,
+            displayName: "Grocery",
+            displayImage: "images/manageveggies/Grocery.png",
             list: [
                 {
-                    "name":"Soap",
-                    "image":"images/Capcicum.png",
-                    "price": "300",
-                    "actualPrice":"240"
+                    name: "Soap",
+                    image: "images/Capcicum.png",
+                    price: "300",
+                    actualPrice: "240"
                 },
                 {
-                    "name":"Milk",
-                    "image":"images/Capcicum.png",
-                    "price": "200",
-                    "actualPrice":"195"
+                    name: "Milk",
+                    image: "images/Capcicum.png",
+                    price: "200",
+                    actualPrice: "195"
                 },
                 {
-                    "name":"curd",
-                    "image":"images/Capcicum.png",
-                    "price": "200",
-                    "actualPrice":"195"
+                    name: "curd",
+                    image: "images/Capcicum.png",
+                    price: "200",
+                    actualPrice: "195"
                 },
             ],
         }
@@ -141,11 +148,11 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'SET_CART_DATA': {
             return {
                 ...state,
-                ...action.payload   
+                ...action.payload
             }
         }
         case 'UPDATE_CART': {
