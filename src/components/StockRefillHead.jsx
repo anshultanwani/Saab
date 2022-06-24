@@ -15,7 +15,7 @@ const StockRefillHead = (props) => {
     const getSection = () => {
         let arr = [(
             <Tab className='single-tab cart' id={'cart'} key={'c'} label={(
-                <div className={"cart-sec " }>
+                <div className={"cart-sec "+(curTab == 0?'selected':'') }>
                     <div className="circle">
                         <p><img src={require('../assets/images/'+ "cart.svg").default}/></p>
                         <p>{'Cart('+count+')'}</p>
