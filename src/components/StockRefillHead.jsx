@@ -7,18 +7,18 @@ import './stockRefillHead.scss';
 
 const StockRefillHead = (props) => {
     const {
-        count
+        count,
+        curTab
     } = props;
 
-    const [curSection,updateSection] = useState(0);
 
     const getSection = () => {
         let arr = [(
-            <Tab className='single-tab cart' id={'cart'} label={(
+            <Tab className='single-tab cart' id={'cart'} key={'c'} label={(
                 <div className={"cart-sec " }>
                     <div className="circle">
                         <p><img src={require('../assets/images/'+ "cart.svg").default}/></p>
-                        <p>Cart(0)</p>
+                        <p>{'Cart('+count+')'}</p>
                     </div>
                 </div>
             )} />
@@ -26,9 +26,9 @@ const StockRefillHead = (props) => {
         arr.push(
             Object.keys(props.stockRefillHeadset).map((item , index)=> {
                 return (
-                    <Tab className="single-tab" id={item} label={
+                    <Tab className="single-tab" id={item} key={index} label={
                         <>
-                        <div key={index} class="stockcat-sec">
+                        <div key={index} className="stockcat-sec">
                             <img src={require('../assets/'+ props.stockRefillHeadset[item].displayImage).default} />
                         </div>
                         <h6 className="head-title">{props.stockRefillHeadset[item].displayName}</h6>
@@ -40,9 +40,8 @@ const StockRefillHead = (props) => {
                 )
         return (
             <Tabs 
-                value={curSection}
+                value={curTab}
                 onChange={(e,newVal) => {
-                    updateSection(newVal);
                     props.onTabChange(e.currentTarget.id);
                 }}
                 variant="scrollable"

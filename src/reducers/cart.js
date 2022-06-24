@@ -62,7 +62,7 @@ const initialState = {
             displayImage: "images/manageveggies/Fruits.png",
             list: [
                 {
-                    name: "apple",
+                    name: "Apple",
                     minQty: '500 gram',
                     image: "images/apple.png",
                     price: "300",
@@ -76,7 +76,7 @@ const initialState = {
                     actualPrice: "180"
                 },
                 {
-                    name: "banana",
+                    name: "Banana",
                     image: "images/banna.png",
                     price: "200",
                     minQty: '1kg',
@@ -93,7 +93,7 @@ const initialState = {
         },
         "veggies":
         {
-            displayName: "Vegetables",
+            displayName: "Veggies",
             displayImage: "images/manageveggies/vegetables.png",
             list: [
                 {
@@ -111,7 +111,7 @@ const initialState = {
                     image: "images/Potato-veggie.png"
                 },
                 {
-                    name: "Tomato",
+                    name: "Capsium",
                     minQty: "2kg",
                     image: "images/Capcicum.png",
                     price: "200",
@@ -128,19 +128,22 @@ const initialState = {
                     name: "Soap",
                     image: "images/Capcicum.png",
                     price: "300",
-                    actualPrice: "240"
+                    actualPrice: "240",
+                    minQty: '1 Packet'
                 },
                 {
                     name: "Milk",
                     image: "images/Capcicum.png",
                     price: "200",
-                    actualPrice: "195"
+                    actualPrice: "195",
+                    minQty: '1 Litre'
                 },
                 {
-                    name: "curd",
+                    name: "Curd",
                     image: "images/Capcicum.png",
                     price: "200",
-                    actualPrice: "195"
+                    actualPrice: "195",
+                    minQty: '100 Grams'
                 },
             ],
         }
@@ -158,7 +161,7 @@ export default (state = initialState, action) => {
         case 'UPDATE_CART': {
             return {
                 ...state,
-                cartList: action.payload
+                cartList: [...action.payload]
             }
         }
         default: {

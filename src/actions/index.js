@@ -17,3 +17,10 @@ export const setSession = payload => ({
     type: 'SET_SESSION',
     payload
 })
+
+export const updateCart = payload => (dispatch) => {
+    dispatch({
+        type: 'UPDATE_CART',
+        payload
+    })
+}

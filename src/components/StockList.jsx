@@ -41,17 +41,17 @@ const StockList = props => {
                 </div>
                 <div className='right-sec'>
                     <div className='input-holder'>
-                        <span className='qty-btn' onClick={() => updateQty(data.quantity - 1,index)}>-</span>
+                        <span className='qty-btn' onClick={() => updateQty(data.quantity - 1,index,data)}>-</span>
                         <TextField
                             className="mob-field"
                             sx={{ m: 1}}
                             InputProps={{
                                 value: data.quantity || 0,
                                 type: 'number',
-                                onChange: (e) => updateQty(Number(e.target.value),index)
+                                onChange: (e) => updateQty(Number(e.target.value),index,data)
                             }}
                         />
-                        <span className='qty-btn' onClick={() => updateQty(data.quantity + 1,index)}>+</span>
+                        <span className='qty-btn' onClick={() => updateQty(data.quantity + 1,index,data)}>+</span>
                     </div>
                 </div>
             </div>
