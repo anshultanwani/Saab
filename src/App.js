@@ -21,6 +21,7 @@ const LoginHome = React.lazy(() => import('./pages/LoginHome'));
 const ComboPage = React.lazy(() => import('./pages/ComboPage'));
 const RegisterUser = React.lazy(() => import('./pages/RegisterUser'));
 const StockRefill = React.lazy(() => import('./pages/StockRefill'));
+const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 
 function App(props) {
   window.apiDomain = 'http://44.205.231.204';
@@ -31,7 +32,7 @@ function App(props) {
     }
   },[])
 
-  const ignoreFooter = ['/login','/signup','/stock-refill'];
+  const ignoreFooter = ['/login','/signup','/stock-refill','/'];
   const customHeader = ['/stock-refill'];
 
   return (
@@ -40,7 +41,8 @@ function App(props) {
         <div className="App">
           <Header customHeader={customHeader} />
           <Switch>
-            <Route exact path='/' render={() => <HomePage/>}></Route>
+            <Route exact path='/' render={() => <SplashScreen />}></Route>
+            <Route exact path='/home' render={() => <HomePage/>}></Route>
             <Route exact path='/login' component={LoginHome}></Route>
             <Route exact path='/signup' component={RegisterUser}></Route>
             <Route exact path='/editcombo' component={ComboPage}></Route>

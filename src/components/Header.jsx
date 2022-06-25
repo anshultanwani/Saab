@@ -12,19 +12,24 @@ import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {ReactComponent as BackIcon} from '../assets/images/backHeader.svg';
 import {ReactComponent as SearchIcon} from '../assets/images/search.svg';
+import { connect } from 'react-redux';
 
 const Header = props => {
+    const {
+        name
+    } = props.session
+
     const location = useLocation();
     const [isLoginPage, updatePage] = useState(location.pathname == '/login');
     const history = useHistory();
     const [sectionToShow,updateSection] = useState([]);
     let showSection = {
-        '/': ['burger','notification','profile'],
+        '/home': ['burger','notification','profile'],
         '/stock-refill': ['back','search','notification','profile']
     }
 
     useEffect(() => {
-        if (['/login', '/signup'].includes(location.pathname)) {
+        if (['/login', '/signup','/'].includes(location.pathname)) {
             updatePage(true)
         } else {
             updatePage(false);
@@ -33,13 +38,13 @@ const Header = props => {
     }, [location.pathname])
 
     const headings= {
-        '/': 'Home',
+        '/home': 'Home',
         '/stock-refill' : 'STOCK REFILL'
     }
 
     return (
         !isLoginPage ?
-            <div className={'header-ui '+(location.pathname != '/'?'no-groc':'')}>
+            <div className={'header-ui '+(location.pathname != '/home'?'no-groc':'')}>
                 <div className='fake-div' />
                 <div className='header-top'>
                     <div className='left'>
@@ -66,10 +71,10 @@ const Header = props => {
                     </div>
                 </div>
                 <div className='header-bottom'>
-                {location.pathname == '/'?
+                {location.pathname == '/home'?
                 <div className='grocey-sec'>
                     <div className='left'>
-                        <h1>Hi Simran </h1>
+                        <h1>{'Hi '+name}</h1>
                         <p>Your cook requested stock refill</p>
                         <Button color="inherit" onClick={() => props.history.push('/stock-refill')}>
                         Approve Order
@@ -88,4 +93,10 @@ const Header = props => {
     )
 };
 
-export default withRouter(Header);
+const mapStateToProps = state => {
+    return {
+        session: state.session
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(Header));

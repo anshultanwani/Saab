@@ -13,18 +13,7 @@ import { setSession } from '../actions';
 
 const Main = props => {
     const history = useHistory();
-    useEffect(() => {
-        if(!getCookie('isLoggedIn')) {
-          window.location.replace('/login')
-        }else if(!props.session._id){
-            let userId = getCookie('userId');
-            axios.get(window.apiDomain+'v1/users/'+userId).then(res => {
-                props.setSession({
-                    ...res.data.data
-                })
-            })
-        }
-      },[history])
+    
     return (
         <div className='homepage-sec'>
             <HomeSlider /> 
