@@ -40,10 +40,11 @@ const VerificationCode = props => {
             console.log(res);
             if(res.data.data) {
                 props.setSession({
-                    token: res.data.data.token,
+                    ...res.data.data
                 })
                 if(res.data.data.onboarded) {
-                    setCookie('isLoggedIn',true,30)
+                    setCookie('isLoggedIn',true,30);
+                    setCookie('userId',res.data.data._id,30)
                     history.push('/');
                 }else {
                     history.push('/signup?phone='+phone+'&userType='+userType);

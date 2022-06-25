@@ -8,13 +8,21 @@ import Suggestions from '../components/Suggestions';
 import Footer from '../components/Footer';
 import { useHistory } from 'react-router-dom';
 import { getCookie } from '../utils';
+import axios from 'axios';
+import { setSession } from '../actions';
 
 const Main = props => {
     const history = useHistory();
     useEffect(() => {
-        console.log(getCookie('isLoggedIn'))
         if(!getCookie('isLoggedIn')) {
           window.location.replace('/login')
+        }else if(!props.session._id){
+            let userId = getCookie('userId');
+            axios.get(window.apiDomain+'v1/users/'+userId).then(res => {
+                props.setSession({
+                    ...res.data.data
+                })
+            })
         }
       },[history])
     return (
@@ -35,7 +43,8 @@ const Main = props => {
 
 const mapStateToProps = (state) => {
     return {
-        suggestions: state.foodData.suggestions
+        suggestions: state.foodData.suggestions,
+        session: state.session
     }
 }
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps,{setSession})(Main);

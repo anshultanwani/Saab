@@ -7,6 +7,8 @@ import axios from 'axios';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { setCookie } from '../utils';
+import { connect } from 'react-redux';
+import { setSession } from '../actions';
 
 const RegisterUser = props => {
     const searchParams = useLocation().search;
@@ -75,7 +77,12 @@ const RegisterUser = props => {
             userType
         }}).then(res => {
             if(res.status == '200'){
+                props.setSession({
+                    ...props.session,
+                    ...res.data.data
+                })
                 setCookie('isLoggedIn',true,30);
+                setCookie('userId',res.data.data._id,30);
                 history.replace('/');
             }
         }).catch(err => {
@@ -184,4 +191,10 @@ const RegisterUser = props => {
     )
     };
 
-    export default RegisterUser;
+const mapStateToProps = state => {
+    return {
+        session: state.session
+    }
+}
+
+export default connect(mapStateToProps,{setSession})(RegisterUser);

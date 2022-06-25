@@ -10,14 +10,15 @@ import {ReactComponent as Info} from '../assets/images/info1.svg';
 import {ReactComponent as Info1} from '../assets/images/info2.svg';
 import StockRefillHead from '../components/StockRefillHead';
 import StockRefillButton from '../components/StockRefillButton';
-import { updateCart } from '../actions';
+import { updateCart, toggleSliderDrawer } from '../actions';
 
 const StockRefill = props => {
     const {
         cartList,
         deliveryCharges,
         highDemandCharges,
-        stockCat
+        stockCat,
+        toggleSliderDrawer
     } = props;
 
     const [currentView,updateView] = useState('cart');
@@ -62,7 +63,11 @@ const StockRefill = props => {
         toggleSection(obj);
     }
 
-    const enbleautoApprove = () => {}
+    const enbleAutoApprove = () => {
+        toggleSliderDrawer({
+            autoApprove: true
+        })
+    }
 
     const updateQtyInCart = (qty,index,cur) => {
         let data = {...catSection};
@@ -167,7 +172,7 @@ const StockRefill = props => {
                     <Button
                         variant='contained'
                         className='enable-btn'
-                        onClick={enbleautoApprove}
+                        onClick={enbleAutoApprove}
                         children={(
                             <div className='btn-content'>
                                 ENABLE AUTO APPROVE
@@ -202,4 +207,4 @@ const mapStateToProps = state => {
         stockCat: state.cart.stockCat
     }
 }
-export default connect(mapStateToProps,{updateCart})(withRouter(StockRefill));
+export default connect(mapStateToProps,{updateCart,toggleSliderDrawer})(withRouter(StockRefill));

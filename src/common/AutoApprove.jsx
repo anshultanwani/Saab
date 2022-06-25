@@ -17,7 +17,7 @@ const AutoApprove = props => {
             {...props}
             label={'What is Enable Auto Approve?'}
             onClose={() => props.toggleSliderDrawer({
-                addMemberDrawer: false
+                autoApprove : false
             })}
             children={content}
             btnArr={[{
