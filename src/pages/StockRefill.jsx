@@ -168,7 +168,7 @@ const StockRefill = props => {
             <div className='border-card'>
                 <StockRefillHead onTabChange={(val) => updateView(val)} curTab={['cart','fruits','veggies','grocery'].indexOf(currentView)} count={cartList.length} />
                 {section()}
-                <div className='btn-holder'>
+                {!props.session.paymentAutoApproved?<div className='btn-holder'>
                     <Button
                         variant='contained'
                         className='enable-btn'
@@ -181,7 +181,7 @@ const StockRefill = props => {
                             </div>
                         )}
                     />
-                </div> 
+                </div> : null}
             </div>
             <div className='address-details'>
                 <div className='address'>
@@ -204,7 +204,8 @@ const mapStateToProps = state => {
         cartList: state.cart.cartList,
         deliveryCharges: state.cart.deliveryCharges,
         highDemandCharges: state.cart.highDemandCharges,
-        stockCat: state.cart.stockCat
+        stockCat: state.cart.stockCat,
+        session: state.session
     }
 }
 export default connect(mapStateToProps,{updateCart,toggleSliderDrawer})(withRouter(StockRefill));

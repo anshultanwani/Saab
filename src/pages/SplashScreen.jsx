@@ -6,21 +6,6 @@ import './splash-screen.scss';
 import axios from 'axios';
 
 const SplashScreen = props => {
-    useEffect(() => {
-        setTimeout(() => {
-            if(!getCookie('isLoggedIn')) {
-                window.location.replace('/login')
-              }else if(!props.session._id){
-                  let userId = getCookie('userId');
-                  axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
-                      window.location.replace('/home')
-                      props.setSession({
-                          ...res.data.data
-                      })
-                  })
-              }
-        }, 6000);
-    },[])
     return (
         <div className={'splash-screen'}>
             <div className={'welcome'}></div>

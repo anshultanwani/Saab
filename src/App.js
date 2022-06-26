@@ -15,6 +15,8 @@ import {
 import data from './assets/data/data.json';
 import SliderDrawer from './common/SliderDrawers';
 import { getCookie } from './utils';
+import axios from 'axios';
+import { setSession } from './actions/index';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
@@ -26,7 +28,30 @@ const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 function App(props) {
   window.apiDomain = 'http://44.205.231.204';
 
+  const getPath = () => {
+    if(!getCookie('isLoggedIn')) {
+      window.location.replace('/login')
+    }else if(!props.session._id){
+        let userId = getCookie('userId');
+        axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
+          if(window.location.pathname == '/') {
+            window.location.replace('/home')
+          }
+            props.setSession({
+                ...res.data.data
+            })
+        })
+    }
+  }
   useEffect(() => {
+    if(window.location.pathname == '/') {
+      setTimeout(() => {
+        getPath()
+      }, 6000);
+    }else {
+      getPath();
+    }
+    
     if(!props.suggestions.length){
       props.setInitialData(data);
     }
@@ -59,8 +84,9 @@ function App(props) {
 const mapStateToProps = state => {
   return {
     suggestions: state.foodData.suggestions,
-    showFeedback: state.session.showFeedback
+    showFeedback: state.session.showFeedback,
+    session: state.session
   }
 };
 
-export default connect(mapStateToProps,{setInitialData})(App);
+export default connect(mapStateToProps,{setInitialData,setSession})(App);
