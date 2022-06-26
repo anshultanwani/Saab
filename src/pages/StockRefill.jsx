@@ -22,6 +22,7 @@ const StockRefill = props => {
     } = props;
 
     const [currentView,updateView] = useState('cart');
+    const [cartTotal,updateTotal] = useState('');
     const [catSection,toggleSection] = useState({
         Veggies: {
             show: true,
@@ -42,13 +43,17 @@ const StockRefill = props => {
 
     const sortList = () => {
         let obj = {...catSection};
+        let total = 0;
         Object.keys(obj).map(curKey => {
             let cart = [];
              cartList.map(cur => {
+                total += cur.quantity * cur.actualPrice;
                  if(cur.category === curKey.toLowerCase())
                     cart.push({...cur});
                 });
              obj[curKey].list = cart;
+             updateTotal(total+highDemandCharges+deliveryCharges);
+             total = 0;
         })
         Object.keys(stockCat).map(cur => {
             let curSec = stockCat[cur].displayName;
@@ -111,11 +116,13 @@ const StockRefill = props => {
         let mrp = 0;
         let discount = 0;
         let total = 0;
+        let cartVal = 0
         data.map(cur => {
             mrp += cur.quantity * cur.price;
             discount += cur.quantity * (cur.price - cur.actualPrice);
             total += cur.quantity * cur.actualPrice;
         })
+        cartVal = total+highDemandCharges+deliveryCharges;
         return (
             <div className='billing-holder'>
                 <label className='heading'>Billing Details</label>
@@ -129,7 +136,7 @@ const StockRefill = props => {
                     <label className='title'>High Demand Surge Charges</label>
                     <div className='value'><span>₹</span>{highDemandCharges}</div>
                     <label className='title heading'>Bill Total</label>
-                    <div className='value total'><span>₹</span>{total+highDemandCharges+deliveryCharges}</div>
+                    <div className='value total'><span>₹</span>{cartVal}</div>
                 </div>
             </div>
         )
@@ -162,6 +169,27 @@ const StockRefill = props => {
         }
         return arr;
     }
+
+    const fixedBtn = (curView) => {
+        const clickHandler = () => {
+            curView != 'cart' && updateView('cart');
+        }
+        
+        return (
+            <div className='address-details'>
+                {curView == 'cart'?<div className='address'>
+                    <div className='left'>
+                        <p><span><img src={require("../assets/images/"+"address-icon.png").default}/></span>Delivering to Home</p>
+                        <p>Cook’s next visit </p>
+                    </div>
+                    <div className='right'>
+                        CHANGE
+                    </div>
+                </div>: null}
+                <StockRefillButton clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART': 'PROCEED TO PAY'} />
+            </div>
+        )
+    }
     
     return (
         <div className='stock-refill'>
@@ -183,18 +211,7 @@ const StockRefill = props => {
                     />
                 </div> : null}
             </div>
-            <div className='address-details'>
-                <div className='address'>
-                    <div className='left'>
-                        <p><span><img src={require("../assets/images/"+"address-icon.png").default}/></span>Delivering to Home</p>
-                        <p>Cook’s next visit </p>
-                    </div>
-                    <div className='right'>
-                        CHANGE
-                    </div>
-                </div>
-                <StockRefillButton/>
-                </div>
+            {fixedBtn(currentView)}
         </div>
     )
 };

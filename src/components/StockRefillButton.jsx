@@ -4,24 +4,27 @@ import { Button } from '@mui/material';
 
 const StockRefillButton = props => {
     const {
-        label
+        btnTxt = 'PROCEED TO PAY',
+        amt,
+        count,
+        clickHandler
     } = props;
 
     return (
         <div className='stockrefill-button-sec'>
             <div className='stockrefillebtn-label-holder'>
                 <div className='button-text'>
-                    ₹ 600
-                    <span>(6 items)</span>
+                    ₹ {amt}
+                    <span>{'('+count+' items)'}</span>
                 </div>
                 <div className='btn-holder'>
                     <Button
                         variant='contained'
                         className='stockpage-btn'
-                       // onClick={enbleautoApprove}
+                       onClick={clickHandler}
                         children={(
                             <div className='btn-content'>
-                              PROCEED TO PAY
+                              {btnTxt}
                             </div>
                         )}
                     />
