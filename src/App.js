@@ -30,9 +30,9 @@ function App(props) {
   window.apiDomain = 'http://44.205.231.204';
 
   const getPath = () => {
-    if(!getCookie('isLoggedIn')) {
+    if(!getCookie('isLoggedIn') && window.location.pathname != "/login") {
       window.location.replace('/login')
-    }else if(!props.session._id){
+    }else if(!props.session._id && getCookie("userId")){
         let userId = getCookie('userId');
         axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
           if(window.location.pathname == '/') {

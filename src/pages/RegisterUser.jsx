@@ -83,7 +83,7 @@ const RegisterUser = props => {
                 })
                 setCookie('isLoggedIn',true,30);
                 setCookie('userId',res.data.data._id,30);
-                history.replace('/');
+                history.replace('/home');
             }
         }).catch(err => {
             console.log(err)
