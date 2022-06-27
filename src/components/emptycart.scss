@@ -1,0 +1,31 @@
+.empty-art {
+    background-color: #fff;
+    text-align: center;
+    padding: 23px 30px 74px 30px;
+
+    img {
+        min-width: 46px;
+        background-color: #ED7768;
+        border-radius: 50%;
+        padding: 20px;
+    }
+
+    button.emptycart-btn {
+        margin: 0 auto;
+        background-color: #ED7768;
+        padding: 16px 16px;
+        letter-spacing: 2px;
+        border-radius: 0;
+    }
+    p:nth-child(2){
+        font-size: 19px;
+        color: #2F2726;
+        font-weight: 500;
+    }
+    p:nth-child(1){
+            opacity: .8;
+            font-size: 15px;
+            margin: 0;
+            padding: 0;
+        }
+}

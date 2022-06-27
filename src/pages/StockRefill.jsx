@@ -11,6 +11,7 @@ import {ReactComponent as Info1} from '../assets/images/info2.svg';
 import StockRefillHead from '../components/StockRefillHead';
 import StockRefillButton from '../components/StockRefillButton';
 import { updateCart, toggleSliderDrawer } from '../actions';
+import EmptyCart from '../components/EmptyCart';
 
 const StockRefill = props => {
     const {
@@ -195,6 +196,8 @@ const StockRefill = props => {
         <div className='stock-refill'>
             <div className='border-card'>
                 <StockRefillHead onTabChange={(val) => updateView(val)} curTab={['cart','fruits','veggies','grocery'].indexOf(currentView)} count={cartList.length} />
+                { !cartList.length && currentView == 'cart' ? 
+                <EmptyCart/> : <>
                 {section()}
                 {!props.session.paymentAutoApproved?<div className='btn-holder'>
                     <Button
@@ -210,8 +213,11 @@ const StockRefill = props => {
                         )}
                     />
                 </div> : null}
+                </> }
             </div>
-            {fixedBtn(currentView)}
+            { cartList.length ? 
+            fixedBtn(currentView)
+            : null }
         </div>
     )
 };
