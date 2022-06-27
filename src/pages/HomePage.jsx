@@ -13,7 +13,6 @@ import { setSession } from '../actions';
 
 const Main = props => {
     const history = useHistory();
-    
     return (
         <div className='homepage-sec'>
             <HomeSlider /> 

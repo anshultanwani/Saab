@@ -17,6 +17,7 @@ import SliderDrawer from './common/SliderDrawers';
 import { getCookie } from './utils';
 import axios from 'axios';
 import { setSession } from './actions/index';
+import Loader from './components/Loader';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
@@ -61,7 +62,7 @@ function App(props) {
   const customHeader = ['/stock-refill'];
 
   return (
-    <React.Suspense fallback={<span>Loading...</span>}>
+    <React.Suspense fallback={<Loader />}>
       <Router>
         <div className="App">
           <Header customHeader={customHeader} />
