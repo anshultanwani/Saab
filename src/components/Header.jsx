@@ -13,6 +13,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import {ReactComponent as BackIcon} from '../assets/images/backHeader.svg';
 import {ReactComponent as SearchIcon} from '../assets/images/search.svg';
 import { connect } from 'react-redux';
+import { toggleSliderDrawer } from '../actions';
 
 const Header = props => {
     const {
@@ -50,7 +51,7 @@ const Header = props => {
                     <div className='left'>
                         {sectionToShow?.includes('back')?
                             <BackIcon style={{height: '12px',width: '12px',marginRight: '10px'}} onClick={() => history.goBack()}/> : null}
-                        {sectionToShow?.includes('burger')?<span><img src={require('../assets/images/menu.png').default} /></span>: null}
+                        {sectionToShow?.includes('burger')?<span onClick={() => props.toggleSliderDrawer({sideMenu: true})}><img src={require('../assets/images/menu.png').default} /></span>: null}
                         <span>{headings[location.pathname]}</span>
                     </div>
                     <div className='right'>
@@ -99,4 +100,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(withRouter(Header));
+export default connect(mapStateToProps,{toggleSliderDrawer})(withRouter(Header));

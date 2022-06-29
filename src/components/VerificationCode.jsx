@@ -45,7 +45,7 @@ const VerificationCode = props => {
                 if(res.data.data.onboarded) {
                     setCookie('isLoggedIn',true,30);
                     setCookie('userId',res.data.data._id,30)
-                    history.push('/');
+                    history.push('/home');
                 }else {
                     history.push('/signup?phone='+phone+'&userType='+userType);
                 }

@@ -1,0 +1,94 @@
+.side-menu-container {
+    width: 320px;
+    height: 100%;
+    background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 80.65%);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .profile-holder {
+        padding: 22px 0;
+        display: flex;
+
+        .single-profile {
+            display: inline-flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 0 18px;
+            border-left: unset;
+            
+            .add {
+                background: #ffffff33;
+                border: 1px solid #ffffff33;
+                color: #fff;
+            }
+
+            &.admin {
+                border-right: 1px solid #ffffff33;
+            }
+
+            .avtar {
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 18px;
+                color: #D65B4B;
+                background-color: #FFD5D1;
+            }
+            
+            
+            .name {
+                margin-top: 5px;
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 14px;
+                color: #FFFFFF;
+            }
+            .role {
+                margin-top: 2px;
+                font-weight: 400;
+                font-size: 10px;
+                line-height: 12px;
+                color: #FFFFFF;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    .border-card {
+        height: calc(100% - 164px);
+        width: 100%;
+        background: #F0F2FF;
+        border-radius: 40px 40px 4px 0px;
+        padding: 25px 20px;
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+
+            .icon {
+                margin-right: 15px;
+            }
+
+            .label {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 16px;
+                color: #414141;
+                margin-bottom: 3px;
+            }
+        }
+
+        .fixed-btn {
+            background: #AC6ABE;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            height: 48px;
+            justify-content: flex-start;
+        }
+    }
+
+}
