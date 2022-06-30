@@ -126,7 +126,7 @@ const SideMenu = props => {
         >
             <div className='side-menu-container'>
                 <div className='profile-holder'>
-                    {getProfiles()}
+                    {open ? getProfiles() :null}
                 </div>
                 <div className='border-card'>
                     {menu.map((cur,index) => {

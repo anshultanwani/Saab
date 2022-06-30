@@ -112,8 +112,13 @@ const RegisterUser = props => {
                     }}
                     placeholder="Contact Number"
                     inputProps={{
-                        value: isCook ? data.services.cook.phone:data.services.maid.phone,
-                        onChange: e => handleChange('services.'+(isCook?'cook':'maid'),e.target.value,'phone')
+                        value: isCook ? data.services.cook.phone || '' :data.services.maid.phone || '',
+                        onChange: e => {
+                            if(e.target.value.length > 10){
+                                return;
+                            }
+                            handleChange('services.'+(isCook?'cook':'maid'),e.target.value,'phone')
+                        },
                     }}
                 />
                 <div className={'label-div'}>{(isCook?"Cook's":"Helper's")+" Speciality"}</div>

@@ -13,10 +13,15 @@ const LoginHome = props => {
         { label: 'Owner', image: 'maid.png' }
     ];
     const [selectedType,updateUser] = useState(0)
+    const [errors,updateErrors] = useState('');
     const [currentView,updateView] = useState("mobile")
     const [mobileNum,updateNum] = useState('');
 
     const getOtp = () => {
+        if(mobileNum.length < 10) {
+            updateErrors('Please Enter Valid Mobile Number');
+            return;
+        }
         axios({
             method: 'post',
             url: window.apiDomain+'/v1/users/login',
@@ -62,6 +67,8 @@ const LoginHome = props => {
                         <TextField
                             className="mob-field"
                             sx={{ m: 1}}
+                            error={errors}
+                            helperText={errors}
                             InputProps={{
                                 startAdornment: <InputAdornment position="start">{'(+91) |'}</InputAdornment>,
                                 endAdornment: <InputAdornment position="end"><ReplayIcon onClick={() => updateNum('')}/></InputAdornment>,
@@ -70,6 +77,7 @@ const LoginHome = props => {
                                     if(e.target.value.length > 10){
                                         return;
                                     }
+                                    errors && updateErrors('');
                                     updateNum(e.target.value)
                                 },
                                 placeholder: '000 000 0000',

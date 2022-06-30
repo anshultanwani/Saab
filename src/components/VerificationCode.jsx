@@ -57,6 +57,8 @@ const VerificationCode = props => {
         }
     })
     }
+    let mobStr = phone.toString();
+    mobStr = mobStr.substr(0,3)+'-'+mobStr.substr(3,3)+'-'+mobStr.substr(6);
 
     return (
         <div className='main-holder'>
@@ -64,7 +66,7 @@ const VerificationCode = props => {
              <div className={'data-holder'}>
              <div className={'label-div'}>
                 <p>Verification Code</p>
-                <p>Enter the code sent to <b>(+91) 999-888-7777</b></p>
+                <p>Enter the code sent to <b>{'(+91) '+mobStr}</b></p>
                  </div>
                 <div className='input-ui vericode'>
                     <OtpInput

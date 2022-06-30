@@ -4,15 +4,46 @@ import './autosuggest.scss';
 import {ReactComponent as Cross} from '../assets/images/smallcross.svg';
 
 const REGION = [
-    { name: 'Panjabi'},
-    { name: 'Sindhi' },
-    { name: 'Gujrati' },
-    { name: 'South Indian' },
-    { name: 'North Indian' },
-    { name: 'Panjabi New' },
-    {  name: 'Marwadi' },
-    {  name: 'Bengali' },
-    {  name: 'Bolo' },
+    {name: 'Andaman and Nicobar Islands'},
+    {name: 'Andhra Pradesh'},
+    {name: 'Arunachal Pradesh'},
+    {name: 'Assam'},
+    {name: 'Bengal'},
+    {name: 'Bihar'},
+    {name: 'Chandigarh'},
+    {name: 'Chhattisgarh'},
+    {name: 'Dadra and Nagar Haveli'},
+    {name: 'Daman and Diu'},
+    {name: 'Delhi'},
+    {name: 'Goa'},
+    {name: 'Gujarat'},
+    {name: 'Haryana'},
+    {name: 'Himachal Pradesh'},
+    {name: 'Jammu and Kashmir'},
+    {name: 'Jharkhand'},
+    {name: 'Karnataka'},
+    {name: 'Kerala'},
+    {name: 'Ladakh'},
+    {name: 'Lakshadweep'},
+    {name: 'Madhya Pradesh'},
+    {name: 'Maharashtra/Malwani'},
+    {name: 'Manipur'},
+    {name: 'Meghalaya'},
+    {name: 'Mizoram'},
+    {name: 'Nagaland'},
+    {name: 'Odisha'},
+    {name: 'Puducherry'},
+    {name: 'Punjab'},
+    {name: 'Rajasthan'},
+    {name: 'Sikkim'},
+    {name: 'Sindhi'},
+    {name: 'Tamil Nadu'},
+    {name: 'Telangana'},
+    {name: 'Tripura'},
+    {name: 'Uttar Pradesh'},
+    {name: 'Uttarakhand'},
+    {name: 'All'}
+    
 ];
 
 // to be removed after api integration
@@ -38,10 +69,10 @@ const InputWithSearch = props => {
         let data = [...selected];
         if(remove) {
             data.splice(index,1);
-        }else {
+        }else if(!data.includes(val)){
             data.push(val);
-            handleChange('')
         }
+        handleChange('')
         updateSelection(data);
         props.updateList(data);
     }
