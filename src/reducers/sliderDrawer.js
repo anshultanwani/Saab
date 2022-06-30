@@ -2,7 +2,8 @@ const initialState = {
     feedbackDrawer: false,
     addMemberDrawer: false,
     autoApprove: false,
-    sideMenu: false
+    sideMenu: false ,
+    CompleteAddress: false
 }
 
 export default (state = initialState, action) => {

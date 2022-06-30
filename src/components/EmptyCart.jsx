@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from '@mui/material';
 import './emptycart.scss';
-import StockList from "./StockList";
+import CartSuggetionList from "./CartSuggetionList";
 import './stock-row.scss';
 
 const EmptyCart = (props) => {
@@ -34,17 +34,14 @@ const EmptyCart = (props) => {
                 <span>Before You  Checkout</span>
                 <span>VIEW ALL</span>
                 <div class="pro-list">
-                                {/* <StockList/> */}
-                                "product here"
+                  <CartSuggetionList {...props} /> 
+
                 </div>
             </div>
         </div>
     )
 
 }
-
-
-
 
 
 export default EmptyCart;

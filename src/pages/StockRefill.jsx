@@ -89,17 +89,17 @@ const StockRefill = props => {
         props.updateCart([...cartItems])
     }
     
-    const checkAndUpdateCart = (qty,index,item) => {
+    const checkAndUpdateCart = (qty,index,item, category) => {
         let cartItems = cartList.map(cur => ({...cur}));
         let elIndex = cartItems.findIndex(el => el.name.toLowerCase() === item.name.toLowerCase());
         if(elIndex < 0 && qty > 0){
-            cartItems.push({...item,quantity: qty,category: currentView});
+            cartItems.push({...item,quantity: qty,category: category ? category : currentView});
         }else if(elIndex >= 0){
             if(qty <= 0){
                 cartItems.splice(elIndex,1);
             }else {
                 cartItems[elIndex].quantity = qty;
-                cartItems[elIndex].category = currentView;
+                cartItems[elIndex].category = category? category : currentView;
             }
         }
         props.updateCart([...cartItems]);
@@ -197,7 +197,7 @@ const StockRefill = props => {
             <div className='border-card'>
                 <StockRefillHead onTabChange={(val) => updateView(val)} curTab={['cart','fruits','veggies','grocery'].indexOf(currentView)} count={cartList.length} />
                 { !cartList.length && currentView == 'cart' ? 
-                <EmptyCart/> : <>
+                <EmptyCart updateQuantity={checkAndUpdateCart}/> : <>
                 {section()}
                 {!props.session.paymentAutoApproved?<div className='btn-holder'>
                     <Button
