@@ -3,7 +3,7 @@ const initialState = {
     addMemberDrawer: false,
     autoApprove: false,
     sideMenu: false ,
-    CompleteAddress: false
+    completeAddress: true ,
 }
 
 export default (state = initialState, action) => {

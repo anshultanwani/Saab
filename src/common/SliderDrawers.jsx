@@ -12,14 +12,14 @@ const SliderDrawers = props => {
         addMemberDrawer,
         autoApprove,
         sideMenu,
-        CompleteAddress
+        completeAddress
     } = props;
     return (
         <>
             <FeedBackDrawer open={feedbackDrawer} />
             <AddMember open={addMemberDrawer} />
             <AutoApprove open={autoApprove} />
-            <CompleteAddress open={CompleteAddress} />
+            <CompleteAddress open={completeAddress}/>
             <SideMenu open={sideMenu} />
         </>
     )
@@ -30,7 +30,7 @@ const mapStateToProps = state => {
         feedbackDrawer: state.sliderDrawer.feedbackDrawer,
         addMemberDrawer: state.sliderDrawer.addMemberDrawer,
         autoApprove: state.sliderDrawer.autoApprove,
-        CompleteAddress: state.sliderDrawer.CompleteAddress ,
+        completeAddress: state.sliderDrawer.completeAddress,
         sideMenu: state.sliderDrawer.sideMenu
     }
 }
