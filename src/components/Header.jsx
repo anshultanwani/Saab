@@ -26,7 +26,8 @@ const Header = props => {
     const [sectionToShow,updateSection] = useState([]);
     let showSection = {
         '/home': ['burger','notification','profile'],
-        '/stock-refill': ['back','search','notification','profile']
+        '/stock-refill': ['back','search','notification','profile'],
+        '/add-address': ['back','burger','search','notification','profile']
     }
 
     useEffect(() => {
@@ -40,7 +41,8 @@ const Header = props => {
 
     const headings= {
         '/home': 'Home',
-        '/stock-refill' : 'STOCK REFILL'
+        '/stock-refill' : 'STOCK REFILL',
+        '/add-address': 'Choose Address'
     }
 
     return (

@@ -25,6 +25,7 @@ const ComboPage = React.lazy(() => import('./pages/ComboPage'));
 const RegisterUser = React.lazy(() => import('./pages/RegisterUser'));
 const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
+const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
 
 function App(props) {
   window.apiDomain = 'http://44.205.231.204';
@@ -58,8 +59,8 @@ function App(props) {
     }
   },[])
 
-  const ignoreFooter = ['/login','/signup','/stock-refill','/'];
-  const customHeader = ['/stock-refill'];
+  const ignoreFooter = ['/login','/signup','/stock-refill','/','/add-address'];
+  const customHeader = ['/stock-refill','/add-address'];
 
   return (
     <React.Suspense fallback={<Loader />}>
@@ -73,6 +74,7 @@ function App(props) {
             <Route exact path='/signup' component={RegisterUser}></Route>
             <Route exact path='/editcombo' component={ComboPage}></Route>
             <Route exact path='/stock-refill' component={StockRefill}></Route>
+            <Route exact path='/add-address' component={AddressWithMap}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />
           <SliderDrawer />

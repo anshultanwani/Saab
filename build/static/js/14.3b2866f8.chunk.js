@@ -1,0 +1,2 @@
+(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[14],{701:function(t,o,e){"use strict";e.r(o);e(0);var c=e(19),n=e(1),s=Object(c.b)((function(t){return{makecombo:t.foodData.makecombo}}))((function(t){return Object(n.jsx)("h1",{children:"Your combo"})}));o.default=Object(c.b)((function(t){return{suggestions:t.foodData.suggestions}}))((function(t){return Object(n.jsx)("div",{className:"combo-page",children:Object(n.jsx)(s,{})})}))}}]);
+//# sourceMappingURL=14.3b2866f8.chunk.js.map
