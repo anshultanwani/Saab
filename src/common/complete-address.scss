@@ -1,3 +1,8 @@
+p.completeaddlable {
+    color: #414141;
+    font-size: 14px;
+    font-weight: 400;
+}
 .comlete-address-btn-sec {
 margin-bottom: 20px;
 button {
@@ -8,4 +13,25 @@ button {
     color: #AC6ABE;
     margin-right: 8px;
 }
+}
+.nearlandmark {
+    margin: 17px 0 0 !important;
+    display: inline-block;
+}
+.popupsec {
+    background-color: #fff;
+    border-radius: 0px 0px 6px 6px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 31% 0px;
+    text-align: center;
+    top: 39px;
+    bottom: 0;
+    margin: 0 auto;
+     p:nth-child(1){
+        font-size: 22px;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+    }
 }

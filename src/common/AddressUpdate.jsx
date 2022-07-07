@@ -30,7 +30,12 @@ const AddressUpdate = (props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-       <p>harsha</p>
+        <div className="popupsec">
+          <img src={require('../assets/images/' + "cart.svg").default} />
+          <p>Success!</p>
+          <p>Address Updated Successfully!</p>
+          <Button variant="contained" onClose={props.onClose}>OKAY!</Button>
+        </div>
       </Modal>
     </>
   )

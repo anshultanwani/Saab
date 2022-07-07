@@ -11,14 +11,14 @@ const CompleteAddress = (props) => {
     const [showModal, toggleModal] = useState(false)
     const content = (
         <>
-            <p>Save address as*</p>
+            <p className="completeaddlable">Save address as*</p>
             <div className="comlete-address-btn-sec">
                 <Button variant="contained">Home</Button>
                 <Button variant="contained">Work</Button>
                 <Button variant="contained">Hotel</Button>
                 <Button variant="contained">Others</Button>
             </div>
-            <div className='field-holder'>
+            <div className='field-holder comaddsec'>
                 <TextField
                     className="reg-half-field"
                     sx={{ width: 1 / 2.09 }}
