@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import Map from "./Map";
 import './map.scss';
 
-export default function MapContainer() {
+const MapContainer = (props) => {
     const [ marker, setMarker ] = useState(null)
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -16,7 +16,9 @@ export default function MapContainer() {
     return (
         <div className="map-holder">
             <Map
+                setAddress={props.setAddress}
                 marker = { marker }
+                updateMarker={pos => setMarker({...pos})}
                 style={{ borderRadius: "25px" }}
                 center={{ lat: marker?.lat || 28.6139, lng: marker?.lng || 77.2090 }}
                 zoom={marker?.lat?18:10}
@@ -29,3 +31,5 @@ export default function MapContainer() {
         </div>
     );
 }
+
+export default MapContainer;

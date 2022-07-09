@@ -1,16 +1,19 @@
+import React, { useState } from 'react';
 import { Button } from '@mui/material';
-import React from 'react';
 import MapContainer from '../components/MapContainer';
 import './address-map.scss';
+import { toggleSliderDrawer } from '../actions/index'
+import { connect } from 'react-redux';
 
 const AddressWithMap = props => {
+    const [addressStr,setAddress] = useState('');
     const FixedBtn = () => {
         return (
             <div className='address-details'>
                 <div className='address'>
                     <div className='left'>
                         <p><span><img src={require("../assets/images/"+"address-icon.png").default}/></span>Delivering to Home</p>
-                        <p>Cook’s next visit </p>
+                        <p>{addressStr}</p>
                     </div>
                     <div className='right'>
                         CHANGE
@@ -20,6 +23,11 @@ const AddressWithMap = props => {
                     variant='contained'
                     children='ENTER COMPLETE ADDRESS'
                     className='btn'
+                    onClick={() => {
+                        props.toggleSliderDrawer({
+                            completeAddress: true
+                        })
+                    }}
                 />
             </div>
         )
@@ -27,11 +35,11 @@ const AddressWithMap = props => {
     return (
         <div className='address-map'>
             <div className='border-card'>
-                <MapContainer />
+                <MapContainer setAddress={str => setAddress(str)} />
             </div>
             <FixedBtn />
         </div>
     )
 };
 
-export default AddressWithMap;
+export default connect(null,{toggleSliderDrawer})(AddressWithMap);

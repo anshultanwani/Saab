@@ -1,45 +1,47 @@
-import React, { Fragment } from "react";
-import { useState } from "react";
+import axios from "axios";
+import React, {  } from "react";
 import {
     withGoogleMap,
     GoogleMap,
     withScriptjs,
     Marker,
-    Circle
+    Circle,
 } from "react-google-maps";
 
 
 
 
 const Map = props => {
-    const [markerPos,upadtePos] = useState({
-        ...props.marker
-    })
-    // state = {
-    //     markerposition: defaultLocation,
-    //     place: "Default Position - India"
-    //   };
 
-    // onMouseOverEvent = place => {
-    //     this.setState({
-    //       markerposition: { lat: place.lat, lng: place.lng },
-    //       place: place.name
-    //     });
-    //   };
+    function getReverseGeocodingData(lat, lng) {
+        axios.get('https://api.apple-mapkit.com/v1/reverseGeocode?lang=en-GB&loc'+lat+' '+lng).then(res => {
+            if(res.data?.results?.length) {
+                let result = res.data.results[0].components;
+                let addStr = result.neighbourhood?result.neighbourhood:result.road+', '+result.city;
+                props.setAddress(addStr);
+            }
+        })
+        // var latlng = new window.google.maps.LatLng(lat, lng);
+        // This is making the Geocode request
+        // var geocoder = new window.google.maps.Geocoder();
+        // geocoder.geocode({ 'latLng': latlng },  (results, status) =>{
+        //     if (status !== window.google.maps.GeocoderStatus.OK) {
+        //         alert(status);
+        //     }
+        //     // This is checking to see if the Geoeode Status is OK before proceeding
+        //     if (status == window.google.maps.GeocoderStatus.OK) {
+        //         console.log(results);
+        //         var address = (results[0].formatted_address);
+        //     }
+        // });
+    }
 
     return (
 
         < GoogleMap
             defaultZoom={props.zoom}
             defaultCenter={props.center}
-
-
-        >
-
-            {
-               
-
-                        < Fragment key={'ew'} >
+        >          
 
                             {/* {place.circle && <Circle
                                 defaultCenter={{
@@ -50,17 +52,23 @@ const Map = props => {
                                 options={place.circle.options}
                             />
                             } */}
-                            {props.marker?<Marker onDragEnd={pl => {
-                                const {latLng} = pl;
-                                upadtePos({
-                                    lat: latLng.lat(),
-                                    lng: latLng.lng()
-                                })
-                            }} draggable={true} position={{...markerPos}} />
-                            : null}
-
-                        </Fragment>
-                }
+                            <Marker
+                                onDragEnd={pl => {
+                                    const {latLng} = pl;
+                                    let pos = {
+                                        lat: latLng.lat(),
+                                        lng: latLng.lng()
+                                    }
+                                    props.updateMarker({
+                                        ...pos
+                                    });
+                                    getReverseGeocodingData(pos.lat,pos.lng)
+                                }} 
+                                draggable={true}
+                                position={{...props.marker}} 
+                            />
+                            
+                
             
         </GoogleMap >
     );
