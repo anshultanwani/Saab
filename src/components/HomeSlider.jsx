@@ -30,8 +30,8 @@ const HomeSlider = (props) => {
                   </Button>
                 </div>
                 <div className="sec-right slidertext">
-                  <img src={require('../assets/' + image.imgPath1).default} />
-                  <img src={require('../assets/' + image.imgPath).default} />
+                  <img src={require('../assets/' + image.imgPath1).default} alt="not loaded" />
+                  <img src={require('../assets/' + image.imgPath).default} alt="not loaded" />
                 </div>
               </div>
             )

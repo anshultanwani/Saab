@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { toggleSliderDrawer } from '../actions/index';
 import BottomDrawer from './BottomDrawer';
-import { TextField, InputAdornment } from '@mui/material';
+import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import './complete-address.scss';
 import AddressUpdate from "./AddressUpdate";

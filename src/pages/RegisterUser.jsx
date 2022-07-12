@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, InputAdornment, TextField, Switch, getFormControlLabelUtilityClasses } from '@mui/material';
+import { Button, TextField, Switch } from '@mui/material';
 import './register-user.scss';
 import InputWithSearch from '../common/InputWithSearch';
 import CollapsableSwitch from '../components/CollapsableSwitch';
@@ -49,16 +49,16 @@ const RegisterUser = props => {
 
     const findAndUpdate = (dataObj,value,parentKey,key) => {
         for(var cur in dataObj) {
-            if(typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur == parentKey.split('.')[0]) {
+            if(typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
                 findAndUpdate(dataObj[cur],value,parentKey.split('.').length > 1 ? parentKey.split('.')[1]: '',key);
-            }else if(cur == key && !parentKey) {
+            }else if(cur === key && !parentKey) {
                 dataObj[cur] = value;
             }
         }
     }
     const handleChange = (node,value,subNode) => {
         let newData = {...data};
-        if(subNode == 'phone' || subNode == 'houseNo'){
+        if(subNode == 'phone' || subNode === 'houseNo'){
             value = isNaN(Number(value)) ? newData[node][subNode]: Number(value);
         }
         findAndUpdate(newData,value,node,subNode);
@@ -76,7 +76,7 @@ const RegisterUser = props => {
             SubscriptionType: null,
             userType
         }}).then(res => {
-            if(res.status == '200'){
+            if(res.status === '200'){
                 props.setSession({
                     ...props.session,
                     ...res.data.data

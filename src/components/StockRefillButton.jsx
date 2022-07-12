@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './stockrefill-button.scss';
 import { Button } from '@mui/material';
 

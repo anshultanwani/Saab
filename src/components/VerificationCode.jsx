@@ -52,7 +52,7 @@ const VerificationCode = props => {
             }
         console.log('verify Otp Code')
     }).catch(err => {
-        if(err.response.data.appErrorCode == 'INVALID_OTP'){
+        if(err.response.data.appErrorCode === 'INVALID_OTP'){
             updateMsg('Wrong OTP')
         }
     })

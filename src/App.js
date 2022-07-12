@@ -10,7 +10,6 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
-  useHistory
 } from 'react-router-dom';
 import data from './assets/data/data.json';
 import SliderDrawer from './common/SliderDrawers';
@@ -31,12 +30,12 @@ function App(props) {
   window.apiDomain = 'http://44.205.231.204';
 
   const getPath = () => {
-    if(!getCookie('isLoggedIn') && window.location.pathname != "/login") {
+    if(!getCookie('isLoggedIn') && window.location.pathname !== "/login") {
       window.location.replace('/login')
     }else if(!props.session._id && getCookie("userId")){
         let userId = getCookie('userId');
         axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
-          if(window.location.pathname == '/') {
+          if(window.location.pathname === '/') {
             window.location.replace('/home')
           }
             props.setSession({
@@ -46,7 +45,7 @@ function App(props) {
     }
   }
   useEffect(() => {
-    if(window.location.pathname == '/') {
+    if(window.location.pathname === '/') {
       setTimeout(() => {
         getPath()
       }, 6000);
@@ -57,7 +56,7 @@ function App(props) {
     if(!props.suggestions.length){
       props.setInitialData(data);
     }
-  },[])
+  })
 
   const ignoreFooter = ['/login','/signup','/stock-refill','/','/add-address'];
   const customHeader = ['/stock-refill','/add-address'];

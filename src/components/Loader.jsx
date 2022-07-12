@@ -4,8 +4,8 @@ import './loader.scss';
 const Loader = props => {
     return (
         <div className='holder-div'>
-            <div class="loader1">
-                <div class="inside1">
+            <div className="loader1">
+                <div className="inside1">
                     <span>LOADING</span>
                 </div>
             </div>

@@ -14,7 +14,7 @@ const MostCooked = props => {
     const dish = mostCooked.map((cur,index) => {
         return (
             <div className='single-dish' key={index} >
-                <img src={require('../assets/'+cur.image).default} />
+                <img src={require('../assets/'+cur.image).default} alt="not loaded" />
                 <div className='dish-title'>{cur.dishName}</div>
             </div>
         )

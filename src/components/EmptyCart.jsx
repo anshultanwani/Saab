@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from '@mui/material';
 import './emptycart.scss';
 import CartSuggetionList from "./CartSuggetionList";
@@ -9,11 +9,11 @@ const EmptyCart = (props) => {
         btnTxt = "START SHOPPING"
     } = props;
     return (
-        <div class="empty-cart-outer">
+        <div className="empty-cart-outer">
             <div className="empty-art">
                 <div className="cart-icon">
                     <div className="cart-sec-image">
-                        <img src={require('../assets/images/' + "cart.svg").default} />
+                        <img src={require('../assets/images/' + "cart.svg").default} alt="not loaded" />
                     </div>
                     <p>Your Shopping Cart Is Empty</p>
                     <p>Your favourite items are just a cick away</p>
@@ -33,7 +33,7 @@ const EmptyCart = (props) => {
             <div className="checkout-pro">
                 <span>Before You  Checkout</span>
                 <span>VIEW ALL</span>
-                <div class="pro-list">
+                <div className="pro-list">
                   <CartSuggetionList {...props} /> 
 
                 </div>

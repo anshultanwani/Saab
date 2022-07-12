@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import './footer.scss';
 
 const Footer = props => {
-  const [showFooter, toggleFooter] = useState(window.location.pathname == '/login');
+  const [showFooter, toggleFooter] = useState(window.location.pathname === '/login');
   const [selectedTab,updateTab] = useState(0)
 
     useEffect(() => {

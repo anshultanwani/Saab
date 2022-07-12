@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import { AppBar } from '@mui/material';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Sort from '@mui/icons-material/Sort';
 import './header.scss';
 import { useHistory, useLocation, withRouter } from 'react-router-dom';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import {ReactComponent as BackIcon} from '../assets/images/backHeader.svg';
 import {ReactComponent as SearchIcon} from '../assets/images/search.svg';
 import { connect } from 'react-redux';
@@ -21,7 +13,7 @@ const Header = props => {
     } = props.session
 
     const location = useLocation();
-    const [isLoginPage, updatePage] = useState(location.pathname == '/login');
+    const [isLoginPage, updatePage] = useState(location.pathname === '/login');
     const history = useHistory();
     const [sectionToShow,updateSection] = useState([]);
     let showSection = {
@@ -47,13 +39,13 @@ const Header = props => {
 
     return (
         !isLoginPage ?
-            <div className={'header-ui '+(location.pathname != '/home'?'no-groc':'')}>
+            <div className={'header-ui '+(location.pathname !== '/home'?'no-groc':'')}>
                 <div className='fake-div' />
                 <div className='header-top'>
                     <div className='left'>
                         {sectionToShow?.includes('back')?
                             <BackIcon style={{height: '12px',width: '12px',marginRight: '10px'}} onClick={() => history.goBack()}/> : null}
-                        {sectionToShow?.includes('burger')?<span onClick={() => props.toggleSliderDrawer({sideMenu: true})}><img src={require('../assets/images/menu.png').default} /></span>: null}
+                        {sectionToShow?.includes('burger')?<span onClick={() => props.toggleSliderDrawer({sideMenu: true})}><img src={require('../assets/images/menu.png').default} alt="not loaded" /></span>: null}
                         <span>{headings[location.pathname]}</span>
                     </div>
                     <div className='right'>
@@ -62,19 +54,19 @@ const Header = props => {
                             :null}
                             {sectionToShow.includes('notification')?
                             <Button color="inherit" onClick={() => props.history.push('/login')} className="headerbtn">
-                                <img src={require('../assets/images/Vector.png').default} />
-                                <img src={require('../assets/images/Ellipse.png').default} className="login-icon"/>
+                                <img src={require('../assets/images/Vector.png').default} alt="not loaded" />
+                                <img src={require('../assets/images/Ellipse.png').default} className="login-icon" alt="not loaded" />
                             </Button>: null}
                             {sectionToShow.includes('profile')?
                                 <span>
-                                    <img src={require('../assets/images/login-photo.png').default} className="loginphoto"/>
+                                    <img src={require('../assets/images/login-photo.png').default} className="loginphoto" alt="not loaded" />
                                 </span>
                             :null}
 
                     </div>
                 </div>
                 <div className='header-bottom'>
-                {location.pathname == '/home'?
+                {location.pathname === '/home'?
                 <div className='grocey-sec'>
                     <div className='left'>
                         <h1>{'Hi '+name}</h1>

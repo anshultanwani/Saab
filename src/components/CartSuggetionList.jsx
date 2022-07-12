@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import { Button } from '@mui/material';
+import React from "react";
 import { connect } from 'react-redux';
 import './stock-row.scss';
-import { updateCart, toggleSliderDrawer } from '../actions';
-import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import Slider from "react-slick";
 
 const CartSuggetionList = (props) => {
@@ -21,9 +18,9 @@ const CartSuggetionList = (props) => {
                 {
                     Object.keys(props.cartListNew).map(cur => {
                         return props.cartListNew[cur].list.map(data =>
-                            <div class="pro-grid">
+                            <div className="pro-grid">
                                 <div className="pro-image">
-                                    <img src={require('../assets/' + data.image).default} />
+                                    <img src={require('../assets/' + data.image).default} alt="not loaded" />
                                     <div className="add-prudct" onClick={()=> props.updateQuantity(1,0,data,cur)}>+</div>
                                 </div>
                                 <div className="pro-details">

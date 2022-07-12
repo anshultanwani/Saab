@@ -113,7 +113,7 @@ const SideMenu = props => {
 
     const redirectToPath = path => {
         closeSlider();
-        if(window.location.pathname != path) {
+        if(window.location.pathname !== path) {
             history.push(path);
         }
     }
@@ -131,7 +131,7 @@ const SideMenu = props => {
                 <div className='border-card'>
                     {menu.map((cur,index) => {
                         return (
-                            <div className='menu-item' onClick={() => redirectToPath(cur.path)}>
+                            <div className='menu-item' onClick={() => redirectToPath(cur.path)} key={index} >
                                 <div className='icon'>{<cur.icon />}</div>
                                 <div className='label'>{cur.label}</div>
                             </div>

@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import './suggestion.scss';
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
@@ -24,18 +22,19 @@ const Suggestions = props => {
     const dishData = suggestions.map((cur,index) => {
         var comboStr = '';
         cur.dishCombo.map((dish,index) => {
-            comboStr = comboStr + dish + (index === cur.dishCombo.length - 1 ? '' : ' + ')
+            comboStr = comboStr + dish + (index === cur.dishCombo.length - 1 ? '' : ' + ');
+            return dish;
         })
         return (
             <div className='card' key={index} >
                 <div className='img-holder'>
                 <div className='edit-meal' onClick={() => handleEdit(cur)}>
-                <img src={require('../assets/images/editmeal.png').default} />
+                <img src={require('../assets/images/editmeal.png').default} alt="not loaded" />
                     </div>
                     {
                         cur.images.map((image,index) => {
                             return (
-                                <img key={cur.category+'_'+index} src={require('../assets/'+image).default} className={"dish-img"} />
+                                <img key={cur.category+'_'+index} src={require('../assets/'+image).default} className={"dish-img"} alt="not loaded" />
                             )
                         })
                     }

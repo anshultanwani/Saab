@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
 import './manageveggies.scss';
-import { Button } from '@mui/material';
 
 const ManageVaggie = (props) => {
         return (
@@ -11,8 +10,8 @@ const ManageVaggie = (props) => {
             {
             props.manageveggiesset.map((item , index)=> {
                     return (
-                    <div key={index} class="manageveggiessec">
-                    <img src={require('../assets/'+item.vegImage).default}/>
+                    <div key={index} className="manageveggiessec">
+                    <img src={require('../assets/'+item.vegImage).default} alt="not loaded" />
                     <h6>{item.vegName}</h6>
                     </div>
                     )

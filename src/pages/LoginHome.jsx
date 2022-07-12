@@ -29,7 +29,7 @@ const LoginHome = props => {
             phone: Number(mobileNum),
             userType: userType[selectedType].label.toUpperCase()
         }}).then(res => {
-            if(res.status == '200') {
+            if(res.status === '200') {
                 updateView('otp');
             }
         }).catch(err => {
@@ -60,7 +60,7 @@ const LoginHome = props => {
                 </div>
             </div>
             <div className={'lower-sec'}>
-                { currentView == "mobile" ? 
+                { currentView === "mobile" ? 
                 <div className={'data-holder'}>
                     <div className={'label-div'}>Mobile Number</div>
                     <div className='input-ui'>
@@ -74,7 +74,7 @@ const LoginHome = props => {
                                 endAdornment: <InputAdornment position="end"><ReplayIcon onClick={() => updateNum('')}/></InputAdornment>,
                                 value: mobileNum,
                                 onChange: e => {
-                                    if(e.target.value.length > 10){
+                                    if(e.target.value.length > 10 || e.target.value.includes('.')){
                                         return;
                                     }
                                     errors && updateErrors('');

@@ -55,16 +55,18 @@ const StockRefill = props => {
              obj[curKey].list = cart;
              updateTotal(total+highDemandCharges+deliveryCharges);
              total = 0;
+             return curKey;
         })
         Object.keys(stockCat).map(cur => {
             let curSec = stockCat[cur].displayName;
             obj[curSec].stock = stockCat[cur].list.map(item => {
-                let ele = obj[curSec].list.find(el => el.name.toLowerCase() == item.name.toLowerCase());
+                let ele = obj[curSec].list.find(el => el.name.toLowerCase() === item.name.toLowerCase());
                 return {
                     ...item,
                     quantity: ele?.quantity ? ele?.quantity : 0
                 }
             })
+            return cur;
         })
         toggleSection(obj);
     }
@@ -144,7 +146,7 @@ const StockRefill = props => {
     }
     const  section = () => {
         let arr = [];
-        if(currentView == 'cart') {
+        if(currentView === 'cart') {
             Object.keys(catSection).map(cur => {
                 arr.push(
                 <>
@@ -161,6 +163,7 @@ const StockRefill = props => {
                     :null}
                 </>
                 );
+                return cur;
             })
             arr.push(<BillingSection data={cartList} />);
         }else {
@@ -178,7 +181,7 @@ const StockRefill = props => {
         
         return (
             <div className='address-details'>
-                {curView == 'cart'?<div className='address'>
+                {curView === 'cart'?<div className='address'>
                     <div className='left'>
                         <p><span><img src={require("../assets/images/"+"address-icon.png").default}/></span>Delivering to Home</p>
                         <p>Cook’s next visit </p>
@@ -196,7 +199,7 @@ const StockRefill = props => {
         <div className='stock-refill'>
             <div className='border-card'>
                 <StockRefillHead onTabChange={(val) => updateView(val)} curTab={['cart','fruits','veggies','grocery'].indexOf(currentView)} count={cartList.length} />
-                { !cartList.length && currentView == 'cart' ? 
+                { !cartList.length && currentView === 'cart' ? 
                 <EmptyCart updateQuantity={checkAndUpdateCart}/> : <>
                 {section()}
                 {!props.session.paymentAutoApproved?<div className='btn-holder'>

@@ -5,13 +5,13 @@ import { Button } from '@mui/material';
 
 const MyPreferences = (props) => {
         return (
-        <div class="preferences">
-        <div class="title">My Preferences</div>
+        <div className="preferences">
+        <div className="title">My Preferences</div>
         <div className="myPreferences-sec">
             {
             props.mypreferencesset.map((item , index)=> {
                     return (
-                    <div key={index} class="prefrencesec">
+                    <div key={index} className="prefrencesec">
                     <h6>{item.comboName}</h6>
                     <p>{item.comboDishName}</p>
                     <Button 
