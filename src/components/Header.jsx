@@ -19,7 +19,8 @@ const Header = props => {
     let showSection = {
         '/home': ['burger','notification','profile'],
         '/stock-refill': ['back','search','notification','profile'],
-        '/add-address': ['back','burger','search','notification','profile']
+        '/add-address': ['back','burger','search','notification','profile'] ,
+        '/addedit-combo': ['back','search', 'burger','notification','profile'] 
     }
 
     useEffect(() => {

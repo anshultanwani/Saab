@@ -11,12 +11,14 @@ const Suggestions = props => {
     const history = useHistory();
 
     const handleAssign = (comboId) => {
-        alert('comboId '+comboId)
+       console.log('comboId '+comboId)
+        //history.push('/addedit-combo?cat=' + comboId)
     }
 
-    const handleEdit = (combo) => {
-        console.log(combo)
-        history.push('/editcombo')
+    const handleEdit = (comboId) => {
+      //  console.log(combo)
+       // history.push('/editcombo')
+        history.push('/addedit-combo?cat=' + comboId)
     }
 
     const dishData = suggestions.map((cur,index) => {
@@ -28,7 +30,7 @@ const Suggestions = props => {
         return (
             <div className='card' key={index} >
                 <div className='img-holder'>
-                <div className='edit-meal' onClick={() => handleEdit(cur)}>
+                <div className='edit-meal' onClick={() => handleEdit(cur.category)}>
                 <img src={require('../assets/images/editmeal.png').default} alt="not loaded" />
                     </div>
                     {
@@ -47,7 +49,7 @@ const Suggestions = props => {
                 <Button 
                     variant="contained"
                     className="assign-btn"
-                    onClick={() => handleAssign(cur.comboId)}
+                    onClick={() => handleAssign(cur.category)}
                 >
                     Assign
                 </Button>

@@ -5,7 +5,8 @@ const initialState = {
     favchannel: [],
     mypreferences:[] ,
     manageveggies:[] , 
-    makecombo:[]
+    makecombo:[] , 
+    foodCombo:[]
 };
 
 export default (state = initialState, action) => {

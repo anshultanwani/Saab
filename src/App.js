@@ -17,12 +17,14 @@ import { getCookie } from './utils';
 import axios from 'axios';
 import { setSession } from './actions/index';
 import Loader from './components/Loader';
+import AddEditCombo from './pages/AddEditCombo';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
 const ComboPage = React.lazy(() => import('./pages/ComboPage'));
 const RegisterUser = React.lazy(() => import('./pages/RegisterUser'));
 const StockRefill = React.lazy(() => import('./pages/StockRefill'));
+//const AddEditCombo = React.lazy(() => import('./pages/AddEditCombo'));
 const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
 
@@ -58,8 +60,8 @@ function App(props) {
     }
   })
 
-  const ignoreFooter = ['/login','/signup','/stock-refill','/','/add-address'];
-  const customHeader = ['/stock-refill','/add-address'];
+  const ignoreFooter = ['/login','/signup','/stock-refill','/','/add-address' , '/addedit-combo'];
+  const customHeader = ['/stock-refill','/add-address' , '/addedit-combo'];
 
   return (
     <React.Suspense fallback={<Loader />}>
@@ -73,6 +75,7 @@ function App(props) {
             <Route exact path='/signup' component={RegisterUser}></Route>
             <Route exact path='/editcombo' component={ComboPage}></Route>
             <Route exact path='/stock-refill' component={StockRefill}></Route>
+            <Route exact path='/addedit-combo' component={AddEditCombo}></Route>
             <Route exact path='/add-address' component={AddressWithMap}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />

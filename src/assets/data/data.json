@@ -1,113 +1,139 @@
-
 {
-	"suggestions":[
+	"suggestions": [
 		{
 			"comboId": 1,
-			"category":"Breakfast",
-			"dishCombo": ["Poha","Paratha","Tea"],
-			"images":["images/tea.png","images/poha.png","images/paratha.png"]
+			"category": "Breakfast",
+			"dishCombo": [
+				"Poha",
+				"Paratha",
+				"Tea"
+			],
+			"images": [
+				"images/tea.png",
+				"images/poha.png",
+				"images/paratha.png"
+			]
 		},
 		{
 			"comboId": 2,
-			"category":"Lunch",
-			"dishCombo": ["Daal","Roti","Bhindi","Papad"],
-			"images":["images/daal.png","images/roti.png","images/bhindi.png","images/papad.png"]
+			"category": "Lunch",
+			"dishCombo": [
+				"Daal",
+				"Roti",
+				"Bhindi",
+				"Papad"
+			],
+			"images": [
+				"images/daal.png",
+				"images/roti.png",
+				"images/bhindi.png",
+				"images/papad.png"
+			]
 		},
 		{
 			"comboId": 3,
-			"category":"Dinner",
-			"dishCombo": ["Rice","Daal","Fried Potato"],
-			"images":["images/rice.png","images/daal2.png","images/potato.png","images/papad.png"]
+			"category": "Dinner",
+			"dishCombo": [
+				"Rice",
+				"Daal",
+				"Fried Potato"
+			],
+			"images": [
+				"images/rice.png",
+				"images/daal2.png",
+				"images/potato.png",
+				"images/papad.png"
+			]
 		}
 	],
-	"homeslider":[
+	"homeslider": [
 		{
-			"imgPath":"images/homebanner-img/banner1.png",
-			"imgPath1":"images/homebanner-img/cook.png",
-			"imgText":"Your Cook/Maid is on",
-			"imgText1":"leave today?"
+			"imgPath": "images/homebanner-img/banner1.png",
+			"imgPath1": "images/homebanner-img/cook.png",
+			"imgText": "Your Cook/Maid is on",
+			"imgText1": "leave today?"
 		},
 		{
-			"imgPath":"images/homebanner-img/banner1.png",
-			"imgPath1":"images/homebanner-img/cook.png",
-			"imgText":"Your Cook/Maid is on",
-			"imgText1":"leave today?"
+			"imgPath": "images/homebanner-img/banner1.png",
+			"imgPath1": "images/homebanner-img/cook.png",
+			"imgText": "Your Cook/Maid is on",
+			"imgText1": "leave today?"
 		},
 		{
-            "imgPath":"images/homebanner-img/banner1.png",
-			"imgPath1":"images/homebanner-img/cook.png",
-			"imgText":"Your Cook/Maid is on",
-			"imgText1":"leave today?"
+			"imgPath": "images/homebanner-img/banner1.png",
+			"imgPath1": "images/homebanner-img/cook.png",
+			"imgText": "Your Cook/Maid is on",
+			"imgText1": "leave today?"
 		},
 		{
-            "imgPath":"images/homebanner-img/banner1.png",
-			"imgPath1":"images/homebanner-img/cook.png",
-			"imgText":"Your Cook/Maid is on",
-			"imgText1":"leave today?"
+			"imgPath": "images/homebanner-img/banner1.png",
+			"imgPath1": "images/homebanner-img/cook.png",
+			"imgText": "Your Cook/Maid is on",
+			"imgText1": "leave today?"
 		},
 		{
-            "imgPath":"images/homebanner-img/banner1.png",
-			"imgPath1":"images/homebanner-img/cook.png",
-			"imgText":"Your Cook/Maid is on",
-			"imgText1":"leave today?"
+			"imgPath": "images/homebanner-img/banner1.png",
+			"imgPath1": "images/homebanner-img/cook.png",
+			"imgText": "Your Cook/Maid is on",
+			"imgText1": "leave today?"
 		}
 	],
 	"mostcooked": [
 		{
 			"dishName": "Chiken",
-			"image" : "images/most-cooked/chiken.png"
+			"image": "images/most-cooked/chiken.png"
 		},
 		{
 			"dishName": "Mutton",
-			"image" : "images/most-cooked/mutton.png"
+			"image": "images/most-cooked/mutton.png"
 		},
 		{
 			"dishName": "Daal",
-			"image" : "images/most-cooked/Daal.png"
+			"image": "images/most-cooked/Daal.png"
 		},
 		{
 			"dishName": "Rice/Pulav",
-			"image" : "images/most-cooked/RIce.png"
+			"image": "images/most-cooked/RIce.png"
 		},
 		{
 			"dishName": "Panner",
-			"image" : "images/most-cooked/Panner.png"
+			"image": "images/most-cooked/Panner.png"
 		},
 		{
 			"dishName": "Veggies",
-			"image" : "images/most-cooked/veggies.png"
+			"image": "images/most-cooked/veggies.png"
 		},
 		{
 			"dishName": "Snack",
-			"image" : "images/most-cooked/snacks.png"
+			"image": "images/most-cooked/snacks.png"
 		},
 		{
 			"dishName": "Pizza",
-			"image" : "images/most-cooked/pizza.png"
+			"image": "images/most-cooked/pizza.png"
 		},
 		{
 			"dishName": "Roti",
-			"image" : "images/most-cooked/roti.png"
+			"image": "images/most-cooked/roti.png"
 		},
 		{
 			"dishName": "Fries",
-			"image" : "images/most-cooked/Fries.png"
+			"image": "images/most-cooked/Fries.png"
 		},
 		{
 			"dishName": "Chinese",
-			"image" : "images/most-cooked/chinese.png"
+			"image": "images/most-cooked/chinese.png"
 		},
 		{
 			"dishName": "Salad",
-			"image" : "images/most-cooked/salad.png"
+			"image": "images/most-cooked/salad.png"
 		},
 		{
 			"dishName": "Sweets",
-			"image" : "images/most-cooked/sweets.png"
+			"image": "images/most-cooked/sweets.png"
 		},
 		{
 			"dishName": "Juices",
-			"image" : "images/most-cooked/Juice.png"
+			"image": "images/most-cooked/Juice.png"
 		}
 	],
 	"favchannel": [
@@ -131,87 +157,218 @@
 			"videoCount": 50,
 			"ratings": 4.5,
 			"videoUrl": ""
-		}],
-	"mypreferences":[
-		{
-			"comboName":"Breakfast combo",
-			"comboDishName":"Poha,Pratha,Tea"
-		},
-		{
-			"comboName":"Dinner Combo",
-			"comboDishName":"Daal,Rice,Fried,Potato"
-		},
-		{
-            "comboName":"Lunch Combo",
-			"comboDishName":"Daal,Rice,Fried Potato"
 		}
 	],
-	"manageveggies":[
+	"mypreferences": [
 		{
-			"vegName":"Vegetables",
-			"vegImage":"images/manageveggies/vegetables.png"
+			"comboName": "Breakfast combo",
+			"comboDishName": "Poha,Pratha,Tea"
 		},
 		{
-			"vegName":"Fruits",
-			"vegImage":"images/manageveggies/Fruits.png"
+			"comboName": "Dinner Combo",
+			"comboDishName": "Daal,Rice,Fried,Potato"
 		},
 		{
-			"vegName":"Grocery",
-			"vegImage":"images/manageveggies/Grocery.png"
+			"comboName": "Lunch Combo",
+			"comboDishName": "Daal,Rice,Fried Potato"
 		}
 	],
-	"breakfastcombo":[
+	"manageveggies": [
 		{
-			"recipeName":"Aallu Paratha",
-			"vegImage":"https://youtu.be/r2N8ObqAgy0"
+			"vegName": "Vegetables",
+			"vegImage": "images/manageveggies/vegetables.png"
 		},
 		{
-			"recipeName":"Mathi Paratha",
-			"vegImage":"https://youtu.be/YkuXhgei6Uw"
+			"vegName": "Fruits",
+			"vegImage": "images/manageveggies/Fruits.png"
 		},
 		{
-			"recipeName":"Kanda Poha",
-			"vegImage":"https://youtu.be/GbroH9fWueQ"
-		},
-		{
-			"recipeName":"Ginger Milk Tea",
-			"vegImage":"https://youtu.be/ogB4Y3dmODQ"
+			"vegName": "Grocery",
+			"vegImage": "images/manageveggies/Grocery.png"
 		}
 	],
-	"lunchcombo":[
+	"breakfastcombo": [
 		{
-			"recipeName":"Aallu Paratha",
-			"vegImage":"https://youtu.be/r2N8ObqAgy0"
+			"recipeName": "Aallu Paratha",
+			"vegImage": "https://youtu.be/r2N8ObqAgy0"
 		},
 		{
-			"recipeName":"Mathi Paratha",
-			"vegImage":"https://youtu.be/YkuXhgei6Uw"
+			"recipeName": "Mathi Paratha",
+			"vegImage": "https://youtu.be/YkuXhgei6Uw"
 		},
 		{
-			"recipeName":"Kanda Poha",
-			"vegImage":"https://youtu.be/GbroH9fWueQ"
+			"recipeName": "Kanda Poha",
+			"vegImage": "https://youtu.be/GbroH9fWueQ"
 		},
 		{
-			"recipeName":"Ginger Milk Tea",
-			"vegImage":"https://youtu.be/ogB4Y3dmODQ"
+			"recipeName": "Ginger Milk Tea",
+			"vegImage": "https://youtu.be/ogB4Y3dmODQ"
 		}
 	],
-	"dinnercombo":[
+	"lunchcombo": [
 		{
-			"recipeName":"Aallu Paratha",
-			"vegImage":"https://youtu.be/r2N8ObqAgy0"
+			"recipeName": "Aallu Paratha",
+			"vegImage": "https://youtu.be/r2N8ObqAgy0"
 		},
 		{
-			"recipeName":"Mathi Paratha",
-			"vegImage":"https://youtu.be/YkuXhgei6Uw"
+			"recipeName": "Mathi Paratha",
+			"vegImage": "https://youtu.be/YkuXhgei6Uw"
 		},
 		{
-			"recipeName":"Kanda Poha",
-			"vegImage":"https://youtu.be/GbroH9fWueQ"
+			"recipeName": "Kanda Poha",
+			"vegImage": "https://youtu.be/GbroH9fWueQ"
 		},
 		{
-			"recipeName":"Ginger Milk Tea",
-			"vegImage":"https://youtu.be/ogB4Y3dmODQ"
+			"recipeName": "Ginger Milk Tea",
+			"vegImage": "https://youtu.be/ogB4Y3dmODQ"
 		}
-	]	
+	],
+	"dinnercombo": [
+		{
+			"recipeName": "Aallu Paratha",
+			"vegImage": "https://youtu.be/r2N8ObqAgy0"
+		},
+		{
+			"recipeName": "Mathi Paratha",
+			"vegImage": "https://youtu.be/YkuXhgei6Uw"
+		},
+		{
+			"recipeName": "Kanda Poha",
+			"vegImage": "https://youtu.be/GbroH9fWueQ"
+		},
+		{
+			"recipeName": "Ginger Milk Tea",
+			"vegImage": "https://youtu.be/ogB4Y3dmODQ"
+		}
+	],
+	"foodCombo": {
+		"Breakfast": [
+			{
+				"foodname": "paratha",
+				"foodimage": "images/paratha.png",
+				"foodquantity":"2 Items",
+				"options": [
+					{
+						"name": "allu",
+						"image": "images/Alloo.png"
+					},
+					{
+						"name": "Daal",
+						"image": "images/daalparatha.png"
+					},
+					{
+						"name": "Maithi",
+						"image": "images/Maithi.png"
+					},
+					{
+						"name": "Pees",
+						"image": "images/Peesparatha.png"
+					}
+				]
+			},
+			{
+				"foodname": "tea",
+				"foodimage": "images/tea-breakfast.png",
+				"foodquantity":"1 Item",
+				"options": [
+					{
+						"name": "with sugar",
+						"image": "images/tea-breakfast.png"
+					},
+					{
+						"name": "without super",
+						"image": "images/tea-breakfast.png"
+					},
+					{
+						"name": "black  tea",
+						"image": "images/tea-breakfast.png"
+					}
+				]
+			},
+			{
+				"foodname": "Poha",
+				"foodimage": "images/Poha-bf.png",
+				"foodquantity":"1 Item",
+				"options": [
+					{
+						"name": "allu",
+						"image": "images/Poha-bf.png"	
+					},
+					{
+						"name": "Daal",
+						"image": "images/Poha-bf.png"
+					},
+					{
+						"name": "Maithi",
+						"image": "images/Poha-bf.png"
+					},
+					{
+						"name": "Pees",
+						"image": "images/Poha-bf.png"
+					}
+
+				]
+			},
+			{
+				"foodname": "Puri",
+				"foodimage": "images/puri.png",
+				"foodquantity":"2 Items",
+				"options": [
+					{
+						"name": "allu",
+						"image": "images/puri.png"
+						
+					},
+					{
+						"name": "Panner",
+						"image": "images/puri.png"
+					},
+					{
+						"name": "Maithi",
+						"image": "images/puri.png"
+					}
+				]
+			}
+		],
+		"lunch": [
+			{
+				"foodname": "bhindi Gravy",
+				"foodimage": "images/paratha.png",
+				"options": [
+					{
+						"name": "with allu",
+						"image": "images/manageveggies/vegetables.png"
+					},
+					{
+						"name": "without allu",
+						"image": "images/manageveggies/vegetables.png"
+					},
+					{
+						"name": "with onion",
+						"image": "images/manageveggies/vegetables.png"
+					}
+				]
+			}
+		],
+		"Dinner": [
+			{
+				"foodname": "Panner Gravy",
+				"foodimage": "images/paratha.png",
+				"options": [
+					{
+						"name": "with allu",
+						"image": "images/manageveggies/vegetables.png"
+					},
+					{
+						"name": "without allu",
+						"image": "images/manageveggies/vegetables.png"
+					},
+					{
+						"name": "with onion",
+						"image": "images/manageveggies/vegetables.png"
+					}
+				]
+			}
+		]
+	}
 }
