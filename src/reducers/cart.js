@@ -53,6 +53,12 @@ const initialState = {
         image: "images/Capcicum.png",
         category: 'fruits'
     }],
+    finalComboList:[
+        {
+            name:"alloo paratha",
+            quantity:1
+        }
+    ],
     deliveryCharges: 60,
     highDemandCharges: 50,
     stockCat: {

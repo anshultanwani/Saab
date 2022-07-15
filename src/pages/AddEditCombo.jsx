@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import './addeditcombo.scss';
 import Slider from "react-slick";
 import AddEditComboYoutube from '../components/AddEditComboYoutube';
+import AssignedDish from '../components/AssignedDish';
 const AddEditCombo = (props) => {
     const settings = {
         infinite: false,
@@ -17,10 +18,9 @@ const AddEditCombo = (props) => {
     };
     const searchParams = useLocation().search;
     const foodCat = queryString.parse(searchParams).cat;
-    console.log(foodCat);
     const selFoodCat = props.addeditcombo[foodCat];
     const [itemIndex, updateIndex] = useState(0);
-    
+    const [itemSel, updateItemSel] = useState(0)
     return (
         <>
             <div className='assign-dish-sec'>
@@ -32,7 +32,7 @@ const AddEditCombo = (props) => {
                                     <li onClick={() => updateIndex(index)} className={index === itemIndex ? "selected" : ""}>
                                         <p> <img src={require('../assets/' + data.foodimage).default} /></p>
                                         <p> {data.foodname}</p>
-                                        <p>{ data.foodquantity }</p>
+                                        <p>{data.foodquantity}</p>
                                     </li>
 
                                 )
@@ -40,27 +40,28 @@ const AddEditCombo = (props) => {
                         </ul>
                     </div>
                     <div className='right-sec'>
-                    <div className='subcatheader'>
-                    <Slider {...settings}>
-                        {
-                            selFoodCat[itemIndex].options.map((cur) => {
-                                return (
-                                    <>
-                                        <div className='sec'>
-                                            <img src={require('../assets/' + cur.image).default} />
-                                            <p>
-                                                {cur.name}
-                                            </p>
-                                        </div>
+                        <div className='subcatheader'>
+                            <Slider {...settings}>
+                                {
+                                    selFoodCat[itemIndex].options.map((cur, index) => {
+                                        return (
+                                            <>
+                                                <div className='sec' onClick={() => updateItemSel(index)}>
+                                                    <img src={require('../assets/' + cur.image).default} />
+                                                    <p>
+                                                        {cur.name}
+                                                    </p>
+                                                </div>
 
-                                    </>
+                                            </>
 
-                                )
-                            })
-                        }
-                        </Slider>
-                    </div>
-                    <AddEditComboYoutube />
+                                        )
+                                    })
+                                }
+                            </Slider>
+                        </div>
+                        <AddEditComboYoutube selCat={selFoodCat[itemIndex].foodname} foodVideoUrl = {selFoodCat[itemIndex].options[itemSel].foodVideoUrl} />
+                        <AssignedDish />
                     </div>
                 </div>
             </div>

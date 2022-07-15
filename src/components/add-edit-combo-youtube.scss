@@ -1,0 +1,64 @@
+    .food-quantity {
+        padding: 22px 0;
+        .youtube-left-sec {
+            display: inline-flex;
+            align-items: flex-end;
+            font-size: 13px;
+            font-weight: 500;
+            color: #414141;
+            width: 68%;
+        }
+
+        .youtube-right-sec {
+            display: inline-flex;
+            justify-content: end;
+            align-items: center;
+
+            .input-holder {
+                display: inline-flex;
+                align-items: center;
+            }
+
+            .qty-btn {
+                font-weight: 500;
+                font-size: 19px;
+                line-height: 12px;
+                color: #414141;
+                opacity: 0.6;
+            }
+
+            .qutn-feild {
+                width: 45px;
+
+                input {
+                    padding: 5px;
+                    text-align: center;
+                }
+            }
+
+            
+        }
+    }
+    .additional-notes {
+        label {
+            font-size: 12px;
+            margin: 0 0 16px 0;
+            display: inline-flex;
+            font-weight: 500;
+        }
+
+        textarea {
+            border: 0.5px solid #919194;
+            padding: 14px 25px 33px 15px;
+            border-radius: 6px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 12px;
+        }
+    }
+    .youtube-sec iframe {
+        display: inline-flex;
+        margin: 0 10px 0 0;
+    }

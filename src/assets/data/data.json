@@ -250,19 +250,28 @@
 				"options": [
 					{
 						"name": "allu",
-						"image": "images/Alloo.png"
+						"image": "images/Alloo.png",
+						"foodVideoUrl":
+						[
+						"https://www.youtube.com/embed/YV0mVIjnlH8",
+						 "https://www.youtube.com/embed/YV0mVIjnlH8",
+						 "https://www.youtube.com/embed/YV0mVIjnlH8"
+						] 
 					},
 					{
 						"name": "Daal",
-						"image": "images/daalparatha.png"
+						"image": "images/daalparatha.png" ,
+						"foodVideoUrl": "https://www.youtube.com/embed/YV0mVIjnlH8"
 					},
 					{
 						"name": "Maithi",
-						"image": "images/Maithi.png"
+						"image": "images/Maithi.png" ,
+						"foodVideoUrl": "https://www.youtube.com/embed/YV0mVIjnlH8"
 					},
 					{
 						"name": "Pees",
-						"image": "images/Peesparatha.png"
+						"image": "images/Peesparatha.png",
+						"foodVideoUrl": "https://www.youtube.com/embed/YV0mVIjnlH8"
 					}
 				]
 			},
@@ -273,15 +282,18 @@
 				"options": [
 					{
 						"name": "with sugar",
-						"image": "images/tea-breakfast.png"
+						"image": "images/tea-breakfast.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "without super",
-						"image": "images/tea-breakfast.png"
+						"image": "images/tea-breakfast.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "black  tea",
-						"image": "images/tea-breakfast.png"
+						"image": "images/tea-breakfast.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					}
 				]
 			},
@@ -292,19 +304,23 @@
 				"options": [
 					{
 						"name": "allu",
-						"image": "images/Poha-bf.png"	
+						"image": "images/Poha-bf.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"	
 					},
 					{
 						"name": "Daal",
-						"image": "images/Poha-bf.png"
+						"image": "images/Poha-bf.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "Maithi",
-						"image": "images/Poha-bf.png"
+						"image": "images/Poha-bf.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "Pees",
-						"image": "images/Poha-bf.png"
+						"image": "images/Poha-bf.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					}
 
 				]
@@ -316,16 +332,19 @@
 				"options": [
 					{
 						"name": "allu",
-						"image": "images/puri.png"
+						"image": "images/puri.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 						
 					},
 					{
 						"name": "Panner",
-						"image": "images/puri.png"
+						"image": "images/puri.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "Maithi",
-						"image": "images/puri.png"
+						"image": "images/puri.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					}
 				]
 			}
@@ -337,15 +356,18 @@
 				"options": [
 					{
 						"name": "with allu",
-						"image": "images/manageveggies/vegetables.png"
+						"image": "images/manageveggies/vegetables.png" ,
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "without allu",
-						"image": "images/manageveggies/vegetables.png"
+						"image": "images/manageveggies/vegetables.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "with onion",
-						"image": "images/manageveggies/vegetables.png"
+						"image": "images/manageveggies/vegetables.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					}
 				]
 			}
@@ -357,15 +379,18 @@
 				"options": [
 					{
 						"name": "with allu",
-						"image": "images/manageveggies/vegetables.png"
+						"image": "images/manageveggies/vegetables.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "without allu",
-						"image": "images/manageveggies/vegetables.png"
+						"image": "images/manageveggies/vegetables.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					},
 					{
 						"name": "with onion",
-						"image": "images/manageveggies/vegetables.png"
+						"image": "images/manageveggies/vegetables.png",
+						"foodVideoUrl": "https://www.youtube.com/watch?v=5H8gYeJCN0Y"
 					}
 				]
 			}
