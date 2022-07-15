@@ -9,43 +9,44 @@ const AddEditComboYoutube = (props) => {
         selCat,
         foodVideoUrl
     } = props;
+
     const settings = {
         infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3,
-        arrows: false,
-        variableWidth: true
+        arrows: false
     };
-
-    console.log("selcat" + selCat)
-    // let youtubevideoUrl = foodVideoUrl;
-    // console.log(youtubevideoUrl)
-    // let youtube_video_id = youtubevideoUrl.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
-    // console.log(youtube_video_id);
-
-   // let video_thumbnail = '<img src="https://img.youtube.com/vi/' + youtube_video_id + '/0.jpg">'
-   // console.log(video_thumbnail);
+    console.log("1");
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+    const videoThumnail = () => {
+        return foodVideoUrl.map((videoIndex) => {
+            let youtube_video_id = videoIndex.match(regExp);
+            let video_thumbnail_image = `<img src="https://img.youtube.com/vi/${youtube_video_id[2]}/0.jpg">`
+            return video_thumbnail_image;
+        })
+    }
     return (
         <>
             <div className='youtube-sec-outer'>
                 <div className='youtube-sec'>
-                <Slider {...settings}>
-                    {
-                        foodVideoUrl.map((cur )=>(
-                        <iframe
-                        src={cur}
-                        frameborder="0"
-                        allow="autoplay; encrypted-media"
-                        allowfullscreen
-                        title="video"
-                        width="99"
-                        height="60"
-                    />
-                        )
-                        )
-                    }
-                  </Slider>  
+                    <Slider {...settings}>
+                            {
+                                //     foodVideoUrl.map((cur )=>(
+                                //     <iframe
+                                //     src={cur}
+                                //     frameborder="0"
+                                //     allow="autoplay; encrypted-media"
+                                //     allowfullscreen
+                                //     title="video"
+                                //     width="99"
+                                //     height="60"
+                                // />
+                                //     )
+                                //     )
+                                videoThumnail()
+                            }
+                    </Slider>
                 </div>
                 <div className='food-quantity'>
                     <div className='youtube-left-sec'>{selCat} Qty: </div>
