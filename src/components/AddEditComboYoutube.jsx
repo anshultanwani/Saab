@@ -22,8 +22,9 @@ const AddEditComboYoutube = (props) => {
     const videoThumnail = () => {
         return foodVideoUrl.map((videoIndex) => {
             let youtube_video_id = videoIndex.match(regExp);
-            let video_thumbnail_image = `<img src="https://img.youtube.com/vi/${youtube_video_id[2]}/0.jpg">`
-            return video_thumbnail_image;
+            return (
+                <img src={"https://img.youtube.com/vi/"+youtube_video_id[2] + "/0.jpg"} />
+            );
         })
     }
     return (
