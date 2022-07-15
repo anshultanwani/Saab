@@ -1,5 +1,6 @@
     .food-quantity {
         padding: 22px 0;
+
         .youtube-left-sec {
             display: inline-flex;
             align-items: flex-end;
@@ -36,9 +37,10 @@
                 }
             }
 
-            
+
         }
     }
+
     .additional-notes {
         label {
             font-size: 12px;
@@ -58,7 +60,30 @@
             line-height: 12px;
         }
     }
-    .youtube-sec iframe {
-        display: inline-flex;
-        margin: 0 10px 0 0;
+
+    .youtube-sec {
+        .slick-list img {
+            width: 50px;
+           
+        }
+
+        .slick-slide {
+            width: 113px;
+            margin-right: 14px;
+            position: relative;
+            // ::after{
+            //     background-color: #414141;
+            //     opacity: 0.6;
+            //     position: absolute;
+            //     left: 0;
+            //     top: 0;
+            //     bottom: 0;
+            //     right: 0;
+            //     content: ".";
+            // }
+        }
+
+        .slick-list {
+            height: 86px;
+        }
     }

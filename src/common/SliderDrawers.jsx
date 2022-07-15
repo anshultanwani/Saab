@@ -5,6 +5,7 @@ import AddMember from './AddMember';
 import AutoApprove from './AutoApprove';
 import SideMenu from './SideMenu';
 import CompleteAddress from './CompleteAddress';
+import VideoPopup from '../common/VideoPopup';
 
 const SliderDrawers = props => {
     const {
@@ -12,7 +13,8 @@ const SliderDrawers = props => {
         addMemberDrawer,
         autoApprove,
         sideMenu,
-        completeAddress
+        completeAddress,
+        videoPopup
     } = props;
     return (
         <>
@@ -21,6 +23,7 @@ const SliderDrawers = props => {
             <AutoApprove open={autoApprove} />
             <CompleteAddress open={completeAddress}/>
             <SideMenu open={sideMenu} />
+            <VideoPopup open={videoPopup} />
         </>
     )
 };
@@ -31,7 +34,8 @@ const mapStateToProps = state => {
         addMemberDrawer: state.sliderDrawer.addMemberDrawer,
         autoApprove: state.sliderDrawer.autoApprove,
         completeAddress: state.sliderDrawer.completeAddress,
-        sideMenu: state.sliderDrawer.sideMenu
+        sideMenu: state.sliderDrawer.sideMenu,
+        videoPopup: state.sliderDrawer.videoPopup
     }
 }
 

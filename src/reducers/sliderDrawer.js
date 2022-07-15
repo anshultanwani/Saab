@@ -4,6 +4,7 @@ const initialState = {
     autoApprove: false,
     sideMenu: false ,
     completeAddress: false ,
+    videoPopup : false
 }
 
 export default (state = initialState, action) => {
