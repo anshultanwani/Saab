@@ -5,7 +5,7 @@ import AddMember from './AddMember';
 import AutoApprove from './AutoApprove';
 import SideMenu from './SideMenu';
 import CompleteAddress from './CompleteAddress';
-import VideoPopup from '../common/VideoPopup';
+import VideoPopup from './VideoPopup';
 
 const SliderDrawers = props => {
     const {

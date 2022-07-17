@@ -10,7 +10,7 @@ const AssignedDish = (props) => {
                 <div className='assigned-dish-inner'>
                    <div className='dish-name'>
                     <div className='catergory'>
-                    <span>Breakfast</span><span>REMOVE</span>
+                    {/* <span>Breakfast</span><span>REMOVE</span> */}
                     </div>
                     <div className='subcaterogy'>
 

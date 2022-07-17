@@ -21,7 +21,7 @@ const AutoApprove = props => {
             userId: props.session._id,
             paymentAutoApproved: approveStatus?1:0
         }).then(res => {
-            if(res.status === '200') {
+            if(res.status == '200') {
                props.setSession({
                    ...res.data.data
                })

@@ -29,11 +29,12 @@ const LoginHome = props => {
             phone: Number(mobileNum),
             userType: userType[selectedType].label.toUpperCase()
         }}).then(res => {
-            if(res.status === '200') {
+            if(res.status == '200') {
+                console.log("api res" + res.status);
                 updateView('otp');
             }
         }).catch(err => {
-            console.log(err);
+            console.log("error" + err);
         })
     }
 
