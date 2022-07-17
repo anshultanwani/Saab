@@ -76,7 +76,7 @@ const RegisterUser = props => {
             SubscriptionType: null,
             userType
         }}).then(res => {
-            if(res.status == '200'){
+            if(res.status === 200){
                 props.setSession({
                     ...props.session,
                     ...res.data.data
