@@ -162,15 +162,139 @@
 	"mypreferences": [
 		{
 			"comboName": "Breakfast combo",
-			"comboDishName": "Poha,Pratha,Tea"
+			"category": "Breakfast",
+			"album":"10",
+			"dishCombo": [
+				"Poha",
+				"Paratha",
+				"Tea"
+			],
+			"images": [
+				"images/tea.png",
+				"images/poha.png",
+				"images/paratha.png"
+			]
 		},
 		{
 			"comboName": "Dinner Combo",
-			"comboDishName": "Daal,Rice,Fried,Potato"
+			"category": "Dinner",
+			"album":"11",
+			"dishCombo": [
+				"Poha",
+				"Paratha",
+				"Tea"
+			],
+			"images": [
+				"images/daal.png",
+				"images/roti.png",
+				"images/bhindi.png",
+				"images/papad.png"
+			]
 		},
 		{
 			"comboName": "Lunch Combo",
-			"comboDishName": "Daal,Rice,Fried Potato"
+			"category": "Lunch",
+			"album":"13",
+			"dishCombo": [
+				"Poha",
+				"Paratha",
+				"Tea"
+			],
+			"images": [
+				"images/daal.png"
+			]
+		},
+		{
+			"comboName": "Panner Labbabdar",
+			"category": "Lunch",
+			"album":"16",
+			"dishCombo": [
+				"Panner Labbabdar"
+			],
+			"images": [
+				"images/daal.png",
+				"images/papad.png"
+			]
+		},
+		{
+			"comboName": "Palak Panner",
+			"category": "Lunch",
+			"album":"17",
+			"dishCombo": [
+				"Palak Panner"
+			],
+			"images": [
+				"images/daal.png"
+			]
+		}
+	],
+	"history": [
+		{
+			"comboName": "Breakfast combo",
+			"category": "Breakfast",
+			"album":"10",
+			"dishCombo": [
+				"Poha",
+				"Paratha",
+				"Tea"
+			],
+			"images": [
+				"images/tea.png",
+				"images/poha.png",
+				"images/paratha.png"
+			]
+		},
+		{
+			"comboName": "Dinner Combo",
+			"category": "Dinner",
+			"album":"11",
+			"dishCombo": [
+				"Poha",
+				"Paratha",
+				"Tea"
+			],
+			"images": [
+				"images/daal.png",
+				"images/roti.png",
+				"images/bhindi.png",
+				"images/papad.png"
+			]
+		},
+		{
+			"comboName": "Lunch Combo",
+			"category": "Lunch",
+			"album":"13",
+			"dishCombo": [
+				"Poha",
+				"Paratha",
+				"Tea"
+			],
+			"images": [
+				"images/daal.png"
+			]
+		},
+		{
+			"comboName": "Panner Labbabdar",
+			"category": "Lunch",
+			"album":"16",
+			"dishCombo": [
+				"Panner Labbabdar"
+			],
+			"images": [
+				"images/daal.png",
+				"images/papad.png"
+			]
+		},
+		{
+			"comboName": "Palak Panner",
+			"category": "Lunch",
+			"album":"17",
+			"dishCombo": [
+				"Palak Panner"
+			],
+			"images": [
+				"images/daal.png"
+			]
 		}
 	],
 	"manageveggies": [
@@ -252,8 +376,7 @@
 						"name": "allu",
 						"image": "images/Alloo.png",
 						"foodVideoUrl":
-						[
-							
+						[	
 						"https://www.youtube.com/embed/j3pDXY9fqSo",
 						 "https://www.youtube.com/embed/j3pDXY9fqSo",
 						 "https://www.youtube.com/embed/j3pDXY9fqSo"

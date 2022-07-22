@@ -6,7 +6,8 @@ const initialState = {
     mypreferences:[] ,
     manageveggies:[] , 
     makecombo:[] , 
-    foodCombo:[]
+    foodCombo:[],
+    history:[]
 };
 
 export default (state = initialState, action) => {

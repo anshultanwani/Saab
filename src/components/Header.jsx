@@ -20,7 +20,9 @@ const Header = props => {
         '/home': ['burger','notification','profile'],
         '/stock-refill': ['back','search','notification','profile'],
         '/add-address': ['back','burger','search','notification','profile'] ,
-        '/addedit-combo': ['back','search', 'burger','notification','profile'] 
+        '/addedit-combo': ['back','search', 'burger','notification','profile'] ,
+        '/my-prefrences': ['back','search', 'burger','notification','profile'] ,
+        '/history' : ['back','search', 'burger','notification','profile'] ,
     }
 
     useEffect(() => {
@@ -35,7 +37,9 @@ const Header = props => {
     const headings= {
         '/home': 'Home',
         '/stock-refill' : 'STOCK REFILL',
-        '/add-address': 'Choose Address'
+        '/add-address': 'Choose Address',
+        '/my-prefrences': 'My Preferences',
+        '/history': 'History'
     }
 
     return (

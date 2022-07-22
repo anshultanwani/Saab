@@ -18,6 +18,9 @@ import axios from 'axios';
 import { setSession } from './actions/index';
 import Loader from './components/Loader';
 import AddEditCombo from './pages/AddEditCombo';
+import History from './pages/History';
+import MyPreferencesDetails from './pages/MyPreferencesDetails';
+
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
@@ -60,8 +63,8 @@ function App(props) {
     }
   })
 
-  const ignoreFooter = ['/login','/signup','/stock-refill','/','/add-address' , '/addedit-combo'];
-  const customHeader = ['/stock-refill','/add-address' , '/addedit-combo'];
+  const ignoreFooter = ['/login','/signup','/stock-refill','/','/add-address' , '/addedit-combo' , "my-prefrences" , "/history"];
+  const customHeader = ['/stock-refill','/add-address' , '/addedit-combo' , 'my-prefrences' , "/history"];
 
   return (
     <React.Suspense fallback={<Loader />}>
@@ -77,6 +80,9 @@ function App(props) {
             <Route exact path='/stock-refill' component={StockRefill}></Route>
             <Route exact path='/addedit-combo' component={AddEditCombo}></Route>
             <Route exact path='/add-address' component={AddressWithMap}></Route>
+            <Route exact path='/my-prefrences' component={MyPreferencesDetails}></Route>
+            <Route exact path='/history' component={History}></Route>
+
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />
           <SliderDrawer />

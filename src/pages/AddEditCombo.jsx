@@ -60,7 +60,7 @@ const AddEditCombo = (props) => {
                                 }
                             </Slider>
                         </div>
-                        <AddEditComboYoutube selCat={selFoodCat[itemIndex].foodname} foodVideoUrl = {selFoodCat[itemIndex].options[itemSel].foodVideoUrl} />
+                        <AddEditComboYoutube selCat={selFoodCat[itemIndex].foodname} foodVideoUrl = {selFoodCat[itemIndex].options[itemSel].foodVideoUrl} foodQuantity = {selFoodCat[itemIndex].foodquantity}  />
                         <AssignedDish />
                     </div>
                 </div>

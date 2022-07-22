@@ -71,19 +71,23 @@
             width: 113px;
             margin-right: 14px;
             position: relative;
-            // ::after{
-            //     background-color: #414141;
-            //     opacity: 0.6;
-            //     position: absolute;
-            //     left: 0;
-            //     top: 0;
-            //     bottom: 0;
-            //     right: 0;
-            //     content: ".";
-            // }
+            ::after{
+                background-color: #414141;
+                opacity: 0.6;
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                content: ".";
+            }
         }
 
         .slick-list {
             height: 86px;
         }
+    }
+
+    .youtube-video-popup iframe {
+        border-radius: 8px;
     }

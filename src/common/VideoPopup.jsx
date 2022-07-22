@@ -1,32 +1,33 @@
-import React  from 'react';
-import BottomDrawer from './BottomDrawer';
-import { toggleSliderDrawer } from '../actions/index';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { toggleSliderDrawer } from '../actions/index'
+import BottomDrawer from './BottomDrawer';
+import './auto-approve.scss';
 
 const VideoPopup = props => {
     const content = (
-        <>
-        <h1>harsha</h1>
-    </>
+        <div className='youtube-video-popup'>
+            {/* <iframe
+                src={videoUrl}
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                title="video"
+                width="100%"
+                height="200px"
+            /> */}
+        </div>
     )
+
     return (
         <BottomDrawer
-        {...props}
-        onClose={() => props.toggleSliderDrawer({
-            videoPopup: false
-        })}
-        children={content}
-        label={'Rate Your Cook'}
-        btnArr={[
-            {
-                className: 'btn-submit',
-                variant: "contained",
-               // onClick: onSubmit,
-                children: "SUBMIT",
-            }
-        ]}
+            {...props}
+            onClose={() => props.toggleSliderDrawer({
+                videoPopup: false
+            })}
+            children={content}
         />
     );
 };
 
-export default connect(null,{toggleSliderDrawer})(VideoPopup);
+export default connect(null, { toggleSliderDrawer })(VideoPopup);

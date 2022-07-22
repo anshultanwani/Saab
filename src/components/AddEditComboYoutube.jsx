@@ -7,7 +7,8 @@ import { toggleSliderDrawer } from '../actions';
 const AddEditComboYoutube = (props) => {
     const {
         selCat,
-        foodVideoUrl
+        foodVideoUrl ,
+        foodQuantity
     } = props;
 
     const settings = {
@@ -22,10 +23,13 @@ const AddEditComboYoutube = (props) => {
         autoplaySpeed: 1000
     };
 
-    const openVideo = () => {
-        console.log("harsha")
+    const openVideo = (foodVideoUrl) => {
+      //  console.log("harsha")
         toggleSliderDrawer({
-            videoPopup: true
+            videoPopup: true,
+            data : {
+                videoUrl : foodVideoUrl
+           }
         })
     }
    
@@ -45,18 +49,6 @@ const AddEditComboYoutube = (props) => {
                 <div className='youtube-sec'>
                     <Slider {...settings}>
                         {
-                            //     foodVideoUrl.map((cur )=>(
-                            //     <iframe
-                            //     src={cur}
-                            //     frameborder="0"
-                            //     allow="autoplay; encrypted-media"
-                            //     allowfullscreen
-                            //     title="video"
-                            //     width="99"
-                            //     height="60"
-                            // />
-                            //     )
-                            //     )
                             videoThumnail()
                         }
                     </Slider>
@@ -66,17 +58,17 @@ const AddEditComboYoutube = (props) => {
                     <div className='youtube-left-sec'>{selCat} Qty: </div>
                     <div className='youtube-right-sec'>
                         <div className='input-holder'>
-                            <span className='qty-btn'>-</span>
-                            <TextField
-                                className="qutn-feild"
-                                sx={{ m: 1 }}
-                                InputProps={{
-                                    value: 0,
-                                    type: 'number'
-                                }}
-                            />
-                            <span className='qty-btn'>+</span>
-                        </div>
+                        <span className='qty-btn'>-</span>
+                        <TextField
+                            className="qutn-feild"
+                            sx={{ m: 1}}
+                            InputProps={{
+                                value: 1 || 0,
+                                type: 'number'
+                            }}
+                        />
+                        <span className='qty-btn'>+</span>
+                    </div>
                     </div>
                 </div>
                 <div className='additional-notes'>

@@ -9,8 +9,8 @@ import axios from 'axios';
 const LoginHome = props => {
     const userType = [
         { label: 'Owner', image: 'owner.png' } ,
-        { label: 'Helper', image: 'cook.png' },
-        { label: 'Owner', image: 'maid.png' }
+        { label: 'Cook', image: 'cook.png' },
+        { label: 'Helper', image: 'maid.png' }
     ];
     const [selectedType,updateUser] = useState(0)
     const [errors,updateErrors] = useState('');
@@ -66,13 +66,15 @@ const LoginHome = props => {
                     <div className={'label-div'}>Mobile Number</div>
                     <div className='input-ui'>
                         <TextField
-                            className="mob-field"
+                            className="mob-field loginpage"
                             sx={{ m: 1}}
                             error={errors}
                             helperText={errors}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start">{'(+91) |'}</InputAdornment>,
-                                endAdornment: <InputAdornment position="end"><ReplayIcon onClick={() => updateNum('')}/></InputAdornment>,
+                                startAdornment: <InputAdornment position="start">{'(+91)'}</InputAdornment>,
+                                endAdornment: <InputAdornment position="end">
+                                <img src={require("../assets/images/reload.png").default} onClick={()=> updateNum('')}/>
+                                </InputAdornment>,
                                 value: mobileNum,
                                 onChange: e => {
                                     if(e.target.value.length > 10 || e.target.value.includes('.')){
