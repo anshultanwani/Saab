@@ -228,6 +228,28 @@
 			]
 		}
 	],
+	"ownerlist":[
+		{
+			"name":"Hans Bown",
+			"image": "images/owner1.png",
+			"address":"401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore"
+		},
+		{
+			"name":"Alex Methew",
+			"image": "images/owner2.png",
+			"address":"201 d block Lorem Ipsum Dummy, 2nd Floor, Lorem Ipsum, Road, Carmelaram, Bangalore"
+		},
+		{
+			"name":"Derek Doe",
+			"image": "images/owner3.png",
+			"address":"401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore"
+		},
+		{
+			"name":"Carol",
+			"image": "images/owner4.png",
+			"address":"401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore"
+		}
+	],
 	"history": [
 		{
 			"comboName": "Breakfast combo",

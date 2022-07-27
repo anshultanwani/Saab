@@ -7,7 +7,8 @@ const initialState = {
     manageveggies:[] , 
     makecombo:[] , 
     foodCombo:[],
-    history:[]
+    history:[],
+    ownerlist:[]
 };
 
 export default (state = initialState, action) => {

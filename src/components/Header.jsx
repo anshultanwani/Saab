@@ -23,6 +23,7 @@ const Header = props => {
         '/addedit-combo': ['back','search', 'burger','notification','profile'] ,
         '/my-prefrences': ['back','search', 'burger','notification','profile'] ,
         '/history' : ['back','search', 'burger','notification','profile'] ,
+        '/add-owner' : ['back','search', 'burger','notification','profile'] 
     }
 
     useEffect(() => {
@@ -39,7 +40,8 @@ const Header = props => {
         '/stock-refill' : 'STOCK REFILL',
         '/add-address': 'Choose Address',
         '/my-prefrences': 'My Preferences',
-        '/history': 'History'
+        '/history': 'History',
+        '/add-owner': 'Select Owner'
     }
 
     return (
@@ -82,10 +84,7 @@ const Header = props => {
                     </div>
                     <div className='right'>
                     <img src={require('../assets/images/groceyrightimg.svg').default} />
-                    {/* <img src={require('../assets/images/grocery1.PNG').default} />
-                    <img src={require('../assets/images/gr2.PNG').default} />
-                    <img src={require('../assets/images/approve-banner-icon.png').default} /> */}
-                    </div>
+                     </div>
                 </div>: null}
                 </div>
             </div>

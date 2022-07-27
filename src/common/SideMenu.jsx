@@ -48,12 +48,12 @@ const SideMenu = props => {
         {
             icon: PreferIcon,
             label: 'My Preferences',
-            path: '/home'
+            path: '/my-prefrences'
         },
         {
             icon: HistoryIcon,
             label: 'History',
-            path: '/home'
+            path: '/history'
         },
         {
             icon: PaymentIcon,
