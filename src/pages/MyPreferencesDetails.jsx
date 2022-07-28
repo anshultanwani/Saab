@@ -68,6 +68,7 @@ const MyPreferencesDetails = (props) => {
     )
     return (
         <div className="preferences-details">
+               <div className="border-card">
             <div className="filter-sec">
             <span>Sort By :</span>
             <select onChange={(e) => handleCategoryChange(e.target.value)}>
@@ -81,6 +82,7 @@ const MyPreferencesDetails = (props) => {
 
             <div className="myPreferences-sec-details">
                 {dishData()}
+            </div>
             </div>
         </div>
     )

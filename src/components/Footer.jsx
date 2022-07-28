@@ -31,9 +31,9 @@ const Footer = props => {
                   updateTab(newValue);
                 }}
               >
-                <BottomNavigationAction label="Home" />
-                <BottomNavigationAction label="Assign Dish" />
-                <BottomNavigationAction label="Stock" />
+                <BottomNavigationAction label="Home" onClick={() => props.history.push('/home')}/>
+                <BottomNavigationAction label="History"  onClick={()=> props.history.push('/history')}/>
+                <BottomNavigationAction label="Stock" onClick={()=> props.history.push('/stock-refill')}/>
                 <BottomNavigationAction label="Payment" />
               </BottomNavigation>
           </Paper>

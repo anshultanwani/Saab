@@ -21,7 +21,7 @@ import AddEditCombo from './pages/AddEditCombo';
 import History from './pages/History';
 import MyPreferencesDetails from './pages/MyPreferencesDetails';
 import AddOwner from './pages/AddOwner';
-
+import AddOwnerList from './pages/AddOwnerList';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
@@ -64,8 +64,8 @@ function App(props) {
     }
   })
 
-  const ignoreFooter = ['/login','/signup','/stock-refill','/','/add-address' , '/addedit-combo' , "my-prefrences" , "/history"];
-  const customHeader = ['/stock-refill','/add-address' , '/addedit-combo' , 'my-prefrences' , "/history" , "/add-owner"];
+  const ignoreFooter = ['/login','/signup','/','/add-address' , '/addedit-combo' ,  "add-owner-list"];
+  const customHeader = ['/stock-refill','/add-address' , '/addedit-combo' , 'my-prefrences' , "/history" , "/add-owner" , "add-owner-list"];
   
   return (
     <React.Suspense fallback={<Loader />}>
@@ -84,7 +84,7 @@ function App(props) {
             <Route exact path='/my-prefrences' component={MyPreferencesDetails}></Route>
             <Route exact path='/history' component={History}></Route>
             <Route exact path='/add-owner' component={AddOwner}></Route>
-
+            <Route exact path='/add-owner-list' component={AddOwnerList}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />
           <SliderDrawer />

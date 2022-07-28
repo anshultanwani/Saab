@@ -55,6 +55,7 @@ const History = (props) => {
     })
     return (
         <div className="preferences-details">
+             <div className="border-card">
             <div className="filter-sec">
                 <span>Sort By :</span>
                 <select>
@@ -65,7 +66,9 @@ const History = (props) => {
                 </select>
             </div>
             <div className="myPreferences-sec-details">
+               
                 {dishData()}
+            </div>
             </div>
         </div>
     )

@@ -3,7 +3,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button } from '@mui/material';
 import "./add-owner.scss";
+import { useHistory, useLocation } from 'react-router-dom';
 const AddOwner = (props) => {
+    const history = useHistory();
+    const handleSubmit = () => {
+        history.replace('/add-owner-list');
+    }
+
     return (
         <div className="add-owner">
             <div className='border-card'>
@@ -38,12 +44,14 @@ const AddOwner = (props) => {
                     <Button
                         variant='contained'
                         className='emptycart-btn'
+                        onClick={handleSubmit}
                         children={(
                             <div className='btn-content'>
                                 Add Customer
                             </div>
                         )}
                     />
+                 
                 </div>
             </div>
         </div>
