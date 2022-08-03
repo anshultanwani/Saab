@@ -42,6 +42,15 @@ const StockRefill = props => {
         }
     })
 
+    
+
+    const changeAddress = () => {
+        toggleSliderDrawer({
+            selectaddress: true
+        })
+    }
+
+
     const sortList = () => {
         let obj = {...catSection};
         let total = 0;
@@ -187,8 +196,17 @@ const StockRefill = props => {
                         <p>Cook’s next visit </p>
                     </div>
                     <div className='right'>
-                        CHANGE
-                    </div>
+                    <Button
+                        variant='text'
+                        className='enable-btn'
+                        onClick={changeAddress}
+                        children={(
+                            <div className='btn-content'>
+                                CHANGE
+                            </div>
+                        )}
+                    />
+                    </div> 
                 </div>: null}
                 <StockRefillButton clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART': 'PROCEED TO PAY'} />
             </div>

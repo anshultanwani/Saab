@@ -7,6 +7,7 @@ import SideMenu from './SideMenu';
 import CompleteAddress from './CompleteAddress';
 import VideoPopup from './VideoPopup';
 import LatestFeedback from './LatestFeedback';
+import SelectAddres from './SelectAddress';
 
 const SliderDrawers = props => {
     const {
@@ -16,7 +17,8 @@ const SliderDrawers = props => {
         sideMenu,
         completeAddress,
         videoPopup ,
-        latestFeedback
+        latestFeedback,
+        selectaddress
     } = props;
     return (
         <>
@@ -27,6 +29,7 @@ const SliderDrawers = props => {
             <SideMenu open={sideMenu} />
             <VideoPopup open={videoPopup} />
             <LatestFeedback open={latestFeedback} />
+            <SelectAddres open={selectaddress}/>
         </>
     )
 };
@@ -39,7 +42,8 @@ const mapStateToProps = state => {
         completeAddress: state.sliderDrawer.completeAddress,
         sideMenu: state.sliderDrawer.sideMenu,
         videoPopup: state.sliderDrawer.videoPopup ,
-        latestFeedback: state.sliderDrawer.latestFeedback
+        latestFeedback: state.sliderDrawer.latestFeedback,
+        selectaddress:state.sliderDrawer.selectaddress
     }
 }
 

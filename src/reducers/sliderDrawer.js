@@ -1,11 +1,12 @@
 const initialState = {
-    feedbackDrawer: false,
+    feedbackDrawer: true,
     addMemberDrawer: false,
     autoApprove: false,
     sideMenu: false ,
     completeAddress: false ,
     videoPopup : false,
-    latestFeedback: true
+    latestFeedback: false ,
+    selectaddress:false
 }
 
 export default (state = initialState, action) => {

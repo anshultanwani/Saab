@@ -55,6 +55,7 @@ const StockRefillHead = (props) => {
          <div className="stockcat-sec-outer">
              <div className="tab-holder">
                 {getSection()}
+                {console.log(getSection())}
              </div>
          </div>
      );

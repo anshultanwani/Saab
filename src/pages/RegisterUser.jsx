@@ -15,74 +15,84 @@ const RegisterUser = props => {
     const history = useHistory();
     const phoneNum = queryString.parse(searchParams).phone;
     const userType = queryString.parse(searchParams).userType;
-    const [switchStatus,updateStatus] = useState({
+    console.log(userType);
+    const [switchStatus, updateStatus] = useState({
         cook: false,
         maid: false
     })
-    const [data,updateData] = useState({
-        name : "",
-        email : "",
-        phone : '',
-        address : {
+    const [data, updateData] = useState({
+        name: "",
+        email: "",
+        phone: '',
+        address: {
             houseNo: '',
-            floor : "",
+            floor: "",
             society: "",
-            locality : "",
-            pin : 560008,
-            regionality : []
+            locality: "",
+            pin: 560008,
+            regionality: []
         },
         services: {
-            cook : {
-                existing : 1,
-                name : "",
-                phone : '',
-                specialities : []
+            cook: {
+                existing: 1,
+                name: "",
+                phone: '',
+                specialities: []
             },
             maid: {
                 existing: 1,
-                name : "",
-                phone : '',
-                specialities : []
+                name: "",
+                phone: '',
+                specialities: []
             }
         },
     });
 
-    const findAndUpdate = (dataObj,value,parentKey,key) => {
-        for(var cur in dataObj) {
-            if(typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
-                findAndUpdate(dataObj[cur],value,parentKey.split('.').length > 1 ? parentKey.split('.')[1]: '',key);
-            }else if(cur === key && !parentKey) {
+    const handleAddMoreCUstomer = () => {
+        console.log("add more button")
+    }
+    const handleAdd = () => {
+        history.replace('/select-owner');
+    }
+
+    const findAndUpdate = (dataObj, value, parentKey, key) => {
+        for (var cur in dataObj) {
+            if (typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
+                findAndUpdate(dataObj[cur], value, parentKey.split('.').length > 1 ? parentKey.split('.')[1] : '', key);
+            } else if (cur === key && !parentKey) {
                 dataObj[cur] = value;
             }
         }
     }
-    const handleChange = (node,value,subNode) => {
-        let newData = {...data};
-        if(subNode == 'phone' || subNode === 'houseNo'){
-            value = isNaN(Number(value)) ? newData[node][subNode]: Number(value);
+    const handleChange = (node, value, subNode) => {
+        let newData = { ...data };
+        if (subNode == 'phone' || subNode === 'houseNo') {
+            value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
         }
-        findAndUpdate(newData,value,node,subNode);
+        findAndUpdate(newData, value, node, subNode);
         updateData(newData)
     }
 
     const handleSubmit = () => {
         axios({
             method: 'post',
-            url: window.apiDomain+'/v1/users/register',
+            url: window.apiDomain + '/v1/users/register',
             data: {
-            ...data,
-            phone: Number(phoneNum),
-            onboarded: 1,
-            SubscriptionType: null,
-            userType
-        }}).then(res => {
-            if(res.status === 200){
+                ...data,
+                phone: Number(phoneNum),
+                onboarded: 1,
+                SubscriptionType: null,
+                userType
+            }
+        }).then(res => {
+            if (res.status === 200) {
+                console.log(res.data);
                 props.setSession({
                     ...props.session,
                     ...res.data.data
                 })
-                setCookie('isLoggedIn',true,30);
-                setCookie('userId',res.data.data._id,30);
+                setCookie('isLoggedIn', true, 30);
+                setCookie('userId', res.data.data._id, 30);
                 history.replace('/home');
             }
         }).catch(err => {
@@ -90,19 +100,19 @@ const RegisterUser = props => {
         })
     }
 
-    const cookHelperSection = ({isCook = true}) => {
+    const cookHelperSection = ({ isCook = true }) => {
         return (
             <>
-                <div className={'label-div'}>{(isCook?"Cook's":"Helper's")+ "Details"}</div>
+                <div className={'label-div'}>{(isCook ? "Cook's" : "Helper's") + "Details"}</div>
                 <TextField
                     className="reg-field"
                     sx={{
                         width: 1
                     }}
-                    placeholder={(isCook?"Cook":"Helper")+" Name"}
+                    placeholder={(isCook ? "Cook" : "Helper") + " Name"}
                     inputProps={{
-                        value: isCook ? data.services.cook.name:data.services.maid.name,
-                        onChange: e => handleChange('services.'+(isCook?'cook':'maid'),e.target.value,'name')
+                        value: isCook ? data.services.cook.name : data.services.maid.name,
+                        onChange: e => handleChange('services.' + (isCook ? 'cook' : 'maid'), e.target.value, 'name')
                     }}
                 />
                 <TextField
@@ -112,17 +122,17 @@ const RegisterUser = props => {
                     }}
                     placeholder="Contact Number"
                     inputProps={{
-                        value: isCook ? data.services.cook.phone || '' :data.services.maid.phone || '',
+                        value: isCook ? data.services.cook.phone || '' : data.services.maid.phone || '',
                         onChange: e => {
-                            if(e.target.value.length > 10){
+                            if (e.target.value.length > 10) {
                                 return;
                             }
-                            handleChange('services.'+(isCook?'cook':'maid'),e.target.value,'phone')
+                            handleChange('services.' + (isCook ? 'cook' : 'maid'), e.target.value, 'phone')
                         },
                     }}
                 />
-                <div className={'label-div'}>{(isCook?"Cook's":"Helper's")+" Speciality"}</div>
-                <InputWithSearch selected={data.services[isCook?"cook":"maid"].specialities} updateList={list => handleChange('services.'+(isCook?'cook':'maid'),list,'specialities')} />
+                <div className={'label-div'}>{(isCook ? "Cook's" : "Helper's") + " Speciality"}</div>
+                <InputWithSearch selected={data.services[isCook ? "cook" : "maid"].specialities} updateList={list => handleChange('services.' + (isCook ? 'cook' : 'maid'), list, 'specialities')} />
             </>
         )
     };
@@ -134,67 +144,119 @@ const RegisterUser = props => {
                     Sign Up
                 </div>
             </div>
-            <div className={'lower-sec'}>
-                <div className={'data-holder'}>
-                    <div className={'label-div'}>Your Details</div>
-                    <div>
-                        <TextField
-                            className="reg-field"
-                            sx={{
-                                width: 1
-                            }}
-                            placeholder="Your Name"
-                            inputProps={{
-                                value: data.name,
-                                onChange: e => handleChange('',e.target.value,'name')
-                            }}
-                        />
-                        <div className='field-holder'>
+
+            {userType === "OWNER" ?
+                <div className={'lower-sec'}>
+                    <div className={'data-holder'}>
+                        <div className={'label-div'}>Your Details</div>
+                        <div>
                             <TextField
-                                className="reg-half-field"
-                                sx={{ width: 1 / 2.09 }}
-                                placeholder="House/Flat/Block No."
+                                className="reg-field"
+                                sx={{
+                                    width: 1
+                                }}
+                                placeholder="Your Name"
                                 inputProps={{
-                                    value: data.address.houseNo || '',
-                                    onChange: e => handleChange('address',e.target.value,'houseNo')
+                                    value: data.name,
+                                    onChange: e => handleChange('', e.target.value, 'name')
                                 }}
                             />
-                            <TextField
-                                className="reg-half-field"
-                                sx={{ width: 1 / 2.09 }}
-                                placeholder="Apartment/Road/Area"
-                                inputProps={{
-                                    value: data.address.society,
-                                    onChange: e => handleChange('address',e.target.value,'society')
-                                }}
+                            <div className='field-holder'>
+                                <TextField
+                                    className="reg-half-field"
+                                    sx={{ width: 1 / 2.09 }}
+                                    placeholder="House/Flat/Block No."
+                                    inputProps={{
+                                        value: data.address.houseNo || '',
+                                        onChange: e => handleChange('address', e.target.value, 'houseNo')
+                                    }}
+                                />
+                                <TextField
+                                    className="reg-half-field"
+                                    sx={{ width: 1 / 2.09 }}
+                                    placeholder="Apartment/Road/Area"
+                                    inputProps={{
+                                        value: data.address.society,
+                                        onChange: e => handleChange('address', e.target.value, 'society')
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div className='reasonality-srchbar'>
+                            <div className={'label-div'}>Regionality</div>
+                            <InputWithSearch updateList={list => handleChange('address', list, 'regionality')} />
+                        </div>
+                        <div className="selected-regin"></div>
+                        <CollapsableSwitch label={'Do you have a Cook?'} status={switchStatus.cook} updateStatus={status => updateStatus({ ...switchStatus, cook: status })} >
+                            {switchStatus.cook ? cookHelperSection({}) : null}
+                        </CollapsableSwitch>
+                        <div className="have-cook">
+                            <CollapsableSwitch label={'Do you have Helper?'} status={switchStatus.maid} updateStatus={status => updateStatus({ ...switchStatus, maid: status })}>
+                                {switchStatus.maid ? cookHelperSection({ isCook: false }) : null}
+                            </CollapsableSwitch>
+                        </div>
+                        <div className='btn-holder'>
+                            <Button
+                                variant={'contained'}
+                                children={'SIGN UP'}
+                                onClick={handleSubmit}
                             />
                         </div>
                     </div>
-                    <div className='reasonality-srchbar'>
-                        <div className={'label-div'}>Regionality</div>
-                            <InputWithSearch updateList={list => handleChange('address',list,'regionality')} />
-                    </div>
-                    <div className="selected-regin"></div>
-                        <CollapsableSwitch label={'Do you have a Cook?'} status={switchStatus.cook} updateStatus={status => updateStatus({...switchStatus,cook: status})} >
-                            {switchStatus.cook?cookHelperSection({}):null}
-                        </CollapsableSwitch>
-                    <div className="have-cook">
-                        <CollapsableSwitch label={'Do you have Helper?'} status={switchStatus.maid} updateStatus={status => updateStatus({...switchStatus,maid: status})}>
-                            {switchStatus.maid?cookHelperSection({isCook:false}):null}
-                        </CollapsableSwitch>
-                    </div>
-                    <div className='btn-holder'>
-                        <Button
-                            variant={'contained'}
-                            children={'SIGN UP'}
-                            onClick={handleSubmit}
-                        />
+                </div>
+                :
+                <div className={'lower-sec'}>
+                    <div className={'data-holder'}>
+                        <div className={'label-div'}>Your Details</div>
+                        <div>
+                            <TextField
+                                className="reg-field"
+                                sx={{
+                                    width: 1
+                                }}
+                                placeholder="Cook Name"
+                                inputProps={{
+                                    value: data.name,
+                                    onChange: e => handleChange('', e.target.value, 'name')
+                                }}
+                            />
+                            <div className='field-holder'>
+                                <TextField
+                                    className="reg-field"
+                                    sx={{
+                                        width: 1
+                                    }}
+                                    placeholder='Contact Number'
+                                    type='Number'
+                                    inputProps={{
+                                        value: data.services.cook.phone || '',
+                                        onChange: e => {
+                                            if (e.target.value.length > 10) {
+                                                return;
+                                            }
+                                            handleChange('services.' + ('cook'), e.target.value, 'phone')
+                                        },
+                                    }}
+                                />
+                            </div>
+                            <div className={'label-div'}>Cook Speciality</div>
+                            <InputWithSearch selected={data.services["cook"].specialities} updateList={list => handleChange('services.' + ('cook'), list, 'specialities')} />
+                        </div>
+                        <div className='btn-holder'>
+                            <Button
+                                variant={'contained'}
+                                children={'SIGN UP'}
+                                // onClick={handleSubmit}
+                                onClick={() => props.history.push('/select-owner')}
+                            />
+                        </div>
+                        <p className='signinpage'><span>Already have an account? </span><a href='/login'>Sign up</a></p>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     )
-    };
+};
 
 const mapStateToProps = state => {
     return {
@@ -202,4 +264,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{setSession})(RegisterUser);
+export default connect(mapStateToProps, { setSession })(RegisterUser);

@@ -23,8 +23,9 @@ const Header = props => {
         '/addedit-combo': ['back','search', 'burger','notification','profile'] ,
         '/my-prefrences': ['back','search', 'burger','notification','profile'] ,
         '/history' : ['back','search', 'burger','notification','profile'] ,
-        '/add-owner' : ['back','search', 'burger','notification','profile'] ,
-        '/add-owner-list' : ['back','search', 'burger','notification','profile'] 
+        '/select-owner' : ['back','search', 'burger','notification','profile'] ,
+        '/add-owner-list' : ['back','search', 'burger','notification','profile'] ,
+        '/todays-dish': ['back','search', 'burger','notification','profile'] 
     }
 
     useEffect(() => {
@@ -42,8 +43,8 @@ const Header = props => {
         '/add-address': 'Choose Address',
         '/my-prefrences': 'My Preferences',
         '/history': 'History',
-        '/add-owner': 'Select Owner',
-        '/add-owner-list': 'Add Owner'
+        '/select-owner': 'Select Owner',
+        '/add-owner-list': 'Add Owner',
     }
 
     return (

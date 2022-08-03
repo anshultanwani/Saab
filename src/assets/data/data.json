@@ -541,5 +541,91 @@
 				]
 			}
 		]
+	},
+	"todayDish": {
+		"Breakfast": 
+			{
+				"foodCombo": "Paratha+Poha+Tea",
+				"comboRecipe": [
+					{
+						"name": "Poha",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
+					},
+					{
+						"name": "Paratha",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
+					},
+					{
+						"name": "Tea",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"lLorem Ipsum is simply dummy text of the printing and typesetting."
+					}
+					
+				]
+			}	,
+		"lunch": 
+			{
+				"foodCombo": "Rot+Daal+Bhindi+Papad",
+				"comboRecipe": [
+					{
+						"name": "Roti",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
+					},
+					{
+						"name": "Daal",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"lLorem Ipsum is simply dummy text of the printing and typesetting."
+					},
+					{
+						"name": "Papapd",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
+					}
+					
+				]
+			},
+		"Dinner": 
+			{
+				"foodCombo": "Rice+fried Daal+Potato+Papad",
+				"comboRecipe": [
+					{
+						"name": "Roti",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
+					},
+					{
+						"name": "Daal",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
+					},
+					{
+						"name": "Papapd",
+						"quantity": 2,
+						"foodVideoUrl":	
+						"https://www.youtube.com/embed/j3pDXY9fqSo",
+						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
+					}
+					
+				]
+			}
 	}
 }

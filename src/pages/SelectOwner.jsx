@@ -2,7 +2,7 @@ import { toBeRequired } from "@testing-library/jest-dom";
 import React from "react";
 import { connect } from "react-redux";
 import { Button } from '@mui/material';
-import "./add-owner.scss";
+import "./select-owner.scss";
 import { useHistory, useLocation } from 'react-router-dom';
 const AddOwner = (props) => {
     const history = useHistory();
@@ -10,14 +10,21 @@ const AddOwner = (props) => {
         history.replace('/add-owner-list');
     }
 
+    const handleAssignedDish = (customername) => {
+        console.log(customername);
+        // history.replace('/todays-dish/'+customername);
+        history.replace('/todays-dish');
+    }
+
     return (
-        <div className="add-owner">
+        <div className="select-owner">
             <div className='border-card'>
                 <div className="owner-list">
                     {
                         props.ownerlistset.map((item, index) => {
                             return (
-                                <div key={index} className="owner-list-index">
+
+                                <div key={index} className="owner-list-index" onClick={()=> handleAssignedDish(item.name)}>
 
                                     <div className="left">
                                         <img src={require("../assets/" + item.image).default} />

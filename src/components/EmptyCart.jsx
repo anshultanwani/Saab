@@ -35,7 +35,6 @@ const EmptyCart = (props) => {
                 <span>VIEW ALL</span>
                 <div className="pro-list">
                   <CartSuggetionList {...props} /> 
-
                 </div>
             </div>
         </div>
