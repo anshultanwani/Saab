@@ -598,34 +598,6 @@
 					}
 					
 				]
-			},
-		"Dinner": 
-			{
-				"foodCombo": "Rice+fried Daal+Potato+Papad",
-				"comboRecipe": [
-					{
-						"name": "Roti",
-						"quantity": 2,
-						"foodVideoUrl":	
-						"https://www.youtube.com/embed/j3pDXY9fqSo",
-						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
-					},
-					{
-						"name": "Daal",
-						"quantity": 2,
-						"foodVideoUrl":	
-						"https://www.youtube.com/embed/j3pDXY9fqSo",
-						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
-					},
-					{
-						"name": "Papapd",
-						"quantity": 2,
-						"foodVideoUrl":	
-						"https://www.youtube.com/embed/j3pDXY9fqSo",
-						"additionalNotes":"Lorem Ipsum is simply dummy text of the printing and typesetting."
-					}
-					
-				]
 			}
 	}
 }

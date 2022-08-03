@@ -1,6 +1,12 @@
     .today-dish {
         background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 40.65%);
-
+        .title {
+            color: #414141;
+            font-size: 16px;
+            display: flex;
+            margin: 13px 0 14px 0;
+            font-weight: 500;
+        }
         // height: 100vh;
         .border-card {
             background-color: #F0F2FF;
@@ -67,13 +73,11 @@
         .dish-sec {
             background-color: #fff;
             margin-bottom: 27px;
-
-
-
             .dish-details-sec {
                 display: flex;
                 padding: 11px 23px 18px 19px;
                 border-bottom: 1px solid #ede7e7;
+                align-items: center;
 
                 .left-sec {
                     width: 70%;
@@ -91,8 +95,9 @@
                         .qty-btn {
                             width: 58%;
 
-                           
+
                         }
+
                         input {
                             max-width: 20px;
                             padding: 4px 10px;
@@ -104,6 +109,7 @@
 
                 .right-sec {
                     width: 30%;
+                    word-wrap: break-word;
 
                     p {
                         word-break: break-all;

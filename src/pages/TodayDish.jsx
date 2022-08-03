@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import BoxWithSideBorder from '../components/BoxWithSideBorder';
 import "./todays-dish.scss";
 import Button from '@mui/material/Button';
-import DishList from '../components/DishList';
 import CookLatestFeedback from "../components/CookLatestFeedback"
 import { connect } from 'react-redux';
 import { toggleSliderDrawer, setSession } from '../actions/index';
@@ -117,4 +116,4 @@ const TodayDish = (props) => {
 // }
 
 
-export default connect({ toggleSliderDrawer, setSession })(TodayDish);
+export default TodayDish;
