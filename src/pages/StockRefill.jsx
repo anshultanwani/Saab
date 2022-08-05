@@ -6,8 +6,8 @@ import StockList from '../components/StockList';
 import { connect } from 'react-redux';
 import './stock-refill.scss';
 import { Button } from '@mui/material';
-import {ReactComponent as Info} from '../assets/images/info1.svg';
-import {ReactComponent as Info1} from '../assets/images/info2.svg';
+import { ReactComponent as Info } from '../assets/images/info1.svg';
+import { ReactComponent as Info1 } from '../assets/images/info2.svg';
 import StockRefillHead from '../components/StockRefillHead';
 import StockRefillButton from '../components/StockRefillButton';
 import { updateCart, toggleSliderDrawer } from '../actions';
@@ -22,9 +22,9 @@ const StockRefill = props => {
         toggleSliderDrawer
     } = props;
 
-    const [currentView,updateView] = useState('cart');
-    const [cartTotal,updateTotal] = useState('');
-    const [catSection,toggleSection] = useState({
+    const [currentView, updateView] = useState('cart');
+    const [cartTotal, updateTotal] = useState('');
+    const [catSection, toggleSection] = useState({
         Veggies: {
             show: true,
             list: [],
@@ -42,7 +42,7 @@ const StockRefill = props => {
         }
     })
 
-    
+
 
     const changeAddress = () => {
         toggleSliderDrawer({
@@ -52,19 +52,19 @@ const StockRefill = props => {
 
 
     const sortList = () => {
-        let obj = {...catSection};
+        let obj = { ...catSection };
         let total = 0;
         Object.keys(obj).map(curKey => {
             let cart = [];
-             cartList.map(cur => {
+            cartList.map(cur => {
                 total += cur.quantity * cur.actualPrice;
-                 if(cur.category === curKey.toLowerCase())
-                    cart.push({...cur});
-                });
-             obj[curKey].list = cart;
-             updateTotal(total+highDemandCharges+deliveryCharges);
-             total = 0;
-             return curKey;
+                if (cur.category === curKey.toLowerCase())
+                    cart.push({ ...cur });
+            });
+            obj[curKey].list = cart;
+            updateTotal(total + highDemandCharges + deliveryCharges);
+            total = 0;
+            return curKey;
         })
         Object.keys(stockCat).map(cur => {
             let curSec = stockCat[cur].displayName;
@@ -86,31 +86,31 @@ const StockRefill = props => {
         })
     }
 
-    const updateQtyInCart = (qty,index,cur) => {
-        let data = {...catSection};
+    const updateQtyInCart = (qty, index, cur) => {
+        let data = { ...catSection };
         data[cur].list[index].quantity = Number(qty) < 0 ? 0 : qty;
-        let cartItems = cartList.map(cur => ({...cur}));
+        let cartItems = cartList.map(cur => ({ ...cur }));
         let elIndex = cartItems.findIndex(el => el.name.toLowerCase() === data[cur].list[index].name.toLowerCase());
         cartItems[elIndex].quantity = Number(qty) < 0 ? 0 : qty;
-        if(!qty) {
-            data[cur].list.splice(index,1);
-            cartItems.splice(elIndex,1);
+        if (!qty) {
+            data[cur].list.splice(index, 1);
+            cartItems.splice(elIndex, 1);
         }
         toggleSection(data);
         props.updateCart([...cartItems])
     }
-    
-    const checkAndUpdateCart = (qty,index,item, category) => {
-        let cartItems = cartList.map(cur => ({...cur}));
+
+    const checkAndUpdateCart = (qty, index, item, category) => {
+        let cartItems = cartList.map(cur => ({ ...cur }));
         let elIndex = cartItems.findIndex(el => el.name.toLowerCase() === item.name.toLowerCase());
-        if(elIndex < 0 && qty > 0){
-            cartItems.push({...item,quantity: qty,category: category ? category : currentView});
-        }else if(elIndex >= 0){
-            if(qty <= 0){
-                cartItems.splice(elIndex,1);
-            }else {
+        if (elIndex < 0 && qty > 0) {
+            cartItems.push({ ...item, quantity: qty, category: category ? category : currentView });
+        } else if (elIndex >= 0) {
+            if (qty <= 0) {
+                cartItems.splice(elIndex, 1);
+            } else {
                 cartItems[elIndex].quantity = qty;
-                cartItems[elIndex].category = category? category : currentView;
+                cartItems[elIndex].category = category ? category : currentView;
             }
         }
         props.updateCart([...cartItems]);
@@ -118,7 +118,7 @@ const StockRefill = props => {
 
     useEffect(() => {
         sortList();
-    },[cartList,currentView])
+    }, [cartList, currentView])
 
 
     const BillingSection = props => {
@@ -134,7 +134,7 @@ const StockRefill = props => {
             discount += cur.quantity * (cur.price - cur.actualPrice);
             total += cur.quantity * cur.actualPrice;
         })
-        cartVal = total+highDemandCharges+deliveryCharges;
+        cartVal = total + highDemandCharges + deliveryCharges;
         return (
             <div className='billing-holder'>
                 <label className='heading'>Billing Details</label>
@@ -153,31 +153,31 @@ const StockRefill = props => {
             </div>
         )
     }
-    const  section = () => {
+    const section = () => {
         let arr = [];
-        if(currentView === 'cart') {
+        if (currentView === 'cart') {
             Object.keys(catSection).map(cur => {
                 arr.push(
-                <>
-                    <BoxWithSideBorder
-                        title={cur}
-                        subTitle={'('+ catSection[cur].list.length +' items)'}
-                        rightSec={(
-                            <div className='add-more'onClick={() => updateView(cur.toLowerCase())}>ADD MORE </div>
-                        )}
-                        onClick={() => toggleSection({...catSection,[cur]: {...catSection[cur],show: !catSection[cur].show}})}
-                    />
-                    {catSection[cur].show && catSection[cur].list?.length ?
-                        <StockList list={catSection[cur].list} updateQty={(qty,index) => updateQtyInCart(qty,index,cur)} />
-                    :null}
-                </>
+                    <>
+                        <BoxWithSideBorder
+                            title={cur}
+                            subTitle={'(' + catSection[cur].list.length + ' items)'}
+                            rightSec={(
+                                <div className='add-more' onClick={() => updateView(cur.toLowerCase())}>ADD MORE </div>
+                            )}
+                            onClick={() => toggleSection({ ...catSection, [cur]: { ...catSection[cur], show: !catSection[cur].show } })}
+                        />
+                        {catSection[cur].show && catSection[cur].list?.length ?
+                            <StockList list={catSection[cur].list} updateQty={(qty, index) => updateQtyInCart(qty, index, cur)} />
+                            : null}
+                    </>
                 );
                 return cur;
             })
             arr.push(<BillingSection data={cartList} />);
-        }else {
+        } else {
             arr.push(
-                <StockList list={catSection[currentView[0].toUpperCase()+currentView.substring(1)].stock} updateQty={checkAndUpdateCart} />
+                <StockList list={catSection[currentView[0].toUpperCase() + currentView.substring(1)].stock} updateQty={checkAndUpdateCart} />
             )
         }
         return arr;
@@ -187,58 +187,58 @@ const StockRefill = props => {
         const clickHandler = () => {
             curView != 'cart' && updateView('cart');
         }
-        
+
         return (
             <div className='address-details'>
-                {curView === 'cart'?<div className='address'>
+                {curView === 'cart' ? <div className='address'>
                     <div className='left'>
-                        <p><span><img src={require("../assets/images/"+"address-icon.png").default}/></span>Delivering to Home</p>
+                        <p><span><img src={require("../assets/images/" + "address-icon.png").default} /></span>Delivering to Home</p>
                         <p>Cook’s next visit </p>
                     </div>
                     <div className='right'>
-                    <Button
-                        variant='text'
-                        className='enable-btn'
-                        onClick={changeAddress}
-                        children={(
-                            <div className='btn-content'>
-                                CHANGE
-                            </div>
-                        )}
-                    />
-                    </div> 
-                </div>: null}
-                <StockRefillButton clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART': 'PROCEED TO PAY'} />
+                        <Button
+                            variant='text'
+                            className='enable-btn'
+                            onClick={changeAddress}
+                            children={(
+                                <div className='btn-content'>
+                                    CHANGE
+                                </div>
+                            )}
+                        />
+                    </div>
+                </div> : null}
+                <StockRefillButton clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART' : 'PROCEED TO PAY'} />
             </div>
         )
     }
-    
+
     return (
         <div className='stock-refill'>
             <div className='border-card'>
-                <StockRefillHead onTabChange={(val) => updateView(val)} curTab={['cart','fruits','veggies','grocery'].indexOf(currentView)} count={cartList.length} />
-                { !cartList.length && currentView === 'cart' ? 
-                <EmptyCart updateQuantity={checkAndUpdateCart}/> : <>
-                {section()}
-                {!props.session.paymentAutoApproved?<div className='btn-holder'>
-                    <Button
-                        variant='contained'
-                        className='enable-btn'
-                        onClick={enbleAutoApprove}
-                        children={(
-                            <div className='btn-content'>
-                                ENABLE AUTO APPROVE
-                                <Info style={{marginLeft: '5px',position: 'relative',top: '1px'}}/>
-                                <Info1 style={{ width: '6px',height: '14px',position: 'absolute',top: '11px',right: '19px'}} />
-                            </div>
-                        )}
-                    />
-                </div> : null}
-                </> }
+                <StockRefillHead onTabChange={(val) => updateView(val)} curTab={['cart', 'fruits', 'veggies', 'grocery'].indexOf(currentView)} count={cartList.length} />
+                {!cartList.length && currentView === 'cart' ?
+                    <EmptyCart updateQuantity={checkAndUpdateCart} /> : <>
+                        {section()}
+                        {!props.session.paymentAutoApproved ? <div className='btn-holder'>
+                            <Button
+                                variant='contained'
+                                className='enable-btn'
+                                onClick={enbleAutoApprove}
+                                children={(
+                                    <div className='btn-content'>
+                                        ENABLE AUTO APPROVE
+                                        <Info style={{ marginLeft: '5px', position: 'relative', top: '1px' }} />
+                                        <Info1 style={{ width: '6px', height: '14px', position: 'absolute', top: '11px', right: '19px' }} />
+                                    </div>
+                                )}
+                            />
+                        </div> : null}
+                    </>}
             </div>
-            { cartList.length ? 
-            fixedBtn(currentView)
-            : null }
+            {cartList.length ?
+                fixedBtn(currentView)
+                : null}
         </div>
     )
 };
@@ -252,4 +252,4 @@ const mapStateToProps = state => {
         session: state.session
     }
 }
-export default connect(mapStateToProps,{updateCart,toggleSliderDrawer})(withRouter(StockRefill));
+export default connect(mapStateToProps, { updateCart, toggleSliderDrawer })(withRouter(StockRefill));

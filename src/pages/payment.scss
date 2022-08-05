@@ -1,0 +1,184 @@
+.payment-outer {
+    background-color: #F0F2FF;
+    padding-bottom: 83px;
+
+    .border-card {
+        background-color: #F0F2FF;
+        padding: 18px 0px 1px 17px;
+        border-radius: 40px 40px 4px 0px;
+    }
+
+    .payment-sec {
+        background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 40.65%);
+      
+        .stockcat-sec-outer {
+            margin: 0 0 2px 0;
+            border-bottom: 1px solid #00000025;
+            .tab-holder .single-tab {
+                padding: 0 0 18px;
+            }
+        }
+    }
+
+    .payment-inner {
+        background-color: transparent;
+        padding: 20px;
+
+        .sec-top {
+            background-color: #fff;
+            padding: 2px 13px 20px 25px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+
+            .left {
+                width: 86%;
+            }
+
+            span:last-child {
+                font-size: 11px;
+                font-weight: 400;
+                color: #918b8b;
+                padding-left: 13px;
+            }
+
+            a {
+                color: #ED7768;
+                text-transform: uppercase;
+                font-size: 13px;
+                text-decoration: none;
+            }
+        }
+
+        .total.amount {
+            background-color: #fff;
+            padding: 20px 13px 20px 25px;
+            margin: 15px 0 0;
+
+            ul {
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: flex;
+                }
+
+                li:nth-child(2),
+                li:nth-child(4) {
+                    border-bottom: 1px solid #d9d4d4;
+                }
+
+                li p:first-child {
+                    width: 80%;
+                    font-size: 13px;
+                    font-weight: 500;
+
+                    span {
+                        width: 100%;
+                        display: inline-block;
+                    }
+
+                    span:nth-child(2) {
+                        color: #a7a0a0;
+                        font-size: 12px;
+                        padding: 5px 0 0 0;
+                    }
+                }
+
+                li p:last-child {
+                    text-align: right;
+                    width: 17%;
+                }
+            }
+        }
+    }
+
+    .order-details-button {
+        .btn-holder {
+            margin: 28px 0 0;
+            display: flex;
+
+            button {
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-size: 13px;
+            }
+
+            button:last-child {
+                color: #fff;
+                background-color: #ED7768;
+                box-shadow: none;
+                /* float: revert; */
+                width: 213px;
+            }
+
+            button:first-child {
+                border: 1px solid #ED7768;
+                color: #ED7768;
+                width: 129px;
+                float: left;
+                margin-right: 32px;
+            }
+        }
+    }
+}
+
+.payment-history-sec {
+    padding: 16px 20px;
+
+    .payment-history-inner {
+        background-color: #fff;
+        padding: 0px 28px 0 20px;
+
+        ul {
+            padding: 0;
+            margin: 0;
+
+            li {
+                list-style: none;
+                border-bottom: 1px solid #c9c3c3;
+                padding-bottom: 14px;
+                padding-top: 9px;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #d9d4d4;
+
+                font-size: 13px;
+                color: #414141;
+                font-weight: 500;
+
+
+
+                .left {
+                    width: 90%;
+                    display: flex;
+                    align-items: center;
+
+                    p:first-child {
+                        width: 19%;
+                        margin: 0;
+                        padding: 0 6px 0 0;
+
+                        img {
+                            border-radius: 50%;
+                        }
+
+                        P:last-child {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+
+
+                }
+
+                .right {
+                    text-align: right;
+                    width: 20%;
+                }
+            }
+        }
+    }
+}

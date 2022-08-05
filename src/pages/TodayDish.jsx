@@ -109,11 +109,4 @@ const TodayDish = (props) => {
     )
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         todayDishset: state.foodData.todayDish,
-//     }
-// }
-
-
 export default TodayDish;

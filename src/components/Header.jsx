@@ -25,7 +25,8 @@ const Header = props => {
         '/history' : ['back','search', 'burger','notification','profile'] ,
         '/select-owner' : ['back','search', 'burger','notification','profile'] ,
         '/add-owner-list' : ['back','search', 'burger','notification','profile'] ,
-        '/todays-dish': ['back','search', 'burger','notification','profile'] 
+        '/todays-dish': ['back','search', 'burger','notification','profile'] ,
+        '/payment': ['back','search', 'burger','notification','profile'] 
     }
 
     useEffect(() => {
@@ -45,6 +46,7 @@ const Header = props => {
         '/history': 'History',
         '/select-owner': 'Select Owner',
         '/add-owner-list': 'Add Owner',
+        '/payment': 'Payment'
     }
 
     return (

@@ -23,7 +23,7 @@ import MyPreferencesDetails from './pages/MyPreferencesDetails';
 import AddOwner from './pages/SelectOwner';
 import AddOwnerList from './pages/AddOwnerList';
 import TodayDish from './pages/TodayDish';
-
+import Payment from './pages/Payment';
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
 const ComboPage = React.lazy(() => import('./pages/ComboPage'));
@@ -67,7 +67,7 @@ function App(props) {
 
   const ignoreFooter = ['/login','/signup','/','/add-address'   ];
   const customHeader = ['/stock-refill','/add-address' , '/addedit-combo' , 'my-prefrences' , "/history"
-   , "/select-owner" , "add-owner-list" , '/todays-dish'];
+   , "/select-owner" , "add-owner-list" , '/todays-dish' , "/payment"];
   
   return (
     <React.Suspense fallback={<Loader />}>
@@ -88,6 +88,7 @@ function App(props) {
             <Route exact path='/select-owner' component={AddOwner}></Route>
             <Route exact path='/add-owner-list' component={AddOwnerList}></Route>
             <Route exact path='/todays-dish' component={TodayDish}></Route>
+            <Route exact path='/payment' component={Payment}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />
           <SliderDrawer />
