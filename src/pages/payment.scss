@@ -10,14 +10,22 @@
 
     .payment-sec {
         background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 40.65%);
-      
+
         .stockcat-sec-outer {
             margin: 0 0 2px 0;
             border-bottom: 1px solid #00000025;
+
             .tab-holder .single-tab {
                 padding: 0 0 18px;
             }
+
+            .stockcat-sec img {
+                width: 81%;
+                height: 55px;
+                transform: scale(1.25);
+            }
         }
+
     }
 
     .payment-inner {
@@ -139,7 +147,7 @@
             li {
                 list-style: none;
                 border-bottom: 1px solid #c9c3c3;
-                padding-bottom: 14px;
+                padding-bottom: 10px;
                 padding-top: 9px;
                 display: flex;
                 align-items: center;
@@ -149,7 +157,15 @@
                 color: #414141;
                 font-weight: 500;
 
+                span.historydata {
+                    color: #bdbaba;
+                    margin-left: 10px;
+                }
 
+                p.historynme {
+                    color: #bdbaba;
+                    margin: 8px 0 0 0;
+                }
 
                 .left {
                     width: 90%;
@@ -163,6 +179,7 @@
 
                         img {
                             border-radius: 50%;
+                            box-shadow: 0px 0px 9px rgb(177 199 206 / 60%);
                         }
 
                         P:last-child {

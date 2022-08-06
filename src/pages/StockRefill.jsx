@@ -186,6 +186,7 @@ const StockRefill = props => {
     const fixedBtn = (curView) => {
         const clickHandler = () => {
             curView != 'cart' && updateView('cart');
+            
         }
 
         return (

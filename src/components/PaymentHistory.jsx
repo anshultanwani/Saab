@@ -18,8 +18,8 @@ const PaymentHistory = (props) => {
                                         </p>
                                         <p>
                                         <span>Received From</span>
-                                        <span>{item.date}</span>
-                                        <p>{item.ownername}</p>
+                                        <span className="historydata">{item.date}</span>
+                                        <p className="historynme">{item.ownername}</p>
                                         </p>
                                         
                                     </div>
