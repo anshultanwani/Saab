@@ -43,10 +43,18 @@ const VerificationCode = props => {
                     ...res.data.data
                 })
                 if(res.data.data.onboarded) {
+                    console.log("resiter")
                     setCookie('isLoggedIn',true,30);
                     setCookie('userId',res.data.data._id,30)
-                    history.push('/home');
+                    if(userType === "OWNER"){
+                        history.push('/home');
+                    }
+                    if(userType === "COOK"){
+                        history.push('/select-owner');
+                    }
+                   
                 }else {
+                    console.log("user is not registered")
                     history.push('/signup?phone='+phone+'&userType='+userType);
                 }
             }

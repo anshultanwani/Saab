@@ -15,7 +15,7 @@ const RegisterUser = props => {
     const history = useHistory();
     const phoneNum = queryString.parse(searchParams).phone;
     const userType = queryString.parse(searchParams).userType;
-    console.log(userType);
+    console.log("usertype=" + userType);
     const [switchStatus, updateStatus] = useState({
         cook: false,
         maid: false
@@ -48,6 +48,12 @@ const RegisterUser = props => {
         },
     });
 
+    const [cookData, updateCookData] = useState({
+        name: "",
+        phone: '',
+        cookSpeciality: []
+    });
+
     const handleAddMoreCUstomer = () => {
         console.log("add more button")
     }
@@ -65,15 +71,29 @@ const RegisterUser = props => {
         }
     }
     const handleChange = (node, value, subNode) => {
+        console.log("cook data" + JSON.stringify({ ...cookData }))
+        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
-        if (subNode == 'phone' || subNode === 'houseNo') {
-            value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
+        if (userType == "OWNER") {
+            if (subNode == 'phone' || subNode === 'houseNo') {
+                value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
+            }
         }
+        if (userType == "COOK") {
+            let newData = { ...cookData };
+            if (subNode == 'phone') {
+                value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
+            }
+        }
+
+
         findAndUpdate(newData, value, node, subNode);
         updateData(newData)
+        updateCookData(newData);
     }
 
     const handleSubmit = () => {
+        console.log("ownercliekd")
         axios({
             method: 'post',
             url: window.apiDomain + '/v1/users/register',
@@ -86,7 +106,7 @@ const RegisterUser = props => {
             }
         }).then(res => {
             if (res.status === 200) {
-                console.log(res.data);
+                console.log("owner response data" + JSON.stringify(res.data.data))
                 props.setSession({
                     ...props.session,
                     ...res.data.data
@@ -98,6 +118,40 @@ const RegisterUser = props => {
         }).catch(err => {
             console.log(err)
         })
+    }
+
+    const handleCookSubmit = () => {
+        console.log("cookcLicked" + JSON.stringify({
+            ...cookData,
+            onboarded: 1,
+            SubscriptionType: null,
+            userType
+        }))
+        axios({
+            method: 'post',
+            url: window.apiDomain + '/v1/users/register',
+            data: {
+                ...cookData,
+                onboarded: 1,
+                subscriptionType: null,
+                userType
+            }
+        }).then((res) => {
+            console.log(res.status)
+            if (res.status === 200) {
+                console.log("cook response data" + JSON.stringify(res.data))
+                console.log("cook response data" + JSON.stringify(res.data.data))
+                props.setSession({
+                    ...props.session,
+                    ...res.data.data
+                })
+                console.log(props.setSession)
+                setCookie('isLoggedIn', true, 30);
+                setCookie('userId', res.data.data._id, 30);
+                history.replace('/select-owner')
+            }
+        })
+
     }
 
     const cookHelperSection = ({ isCook = true }) => {
@@ -216,7 +270,7 @@ const RegisterUser = props => {
                                 }}
                                 placeholder="Cook Name"
                                 inputProps={{
-                                    value: data.name,
+                                    value: cookData.name,
                                     onChange: e => handleChange('', e.target.value, 'name')
                                 }}
                             />
@@ -229,25 +283,25 @@ const RegisterUser = props => {
                                     placeholder='Contact Number'
                                     type='Number'
                                     inputProps={{
-                                        value: data.services.cook.phone || '',
+                                        value: cookData.phone,
                                         onChange: e => {
                                             if (e.target.value.length > 10) {
                                                 return;
                                             }
-                                            handleChange('services.' + ('cook'), e.target.value, 'phone')
+                                            handleChange('', e.target.value, 'phone')
                                         },
                                     }}
                                 />
                             </div>
                             <div className={'label-div'}>Cook Speciality</div>
-                            <InputWithSearch selected={data.services["cook"].specialities} updateList={list => handleChange('services.' + ('cook'), list, 'specialities')} />
+                            <InputWithSearch updateList={list => handleChange('', list, 'cookSpeciality')} />
                         </div>
                         <div className='btn-holder'>
                             <Button
                                 variant={'contained'}
                                 children={'SIGN UP'}
-                                // onClick={handleSubmit}
-                                onClick={() => props.history.push('/select-owner')}
+                                onClick={handleCookSubmit}
+                            // onClick={() => props.history.push('/select-owner')}
                             />
                         </div>
                         <p className='signinpage'><span>Already have an account? </span><a href='/login'>Sign up</a></p>
