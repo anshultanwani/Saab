@@ -44,8 +44,8 @@ const Header = props => {
         '/add-address': 'Choose Address',
         '/my-prefrences': 'My Preferences',
         '/history': 'History',
-        '/select-owner': 'Select Owner',
-        '/add-owner-list': 'Add Owner',
+        '/select-owner': 'Select Customer',
+        '/add-owner-list': 'Add Customer',
         '/payment': 'Payment'
     }
 

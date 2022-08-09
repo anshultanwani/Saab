@@ -43,7 +43,7 @@ const VerificationCode = props => {
                     ...res.data.data
                 })
                 if(res.data.data.onboarded) {
-                    console.log("resiter")
+                    console.log("use is registered")
                     setCookie('isLoggedIn',true,30);
                     setCookie('userId',res.data.data._id,30)
                     if(userType === "OWNER"){

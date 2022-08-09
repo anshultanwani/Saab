@@ -85,8 +85,6 @@ const RegisterUser = props => {
                 value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
             }
         }
-
-
         findAndUpdate(newData, value, node, subNode);
         updateData(newData)
         updateCookData(newData);
