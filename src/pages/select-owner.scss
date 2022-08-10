@@ -3,9 +3,11 @@
 
     .border-card {
         background-color: #F0F2FF;
-        padding: 35px 40px 16px 40px;
+        padding: 35px 40px 113px 40px;
         border-radius: 40px 40px 4px 0px;
         min-height: 100vh;
+
+
         .owner-list-index {
             background-color: #fff;
             display: flex;
@@ -13,50 +15,68 @@
             position: relative;
             box-shadow: 0px 1px 7px rgb(0 0 0 / 14%);
 
+            
+
+            p {
+                display: flex;
+                padding: 0 8px 0 6px;
+            }
+
             .left {
-                padding: 0 0 0 51px;
+                padding: 0 15px 0 0;
                 position: relative;
 
                 img {
-                    position: absolute;
-                    left: -30px;
-                    right: 0;
+
                     width: 51px;
                     border-radius: 50%;
                     border: 8px solid #F5F5F5;
-                    top: 14px;
+
                 }
             }
 
             .right {
                 padding: 10px 9px 5px 0;
 
-
-
-                p {
-                    margin: 0;
-                    padding: 0;
+                .top {
+                    display: flex;
+                    margin-bottom: 17px;
                     font-size: 13px;
                     font-weight: 600;
-                    padding-bottom: 15px;
-                    display: inline-flex;
-                    img{
-                        min-width: 11px;
+
+                    span:first-child {
+                        width: 80%;
+                        text-transform: capitalize;
                     }
-                    span:last-child {
-                        font-size: 12px;
-                        font-weight: 400;
-                        color: #626060;
-                        line-height: 18px;
-                        padding-left: 10px;
+
+                    span:nth-child(2) {
+                        color: #DCBD18;
+                        font-weight: 500;
+                        text-transform: lowercase;
+                        font-size: 14px;
+                        letter-spacing: 0.5px;
+                    }
+                }
+
+                .bottum {
+                    display: flex;
+                    align-items: flex-start;
+
+                    span {
+                        padding-right: 13px;
                     }
                 }
             }
         }
     }
 }
+.owner-list-index.verification-pending {
+    border-left: 4px solid #DCBD18;
+}
+
 .add-cusotmer {
     text-align: right;
+
     button {
         background-color: #ED7768;
     }

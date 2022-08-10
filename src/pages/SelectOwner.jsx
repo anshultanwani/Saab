@@ -1,19 +1,19 @@
 import { toBeRequired } from "@testing-library/jest-dom";
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Button } from '@mui/material';
+import "./select-owner.scss";
+import axios from 'axios';
+import { useHistory, useLocation } from 'react-router-dom';
+import { setSession } from '../actions';
 import { getCookie } from '../utils';
 import { setCookie } from '../utils';
-import axios from 'axios';
-import "./select-owner.scss";
-import { setSession } from '../actions';
-import { useHistory, useLocation } from 'react-router-dom';
 import { useEffect } from "react";
-const AddOwner = (props) => {
-    // const [data, updateData] = useEffect('')
+const SelectOwner = (props) => {
+    const [users, setUsers] = useState([{}])
     const history = useHistory();
     let userId = getCookie('userId');
-    console.log("userid=="+userId)
+    console.log("userid==" + userId)
     const handleSubmit = () => {
         history.replace('/add-owner-list');
     }
@@ -24,63 +24,57 @@ const AddOwner = (props) => {
         history.replace('/todays-dish');
     }
 
-    // const fetchData = () =>{
-    //     return axios.get(window.apiDomain + '/v1/users/' + userId).then(res => {
-    //         if (res.status === 200) {
-    //             console.log("customers list" + JSON.stringify(res.data.data))
-    //             console.log("customers list" + JSON.stringify(res.data.data.customers))
-    //             // updateData(res.data.data);
-    //         }
-    //     }).catch(err => {
-    //         console.log(err)
-    //     }) 
-    // }
+    const fetchData = () =>{
+        return axios.get(window.apiDomain + '/v1/users/' + userId).then(res => {
+            if (res.status === 200) {
+                setUsers(res.data.data.customers)
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+    }
 
-    // useEffect(()=>{
-    //     fetchData();
-    // },[])
+    useEffect(()=>{
+        fetchData();
+    },[])
 
-    axios.get(window.apiDomain + '/v1/users/' + userId).then(res => {
-        if (res.status === 200) {
-            console.log("customers list" + JSON.stringify(res.data.data))
-            console.log("customers list" + JSON.stringify(res.data.data.customers))
-            // updateData(res.data.data);
-        }
-    }).catch(err => {
-        console.log(err)
-    })
-       
+    
+
 
     return (
         <div className="select-owner">
             <div className='border-card'>
                 <div className="owner-list">
-                    {
-                        props.ownerlistset.map((item, index) => {
-                            return (
+                    {users.map(({ name, phone, customerStatus }) => (
+                       
+                        <div className={"owner-list-index" + "  " + (customerStatus === "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish({ name })}>
 
-                                <div key={index} className="owner-list-index" onClick={()=> handleAssignedDish(item.name)}>
-
-                                    <div className="left">
-                                        <img src={require("../assets/" + item.image).default} />
-                                    </div>
-                                    <div className="right">
-                                        <p>{item.name}</p>
-                                        <p>
-                                            <span>
-                                                <img src={require("../assets/images/" + "location.png").default} />
-                                                {/* <img src={require('../assets/'+item.vegImage).default} alt="not loaded" /> */}
-
-                                            </span>
-                                            <span>
-                                                {item.address}
-                                            </span>
-                                        </p>
-                                    </div>
-
+                            <p>
+                                <div className="left">
+                                    <img src={require("../assets/images/" + "owner1.png").default} />
                                 </div>
-                            )
-                        })}
+                                <div className="right">
+                                    <div className="top">
+                                    <span>{name}</span>
+
+                                    <span>{customerStatus}</span>
+                                    </div>
+                                  
+                                    <div className="bottum">
+                                        <span>
+                                            <img src={require("../assets/images/" + "location.png").default} />
+                                        </span>
+                                        <span>
+                                            401 c block Lorem Ipsum Dummy , Bangalore
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </p>
+                        </div>
+                    ))}
+
+
                 </div>
                 <div className="add-cusotmer">
                     <Button
@@ -93,7 +87,7 @@ const AddOwner = (props) => {
                             </div>
                         )}
                     />
-                 
+
                 </div>
             </div>
         </div>
@@ -106,4 +100,4 @@ const mapStateToProps = state => {
         session: state.session
     }
 }
-export default connect(mapStateToProps)(AddOwner);
+export default connect(mapStateToProps)(SelectOwner);

@@ -14,6 +14,7 @@ const AddOwnerList = (props) => {
     const history = useHistory();
     const [showModal, toggleModal] = useState(false)
     let userId = getCookie('userId');
+    console.log(userId);
     const [selectedType, updateUser] = useState(0)
     const [data, updateData] = useState({
         userId: userId,
