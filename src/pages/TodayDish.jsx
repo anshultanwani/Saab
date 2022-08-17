@@ -6,9 +6,17 @@ import CookLatestFeedback from "../components/CookLatestFeedback"
 import { connect } from 'react-redux';
 import { toggleSliderDrawer, setSession } from '../actions/index';
 import FeedbackRequest from '../common/FeedbackRequest';
+import { useHistory, useLocation } from 'react-router-dom';
 import TodayDishList from '../components/TodayDishList';
+import { getCookie } from '../utils';
+import queryString from 'query-string';
 
 const TodayDish = (props) => {
+    const searchParams = useLocation().search;
+    const userType = queryString.parse(searchParams).userType;
+    let customerId = getCookie('customerId');
+    let customerName = getCookie('customerName');
+    console.log("customerid"+customerId+"and"+"customerName"+customerName);
     const [showModal, toggleModal] = useState(false)
     const {
         toggleSliderDrawer
@@ -35,7 +43,7 @@ const TodayDish = (props) => {
             <div className='grocey-sec'>
                 <div className='left'>
                     <p>Help your owner to order grocery</p>
-                    <Button color="inherit" onClick={() => props.history.push('/stock-refill')}>
+                    <Button color="inherit" onClick={() => props.history.push('/stock-refill?userType='+userType)}>
                         Order Now
                     </Button>
                 </div>
@@ -72,7 +80,7 @@ const TodayDish = (props) => {
         <>
             <div className="today-dish">
                 <div className='border-card'>
-                    <div className='title'>Today Dish</div>
+                    <div className='title'>Meals list assigend by {customerName}</div>
                     <div className="owner-list">
                         <div className='dish-details'>
                             {getSection()}

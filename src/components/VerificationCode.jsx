@@ -46,10 +46,10 @@ const VerificationCode = props => {
                     console.log("use is registered")
                     setCookie('isLoggedIn',true,30);
                     setCookie('userId',res.data.data._id,30)
-                    if(userType === "OWNER"){
+                    if(userType == "OWNER"){
                         history.push('/home');
                     }
-                    if(userType === "COOK"){
+                    if(userType == "COOK"){
                         history.push('/select-owner');
                     }
                    

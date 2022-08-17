@@ -24,6 +24,7 @@ import AddOwner from './pages/SelectOwner';
 import AddOwnerList from './pages/AddOwnerList';
 import TodayDish from './pages/TodayDish';
 import Payment from './pages/Payment';
+
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
 const ComboPage = React.lazy(() => import('./pages/ComboPage'));
@@ -32,12 +33,12 @@ const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 //const AddEditCombo = React.lazy(() => import('./pages/AddEditCombo'));
 const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
-
 function App(props) {
   window.apiDomain = 'http://44.205.231.204';
 
   const getPath = () => {
     if(!getCookie('isLoggedIn') && window.location.pathname !== "/login") {
+      console.log("userlogout")
       window.location.replace('/login')
     }else if(!props.session._id && getCookie("userId")){
         let userId = getCookie('userId');

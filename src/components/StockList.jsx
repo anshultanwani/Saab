@@ -20,7 +20,7 @@ const StockList = props => {
             <div className='prod-row'>
                 <div className='left-sec'>
                     <div className='prod-img'>
-                    <img src={require('../assets/'+ data.image).default} alt="not loaded" />
+                <img src={data.img} alt="not loaded" style={{width: "100%"}}/> 
                     </div>
                     <div className='name-price'>
                         <div className='name'>{data.name}</div>

@@ -1,5 +1,8 @@
 const initialState = {
-    cartList: [{
+    cartList: [
+        
+        
+    {
         name: 'Potato',
         quantity: 1,
         minQty: '1 kg',
@@ -61,6 +64,7 @@ const initialState = {
     ],
     deliveryCharges: 60,
     highDemandCharges: 50,
+    
     stockCat: {
         "fruits":
         {

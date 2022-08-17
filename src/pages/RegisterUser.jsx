@@ -10,6 +10,7 @@ import { setCookie } from '../utils';
 import { connect } from 'react-redux';
 import { setSession } from '../actions';
 
+
 const RegisterUser = props => {
     const searchParams = useLocation().search;
     const history = useHistory();
@@ -54,13 +55,6 @@ const RegisterUser = props => {
         cookSpeciality: []
     });
 
-    const handleAddMoreCUstomer = () => {
-        console.log("add more button")
-    }
-    const handleAdd = () => {
-        history.replace('/select-owner');
-    }
-
     const findAndUpdate = (dataObj, value, parentKey, key) => {
         for (var cur in dataObj) {
             if (typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
@@ -71,16 +65,18 @@ const RegisterUser = props => {
         }
     }
     const handleChange = (node, value, subNode) => {
-        console.log("cook data" + JSON.stringify({ ...cookData }))
-        console.log("owner data" + JSON.stringify({ ...data }))
-        let newData = { ...data };
+       let newData;
         if (userType == "OWNER") {
+            console.log("owner data" + JSON.stringify({ ...data }))
+            newData = { ...data };
+
             if (subNode == 'phone' || subNode === 'houseNo') {
                 value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
             }
         }
         if (userType == "COOK") {
-            let newData = { ...cookData };
+            console.log("cook data" + JSON.stringify({ ...cookData }))
+            newData = { ...cookData };
             if (subNode == 'phone') {
                 value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
             }
@@ -111,6 +107,7 @@ const RegisterUser = props => {
                 })
                 setCookie('isLoggedIn', true, 30);
                 setCookie('userId', res.data.data._id, 30);
+                console.log(res.data.data._id)
                 history.replace('/home');
             }
         }).catch(err => {
@@ -119,12 +116,14 @@ const RegisterUser = props => {
     }
 
     const handleCookSubmit = () => {
-        console.log("cookcLicked" + JSON.stringify({
+        console.log("cookcLicked"+
+        {
             ...cookData,
             onboarded: 1,
-            SubscriptionType: null,
+            subscriptionType: null,
             userType
-        }))
+        })
+        console.log(userType);
         axios({
             method: 'post',
             url: window.apiDomain + '/v1/users/register',
@@ -135,18 +134,25 @@ const RegisterUser = props => {
                 userType
             }
         }).then((res) => {
+            console.log(
+             {
+                ...cookData,
+                onboarded: 1,
+                subscriptionType: null,
+                userType
+            })
             console.log(res.status)
             if (res.status === 200) {
-                console.log("cook response data" + JSON.stringify(res.data))
-                console.log("cook response data" + JSON.stringify(res.data.data))
+                console.log(res);
+                console.log("cook response data" + res.data.data)
                 props.setSession({
                     ...props.session,
                     ...res.data.data
                 })
-                console.log(props.setSession)
+
                 setCookie('isLoggedIn', true, 30);
                 setCookie('userId', res.data.data._id, 30);
-                history.replace('/select-owner')
+                history.replace('/select-owner?userType='+userType);
             }
         })
 

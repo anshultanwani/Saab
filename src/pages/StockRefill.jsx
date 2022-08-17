@@ -11,17 +11,54 @@ import { ReactComponent as Info1 } from '../assets/images/info2.svg';
 import StockRefillHead from '../components/StockRefillHead';
 import StockRefillButton from '../components/StockRefillButton';
 import { updateCart, toggleSliderDrawer } from '../actions';
+import { useHistory, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import EmptyCart from '../components/EmptyCart';
-
+import { getCookie } from '../utils';
+import axios from 'axios';
 const StockRefill = props => {
     const {
         cartList,
         deliveryCharges,
         highDemandCharges,
-        stockCat,
+        // stockCat,
         toggleSliderDrawer
     } = props;
+    // let userId = getCookie('userId');
+    const searchParams = useLocation().search;
+    const userType = queryString.parse(searchParams).userType;
+    console.log(userType)
+    let customerId = getCookie('customerId');
+    console.log("customerid" + customerId)
+    const [cartData, updatecartData] = useState({
+        userId: customerId,
+        Status: "REQUESTED",
+        items: {
+            veg: [
+                {
+                    name: "",
+                    quantity: "",
+                    minQty: 1,
+                    unit: "kg",
+                    originalPrice: 50,
+                    DiscountedPrice: 60,
+                    category: "vegetable"
+                }],
+            fruits: [
+                {
+                    name: "",
+                    quantity: "",
+                    minQty: 1,
+                    unit: "kg",
+                    originalPrice: 50,
+                    DiscountedPrice: 60,
+                    category: "fruits"
+                }]
+        },
+        createdBy: "COOK"
+    });
 
+    const [stockCat, updatestockCat] = useState([]);
     const [currentView, updateView] = useState('cart');
     const [cartTotal, updateTotal] = useState('');
     const [catSection, toggleSection] = useState({
@@ -42,6 +79,21 @@ const StockRefill = props => {
         }
     })
 
+
+
+    useEffect(() => {
+        console.log(stockCat);
+        axios.get(window.apiDomain + "/v1/orders/stock")
+            .then((res) => {
+                if (res.status === 200) {
+                    console.log(res.data.data);
+                    updatestockCat(res.data.data)
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
 
     const changeAddress = () => {
@@ -67,16 +119,35 @@ const StockRefill = props => {
             return curKey;
         })
         Object.keys(stockCat).map(cur => {
-            let curSec = stockCat[cur].displayName;
-            obj[curSec].stock = stockCat[cur].list.map(item => {
+            let curSec;
+            console.log(cur);
+            if (cur === 'veg') {
+                curSec = 'Veggies'
+                console.log("inside vaggies")
+            }
+            if (cur == 'fruits') {
+                curSec = "Fruits"
+                console.log("inside fruits")
+            }
+            if (cur == "groceries") {
+                curSec = "Grocery"
+            }
+            // let curSec = stockCat[cur].displayName;
+            console.log("currentsec name" + curSec)
+            obj[curSec].stock = stockCat[cur].map(item => {
+                console.log("stocklist for category"+obj[curSec].stock);
+                    {item.name.toLowerCase()}
                 let ele = obj[curSec].list.find(el => el.name.toLowerCase() === item.name.toLowerCase());
+               console.log("find elelment"+ ele)
                 return {
                     ...item,
-                    quantity: ele?.quantity ? ele?.quantity : 0
+                           quantity: ele?.quantity ? ele?.quantity : 0
                 }
             })
+            console.log("object" + JSON.stringify(obj[curSec].stock));
             return cur;
         })
+        console.log("slelected" + JSON.stringify(obj))
         toggleSection(obj);
     }
 
@@ -116,9 +187,18 @@ const StockRefill = props => {
         props.updateCart([...cartItems]);
     }
 
+    
+
     useEffect(() => {
         sortList();
     }, [cartList, currentView])
+
+
+    useEffect(() => {
+        axios.post().then((res)=>{
+            
+        })
+    }, [])
 
 
     const BillingSection = props => {
@@ -186,7 +266,7 @@ const StockRefill = props => {
     const fixedBtn = (curView) => {
         const clickHandler = () => {
             curView != 'cart' && updateView('cart');
-            
+
         }
 
         return (
@@ -249,7 +329,7 @@ const mapStateToProps = state => {
         cartList: state.cart.cartList,
         deliveryCharges: state.cart.deliveryCharges,
         highDemandCharges: state.cart.highDemandCharges,
-        stockCat: state.cart.stockCat,
+        // stockCat: state.cart.stockCat,
         session: state.session
     }
 }

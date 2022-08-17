@@ -3,18 +3,23 @@ import { Button, TextField } from '@mui/material';
 import { connect } from "react-redux";
 import "./add-owner-list.scss";
 import axios from 'axios';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AddressUpdate from "../common/AddressUpdate";
 import Checkbox from '@mui/material/Checkbox';
-import { setSession } from '../actions';
 import { getCookie } from '../utils';
 import { setCookie } from '../utils';
+import { setSession } from '../actions';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 const AddOwnerList = (props) => {
+    let userType = getCookie('userType');
+    console.log("addsutomerlistusertype=="+userType)
     const history = useHistory();
     const [showModal, toggleModal] = useState(false)
     let userId = getCookie('userId');
-    console.log(userId);
+    console.log("addownerlistuserid==="+userId);
     const [selectedType, updateUser] = useState(0)
     const [data, updateData] = useState({
         userId: userId,
@@ -43,51 +48,41 @@ const AddOwnerList = (props) => {
     }
 
     const handleChange = (node, value, subNode) => {
-        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
         if (subNode == 'phone') {
             value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
         }
         findAndUpdate(newData, value, node, subNode);
         updateData(newData)
-        console.log("updated values" + JSON.stringify(newData));
     }
 
 
     const handleDecrement = () => {
         data.monthlyServiceCharge = data.monthlyServiceCharge - 1;
         setMonthlyServiceCharge(data.monthlyServiceCharge);
-        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
         updateData(newData)
-        console.log("updated values" + JSON.stringify(newData));
     }
 
     const handleIncrement = () => {
         data.monthlyServiceCharge = data.monthlyServiceCharge + 1;
         setMonthlyServiceCharge(data.monthlyServiceCharge);
-        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
         updateData(newData)
-        console.log("updated values" + JSON.stringify(newData));
     }
 
     const handleMembersDecrement = () => {
         data.members = data.members - 1;
         setMembers(data.members);
-        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
         updateData(newData)
-        console.log("updated values" + JSON.stringify(newData));
     }
 
     const handleMembersIncrement = () => {
         data.members = data.members + 1;
         setMembers(data.members);
-        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
         updateData(newData)
-        console.log("updated values" + JSON.stringify(newData));
     }
 
 
@@ -98,30 +93,25 @@ const AddOwnerList = (props) => {
         } else {
             data.workingDays.splice(checked.indexOf(event.target.name), 1);
         }
-        console.log(data.workingDays)
         setChecked(data.workingDays);
-        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
         updateData(newData)
-        console.log("updated values" + JSON.stringify(newData));
     }
     const handleMeals = (event) => {
-        console.log(event.target.name)
         data.meals = [...checkedMeal];
         if (event.target.checked) {
             data.meals = [...checkedMeal, event.target.name];
         } else {
             data.meals.splice(checked.indexOf(event.target.name), 1);
         }
-        console.log(data.meals)
         setCheckedMeal(data.meals);
-        console.log("owner data" + JSON.stringify({ ...data }))
         let newData = { ...data };
         updateData(newData)
-        console.log("updated values" + JSON.stringify(newData));
     }
 
     const handleSubmit = () => {
+        toast('Customer added successfully!',
+        {position: toast.POSITION.BOTTOM_RIGHT})
         let newData = { ...data };
         console.log("updated values" + JSON.stringify(newData));
         axios({
@@ -132,15 +122,17 @@ const AddOwnerList = (props) => {
                 onboarded: 1,
             }
         }).then(res => {
+            console.log(res.status)
             if (res.status === 200) {
-                console.log("add owner response data" + JSON.stringify(res.data.data))
-                // props.setSession({
-                //     ...props.session,
-                //     ...res.data.data
-                // })
+                console.log("addownerlistrespo"+ res.data.data)
+                console.log("addcustomercussed"+userId);
+                props.setSession({
+                    ...props.session,
+                    ...res.data.data
+                })
                 setCookie('isLoggedIn', true, 30);
-                setCookie('userId', res.data.data._id, 30);
-                history.replace('/select-owner');
+                // setCookie('userId', res.data.data._id, 30);
+                history.replace('/select-owner?userType='+userType);
             }
         }).catch(err => {
             console.log(err)
@@ -301,4 +293,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AddOwnerList);
+export default connect(mapStateToProps, { setSession })(AddOwnerList);
