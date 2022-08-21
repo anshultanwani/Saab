@@ -132,7 +132,7 @@ const AddOwnerList = (props) => {
                 })
                 setCookie('isLoggedIn', true, 30);
                 // setCookie('userId', res.data.data._id, 30);
-                history.replace('/select-owner?userType='+userType);
+                history.push('/select-owner?userType='+userType);
             }
         }).catch(err => {
             console.log(err)

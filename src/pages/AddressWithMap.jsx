@@ -12,7 +12,9 @@ const AddressWithMap = props => {
             <div className='address-details'>
                 <div className='address'>
                     <div className='left'>
-                        <p><span><img src={require("../assets/images/"+"address-icon.png").default}/></span>Delivering to Home</p>
+                        <p><span>
+                        <img src={require("../assets/images/"+"address-icon.png").default}/>
+                        </span>Carmelaram</p>
                         <p>{addressStr}</p>
                     </div>
                     <div className='right'>

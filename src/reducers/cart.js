@@ -1,61 +1,6 @@
 const initialState = {
-    cartList: [
-        
-        
-    {
-        name: 'Potato',
-        quantity: 1,
-        minQty: '1 kg',
-        actualPrice: 50,
-        price: 60,
-        image: "images/Potato-veggie.png",
-        category: 'veggies'
-    },
-    {
-        name: 'Onion',
-        quantity: 1,
-        minQty: '1 kg',
-        actualPrice: 50,
-        price: 60,
-        image: "images/Onion.png",
-        category: 'veggies'
-    },
-    {
-        name: 'Capsium',
-        quantity: 1,
-        minQty: '500 gram',
-        actualPrice: 50,
-        price: 60,
-        image: "images/Capcicum.png",
-        category: 'veggies'
-    },
-    {
-        name: 'Banana',
-        quantity: 1,
-        minQty: '1 kg',
-        actualPrice: 50,
-        price: 60,
-        image: "images/Capcicum.png",
-        category: 'fruits'
-    },
-    {
-        name: 'Papaya',
-        quantity: 1,
-        minQty: '1 kg',
-        actualPrice: 50,
-        price: 60,
-        image: "images/Capcicum.png",
-        category: 'fruits'
-    },
-    {
-        name: 'Watermelon',
-        quantity: 1,
-        minQty: '500 gram',
-        actualPrice: 50,
-        price: 60,
-        image: "images/Capcicum.png",
-        category: 'fruits'
-    }],
+    cartList: [    
+  ],
     finalComboList:[
         {
             name:"alloo paratha",

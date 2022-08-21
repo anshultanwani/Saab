@@ -50,7 +50,7 @@ const VerificationCode = props => {
                         history.push('/home');
                     }
                     if(userType == "COOK"){
-                        history.push('/select-owner');
+                        history.push('/select-owner?userType='+"COOK");
                     }
                    
                 }else {

@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import React from 'react';
 import './stock-row.scss';
 
-const StockList = props => {
+const StockListForCook = props => {
     const {
         list,
         updateQty
@@ -27,16 +27,16 @@ const StockList = props => {
                         <div className='price-sec'>
                             <span className='price'>
                                 <span className='ruppes'>₹</span>
-                                <span>{data.originalPrice}</span>
-                                {data.DiscountedPrice?
+                                <span>{data.actualPrice}</span>
+                                {data.price?
                                     <div style={{marginLeft: 20,opacity: 0.5}}>
                                         <span>₹</span>
-                                        <strike>{data.DiscountedPrice}</strike>
+                                        <strike>{data.price}</strike>
                                     </div>
                                 : null}
                             </span>
                         </div>
-                        <div className='min-qty'>{data.minQty+ ""+ data.unit}</div>
+                        <div className='min-qty'>{data.minQty}</div>
                     </div>
                 </div>
                 <div className='right-sec'>
@@ -60,7 +60,9 @@ const StockList = props => {
 
     return (
         <div className='stock-list'>
-            {list.map((cur,index) => {
+            {console.log("currentlist"+JSON.stringify(list))}
+            {
+            list.map((cur,index) => {
                 return (
                     <ProdRow 
                         data={cur}
@@ -74,4 +76,4 @@ const StockList = props => {
     )
 };
 
-export default StockList;
+export default StockListForCook;

@@ -33,7 +33,7 @@ const Footer = props => {
               >
                 <BottomNavigationAction label="Home" onClick={() => props.history.push('/home')}/>
                 <BottomNavigationAction label="History"  onClick={()=> props.history.push('/history')}/>
-                <BottomNavigationAction label="Stock" onClick={()=> props.history.push('/stock-refill')}/>
+                <BottomNavigationAction label="Stock" onClick={()=> props.history.push('/stock-refill?userType='+"OWNER")}/>
                 <BottomNavigationAction label="Payment" onClick={()=> props.history.push('/payment')}/>
               </BottomNavigation>
           </Paper>

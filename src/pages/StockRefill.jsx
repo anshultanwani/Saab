@@ -30,33 +30,6 @@ const StockRefill = props => {
     console.log(userType)
     let customerId = getCookie('customerId');
     console.log("customerid" + customerId)
-    const [cartData, updatecartData] = useState({
-        userId: customerId,
-        Status: "REQUESTED",
-        items: {
-            veg: [
-                {
-                    name: "",
-                    quantity: "",
-                    minQty: 1,
-                    unit: "kg",
-                    originalPrice: 50,
-                    DiscountedPrice: 60,
-                    category: "vegetable"
-                }],
-            fruits: [
-                {
-                    name: "",
-                    quantity: "",
-                    minQty: 1,
-                    unit: "kg",
-                    originalPrice: 50,
-                    DiscountedPrice: 60,
-                    category: "fruits"
-                }]
-        },
-        createdBy: "COOK"
-    });
 
     const [stockCat, updatestockCat] = useState([]);
     const [currentView, updateView] = useState('cart');
@@ -174,14 +147,15 @@ const StockRefill = props => {
     const checkAndUpdateCart = (qty, index, item, category) => {
         let cartItems = cartList.map(cur => ({ ...cur }));
         let elIndex = cartItems.findIndex(el => el.name.toLowerCase() === item.name.toLowerCase());
+        let cat = category ? category: currentView
         if (elIndex < 0 && qty > 0) {
-            cartItems.push({ ...item, quantity: qty, category: category ? category : currentView });
+            cartItems.push({ ...item, quantity: qty, category: cat });
         } else if (elIndex >= 0) {
             if (qty <= 0) {
                 cartItems.splice(elIndex, 1);
             } else {
                 cartItems[elIndex].quantity = qty;
-                cartItems[elIndex].category = category ? category : currentView;
+                cartItems[elIndex].category = cat;
             }
         }
         props.updateCart([...cartItems]);
@@ -194,11 +168,11 @@ const StockRefill = props => {
     }, [cartList, currentView])
 
 
-    useEffect(() => {
-        axios.post().then((res)=>{
+    // useEffect(() => {
+    //     axios.post().then((res)=>{
             
-        })
-    }, [])
+    //     })
+    // }, [])
 
 
     const BillingSection = props => {
@@ -210,9 +184,9 @@ const StockRefill = props => {
         let total = 0;
         let cartVal = 0
         data.map(cur => {
-            mrp += cur.quantity * cur.price;
-            discount += cur.quantity * (cur.price - cur.actualPrice);
-            total += cur.quantity * cur.actualPrice;
+            mrp += cur.quantity * cur.originalPrice;
+            discount += cur.quantity * cur.DiscountedPrice
+            total += cur.quantity * cur.originalPrice;
         })
         cartVal = total + highDemandCharges + deliveryCharges;
         return (
@@ -289,7 +263,7 @@ const StockRefill = props => {
                         />
                     </div>
                 </div> : null}
-                <StockRefillButton clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART' : 'PROCEED TO PAY'} />
+                <StockRefillButton  clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART' : 'PROCEED TO PAY'} />
             </div>
         )
     }

@@ -6,9 +6,13 @@ import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import './complete-address.scss';
 import AddressUpdate from "./AddressUpdate";
+import axios from "axios";
 
 const CompleteAddress = (props) => {
     const [showModal, toggleModal] = useState(false)
+    const [address , updateAddress] = useState({
+        
+    });
     const content = (
         <>
             <p className="completeaddlable">Save address as*</p>
@@ -42,6 +46,18 @@ const CompleteAddress = (props) => {
 
     const handleOpen = () => {
         toggleModal(true);
+        axios.post({
+            method: 'post',
+            url: window.apiDomain + '/v1/users/feedback',
+            data: {
+            }
+
+        }).then(res=>{
+           
+        })
+        .catch(err=>{
+
+        })
     }
 
 

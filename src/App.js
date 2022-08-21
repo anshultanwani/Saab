@@ -52,6 +52,18 @@ function App(props) {
         })
     }
   }
+//   useEffect(() => {
+//     let userId = getCookie('userId');
+//     axios.get(window.apiDomain + '/v1/users/' +userId).then(res => {
+//         if (res.status === 200) {
+//             console.log(res.data.data)
+//         }
+//     }).catch(err => {
+//         console.log(err)
+//         console.log("Please add customer");
+//     })
+// }, [])
+
   useEffect(() => {
     if(window.location.pathname === '/') {
       setTimeout(() => {

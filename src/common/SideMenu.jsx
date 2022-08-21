@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { Avatar, Button, Drawer } from '@mui/material';
 import { connect } from 'react-redux';
 import { toggleSliderDrawer, setSession } from '../actions';
@@ -8,6 +8,8 @@ import {ReactComponent as PaymentIcon} from '../assets/images/payment.svg';
 import {ReactComponent as AboutIcon} from '../assets/images/aboutUs.svg';
 import {ReactComponent as PreferIcon} from '../assets/images/preference.svg';
 import {ReactComponent as SettingIcon} from '../assets/images/setting.svg';
+import axios from 'axios';
+
 import './side-menu.scss';
 import { setCookie } from '../utils';
 import { useHistory } from 'react-router-dom';
@@ -19,6 +21,8 @@ const SideMenu = props => {
         toggleSliderDrawer,
         session
     } = props;
+
+  
 
     const profiles = [
         {
