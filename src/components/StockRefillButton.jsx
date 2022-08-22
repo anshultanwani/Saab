@@ -19,6 +19,7 @@ const StockRefillButton = props => {
         curView,
     } = props;
     console.log(userType)
+    console.log("curview"+curView)
     const history = useHistory();
     let customerId = getCookie('customerId');
     console.log("customerid" + customerId)
@@ -57,18 +58,6 @@ const StockRefillButton = props => {
 
     return (
         <div className='stockrefill-button-sec'>
-             <div className='stockrefill-btnsec-cook'>
-                    <Button
-                        variant='contained'
-                        className='stockpage-btn'
-                        onClick={handleStock}
-                        children={(
-                            <div className='btn-content'>
-                                send to owner
-                            </div>
-                        )}
-                    />
-                </div>
             {userType == "COOK" && curView == 'cart' ?
                 <div className='stockrefill-btnsec-cook'>
                     <Button

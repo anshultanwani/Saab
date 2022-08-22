@@ -82,7 +82,7 @@ const StockRefill = props => {
         Object.keys(obj).map(curKey => {
             let cart = [];
             cartList.map(cur => {
-                total += cur.quantity * cur.actualPrice;
+                total += cur.quantity * cur.originalPrice;
                 if (cur.category === curKey.toLowerCase())
                     cart.push({ ...cur });
             });
@@ -168,13 +168,6 @@ const StockRefill = props => {
     }, [cartList, currentView])
 
 
-    // useEffect(() => {
-    //     axios.post().then((res)=>{
-            
-    //     })
-    // }, [])
-
-
     const BillingSection = props => {
         const {
             data
@@ -189,6 +182,7 @@ const StockRefill = props => {
             total += cur.quantity * cur.originalPrice;
         })
         cartVal = total + highDemandCharges + deliveryCharges;
+        updateTotal(cartVal)
         return (
             <div className='billing-holder'>
                 <label className='heading'>Billing Details</label>
@@ -244,8 +238,8 @@ const StockRefill = props => {
         }
 
         return (
-            <div className='address-details'>
-                {curView === 'cart' ? <div className='address'>
+            <div className='address-details-outer'>
+                {userType == "OWNER" && curView == 'cart' ? <div className='address'>
                     <div className='left'>
                         <p><span><img src={require("../assets/images/" + "address-icon.png").default} /></span>Delivering to Home</p>
                         <p>Cook’s next visit </p>
@@ -263,7 +257,7 @@ const StockRefill = props => {
                         />
                     </div>
                 </div> : null}
-                <StockRefillButton  clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART' : 'PROCEED TO PAY'} />
+                <StockRefillButton  userType={userType} curView={curView} clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART' : 'PROCEED TO PAY'} />
             </div>
         )
     }
@@ -275,7 +269,7 @@ const StockRefill = props => {
                 {!cartList.length && currentView === 'cart' ?
                     <EmptyCart updateQuantity={checkAndUpdateCart} /> : <>
                         {section()}
-                        {!props.session.paymentAutoApproved ? <div className='btn-holder'>
+                        {!props.session.paymentAutoApproved && userType == "OWNER" ? <div className='btn-holder'>
                             <Button
                                 variant='contained'
                                 className='enable-btn'

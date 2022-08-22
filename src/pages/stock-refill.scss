@@ -1,6 +1,12 @@
 .stock-refill {
     background: linear-gradient(119.01deg, #9867DA -20.39%, #EE7464 40.65%);
     // height: 100vh;
+    position: relative;
+    .address-details-outer{
+        position: fixed;
+    bottom: 63px;
+    width: 100%;
+    }
     
     .border-card {
         background-color: #F0F2FF;

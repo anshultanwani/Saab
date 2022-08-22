@@ -21,9 +21,10 @@ const SelectOwner = (props) => {
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
    
-    const [users, setUsers] = useState([{}])
+    const [users, setUsers] = useState([])
     const textCustomerId = useRef({});
     const textCustomerName = useRef({});
+    const textCustomerStatus = useRef({});
     const history = useHistory();
     
     let userId = getCookie('userId');
@@ -37,9 +38,11 @@ const SelectOwner = (props) => {
     const handleAssignedDish = (id) => {
         var customerName = textCustomerName.current[id].value
         var customerId = textCustomerId.current[id].value
-        console.log(customerId + "====" + customerName);
+        var customerStatus = textCustomerStatus.current[id].value
+        console.log(customerId + "====" + customerName + "======" + customerStatus);
         setCookie('customerName', customerName, 30);
         setCookie('customerId', customerId, 30);
+        setCookie('customerStatus', customerStatus, 30);
         console.log("todaydishusetype"+userType)
         history.push('/todays-dish?userType='+userType);
         setCookie('userType', userType, 30);
@@ -52,6 +55,7 @@ const SelectOwner = (props) => {
                 if (res.data.data.customers.length >= 1) {
                     console.log("customers are avaialbel" + JSON.stringify(res.data.data));
                     console.log(res.data.data.customers.length)
+                    console.log(res.data.data._id);
                     setUsers(res.data.data.customers)
                     props.setSession({
                         ...props.session,
@@ -78,13 +82,16 @@ const SelectOwner = (props) => {
         <div className="select-owner">
             <div className='border-card'>
                 <div className="owner-list">
+                    {users.length}
                     {
-                        users.length > 1 ?
+                        users.length >= 1 ?
                             users.map(({ name, customerStatus, _id }) => (
                 
                                 <div className={"owner-list-index" + "  " + (customerStatus === "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish(_id)}>
                                     <input type="hidden" ref={ref=> textCustomerId.current[_id] = ref} value={_id} name="customerid" />
                                     <input type="hidden" ref={ref => textCustomerName.current[_id] = ref} value={name} name="customername" />
+                                    <input type="hidden" ref={ref => textCustomerStatus.current[_id] = ref} value={customerStatus} name="customerstatus" />
+
 
                                     <p>
                                         <div className="left">

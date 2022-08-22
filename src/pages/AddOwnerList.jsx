@@ -110,8 +110,6 @@ const AddOwnerList = (props) => {
     }
 
     const handleSubmit = () => {
-        toast('Customer added successfully!',
-        {position: toast.POSITION.BOTTOM_RIGHT})
         let newData = { ...data };
         console.log("updated values" + JSON.stringify(newData));
         axios({
@@ -124,6 +122,8 @@ const AddOwnerList = (props) => {
         }).then(res => {
             console.log(res.status)
             if (res.status === 200) {
+                toast('Customer added successfully!',
+                {position: toast.POSITION.BOTTOM_RIGHT})
                 console.log("addownerlistrespo"+ res.data.data)
                 console.log("addcustomercussed"+userId);
                 props.setSession({

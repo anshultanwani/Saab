@@ -92,7 +92,7 @@ const Header = props => {
                             <div className='left'>
                                 <h1>{'Hi ' + name}</h1>
                                 <p>{cookName} requested for stock refill</p> 
-                                <Button color="inherit" onClick={() => props.history.push('/stock-refill')}>
+                                <Button color="inherit" onClick={() => props.history.push('/stock-refill?userType=OWNER')}>
                                     Approve Order
                                 </Button>
                             </div>

@@ -16,7 +16,8 @@ const TodayDish = (props) => {
     const userType = queryString.parse(searchParams).userType;
     let customerId = getCookie('customerId');
     let customerName = getCookie('customerName');
-    console.log("customerid"+customerId+"and"+"customerName"+customerName);
+    let customerStatus = getCookie('customerStatus');
+    console.log("customerid"+customerId+"and"+"customerName"+customerName+"customerStatus"+customerStatus);
     const [showModal, toggleModal] = useState(false)
     const {
         toggleSliderDrawer

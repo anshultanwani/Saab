@@ -16,6 +16,8 @@ const StockList = props => {
             index
         } = props;
 
+    
+
         return (
             <div className='prod-row'>
                 <div className='left-sec'>
