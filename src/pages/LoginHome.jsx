@@ -56,6 +56,11 @@ const LoginHome = props => {
                                      <img src={require("../assets/images/"+cur.image).default}/>
                                     </div>
                                 <div className={'user'}>{cur.label}</div>
+                                {cur.label === "Helper" ?
+                                <div className="coming-soon" >
+                                        Coming Soon
+                                </div>
+                                 : null}
                                 </div>
                             </>
                         )

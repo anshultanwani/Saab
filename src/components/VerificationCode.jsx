@@ -74,7 +74,7 @@ const VerificationCode = props => {
              <div className={'data-holder'}>
              <div className={'label-div'}>
                 <p>Verification Code</p>
-                <p>Enter the code sent to <b>{'(+91) '+mobStr}</b></p>
+                <p className={'codesent'}>Enter the code sent to <b>{'(+91) '+mobStr}</b></p>
                  </div>
                 <div className='input-ui vericode'>
                     <OtpInput

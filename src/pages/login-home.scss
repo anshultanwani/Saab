@@ -1,7 +1,7 @@
 .login-home {
-    width: 100vw;
+    // width: 100vw;
     // height: 100vh;
-    background: linear-gradient(122.48deg, #9867DA -20.53%, #EE7464 78.78%);
+    // background: linear-gradient(122.48deg, #9867DA -20.53%, #EE7464 78.78%);
     // overflow: hidden;
 
     .input-ui p.MuiTypography-root.MuiTypography-body1.css-1pnmrwp-MuiTypography-root {
@@ -13,7 +13,8 @@
     }
 
     .upper-sec {
-        padding: 30px;
+        padding: 30px 30px 68px 30px;
+    background: linear-gradient(122.48deg, #9867DA -20.53%, #EE7464 78.78%);
 
         .title {
             font-size: 19px;
@@ -32,11 +33,19 @@
         display: flex;
         justify-content: space-between;
 
+        
+        .user-type:nth-child(3){
+            img{
+                margin-left: 17px;
+            }
+        }
+
         .user-type {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 30%;
+
 
             &.selected {
                 .type-card {
@@ -79,13 +88,15 @@
     .lower-sec {
         background: #fff;
         height: 100%;
-        border-radius: 100%/ 100px 100px 0 0;
+        border-radius: 100%/100px 100px 0 0;
         width: 100%;
         box-sizing: border-box;
+        margin-top: -46px;
+        padding-top: 0;
 
         .data-holder {
             padding: 56px 38px;
-            position: relative;
+    position: relative;
 
             .label-div {
                 color: #414141;
@@ -124,16 +135,17 @@
 
             .otp-btn {
                 background: #ED7768;
-                position: fixed;
-                bottom: 32px;
-                right: 30px;
-                width: 140px;
-                /* height: 42px; */
-                box-shadow: none;
-                padding: 15px 0;
-                font-size: 14px;
-                font-weight: 500;
-                letter-spacing: 1px;
+    position: fixed;
+    bottom: 32px;
+    right: 30px;
+    width: 140px;
+    /* height: 42px; */
+    box-shadow: none;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 8px;
             }
         }
 
@@ -142,4 +154,14 @@
     .Mui-error {
         margin-left: unset;
     }
+}
+.coming-soon {
+    color: #fff;
+    font-weight: 600;
+    margin-top: 5px;
+    font-style: oblique;
+    /* border: 2px solid #fff; */
+    /* border-radius: 6px; */
+    padding: 5px;
+    font-size: 13px;
 }

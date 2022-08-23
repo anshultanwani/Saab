@@ -1,3 +1,5 @@
+
+
 import { toBeRequired } from "@testing-library/jest-dom";
 import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
@@ -12,19 +14,22 @@ import { setSession } from '../actions';
 import queryString from 'query-string';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import VerifyUser from  '../common/VerifyUser';
 toast.configure()
 
 const SelectOwner = (props) => {
+
     const {
         name
     } = props
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
-   
+    const [showModal, toggleModal] = useState(false)
     const [users, setUsers] = useState([])
     const textCustomerId = useRef({});
     const textCustomerName = useRef({});
     const textCustomerStatus = useRef({});
+    const textCustomerPhone = useRef({});
     const history = useHistory();
     
     let userId = getCookie('userId');
@@ -34,18 +39,27 @@ const SelectOwner = (props) => {
     const handleSubmit = () => {
         history.push('/add-owner-list');
     }
-
+    
     const handleAssignedDish = (id) => {
         var customerName = textCustomerName.current[id].value
         var customerId = textCustomerId.current[id].value
         var customerStatus = textCustomerStatus.current[id].value
+        var customerPhone = textCustomerPhone.current[id].value
         console.log(customerId + "====" + customerName + "======" + customerStatus);
         setCookie('customerName', customerName, 30);
         setCookie('customerId', customerId, 30);
         setCookie('customerStatus', customerStatus, 30);
+        setCookie('customerPhone', customerPhone, 30);
         console.log("todaydishusetype"+userType)
-        history.push('/todays-dish?userType='+userType);
+       
         setCookie('userType', userType, 30);
+        if(customerStatus == 'UNVERIFIED'){
+                console.log("user is unverified") 
+                toggleModal(true) 
+        }
+        else{
+            history.push('/todays-dish?userType='+userType);
+        }
     }
 
 
@@ -85,22 +99,28 @@ const SelectOwner = (props) => {
                     {users.length}
                     {
                         users.length >= 1 ?
-                            users.map(({ name, customerStatus, _id }) => (
+                            users.map(({ name, customerStatus, _id , phone}) => (
                 
-                                <div className={"owner-list-index" + "  " + (customerStatus === "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish(_id)}>
+                                <div className={"owner-list-index" + "  " + (customerStatus == "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish(_id)}>
                                     <input type="hidden" ref={ref=> textCustomerId.current[_id] = ref} value={_id} name="customerid" />
                                     <input type="hidden" ref={ref => textCustomerName.current[_id] = ref} value={name} name="customername" />
                                     <input type="hidden" ref={ref => textCustomerStatus.current[_id] = ref} value={customerStatus} name="customerstatus" />
-
-
+                                    <input type="hidden" ref={ref => textCustomerPhone.current[_id] = ref} value={phone} name="customerphone" />
                                     <p>
                                         <div className="left">
-                                            <img src={require("../assets/images/" + "owner1.png").default} />
+                                            <p className="namethumb">
+                                                {name.slice(0, 2)}</p>
+                                            {/* <img src={require("../assets/images/" + "owner1.png").default} /> */}
                                         </div>
                                         <div className="right">
                                             <div className="top">
                                                 <span>{name}</span>
-                                                <span>{customerStatus}</span>
+                                                <span>
+                                                {
+                                                 customerStatus == "UNVERIFIED" ? "Pending"   : "Verified" 
+                                                }
+                                                </span>
+                                        
                                             </div>
 
                                             <div className="bottum">
@@ -108,8 +128,7 @@ const SelectOwner = (props) => {
                                                     <img src={require("../assets/images/" + "location.png").default} />
                                                 </span>
                                                 <span>
-                                                    401 c block Lorem Ipsum Dummy , Bangalore
-                                                </span>
+                                                401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore                                                </span>
                                             </div>
                                         </div>
 
@@ -137,6 +156,7 @@ const SelectOwner = (props) => {
 
                 </div>
             </div>
+            <VerifyUser open={showModal} onClose={() => toggleModal(false)} />
         </div>
     );
 }

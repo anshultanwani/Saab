@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './suggestion.scss';
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-
+import { LineAxisOutlined } from '@mui/icons-material';
+import axios from 'axios';
 const Suggestions = props => {
     const {
         suggestions
     } = props;
     const history = useHistory();
+    const mealType = ['breakfast' ,'LUNCH' , 'DINNER' ]
 
+    console.log(mealType);
     const handleAssign = (comboId) => {
        console.log('comboId '+comboId)
         //history.push('/addedit-combo?cat=' + comboId)
@@ -20,6 +23,23 @@ const Suggestions = props => {
        // history.push('/editcombo')
         history.push('/addedit-combo?cat=' + comboId)
     }
+
+    // useEffect(() => {
+    //     mealType.map((cur)=>{
+    //         axios.get(window.apiDomain + "/meals?type="+ cur)
+    //         .then((res)=>{
+    //             console.log(res)
+    //             console.log(res.data.data)
+    //         })
+    //     })
+    // }, [])
+
+    axios.get(window.apiDomain + "/meals?type="+ "BREAKFAST")
+    .then((res)=>{
+        console.log(res)
+        console.log(res.data.data)
+    })
+
 
     const dishData = suggestions.map((cur,index) => {
         var comboStr = '';

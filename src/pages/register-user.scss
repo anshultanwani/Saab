@@ -13,7 +13,10 @@
 
         button {
             background: #ED7768;
-            border-radius: 6px; 
+            border-radius: 6px;
+            min-width: 114px;
+            height: 42px;
+            box-shadow: none;
         }
     }
     .reg-field {
@@ -79,6 +82,8 @@ p.signinpage {
     margin-top: 19px;
     a{
         color: #ED7768;
-        font-weight: 500;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 2px;
     }
 }

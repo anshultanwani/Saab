@@ -298,7 +298,7 @@ const RegisterUser = props => {
                                     }}
                                 />
                             </div>
-                            <div className={'label-div'}>Cook Speciality</div>
+                            <div className={'label-div'}>Cook's Speciality</div>
                             <InputWithSearch updateList={list => handleChange('', list, 'cookSpeciality')} />
                         </div>
                         <div className='btn-holder'>
@@ -309,7 +309,7 @@ const RegisterUser = props => {
                             // onClick={() => props.history.push('/select-owner')}
                             />
                         </div>
-                        <p className='signinpage'><span>Already have an account? </span><a href='/login'>Sign up</a></p>
+                        <p className='signinpage'><span>Already have an account? </span><a href='/login'>Sign In</a></p>
                     </div>
                 </div>
             }

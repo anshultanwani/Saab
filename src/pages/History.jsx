@@ -2,13 +2,32 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { Button } from '@mui/material';
 import './my-preferences-details.scss';
+import { getCookie } from '../utils';
+import axios from "axios";
 const History = (props) => {
+    let userId = getCookie('userId');
+    console.log(userId);
     const handleAssign = () => {
         console.log("Cliked");
     }
     const handleWishlist = () => {
         console.log("wishlist Cliked");
     }
+    const catType = ['breakfast' ,'LUNCH' , 'DINNER' , "ALL"]
+
+    
+
+    useEffect(()=>{
+ console.log("harsha123")
+ catType.map((cur)=>{
+            axios.get(window.apiDomain + "/meal/history?userId?="+userId+"&?type="+cur)
+            .then((res)=>{
+                console.log(res)
+                console.log(res.data.data)
+            })
+        })
+    },[])
+
 
     const dishData = () => props.historyData.map((cur, index) => {
         var comboStr = '';

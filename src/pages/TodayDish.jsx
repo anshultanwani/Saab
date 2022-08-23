@@ -81,7 +81,7 @@ const TodayDish = (props) => {
         <>
             <div className="today-dish">
                 <div className='border-card'>
-                    <div className='title'>Meals list assigend by {customerName}</div>
+                    <div className='title'>Meals assigned by <span>{customerName}</span></div>
                     <div className="owner-list">
                         <div className='dish-details'>
                             {getSection()}

@@ -66,6 +66,19 @@ const StockRefill = props => {
             .catch((err) => {
                 console.log(err);
             })
+
+        if(userType === "OWNER"){
+            axios.get(window.apiDomain + "/v1/orders?userId="+customerId+"&status="+"REQUESTED")
+            .then((res) => {
+                if (res.status === 200) {
+                    console.log(res.data.data);
+                    // updatestockCat(res.data.data)
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })  
+        }
     }, [])
 
 

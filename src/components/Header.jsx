@@ -14,7 +14,8 @@ const Header = props => {
     } = props.session
     let cookName = getCookie('cookName');
     console.log("cookName" + cookName)
-
+    let customerName = getCookie('customerName');
+    console.log(customerName)
     // console.log("session values"+ JSON.stringify(props.session));
     // console.log("session ṇame values"+ JSON.stringify(props.session.name));
     // console.log("session cook name"+ JSON.stringify(props.session.services.cook));
@@ -33,7 +34,7 @@ const Header = props => {
         '/history': ['back', 'search', 'burger', 'notification', 'profile'],
         '/select-owner': ['back', 'search', 'burger', 'notification', 'profile'],
         '/add-owner-list': ['back', 'search', 'burger', 'notification', 'profile'],
-        '/todays-dish': ['back', 'search', 'burger', 'notification', 'profile'],
+        '/todays-dish': ['back', 'burger', 'notification', 'profile' ],
         '/payment': ['back', 'search', 'burger', 'notification', 'profile']
     }
 

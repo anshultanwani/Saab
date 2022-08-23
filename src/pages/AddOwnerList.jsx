@@ -109,6 +109,11 @@ const AddOwnerList = (props) => {
         updateData(newData)
     }
 
+    const handleCancel = () =>{
+        history.push('/select-owner?userType='+userType);
+    }
+
+
     const handleSubmit = () => {
         let newData = { ...data };
         console.log("updated values" + JSON.stringify(newData));
@@ -125,7 +130,7 @@ const AddOwnerList = (props) => {
                 toast('Customer added successfully!',
                 {position: toast.POSITION.BOTTOM_RIGHT})
                 console.log("addownerlistrespo"+ res.data.data)
-                console.log("addcustomercussed"+userId);
+                console.log("addcustomeruserId"+userId);
                 props.setSession({
                     ...props.session,
                     ...res.data.data
@@ -193,12 +198,12 @@ const AddOwnerList = (props) => {
                                 <span className='qty-btn' onClick={() => handleIncrement(data.monthlyServiceCharge)}>+</span>
                             </div>
                         </div>
-                        <div className='input-holder'>
+                        <div className='input-holder addlistquntit'>
                             <div className="title">Number of Members</div>
                             <div className="qty-sec">
                                 <span className='qty-btn' onClick={() => handleMembersDecrement(data.members)}>-</span>
                                 <TextField
-                                    className="qutn-feild"
+                                    className="qutn-feild "
                                     sx={{ m: 1 }}
                                     InputProps={{
                                         value: data.members || 0,
@@ -215,7 +220,7 @@ const AddOwnerList = (props) => {
                             </div>
                             <ul>
                                 {
-                                    ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THRUSDAY", "FRIDAY", "SATURDAY"].map((index) => {
+                                    ["MONDAY", "TUESDAY", "WEDNESDAY", "THRUSDAY", "FRIDAY", "SATURDAY" , "SUNDAY"].map((index) => {
                                         return (
                                             <>
                                                 <li>
@@ -224,7 +229,7 @@ const AddOwnerList = (props) => {
                                                         onChange={handleCheckbox}
                                                     />
                                                     <span className={'label-div'}>
-                                                        {index}
+                                                        {index.toLowerCase()}
                                                     </span>
                                                 </li>
                                             </>
@@ -246,7 +251,7 @@ const AddOwnerList = (props) => {
                                                         name={index}
                                                         onChange={handleMeals}
                                                     />
-                                                    <span className={'label-div'}>{index}</span>
+                                                    <span className={'label-div'}>{index.toLowerCase()}</span>
                                                 </li>
                                             </>
                                         )
@@ -261,6 +266,7 @@ const AddOwnerList = (props) => {
                             <Button
                                 variant='outlined'
                                 className='cancel-btn'
+                                onClick={handleCancel}
                                 children={(
                                     <div className='btn-content'>
                                         Cancel
