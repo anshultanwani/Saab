@@ -13,8 +13,11 @@ const HomeSlider = (props) => {
   //  autoplaySpeed: 1500,
     slidesToScroll: 1
   };
+   //  let reqStatus = getCookie('reqStatus');
+   let reqStatus = "true";
+   console.log(reqStatus)
   return (
-    <div className="homeslider">
+    <div className={"homeslider  " + (reqStatus == 'true' ? 'cook-request' : null)}>
       <Slider {...settings}>
         {
           props.homesliderimages.map((image, index) => {

@@ -1,7 +1,8 @@
 const initialState = {
     loggedUser: {},
     isLoggedIn: false,
-    showFeedback: true
+    showFeedback: true ,
+    reqStatus: false
 }
 
 export default (state = initialState, action) => {

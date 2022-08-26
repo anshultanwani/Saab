@@ -101,14 +101,15 @@ const RegisterUser = props => {
         }).then(res => {
             if (res.status === 200) {
                 console.log("owner response data" + JSON.stringify(res.data.data))
+                console.log("owner response data" + JSON.stringify(res.data.data.services))
                 props.setSession({
                     ...props.session,
                     ...res.data.data
                 })
                 setCookie('isLoggedIn', true, 30);
                 setCookie('userId', res.data.data._id, 30);
-                console.log(res.data.data._id)
-                history.replace('/home');
+                setCookie('cookName', res.data.data.services.cook.name , 30)
+                // history.replace('/home');
             }
         }).catch(err => {
             console.log(err)

@@ -12,15 +12,14 @@ const Header = props => {
     const {
         name
     } = props.session
+
     let cookName = getCookie('cookName');
-    console.log("cookName" + cookName)
+
+    console.log("cookName in  header" + cookName)
+    let reqStatus = getCookie('reqStatus');
+    console.log(reqStatus)
     let customerName = getCookie('customerName');
     console.log(customerName)
-    // console.log("session values"+ JSON.stringify(props.session));
-    // console.log("session ṇame values"+ JSON.stringify(props.session.name));
-    // console.log("session cook name"+ JSON.stringify(props.session.services.cook));
-
-    // //  console.log("session cook name"+ JSON.Stringify(props.session.services.cook[0].name));
     const location = useLocation();
     const [isLoginPage, updatePage] = useState(location.pathname === '/login');
     const history = useHistory();
@@ -34,7 +33,7 @@ const Header = props => {
         '/history': ['back', 'search', 'burger', 'notification', 'profile'],
         '/select-owner': ['back', 'search', 'burger', 'notification', 'profile'],
         '/add-owner-list': ['back', 'search', 'burger', 'notification', 'profile'],
-        '/todays-dish': ['back', 'burger', 'notification', 'profile' ],
+        '/todays-dish': ['back', 'burger', 'notification', 'profile'],
         '/payment': ['back', 'search', 'burger', 'notification', 'profile']
     }
 
@@ -80,19 +79,21 @@ const Header = props => {
                                 <img src={require('../assets/images/Ellipse.png').default} className="login-icon" alt="not loaded" />
                             </Button> : null}
                         {sectionToShow.includes('profile') ?
-                            <span>
-                                <img src={require('../assets/images/login-photo.png').default} className="loginphoto" alt="not loaded" />
+                            <span className="namethumb">
+
+                                {name.slice(0, 2)} 
+                                {/* <img src={require('../assets/images/login-photo.png').default} className="loginphoto" alt="not loaded" /> */}
                             </span>
                             : null}
 
                     </div>
                 </div>
-                <div className='header-bottom'>
-                    {location.pathname === '/home' ?
+                {reqStatus == 'true' && location.pathname === '/home' ?
+                    <div className='header-bottom'>
                         <div className='grocey-sec'>
                             <div className='left'>
                                 <h1>{'Hi ' + name}</h1>
-                                <p>{cookName} requested for stock refill</p> 
+                                <p>{cookName + '  requested for stock refill'}</p>
                                 <Button color="inherit" onClick={() => props.history.push('/stock-refill?userType=OWNER')}>
                                     Approve Order
                                 </Button>
@@ -100,8 +101,9 @@ const Header = props => {
                             <div className='right'>
                                 <img src={require('../assets/images/groceyrightimg.svg').default} />
                             </div>
-                        </div> : null}
-                </div>
+                        </div>
+                    </div>
+                    : null}
             </div>
             : null
     )

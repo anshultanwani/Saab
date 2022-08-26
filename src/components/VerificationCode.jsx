@@ -43,13 +43,18 @@ const VerificationCode = props => {
                     ...res.data.data
                 })
                 if(res.data.data.onboarded) {
-                    console.log("use is registered")
+                    console.log("use is registered"+ res.data.data)
                     setCookie('isLoggedIn',true,30);
                     setCookie('userId',res.data.data._id,30)
+                    //setCookie('cookName', JSON.stringify(res.data.data.services.cook.name) , 30)
+
+                    setCookie('cookName', res.data.data.services.cook.name , 30)
                     if(userType == "OWNER"){
+                        setCookie('userType', "OWNER");
                         history.push('/home');
                     }
                     if(userType == "COOK"){
+                        setCookie('userType', "COOK");
                         history.push('/select-owner?userType='+"COOK");
                     }
                    

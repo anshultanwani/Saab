@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './stockrefill-button.scss';
 import { Button } from '@mui/material';
-import { getCookie } from '../utils';
+import { getCookie, setCookie } from '../utils';
 import { useEffect } from 'react';
 import axios from 'axios';
 import FeedbackRequest from '../common/FeedbackRequest';
@@ -32,6 +32,7 @@ const StockRefillButton = props => {
         props.cartList.map((cur)=>{
             dataToSend[cur.category == "veggies" ? "veg" : cur.category].push(cur)
         })
+        let Status = "REQUESTED"
         // history.push('/stock-refill?userType='+"OWNER");
             axios({
                 method: 'post',
@@ -49,6 +50,11 @@ const StockRefillButton = props => {
                 if (res.status === 200) {
                     console.log(res)
                     console.log(res.data.data)
+                    if(Status == "REQUESTED"){
+                     setCookie('reqStatus form cook', true, 30);
+                    }
+
+                  
                 }
             }).catch(err => {
                 console.log(err)

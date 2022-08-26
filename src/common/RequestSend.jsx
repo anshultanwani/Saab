@@ -2,9 +2,11 @@ import React from "react";
 import Button from '@mui/material/Button';
 import './complete-address.scss';
 import Modal from '@mui/material/Modal';
+import { getCookie } from '../utils';
 
 
 const RequestSend = (props) => {
+  let customerName = getCookie('customerName');
   return (
     <>
       <Modal
@@ -16,7 +18,7 @@ const RequestSend = (props) => {
         <div className="popupsec">
           <img src={require('../assets/images/' + "cart.svg").default} alt="not loaded" />
           <p>Request Sent Succeefully to Customer</p>
-          <p>Request Sent to !</p>
+          <p>Request Sent to {customerName}</p>
           <Button variant="contained" onClose={props.onClose}>OKAY!</Button>
         </div>
       </Modal>
