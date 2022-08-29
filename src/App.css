@@ -5,15 +5,16 @@
 
 
 .App .container {
-  padding: 0 15px;
+  padding: 0 20px;
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 
-body{
+body {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -40,9 +41,11 @@ body{
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(10px);
   }
+
   100% {
     transform: translateY(0px);
   }

@@ -1,23 +1,23 @@
 .main-holder {
-    margin: 15px 0 30px;
+    margin: 15px 0 33px;
 
     .title-holder {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
         align-items: center;
 
         .title {
             color: #3A423C;
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             margin-bottom: 0px;
         }
 
         .plan-title {
             cursor: pointer;
             color: #E3655B;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
             text-transform: uppercase;
         }
@@ -27,6 +27,7 @@
         display: flex;
         justify-content: space-between;
         overflow-x: scroll;
+        padding-left: 7px;
 
         .card {
             margin-right: 15px;
@@ -34,6 +35,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            text-align: center;
 
             &:last-child {
                 margin-right: unset;
@@ -43,19 +45,27 @@
                 background: #AC6ABE;
                 margin-top: 10px;
                 text-transform: uppercase;
+                width: 99px;
+                height: 32px;
+                border-radius: 6px;
+                font-size: 11px;
+                font-weight: 600;
             }
         }
 
         .img-holder {
             margin-bottom: 10px;
             box-shadow: 0px 0px 9px rgb(177 199 206 / 80%);
-            border-radius: 7px;
-            height: 22vw;
+            border-radius: 5px;
+            height: 90px;
             display: grid;
-            grid-template-rows: 48%;
-            grid-template-columns: 50% 46%;
-            padding: 4px 0px 0px 5px;
+            grid-template-rows: 50%;
+            grid-template-columns: 52% 53%;
+            padding: 5px 3px 0px 5px;
             position: relative;
+            background-color: #fff;
+            width: 16.5vh;
+            width: 101px;
         }
 
         .cat-holder {
@@ -66,22 +76,34 @@
             font-weight: 500;
             color: #414141;
 
+            .category {
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 14px;
+                color: #414141;
+            }
+
             .edit-meal {
                 opacity: 0.4;
             }
         }
 
         .dish {
-            color: #54575B;
+            color: #414141;
             font-size: 12px;
             text-overflow: ellipsis;
             font-weight: 400;
+            opacity: 0.8;
+            padding: 6px 0 3px;
+            text-align: left;
         }
     }
 }
 
 .img-holder img.dish-img {
+    // border-radius: 7px;
     border-radius: 7px;
+    box-shadow: 6px 6px 6px -9px #000;
 }
 
 .edit-meal {
@@ -91,4 +113,8 @@
     padding: 5px 6px 4px 7px;
     box-shadow: 0px 0px 4px rgb(177 199 206 / 80%);
     border-radius: 4px;
+    width: 27px;
+    height: 27px;
+    text-align: center;
+    box-sizing: border-box;
 }

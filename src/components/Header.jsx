@@ -74,7 +74,7 @@ const Header = props => {
                             <span><SearchIcon /></span>
                             : null}
                         {sectionToShow.includes('notification') ?
-                            <Button color="inherit" onClick={() => props.history.push('/login')} className="headerbtn">
+                            <Button color="inherit" className="headerbtn">
                                 <img src={require('../assets/images/Vector.png').default} alt="not loaded" />
                                 <img src={require('../assets/images/Ellipse.png').default} className="login-icon" alt="not loaded" />
                             </Button> : null}
@@ -92,7 +92,7 @@ const Header = props => {
                     <div className='header-bottom'>
                         <div className='grocey-sec'>
                             <div className='left'>
-                                <h1>{'Hi ' + name}</h1>
+                                <h1>{'Hi ' + name + "!"}</h1>
                                 <p>{cookName + '  requested for stock refill'}</p>
                                 <Button color="inherit" onClick={() => props.history.push('/stock-refill?userType=OWNER')}>
                                     Approve Order

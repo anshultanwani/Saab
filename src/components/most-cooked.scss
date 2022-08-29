@@ -12,13 +12,14 @@
             align-items: center;
             justify-content: space-between;
             min-width: 32px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             color: #151615;
 
             .arrow-icon {
                 position: relative;
                 top: -4px;
+                color: #E3655B;
             }
         }
     }
@@ -37,7 +38,7 @@
         }
 
         &.hide {
-            max-height: 367px;
+            max-height: 385px;
         }
 
         .single-dish {
