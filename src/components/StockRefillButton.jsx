@@ -22,7 +22,7 @@ const StockRefillButton = props => {
     console.log("curview"+curView)
     const history = useHistory();
     let customerId = getCookie('customerId');
-    console.log("customerid" + customerId)
+    console.log("customerid in stockrefill cook" + customerId)
     const [showModal, toggleModal] = useState(false)
    
     const handleStock = () =>{
@@ -51,9 +51,9 @@ const StockRefillButton = props => {
                     console.log(res)
                     console.log(res.data.data)
                     if(Status == "REQUESTED"){
-                     setCookie('reqStatus form cook', true, 30);
+                        setCookie('reqStatus', true, 30);
+                        console.log(getCookie('reqStatus'))
                     }
-
                   
                 }
             }).catch(err => {

@@ -11,12 +11,13 @@ import { useHistory, useLocation } from 'react-router-dom';
 const SelectAddress = (props) => {
     const history = useHistory();
 
-    const changeAddress = () =>{
-        toggleSliderDrawer({
-            selectaddress: false
-        })
-        history.push('/add-address')
-    }
+    // const changeAddress = () =>{
+    //     toggleSliderDrawer({
+    //     selectaddress: false
+    //       //  completeAddress: true
+    //     })
+    //     // history.push('/add-address')
+    // }
     const content = (
 
         <div className="addresslist">
@@ -24,7 +25,11 @@ const SelectAddress = (props) => {
                 <Button
                     variant='text'
                     className='enable-btn'
-                    onClick={changeAddress}
+                    onClick={() => props.toggleSliderDrawer({
+                        selectaddress: false ,
+                        completeAddress: true
+                    })}
+                    // onClick={changeAddress}
                     children={(
                         <div className='btn-content'>
                             + ADD ADDRSS

@@ -24,7 +24,7 @@ const StockRefill = props => {
         // stockCat,
         toggleSliderDrawer
     } = props;
-    // let userId = getCookie('userId');
+   
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
     console.log(userType)
@@ -66,18 +66,28 @@ const StockRefill = props => {
             .catch((err) => {
                 console.log(err);
             })
-
-        if(userType === "OWNER"){
-            axios.get(window.apiDomain + "/v1/orders?userId="+customerId+"&status="+"REQUESTED")
+        console.log("usertype for get all order api"+userType)
+        if(userType == "OWNER"){
+             let userId = getCookie('userId');
+            console.log("get Owner order"+userId)
+            axios.get(window.apiDomain + "/v1/orders?userId="+userId)
             .then((res) => {
                 if (res.status === 200) {
-                    console.log(res.data.data);
-                    // updatestockCat(res.data.data)
+                    console.log("cook request for data==="+ JSON.stringify(res.data.data));
+                    console.log("cook request for data"+ res.data.data[0].status)
+                    console.log("cook request for data"+ res.data.data[0]._id)
+                    console.log("cook request for data items"+ JSON.stringify(res.data.data[0].items));
+                    props.updateCart(res.data.data[0].items.veg)
+                    props.updateCart(res.data.data[0].items.fruits)
+                    // props.updateCart(res.data.data[0].items.grocery)
                 }
             })
             .catch((err) => {
                 console.log(err);
             })  
+        }
+        else{
+            console.log("cartlist empty")
         }
     }, [])
 

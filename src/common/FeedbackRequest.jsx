@@ -14,7 +14,7 @@ const FeedbackRequest = (props) => {
         aria-describedby="modal-modal-description"
       >
         <div className="popupsec">
-          <img src={require('../assets/images/' + "cart.svg").default} alt="not loaded" />
+          <img src={require('../assets/images/' + "success.png").default} alt="not loaded" />
           <p>Request Sent Succeefully</p>
           <p>Request Sent to !</p>
           <Button variant="contained" onClose={props.onClose}>OKAY!</Button>

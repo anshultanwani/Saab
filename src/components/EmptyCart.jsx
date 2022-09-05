@@ -3,11 +3,12 @@ import { Button } from '@mui/material';
 import './emptycart.scss';
 import CartSuggetionList from "./CartSuggetionList";
 import './stock-row.scss';
-
+import { Tab, Tabs } from "@mui/material";
 const EmptyCart = (props) => {
     const {
         btnTxt = "START SHOPPING"
     } = props;
+    // const [currentView, updateView] = useState('cart');
     return (
         <div className="empty-cart-outer">
             <div className="empty-art">
@@ -21,6 +22,10 @@ const EmptyCart = (props) => {
                         <Button
                             variant='contained'
                             className='emptycart-btn'
+                            onClick={(e) => {
+                              console.log("harsha")
+                                // updateView('cart');
+                            }}
                             children={(
                                 <div className='btn-content'>
                                     {btnTxt}

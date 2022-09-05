@@ -45,9 +45,9 @@ const SideMenu = props => {
 
     const menu = [
         {
-            icon: HomeIcon,
-            label: 'Home',
-            path: '/home'
+            icon: AboutIcon,
+            label: 'Grocery History',
+            path: '/grocery-history'
         },
         {
             icon: PreferIcon,
@@ -56,24 +56,16 @@ const SideMenu = props => {
         },
         {
             icon: HistoryIcon,
-            label: 'History',
+            label: 'Meal History',
             path: '/history'
         },
         {
             icon: PaymentIcon,
             label: 'Payment',
             path: '/home'
-        },
-        {
-            icon: AboutIcon,
-            label: 'About Us',
-            path: '/home'
-        },
-        {
-            icon: SettingIcon,
-            label: 'Settings',
-            path: '/home'
         }
+       
+       
     ]
 
     const getProfiles = () => {

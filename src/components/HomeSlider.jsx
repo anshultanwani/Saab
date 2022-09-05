@@ -3,21 +3,29 @@ import Slider from "react-slick";
 import { connect } from 'react-redux';
 import './home-slider.scss';
 import { Button } from '@mui/material';
-
+import { getCookie } from '../utils';
 const HomeSlider = (props) => {
   const settings = {
     dots: true,
     infinite: true,
     slidesToShow: 1,
-  //  autoplay: true,
-  //  autoplaySpeed: 1500,
+    //  autoplay: true,
+    //  autoplaySpeed: 1500,
     slidesToScroll: 1
   };
-   //  let reqStatus = getCookie('reqStatus');
-   let reqStatus = "true";
-   console.log(reqStatus)
+  let reqStatus;
+  console.log("re"+reqStatus)
+  if (!getCookie('reqStatus')) {
+    reqStatus = "false"
+    console.log("cook req value from session" + reqStatus)
+  }
+  else {
+    reqStatus = getCookie('reqStatus');
+    console.log("cook req from cookie" + reqStatus)
+  }
+
   return (
-    <div className={"homeslider  " + (reqStatus == 'true' ? 'cook-request' : null)}>
+    <div className={"homeslider  " + (reqStatus == 'true' ? 'cook-request' : "cook-req-null")}>
       <Slider {...settings}>
         {
           props.homesliderimages.map((image, index) => {

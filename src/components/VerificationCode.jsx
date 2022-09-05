@@ -48,7 +48,7 @@ const VerificationCode = props => {
                     setCookie('userId',res.data.data._id,30)
                     //setCookie('cookName', JSON.stringify(res.data.data.services.cook.name) , 30)
 
-                    setCookie('cookName', res.data.data.services.cook.name , 30)
+                    // setCookie('cookName', res.data.data.services.cook.name , 30)
                     if(userType == "OWNER"){
                         setCookie('userType', "OWNER");
                         history.push('/home');

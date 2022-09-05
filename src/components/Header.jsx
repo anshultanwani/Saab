@@ -7,7 +7,6 @@ import { ReactComponent as SearchIcon } from '../assets/images/search.svg';
 import { connect } from 'react-redux';
 import { toggleSliderDrawer } from '../actions';
 import { getCookie } from '../utils';
-
 const Header = props => {
     const {
         name
@@ -16,8 +15,17 @@ const Header = props => {
     let cookName = getCookie('cookName');
 
     console.log("cookName in  header" + cookName)
-    let reqStatus = getCookie('reqStatus');
-    console.log(reqStatus)
+    let reqStatus;
+    console.log("re"+reqStatus)
+    if (!getCookie('reqStatus')) {
+        reqStatus = "false"
+        console.log("cook req value from session" + reqStatus)
+    }
+    else {
+        reqStatus = getCookie('reqStatus');
+        console.log("cook req from cookie" + reqStatus)
+    }
+
     let customerName = getCookie('customerName');
     console.log(customerName)
     const location = useLocation();
@@ -25,16 +33,19 @@ const Header = props => {
     const history = useHistory();
     const [sectionToShow, updateSection] = useState([]);
     let showSection = {
-        '/home': ['burger', 'notification', 'profile'],
-        '/stock-refill': ['back', 'search', 'notification', 'profile'],
-        '/add-address': ['back', 'burger', 'search', 'notification', 'profile'],
-        '/addedit-combo': ['back', 'search', 'burger', 'notification', 'profile'],
-        '/my-prefrences': ['back', 'search', 'burger', 'notification', 'profile'],
-        '/history': ['back', 'search', 'burger', 'notification', 'profile'],
-        '/select-owner': ['back', 'search', 'burger', 'notification', 'profile'],
-        '/add-owner-list': ['back', 'search', 'burger', 'notification', 'profile'],
-        '/todays-dish': ['back', 'burger', 'notification', 'profile'],
-        '/payment': ['back', 'search', 'burger', 'notification', 'profile']
+        // '/home': ['burger', 'notification', 'profile'],
+        '/home': ['burger' , 'search'],
+        // '/stock-refill': ['back', 'search', 'notification', 'profile'],
+        '/stock-refill': ['back', 'search'],
+        '/add-address': ['back', 'search'],
+        '/addedit-combo': ['back', 'search'],
+        '/my-prefrences': ['back', 'search'],
+        '/history': ['back', 'search'],
+        '/select-owner': ['back', 'search'],
+        '/add-owner-list': ['back', 'search'],
+        '/todays-dish': ['back' , 'search'],
+        '/grocery-history': ['back', 'search'],
+        '/payment': ['back', 'search']
     }
 
     useEffect(() => {
@@ -47,7 +58,7 @@ const Header = props => {
     }, [location.pathname])
 
     const headings = {
-        '/home': 'Home',
+        '/home': '',
         '/stock-refill': 'STOCK REFILL',
         '/add-address': 'Choose Address',
         '/my-prefrences': 'My Preferences',
@@ -55,6 +66,7 @@ const Header = props => {
         '/select-owner': 'Select Customer',
         '/add-owner-list': 'Add Customer',
         '/payment': 'Payment',
+        '/grocery-history': "Your Past Orders",
         '/todays-dish': "Today Dish"
     }
 
@@ -81,8 +93,14 @@ const Header = props => {
                         {sectionToShow.includes('profile') ?
                             <span className="namethumb">
 
-                                {name.slice(0, 2)} 
+                                {name.slice(0, 2)}
                                 {/* <img src={require('../assets/images/login-photo.png').default} className="loginphoto" alt="not loaded" /> */}
+                            </span>
+                            : null}
+                        {sectionToShow.includes('logo') ?
+                            <span className="namethumb">
+                              
+                            <img src={require('../assets/images/logo.png').default} className="loginphoto" alt="not loaded" /> 
                             </span>
                             : null}
 
@@ -100,6 +118,7 @@ const Header = props => {
                             </div>
                             <div className='right'>
                                 <img src={require('../assets/images/groceyrightimg.svg').default} />
+
                             </div>
                         </div>
                     </div>

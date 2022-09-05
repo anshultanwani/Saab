@@ -10,7 +10,7 @@ const MostCooked = props => {
         mostCooked
     } = props;
 
-    const [showAll,toggleAll] = useState(false);
+    const [showAll,toggleAll] = useState(true);
     const dish = mostCooked.map((cur,index) => {
         return (
             <div className='single-dish' key={index} >
