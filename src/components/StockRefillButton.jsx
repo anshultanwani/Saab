@@ -25,6 +25,9 @@ const StockRefillButton = props => {
     console.log("customerid in stockrefill cook" + customerId)
     const [showModal, toggleModal] = useState(false)
    
+
+   
+
     const handleStock = () =>{
         console.log("harsha");
         toggleModal(true)

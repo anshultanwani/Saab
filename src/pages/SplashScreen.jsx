@@ -12,9 +12,9 @@ const SplashScreen = props => {
             <div className='welcome splash'></div>
             <div className='text-holder'>
                 <div className='text'>
-                    SAAB
+                   YOME!!!
                 </div>
-                <div className='loading'>You 're about to Enter New Era</div>
+                <div className='loading'>Your Meal Taste</div>
             </div>
         </div>
     )

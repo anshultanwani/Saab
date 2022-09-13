@@ -47,7 +47,7 @@ const SideMenu = props => {
         {
             icon: AboutIcon,
             label: 'Grocery History',
-            path: '/grocery-history'
+            path: '/grocery-history?userType=OWNER' 
         },
         {
             icon: PreferIcon,

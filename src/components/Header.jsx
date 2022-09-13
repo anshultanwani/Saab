@@ -66,7 +66,7 @@ const Header = props => {
         '/select-owner': 'Select Customer',
         '/add-owner-list': 'Add Customer',
         '/payment': 'Payment',
-        '/grocery-history': "Your Past Orders",
+        '/grocery-history': "Grocery History",
         '/todays-dish': "Today Dish"
     }
 

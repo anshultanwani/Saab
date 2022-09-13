@@ -14,7 +14,7 @@ import { updateCart, toggleSliderDrawer } from '../actions';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import EmptyCart from '../components/EmptyCart';
-import { getCookie } from '../utils';
+import { getCookie, setCookie } from '../utils';
 import axios from 'axios';
 const StockRefill = props => {
     const {
@@ -76,6 +76,8 @@ const StockRefill = props => {
                     console.log("cook request for data==="+ JSON.stringify(res.data.data));
                     console.log("cook request for data"+ res.data.data[0].status)
                     console.log("cook request for data"+ res.data.data[0]._id)
+                    setCookie('orderId', res.data.data._id);
+                    console.log(getCookie('orderId'))
                     console.log("cook request for data items"+ JSON.stringify(res.data.data[0].items));
                     props.updateCart(res.data.data[0].items.veg)
                     props.updateCart(res.data.data[0].items.fruits)
@@ -257,7 +259,32 @@ const StockRefill = props => {
     const fixedBtn = (curView) => {
         const clickHandler = () => {
             curView != 'cart' && updateView('cart');
-
+            if(curView == 'cart'){
+                console.log("proceed to pay clicked");
+                let userId = getCookie('userId');
+                console.log("get Owner order"+userId)
+                axios({
+                    method: 'put',
+                    url: window.apiDomain + 'v1/orders/approve/status',
+                    data: {
+                        "userId": userId,
+                        "status": "REQUESTED",
+                        "updatedBy": "OWNER",
+                        "orderId": "62cd5fa06d9030435726afcd"
+                    
+                    }
+                }).then(res => {
+                    console.log(res.status)
+                    if (res.status === 200) {
+                        console.log(res)
+                        console.log(res.data.data)
+                       
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+           
         }
 
         return (
