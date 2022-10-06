@@ -4,17 +4,19 @@ import './complete-address.scss';
 import Modal from '@mui/material/Modal';
 import { useHistory } from "react-router-dom";
 import { toggleSliderDrawer } from '../actions/index';
+import { connect } from 'react-redux';
 const AddressUpdate = (props) => {
   const history = useHistory();
   const handleClose = () => {
     console.log("clied")
     history.push('/stock-refill?userType=' + "OWNER")
     let close = props.onClose;
-    toggleSliderDrawer({
+    props.toggleSliderDrawer({
       completeAddress: false
     })
     console.log(close())
 
+    
   }
   return (
     <>
@@ -40,7 +42,7 @@ const AddressUpdate = (props) => {
   )
 };
 
+ 
 
 
-
-export default AddressUpdate;
+export default connect(null,{toggleSliderDrawer})(AddressUpdate);

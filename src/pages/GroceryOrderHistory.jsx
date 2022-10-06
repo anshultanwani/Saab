@@ -7,65 +7,102 @@ import './grocery-history.scss';
 import { setCookie } from '../utils';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+import { useEffect } from 'react';
+
 
 const GroceryOrderHistory = props => {
+   
+   
+    const {
+        deliveryCharges,
+        highDemandCharges
+    } = props
+
+    const [cartTotal, updateTotal] = useState('');
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
     console.log("gorceryhistory" + userType)
-    const [orderList, updateOrderList] = useState([])
-    const [dp, setDp] = useState(false);
-    if (userType == "OWNER") {
-        let userId = getCookie('userId');
-        console.log("get Owner order" + userId)
+    const [orderList, updateOrderLIst] = useState([])
+    const [orderStatus, updateOrderStatus] = useState('');
+    const [dp,setDp] = useState();
+    let userId = getCookie('userId');
+    console.log("get Owner order" + userId)
+    useEffect(() => {
         axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
             .then((res) => {
-                console.log("groceydata" + JSON.stringify(res.data.data))
-
-                if (res.status === 200) {
-                    if (res.data.data[0].items.length > 0) {
-                        console.log("cook request for data items" + JSON.stringify(res.data.data[0].items));
-                        updateOrderList(res.data.data)
-                    }
-                }
+                console.log(res)
+                console.log("values" + res.data.data[0])
+                //updateOrderLIst(res.data.data[0].items);
+                let items = [];
+                Object.keys(res.data.data[0].items).map((cur) => {
+                    items = [...items, ...res.data.data[0].items[cur]]
+                })
+                updateOrderLIst(items)
+                updateOrderStatus(res.data.data[0].status)
             })
             .catch((err) => {
                 console.log(err);
             })
+
+    }, [])
+
+    const BillingSection = props => {
+        const {
+            data
+        } = props;
+        let mrp = 0;
+        let discount = 0;
+        let total = 0;
+        let cartVal = 0
+        orderList.map(cur => {
+            mrp += cur.quantity * cur.originalPrice;
+            discount += cur.quantity * cur.DiscountedPrice
+            total += cur.quantity * cur.originalPrice;
+        })
+        cartVal = total + highDemandCharges + deliveryCharges;
+        //cartVal = total + 50 + 60;
+        updateTotal(cartVal)
+        return (
+            <div className='billing-holder'>
+                <label className='heading'>Paid Amount</label>
+              
+                     <div className='value total'>
+                        <span>₹</span>{cartVal}
+                        </div>
+            </div>
+        )
     }
-    else {
-        console.log("cartlist empty")
-    }
+  
     return (
-        <div className='grocey-history'>
-            <div className='border-card'>
-                <div className='inner'>
-                    <div className='title'>Your Past Orders</div>
-                    <div className='grocery-list'>
-                        <div className='orderhistory-sec-top'>
-                            <div className='left'>
-                                <p>
-                                    <span>
-                                        <img src={require('../assets/images/grocey-icon1.png').default} alt="not loaded" />
-
-                                    </span>
-                                    <span>
-                                        Grocery
-
-                                    </span>
-                                </p>
-                                {/* <p>
+        <>
+            <div className='grocey-history'>
+                <div className='border-card'>
+                    <div className='inner'>
+                        <div className='title'>Your Past Orders</div>
+                        <div className='grocery-list'>
+                            <div className='orderhistory-sec-top'>
+                                <div className='left'>
+                                    <p>
+                                        <span>
+                                            <img src={require('../assets/images/grocey-icon1.png').default} alt="not loaded" />
+                                        </span>
+                                        <span>
+                                            Grocery
+                                        </span>
+                                    </p>
+                                    {/* <p>
                                     <span>
                                         <img src={require('../assets/images/house-icon.jpg').default} alt="not loaded" />
                                     </span>
                                     <span>Home</span></p> */}
+                                </div>
+                                <div className='right'>
+                                    <span>Help: 8884221487</span>
+                                    <span>12 May 2022</span>
+                                </div>
                             </div>
-                            <div className='right'>
-                                <span>Help: 8884221487</span>
-                                <span>12 May 2022</span>
-                            </div>
-
-                        </div>
-                        <div className='ordrhistory-sec-mid'>
+                           
+                            <div className='ordrhistory-sec-mid'>
                             <div className='left'>
                                 <div className='grocery'>
                                     <p className='list-items'>
@@ -79,137 +116,50 @@ const GroceryOrderHistory = props => {
 
                                             </button>
                                         </span>
-
-
-
                                     </p>
-                                    {/* {orderList.length} */}
-                                    {
-                                        // orderList.length >= 1 ?
-                                        orderList.map((data) => (
-                                            <div>
-                                                {data.items}
-                                                {/* {data.items.fruits[0].name} */}
-                                                {/* {data.items.grocery[0].name} */}
-
-                                            </div>
-                                        ))
-                                        //  : null
-                                    }
-                                    {dp && <div>
+                                    
+                                    {dp && <div className='gro-sec'>
                                         <ul>
-                                            <li>
-                                                Onion, Chilli,  Potato , Tomato ,  egg ,  bread ,  ginger,
-                                                Papaya, Bread, Egg
-                                            </li>
-                                        </ul>
+                                        {
+                                            orderList.map((cur) => {
+                                                return (
+                                                    <li>
+                                                        {cur.name}
+                                                    </li>
+                                                )
+                                            })
+                                        }
+                                    </ul>
                                     </div>}
 
 
                                 </div>
 
                             </div>
-                            <div className='billing-amount'>Paid: 500 ₹</div>
+                         
+                            <div className='billing-amount'>
+                                         
+                                        <BillingSection/>
+                              </div>
                         </div>
-
-                        <div className='ordrhistory-sec-btm'>
-                            <span>
-                                Delivered
-                            </span>
-                        </div>
-
-                    </div>
-                    <div className='grocery-list'>
-                        <div className='orderhistory-sec-top'>
-                            <div className='left'>
-                                <p>
-                                    <span>
-                                        <img src={require('../assets/images/grocey-icon1.png').default} alt="not loaded" />
-
-                                    </span>
-                                    <span>
-                                        Grocery
-
-                                    </span>
-                                </p>
-                                {/* <p>
-                                    <span>
-                                        <img src={require('../assets/images/house-icon.jpg').default} alt="not loaded" />
-                                    </span>
-                                    <span>Home</span></p> */}
+                            <div className='ordrhistory-sec-btm'>
+                                <span>
+                                    {orderStatus}
+                                </span>
                             </div>
-                            <div className='right'>
-                                <span>Help: 8884221487</span>
-                                <span>12 May 2022</span>
-                            </div>
-
                         </div>
-                        <div className='ordrhistory-sec-mid'>
-                            <div className='left'>
-                                <div className='grocery'>
-                                    <p className='list-items'>
-                                        <span>List Items</span>
-                                        <span>
-                                            <button
-                                                type="button"
-                                                onClick={() => setDp(!dp)}
-                                            >
-                                                <img src={require('../assets/images/arrrow-up.png').default} alt="not loaded" />
-
-                                            </button>
-                                        </span>
-
-
-
-                                    </p>
-                                    {/* {orderList.length} */}
-                                    {
-                                        // orderList.length >= 1 ?
-                                        orderList.map((data) => (
-                                            <div>
-                                                {data.items}
-                                                {/* {data.items.fruits[0].name} */}
-                                                {/* {data.items.grocery[0].name} */}
-
-                                            </div>
-                                        ))
-                                        //  : null
-                                    }
-                                    {dp && <div>
-                                        <ul>
-
-                                            <li>
-                                                Onion, Chilli,  Potato , Tomato ,  egg ,  bread ,  ginger
-                                                Sugar, Chilli,  Gaggery ,
-
-                                            </li>
-
-                                        </ul>
-                                    </div>}
-
-
-                                </div>
-
-                            </div>
-                            <div className='billing-amount'>Paid: 300 ₹</div>
-                        </div>
-
-                        <div className='ordrhistory-sec-btm'>
-                            <span>
-                                Completed
-                            </span>
-                        </div>
-
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 };
 
 const mapStateToProps = state => {
     return {
-        session: state.session
+        session: state.session,
+        deliveryCharges: state.cart.deliveryCharges,
+        highDemandCharges: state.cart.highDemandCharges
     }
 }
 

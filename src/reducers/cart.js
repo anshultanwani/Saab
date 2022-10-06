@@ -9,7 +9,7 @@ const initialState = {
     ],
     deliveryCharges: 60,
     highDemandCharges: 50,
-    
+    orderStatus:"",
     stockCat: {
         "fruits":
         {
@@ -117,6 +117,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 cartList: [...action.payload]
+            }
+        }
+        case 'UPDATE_ORDER_STATUS': {
+            return {
+                ...state,
+                orderStatus: [...action.payload]
             }
         }
         default: {

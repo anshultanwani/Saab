@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState } from "react";
 import { Button } from '@mui/material';
 import './emptycart.scss';
 import CartSuggetionList from "./CartSuggetionList";
@@ -6,9 +6,12 @@ import './stock-row.scss';
 import { Tab, Tabs } from "@mui/material";
 const EmptyCart = (props) => {
     const {
-        btnTxt = "START SHOPPING"
+        btnTxt = "START SHOPPING" , 
+        list , 
+        curView,
+        curTab
     } = props;
-    // const [currentView, updateView] = useState('cart');
+    const [currentView, updateView] = useState('fruits');
     return (
         <div className="empty-cart-outer">
             <div className="empty-art">
@@ -23,8 +26,9 @@ const EmptyCart = (props) => {
                             variant='contained'
                             className='emptycart-btn'
                             onClick={(e) => {
-                              console.log("harsha")
-                                // updateView('cart');
+                              console.log(props.list)
+                              console.log(props.curTab)
+                            updateView('fruits');
                             }}
                             children={(
                                 <div className='btn-content'>

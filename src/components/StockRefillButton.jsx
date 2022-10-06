@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import FeedbackRequest from '../common/FeedbackRequest';
 import { useHistory, useLocation } from 'react-router-dom';
+import { updateCart, toggleSliderDrawer } from '../actions';
 import RequestSend from '../common/RequestSend';
 import { connect } from 'react-redux';
-
 const StockRefillButton = props => {
     const {
         btnTxt = 'PROCEED TO PAY',
@@ -35,8 +35,18 @@ const StockRefillButton = props => {
         props.cartList.map((cur)=>{
             dataToSend[cur.category == "veggies" ? "veg" : cur.category].push(cur)
         })
-        let Status = "REQUESTED"
+        let status
         // history.push('/stock-refill?userType='+"OWNER");
+        console.log("create api" +
+            JSON.stringify({
+                items:{
+                    ...dataToSend
+                },
+                userId: customerId,
+                status: "REQUESTED",
+                createdBy: "COOK"
+            })
+        )
             axios({
                 method: 'post',
                 url: window.apiDomain + '/v1/orders',
@@ -45,17 +55,21 @@ const StockRefillButton = props => {
                         ...dataToSend
                     },
                     userId: customerId,
-                    Status: "REQUESTED",
+                    status: "REQUESTED",
                     createdBy: "COOK"
                 }
             }).then(res => {
                 console.log(res.status)
                 if (res.status === 200) {
                     console.log(res)
-                    console.log(res.data.data)
-                    if(Status == "REQUESTED"){
-                        setCookie('reqStatus', true, 30);
-                        console.log(getCookie('reqStatus'))
+                  //  props.updateCart([]);
+                    console.log("create order api" + JSON.stringify(res.data.data))
+                    if(status == "REQUESTED"){
+                        props.setrequeststate({
+                            reqStatus: true 
+                        })
+                    setCookie('reqStatus', true, 30);
+                       // console.log(getCookie('reqStatus'))
                     }
                   
                 }
@@ -115,4 +129,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(StockRefillButton);
+export default connect(mapStateToProps , { updateCart, toggleSliderDrawer })(StockRefillButton);

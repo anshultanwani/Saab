@@ -13,6 +13,11 @@ export const toggleSliderDrawer = payload => ({
     payload
 })
 
+export const updateOrderStatus = payload => ({
+    type: 'UPDATE_ORDER_STATUS',
+    payload
+})
+
 export const setSession = payload => ({
     type: 'SET_SESSION',
     payload

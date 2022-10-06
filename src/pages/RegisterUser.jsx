@@ -21,10 +21,12 @@ const RegisterUser = props => {
         cook: false,
         maid: false
     })
+   // const [addressArray , updateAddressArray] = useState([])
     const [data, updateData] = useState({
         name: "",
         email: "",
         phone: '',
+        addressArray:[],
         address: {
             houseNo: '',
             floor: "",
@@ -58,7 +60,12 @@ const RegisterUser = props => {
     const findAndUpdate = (dataObj, value, parentKey, key) => {
         for (var cur in dataObj) {
             if (typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
+                console.log("data object inside=====" + JSON.stringify(dataObj[cur]));
                 findAndUpdate(dataObj[cur], value, parentKey.split('.').length > 1 ? parentKey.split('.')[1] : '', key);
+                data.addressArray.push(JSON.stringify(dataObj[cur]));
+               
+                    console.log(data.addressArray)
+            
             } else if (cur === key && !parentKey) {
                 dataObj[cur] = value;
             }
@@ -70,7 +77,7 @@ const RegisterUser = props => {
             console.log("owner data" + JSON.stringify({ ...data }))
             newData = { ...data };
 
-            if (subNode == 'phone' || subNode === 'houseNo') {
+            if (subNode == 'phone') {
                 value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
             }
         }
@@ -109,7 +116,8 @@ const RegisterUser = props => {
                 setCookie('isLoggedIn', true, 30);
                 setCookie('userId', res.data.data._id, 30);
                 // setCookie('cookName', res.data.data.services.cook.name , 30)
-                history.replace('/home');
+                window.location.pathname('/home');
+            //    history.replace('/home');
             }
         }).catch(err => {
             console.log(err)
@@ -196,7 +204,6 @@ const RegisterUser = props => {
             </>
         )
     };
-
     return (
         <div className={'login-home signup'}>
             <div className={'upper-sec'}>

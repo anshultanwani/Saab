@@ -34,11 +34,11 @@ const Suggestions = props => {
     //     })
     // }, [])
 
-    axios.get(window.apiDomain + "/meals?type="+ "BREAKFAST")
-    .then((res)=>{
-        console.log(res)
-        console.log(res.data.data)
-    })
+    // axios.get(window.apiDomain + "/meals?type="+ "BREAKFAST")
+    // .then((res)=>{
+    //     console.log(res)
+    //     console.log(res.data.data)
+    // })
 
 
     const dishData = suggestions.map((cur,index) => {

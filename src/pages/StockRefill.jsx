@@ -10,7 +10,7 @@ import { ReactComponent as Info } from '../assets/images/info1.svg';
 import { ReactComponent as Info1 } from '../assets/images/info2.svg';
 import StockRefillHead from '../components/StockRefillHead';
 import StockRefillButton from '../components/StockRefillButton';
-import { updateCart, toggleSliderDrawer } from '../actions';
+import { updateCart, toggleSliderDrawer ,updateOrderStatus } from '../actions';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import EmptyCart from '../components/EmptyCart';
@@ -21,19 +21,22 @@ const StockRefill = props => {
         cartList,
         deliveryCharges,
         highDemandCharges,
-        // stockCat,
         toggleSliderDrawer
     } = props;
-   
+
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
     console.log(userType)
     let customerId = getCookie('customerId');
     console.log("customerid" + customerId)
-
+    let userId = getCookie('userId');
+    console.log("userId in stockrefill" + userId)
+    const history = useHistory();
     const [stockCat, updatestockCat] = useState([]);
     const [currentView, updateView] = useState('cart');
     const [cartTotal, updateTotal] = useState('');
+    const [orderStatus, updateOrderStatus] = useState('');
+    const [orderId, updateOrderId] = useState('');
     const [catSection, toggleSection] = useState({
         Veggies: {
             show: true,
@@ -66,31 +69,51 @@ const StockRefill = props => {
             .catch((err) => {
                 console.log(err);
             })
-        console.log("usertype for get all order api"+userType)
-        if(userType == "OWNER"){
-             let userId = getCookie('userId');
-            console.log("get Owner order"+userId)
-            axios.get(window.apiDomain + "/v1/orders?userId="+userId)
+        console.log("usertype for get all order api" + userType)
+        if (userType == "OWNER") {
+            let userId = getCookie('userId');
+            console.log("get Owner order" + userId)
+            axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
+                .then((res) => {
+                    if (res.status === 200) {
+                        setCookie('orderId', res.data.data._id);
+                        console.log(getCookie('orderId'))
+                        console.log("cook request for data items" + JSON.stringify(res.data.data[0].items));
+                        let items = [];
+                        Object.keys(res.data.data[0].items).map((cur) => {
+                            items = [...items, ...res.data.data[0].items[cur]]
+                        })
+                        console.log("test")
+                        props.updateCart(items)
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+        else {
+            console.log("cartlist empty")
+        }
+    }, [])
+
+    useEffect(() => {
+        axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
             .then((res) => {
-                if (res.status === 200) {
-                    console.log("cook request for data==="+ JSON.stringify(res.data.data));
-                    console.log("cook request for data"+ res.data.data[0].status)
-                    console.log("cook request for data"+ res.data.data[0]._id)
-                    setCookie('orderId', res.data.data._id);
-                    console.log(getCookie('orderId'))
-                    console.log("cook request for data items"+ JSON.stringify(res.data.data[0].items));
-                    props.updateCart(res.data.data[0].items.veg)
-                    props.updateCart(res.data.data[0].items.fruits)
-                    // props.updateCart(res.data.data[0].items.grocery)
-                }
+                console.log(res)
+                console.log("values" + res.data.data[0])
+                //updateOrderLIst(res.data.data[0].items);
+                let items = [];
+                Object.keys(res.data.data[0].items).map((cur) => {
+                    items = [...items, ...res.data.data[0].items[cur]]
+                })
+
+                updateOrderStatus(res.data.data[0].status)
+                //props.updateOrderStatus(res.data.data[0].status)
+                updateOrderId(res.data.data[0]._id)
             })
             .catch((err) => {
                 console.log(err);
-            })  
-        }
-        else{
-            console.log("cartlist empty")
-        }
+            })
     }, [])
 
 
@@ -133,13 +156,13 @@ const StockRefill = props => {
             // let curSec = stockCat[cur].displayName;
             console.log("currentsec name" + curSec)
             obj[curSec].stock = stockCat[cur].map(item => {
-                console.log("stocklist for category"+obj[curSec].stock);
-                    {item.name.toLowerCase()}
+                console.log("stocklist for category" + obj[curSec].stock);
+                { item.name.toLowerCase() }
                 let ele = obj[curSec].list.find(el => el.name.toLowerCase() === item.name.toLowerCase());
-               console.log("find elelment"+ ele)
+                console.log("find elelment" + ele)
                 return {
                     ...item,
-                           quantity: ele?.quantity ? ele?.quantity : 0
+                    quantity: ele?.quantity ? ele?.quantity : 0
                 }
             })
             console.log("object" + JSON.stringify(obj[curSec].stock));
@@ -172,7 +195,7 @@ const StockRefill = props => {
     const checkAndUpdateCart = (qty, index, item, category) => {
         let cartItems = cartList.map(cur => ({ ...cur }));
         let elIndex = cartItems.findIndex(el => el.name.toLowerCase() === item.name.toLowerCase());
-        let cat = category ? category: currentView
+        let cat = category ? category : currentView
         if (elIndex < 0 && qty > 0) {
             cartItems.push({ ...item, quantity: qty, category: cat });
         } else if (elIndex >= 0) {
@@ -186,7 +209,7 @@ const StockRefill = props => {
         props.updateCart([...cartItems]);
     }
 
-    
+
 
     useEffect(() => {
         sortList();
@@ -259,32 +282,34 @@ const StockRefill = props => {
     const fixedBtn = (curView) => {
         const clickHandler = () => {
             curView != 'cart' && updateView('cart');
-            if(curView == 'cart'){
+            if (curView == 'cart') {
                 console.log("proceed to pay clicked");
                 let userId = getCookie('userId');
-                console.log("get Owner order"+userId)
+                console.log("get Owner order" + userId)
+                console.log("get order status" + orderStatus)
                 axios({
                     method: 'put',
-                    url: window.apiDomain + 'v1/orders/approve/status',
+                    url: window.apiDomain + '/v1/orders/approve/status',
                     data: {
-                        "userId": userId,
-                        "status": "REQUESTED",
-                        "updatedBy": "OWNER",
-                        "orderId": "62cd5fa06d9030435726afcd"
-                    
+                        userId: userId,
+                        status: orderStatus,
+                        updatedBy: "OWNER",
+                        orderId: orderId
                     }
-                }).then(res => {
-                    console.log(res.status)
-                    if (res.status === 200) {
-                        console.log(res)
-                        console.log(res.data.data)
-                       
-                    }
-                }).catch(err => {
-                    console.log(err)
                 })
+                    .then(res => {
+                        if (res.status === 200) {
+                            console.log(res);
+                            console.log("cook response data" + res.data.data)
+
+                            history.push('/stock-refill?userType=OWNER');
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
             }
-           
+
         }
 
         return (
@@ -307,7 +332,7 @@ const StockRefill = props => {
                         />
                     </div>
                 </div> : null}
-                <StockRefillButton  userType={userType} curView={curView} clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART' : 'PROCEED TO PAY'} />
+                <StockRefillButton userType={userType} curView={curView} clickHandler={clickHandler} count={cartList.length} amt={cartTotal} btnTxt={curView != 'cart' ? 'VIEW CART' : 'PROCEED TO PAY'} />
             </div>
         )
     }
@@ -317,7 +342,7 @@ const StockRefill = props => {
             <div className='border-card'>
                 <StockRefillHead onTabChange={(val) => updateView(val)} curTab={['cart', 'fruits', 'veggies', 'grocery'].indexOf(currentView)} count={cartList.length} />
                 {!cartList.length && currentView === 'cart' ?
-                    <EmptyCart updateQuantity={checkAndUpdateCart} /> : <>
+                    <EmptyCart updateQuantity={checkAndUpdateCart}  curTab={['fruits'].indexOf(currentView)} count={cartList.length} /> : <>
                         {section()}
                         {!props.session.paymentAutoApproved && userType == "OWNER" ? <div className='btn-holder'>
                             <Button
@@ -332,7 +357,8 @@ const StockRefill = props => {
                                     </div>
                                 )}
                             />
-                        </div> : null}
+                        </div> : 
+                        null}
                     </>}
             </div>
             {cartList.length ?
@@ -347,8 +373,8 @@ const mapStateToProps = state => {
         cartList: state.cart.cartList,
         deliveryCharges: state.cart.deliveryCharges,
         highDemandCharges: state.cart.highDemandCharges,
-        // stockCat: state.cart.stockCat,
+        orderStatus: state.cart.orderStatus,
         session: state.session
     }
 }
-export default connect(mapStateToProps, { updateCart, toggleSliderDrawer })(withRouter(StockRefill));
+export default connect(mapStateToProps, { updateCart, toggleSliderDrawer , updateOrderStatus})(withRouter(StockRefill));

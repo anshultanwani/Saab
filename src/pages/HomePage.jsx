@@ -13,9 +13,10 @@ const Main = props => {
             <HomeSlider /> 
          <div className='home-page container'>
                 <div className="main-content">
-                    <Suggestions />
-                    <MostCooked />
-                    <MyPreferences />
+
+                    {/* <Suggestions /> */}
+                    {/* <MostCooked /> */}
+                    {/* <MyPreferences /> */}
                     <ManageVaggie />
                 </div>
             </div>

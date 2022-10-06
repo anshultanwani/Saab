@@ -16,8 +16,8 @@
 	animation-name: rotatepos;
 	animation-duration: 2s;
 	animation-iteration-count: infinite;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
 }
 .inside1{
 	display: flex;
@@ -35,13 +35,13 @@
 	animation-iteration-count: infinite;
 }
 
-.inside1 span{
-	// animation-name: rotatepos;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-	font-family: monospace;
-	// color: dodgerblue;
-}
+// .inside1 span{
+// 	// animation-name: rotatepos;
+// 	//animation-duration: 2s;
+// 	//animation-iteration-count: infinite;
+// 	font-family: monospace;
+// 	// color: dodgerblue;
+// }
 // @keyframes rotatepos{
 // 	0%{}
 // 	50%{transform: rotate(360deg)}

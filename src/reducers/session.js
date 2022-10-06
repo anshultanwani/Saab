@@ -1,7 +1,7 @@
 const initialState = {
     loggedUser: {},
     isLoggedIn: false,
-    showFeedback: true ,
+    showFeedback: true,
     reqStatus: false
 }
 
@@ -17,6 +17,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 showFeedback: action.payload.show
+            }
+        }
+        case 'SET_REQUEST_STATE': {
+            return {
+                ...state,
+                reqStatus: action.payload.value
             }
         }
         default: {

@@ -53,17 +53,7 @@ function App(props) {
         })
     }
   }
-//   useEffect(() => {
-//     let userId = getCookie('userId');
-//     axios.get(window.apiDomain + '/v1/users/' +userId).then(res => {
-//         if (res.status === 200) {
-//             console.log(res.data.data)
-//         }
-//     }).catch(err => {
-//         console.log(err)
-//         console.log("Please add customer");
-//     })
-// }, [])
+
 
   useEffect(() => {
     if(window.location.pathname === '/') {
@@ -106,6 +96,7 @@ function App(props) {
             <Route exact path='/grocery-history' component={GroceryOrderHistory}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />
+          {/* <Loader/> */}
           <SliderDrawer />
         </div>
       </Router>
@@ -117,7 +108,6 @@ const mapStateToProps = state => {
   return {
     suggestions: state.foodData.suggestions,
     showFeedback: state.session.showFeedback,
-    reqStatus: state.session.reqStatus,
     session: state.session
   }
 };

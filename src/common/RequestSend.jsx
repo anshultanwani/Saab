@@ -19,7 +19,7 @@ const RequestSend = (props) => {
           <img src={require('../assets/images/' + "success.png").default} alt="not loaded" />
           <p>Request Sent Succeefully to Customer</p>
           <p>Request Sent to {customerName}</p>
-          <Button variant="contained" onClose={props.onClose}>OKAY!</Button>
+          <Button variant="contained" onClick={props.onClose}>OKAY!</Button>
         </div>
       </Modal>
     </>

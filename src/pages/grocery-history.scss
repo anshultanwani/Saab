@@ -109,7 +109,7 @@
                 margin: 0;
                 background-color: #AC6ABE;
                 padding: 8px 9px;
-                text-align:center;
+                text-align: center;
             }
 
             .ordrhistory-sec-mid {
@@ -118,7 +118,7 @@
                 padding: 5px 9px;
                 border-radius: 7px;
                 border: 1px solid #efe5e5;
-                
+
 
                 .grocery {
 
@@ -131,30 +131,32 @@
                         li {
                             padding: 0 0 0 0;
                             padding: 0;
-    margin: 0 0 3px 0;
-    font-size: 15px;
-    font-weight: 400;
-    text-transform: capitalize;
-    width: 94%;
+                            margin: 0 0 3px 0;
+                            font-size: 15px;
+                            font-weight: 400;
+                            text-transform: capitalize;
+
                         }
                     }
                 }
 
                 .billing-amount {
                     border-bottom: 0;
-                    color: #ED7768;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                    margin: 14px 0;
-                    background-color: #fff;
-                    border-radius: 3px;
-                    font-weight: bold;
-                    font-size: 13px;
-                    padding: 1px 0 0px;
-                    border: none;
-                    border: 1px solid;
-                    padding: 6px;
-                    width: 30%;
+    color: #ED7768;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 14px 0;
+    background-color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 1px 0 0px;
+    border: none;
+    border: 1px solid;
+    padding: 4px;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
                 }
             }
         }
@@ -166,15 +168,28 @@ p.list-items {
     justify-content: space-between;
     color: #AD6ABE;
     letter-spacing: 1px;
+
     button {
         border: 0;
         padding: no;
         background-color: snow;
         width: auto;
     }
-    span:nth-child(2){
-        img{
+
+    span:nth-child(2) {
+        img {
             width: auto !important;
         }
     }
+}
+
+.grocey-history .border-card .inner .grocery-list .gro-sec ul li {
+    display: inline-block;
+    list-style: none;
+    padding: 0 3px;
+}
+
+.grocey-history .border-card .inner .grocery-list .gro-sec ul {
+    margin: 0;
+    padding: 11px 1px 4px 12px;
 }

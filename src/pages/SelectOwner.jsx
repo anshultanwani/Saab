@@ -1,5 +1,4 @@
 
-
 import { toBeRequired } from "@testing-library/jest-dom";
 import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
@@ -40,20 +39,21 @@ const SelectOwner = (props) => {
         history.push('/add-owner-list');
     }
     
-    const handleAssignedDish = (id) => {
-        var customerName = textCustomerName.current[id].value
-        var customerId = textCustomerId.current[id].value
-        var customerStatus = textCustomerStatus.current[id].value
-        var customerPhone = textCustomerPhone.current[id].value
-        console.log(customerId + "====" + customerName + "======" + customerStatus);
-        setCookie('customerName', customerName, 30);
-        setCookie('customerId', customerId, 30);
-        setCookie('customerStatus', customerStatus, 30);
-        setCookie('customerPhone', customerPhone, 30);
-        console.log("todaydishusetype"+userType)
+    const handleAssignedDish = (list) => {
+        // var customerName = textCustomerName.current[id].value
+        // var customerId = textCustomerId.current[id].value
+        // var customerStatus = textCustomerStatus.current[id].value
+        // var customerPhone = textCustomerPhone.current[id].value
+        
+       // console.log(customerId + "====" + customerName + "======" + customerStatus);
+        setCookie('customerName', list.name, 30);
+        setCookie('customerId', list._id, 30);
+        setCookie('customerStatus', list.customerStatus, 30);
+        setCookie('customerPhone', list.phone, 30);
+        //console.log("todaydishusetype"+userType)
        
         setCookie('userType', userType, 30);
-        if(customerStatus == 'UNVERIFIED'){
+        if(list.customerStatus == 'UNVERIFIED'){
                 console.log("user is unverified") 
                 toggleModal(true) 
         }
@@ -66,6 +66,7 @@ const SelectOwner = (props) => {
     useEffect(() => {
         axios.get(window.apiDomain + '/v1/users/' + userId).then(res => {
             if (res.status === 200) {
+                console.log("res.data" + res.data)
                 if (res.data.data.customers.length >= 1) {
                     console.log("customers are avaialbel" + JSON.stringify(res.data.data));
                     console.log(res.data.data.customers.length)
@@ -99,25 +100,26 @@ const SelectOwner = (props) => {
                     {users.length}
                     {
                         users.length >= 1 ?
-                            users.map(({ name, customerStatus, _id , phone}) => (
-                
-                                <div className={"owner-list-index" + "  " + (customerStatus == "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish(_id)}>
-                                    <input type="hidden" ref={ref=> textCustomerId.current[_id] = ref} value={_id} name="customerid" />
-                                    <input type="hidden" ref={ref => textCustomerName.current[_id] = ref} value={name} name="customername" />
-                                    <input type="hidden" ref={ref => textCustomerStatus.current[_id] = ref} value={customerStatus} name="customerstatus" />
-                                    <input type="hidden" ref={ref => textCustomerPhone.current[_id] = ref} value={phone} name="customerphone" />
-                                    <p>
+                           // users.map(({ name, customerStatus, _id , phone}) => (
+
+                               users.map(item =>{
+                                    return (
+                                        <>
+					        <div className={"owner-list-index" + "  " + (item.customerStatus == "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish(item)}>
+                                        
+                                        <p>
                                         <div className="left">
                                             <p className="namethumb">
-                                                {name.slice(0, 2)}</p>
-                                            {/* <img src={require("../assets/images/" + "owner1.png").default} /> */}
-                                        </div>
-                                        <div className="right">
-                                            <div className="top">
-                                                <span>{name}</span>
-                                                <span>
+                                                {/* {item.name.slice(0, 2)}</p> */}
+                                                {item.name}
+                                                </p>
+                                         </div>
+                                         <div className="right">
+                                             <div className="top">
+                                                 <span>{item.name}</span>
+                                             <span>
                                                 {
-                                                 customerStatus == "UNVERIFIED" ? "Pending"   : "Verified" 
+                                                 item.customerStatus === "UNVERIFIED" ? "Pending"   : "Verified" 
                                                 }
                                                 </span>
                                         
@@ -133,8 +135,45 @@ const SelectOwner = (props) => {
                                         </div>
 
                                     </p>
-                                </div>
-                            ))
+                                        </div>
+                                        </>
+                                    )
+                                })
+                
+                                // <div className={"owner-list-index" + "  " + (customerStatus == "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish(_id)}>
+                                //     <input type="hidden" ref={ref=> textCustomerId.current[_id] = ref} value={_id} name="customerid" />
+                                //     <input type="hidden" ref={ref => textCustomerName.current[_id] = ref} value={name} name="customername" />
+                                //     <input type="hidden" ref={ref => textCustomerStatus.current[_id] = ref} value={customerStatus} name="customerstatus" />
+                                //     <input type="hidden" ref={ref => textCustomerPhone.current[_id] = ref} value={phone} name="customerphone" />
+                                //     <p>
+                                //         <div className="left">
+                                //             <p className="namethumb">
+                                //                 {name.slice(0, 2)}</p>
+                                //             {/* <img src={require("../assets/images/" + "owner1.png").default} /> */}
+                                //         </div>
+                                //         <div className="right">
+                                //             <div className="top">
+                                //                 <span>{name}</span>
+                                //                 <span>
+                                //                 {
+                                //                  customerStatus === "UNVERIFIED" ? "Pending"   : "Verified" 
+                                //                 }
+                                //                 </span>
+                                        
+                                //             </div>
+
+                                //             <div className="bottum">
+                                //                 <span>
+                                //                     <img src={require("../assets/images/" + "location.png").default} />
+                                //                 </span>
+                                //                 <span>
+                                //                 401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore                                                </span>
+                                //             </div>
+                                //         </div>
+
+                                //     </p>
+                                // </div>
+                          //  ))
                             :
                             <div className="addnewcustomersec">
                                 <p>Please click below to add new customer to your account</p>

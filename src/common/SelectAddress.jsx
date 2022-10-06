@@ -6,18 +6,35 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import './selectaddress.scss' ;
+import { getCookie, setCookie } from '../utils';
 import { useHistory, useLocation } from 'react-router-dom';
-
+import { useEffect , useState } from "react";
+import queryString from 'query-string';
 const SelectAddress = (props) => {
+    const [userAddress, updateUserAddress] = useState([]);
     const history = useHistory();
+    let userId = getCookie('userId');
+    console.log("userId for address" + userId)
+    const searchParams = useLocation().search;
+    const userType = queryString.parse(searchParams).userType;
+        useEffect(() => {
+        console.log("userId for address" + userType)
+        let userId = getCookie('userId');
+        axios.get(window.apiDomain + '/v1/users/' +userId).then(res => {
+            console.log("users address" + res.data.data)
+            if (res.status === 200) {
+                updateUserAddress(res.data.data.address)
+                console.log("users address" + JSON.stringify(res.data.data))
 
-    // const changeAddress = () =>{
-    //     toggleSliderDrawer({
-    //     selectaddress: false
-    //       //  completeAddress: true
-    //     })
-    //     // history.push('/add-address')
-    // }
+            }
+        }).catch(err => {
+            console.log(err)
+            console.log("Please add customer");
+        })
+    }, [])
+
+
+
     const content = (
 
         <div className="addresslist">
@@ -47,7 +64,7 @@ const SelectAddress = (props) => {
                         <img src={require('../assets/images/home.png').default} alt="not loaded" />
                             <p>1.5km</p>
                         </div>
-                        <div className="right-sec">
+                        <div className="right-sec"> 
                             <p>Home</p>
                             <p>390 b block Lorem Ipsum WIpro, 3rd Floor,
                             Lorem Ipsum, Road, Carmelaram, Hadosiddapura, Chik...</p>
@@ -69,9 +86,6 @@ const SelectAddress = (props) => {
                     </div>
                     </li>
                 </ul>
-               
-
-
             </div>
         </div>
 

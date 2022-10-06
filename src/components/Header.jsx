@@ -7,28 +7,24 @@ import { ReactComponent as SearchIcon } from '../assets/images/search.svg';
 import { connect } from 'react-redux';
 import { toggleSliderDrawer } from '../actions';
 import { getCookie } from '../utils';
+import axios from 'axios';
 const Header = props => {
     const {
-        name
+        name,
     } = props.session
 
     let cookName = getCookie('cookName');
-
     console.log("cookName in  header" + cookName)
-    let reqStatus;
-    console.log("re"+reqStatus)
-    if (!getCookie('reqStatus')) {
-        reqStatus = "false"
-        console.log("cook req value from session" + reqStatus)
-    }
-    else {
-        reqStatus = getCookie('reqStatus');
-        console.log("cook req from cookie" + reqStatus)
-    }
+    let userId = getCookie('userId');
+    console.log("usrid"+ userId)
+ 
+   
 
     let customerName = getCookie('customerName');
     console.log(customerName)
     const location = useLocation();
+    const [orderStatus, updateOrderStatus] = useState('REQUESTED');
+    const [orderId,  updateOrderId] = useState('');
     const [isLoginPage, updatePage] = useState(location.pathname === '/login');
     const history = useHistory();
     const [sectionToShow, updateSection] = useState([]);
@@ -57,6 +53,27 @@ const Header = props => {
         updateSection(showSection[location.pathname])
     }, [location.pathname])
 
+
+    // useEffect(()=>{
+    //     axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
+    //         .then((res) => {
+    //             console.log(res)
+    //             console.log("values" + res.data.data[0])
+    //             //updateOrderLIst(res.data.data[0].items);
+    //             let items = [];
+    //             Object.keys(res.data.data[0].items).map((cur) => {
+    //                 items = [...items, ...res.data.data[0].items[cur]]
+    //             })
+
+    //             //updateOrderStatus(res.data.data[0].status)
+    //             props.updateOrderStatus(res.data.data[0].status)
+    //             updateOrderId(res.data.data[0]._id)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
+    // })
+
     const headings = {
         '/home': '',
         '/stock-refill': 'STOCK REFILL',
@@ -69,7 +86,8 @@ const Header = props => {
         '/grocery-history': "Grocery History",
         '/todays-dish': "Today Dish"
     }
-
+   
+      
     return (
         !isLoginPage ?
             <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '')}>
@@ -106,12 +124,14 @@ const Header = props => {
 
                     </div>
                 </div>
-                {reqStatus == 'true' && location.pathname === '/home' ?
+               
+                 {orderStatus == 'REQUESTED' && location.pathname === '/home' ? 
                     <div className='header-bottom'>
                         <div className='grocey-sec'>
                             <div className='left'>
                                 <h1>{'Hi ' + name + "!"}</h1>
                                 <p>{cookName + '  requested for stock refill'}</p>
+                                {/* <Button color="inherit" onClick={handleApproveOrder}> */}
                                 <Button color="inherit" onClick={() => props.history.push('/stock-refill?userType=OWNER')}>
                                     Approve Order
                                 </Button>
@@ -122,7 +142,7 @@ const Header = props => {
                             </div>
                         </div>
                     </div>
-                    : null}
+                : null}
             </div>
             : null
     )
@@ -130,7 +150,8 @@ const Header = props => {
 
 const mapStateToProps = state => {
     return {
-        session: state.session
+        session: state.session,
+        reqStatus: state.session.reqStatus
     }
 }
 

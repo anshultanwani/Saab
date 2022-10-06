@@ -17,16 +17,16 @@ const History = (props) => {
 
     
 
-    useEffect(()=>{
- console.log("harsha123")
- catType.map((cur)=>{
-            axios.get(window.apiDomain + "/meal/history?userId?="+userId+"&?type="+cur)
-            .then((res)=>{
-                console.log(res)
-                console.log(res.data.data)
-            })
-        })
-    },[])
+//     useEffect(()=>{
+//  console.log("harsha123")
+//  catType.map((cur)=>{
+//             axios.get(window.apiDomain + "/meal/history?userId?="+userId+"&?type="+cur)
+//             .then((res)=>{
+//                 console.log(res)
+//                 console.log(res.data.data)
+//             })
+//         })
+//     },[])
 
 
     const dishData = () => props.historyData.map((cur, index) => {
