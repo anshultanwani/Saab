@@ -39,7 +39,7 @@ const Footer = props => {
               >
                 <BottomNavigationAction label="Home" onClick={() => props.history.push('/todays-dish?userType=' + "COOK")} />
                 <BottomNavigationAction label="My Ratings" onClick={() => props.history.push('/history')} />
-                <BottomNavigationAction label="Performance" onClick={() => props.history.push('/todays-dish?userType=' + "COOK")} />
+                <BottomNavigationAction label="My Reward" onClick={() => props.history.push('/reward')} />
                 <BottomNavigationAction label="Payment" onClick={() => props.history.push('/payment')} />
               </BottomNavigation>
             </Paper>

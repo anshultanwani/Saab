@@ -14,9 +14,9 @@ const Main = props => {
          <div className='home-page container'>
                 <div className="main-content">
 
-                    {/* <Suggestions /> */}
-                    {/* <MostCooked /> */}
-                    {/* <MyPreferences /> */}
+                    <Suggestions />
+                    <MostCooked />
+                    <MyPreferences />
                     <ManageVaggie />
                 </div>
             </div>
