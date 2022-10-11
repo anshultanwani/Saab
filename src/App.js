@@ -25,7 +25,7 @@ import AddOwnerList from './pages/AddOwnerList';
 import TodayDish from './pages/TodayDish';
 import Payment from './pages/Payment';
 import GroceryOrderHistory from './pages/GroceryOrderHistory';
-
+import Reward from './pages/Reward';
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
 const ComboPage = React.lazy(() => import('./pages/ComboPage'));
@@ -93,6 +93,7 @@ function App(props) {
             <Route exact path='/add-owner-list' component={AddOwnerList}></Route>
             <Route exact path='/todays-dish' component={TodayDish}></Route>
             <Route exact path='/payment' component={Payment}></Route>
+            <Route exact path='/my-reward' component={Reward}></Route>
             <Route exact path='/grocery-history' component={GroceryOrderHistory}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />

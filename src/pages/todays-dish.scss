@@ -136,3 +136,16 @@
             }
         }
     }
+
+    .dish-button{
+        text-align: center;
+        button.reward-button {
+            background-color: #ED7768;
+            box-shadow: none;
+            margin: 3px auto 27px;
+            width: 94%;
+            padding: 0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+    }

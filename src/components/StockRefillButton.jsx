@@ -36,17 +36,6 @@ const StockRefillButton = props => {
             dataToSend[cur.category == "veggies" ? "veg" : cur.category].push(cur)
         })
         let status
-        // history.push('/stock-refill?userType='+"OWNER");
-        console.log("create api" +
-            JSON.stringify({
-                items:{
-                    ...dataToSend
-                },
-                userId: customerId,
-                status: "REQUESTED",
-                createdBy: "COOK"
-            })
-        )
             axios({
                 method: 'post',
                 url: window.apiDomain + '/v1/orders',
@@ -62,16 +51,8 @@ const StockRefillButton = props => {
                 console.log(res.status)
                 if (res.status === 200) {
                     console.log(res)
-                  //  props.updateCart([]);
-                    console.log("create order api" + JSON.stringify(res.data.data))
-                    if(status == "REQUESTED"){
-                        props.setrequeststate({
-                            reqStatus: true 
-                        })
-                    setCookie('reqStatus', true, 30);
-                       // console.log(getCookie('reqStatus'))
-                    }
-                  
+                     props.updateCart([]);
+                    console.log("create order api" + JSON.stringify(res.data.data)) 
                 }
             }).catch(err => {
                 console.log(err)

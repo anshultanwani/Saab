@@ -76,8 +76,8 @@ const StockRefill = props => {
             axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
                 .then((res) => {
                     if (res.status === 200) {
-                        setCookie('orderId', res.data.data._id);
-                        console.log(getCookie('orderId'))
+                        // setCookie('orderId', res.data.data._id);
+                        // console.log(getCookie('orderId'))
                         console.log("cook request for data items" + JSON.stringify(res.data.data[0].items));
                         let items = [];
                         Object.keys(res.data.data[0].items).map((cur) => {
@@ -107,9 +107,16 @@ const StockRefill = props => {
                     items = [...items, ...res.data.data[0].items[cur]]
                 })
 
-                updateOrderStatus(res.data.data[0].status)
+                Object.keys(res.data.data).map((cur) => {
+                  
+                    if(res.data.data[cur].status == 'REQUESTED'){
+                       console.log("proceed to pay req" + res.data.data[cur].status)
+                        updateOrderStatus(res.data.data[cur].status)
+                        updateOrderId(res.data.data[cur]._id)
+                    }
+                })
                 //props.updateOrderStatus(res.data.data[0].status)
-                updateOrderId(res.data.data[0]._id)
+               
             })
             .catch((err) => {
                 console.log(err);
@@ -287,12 +294,13 @@ const StockRefill = props => {
                 let userId = getCookie('userId');
                 console.log("get Owner order" + userId)
                 console.log("get order status" + orderStatus)
+               
                 axios({
                     method: 'put',
                     url: window.apiDomain + '/v1/orders/approve/status',
                     data: {
                         userId: userId,
-                        status: orderStatus,
+                        status: "APPROVED",
                         updatedBy: "OWNER",
                         orderId: orderId
                     }
@@ -300,14 +308,15 @@ const StockRefill = props => {
                     .then(res => {
                         if (res.status === 200) {
                             console.log(res);
-                            console.log("cook response data" + res.data.data)
-
-                            history.push('/stock-refill?userType=OWNER');
+                            console.log("cook response data" + JSON.stringify(res.data.data))
+                            props.updateCart([]);
+                           // history.push('/stock-refill?userType=OWNER');
                         }
                     })
                     .catch((err) => {
                         console.log(err);
                     })
+                
             }
 
         }

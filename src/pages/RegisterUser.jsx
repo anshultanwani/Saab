@@ -4,12 +4,12 @@ import './register-user.scss';
 import InputWithSearch from '../common/InputWithSearch';
 import CollapsableSwitch from '../components/CollapsableSwitch';
 import axios from 'axios';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import { setCookie } from '../utils';
 import { connect } from 'react-redux';
 import { setSession } from '../actions';
-
+import { getCookie } from '../utils';
 
 const RegisterUser = props => {
     const searchParams = useLocation().search;
@@ -21,13 +21,13 @@ const RegisterUser = props => {
         cook: false,
         maid: false
     })
-   // const [addressArray , updateAddressArray] = useState([])
+   const [addressArray , updateAddressArray] = useState([])
     const [data, updateData] = useState({
         name: "",
         email: "",
         phone: '',
-        addressArray:[],
-        address: {
+        address:
+            {
             houseNo: '',
             floor: "",
             society: "",
@@ -51,6 +51,7 @@ const RegisterUser = props => {
         },
     });
 
+   // console.log("data arr "+ data.address[0].houseNo)
     const [cookData, updateCookData] = useState({
         name: "",
         phone: '',
@@ -62,11 +63,14 @@ const RegisterUser = props => {
             if (typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
                 console.log("data object inside=====" + JSON.stringify(dataObj[cur]));
                 findAndUpdate(dataObj[cur], value, parentKey.split('.').length > 1 ? parentKey.split('.')[1] : '', key);
-                data.addressArray.push(JSON.stringify(dataObj[cur]));
-               
-                    console.log(data.addressArray)
-            
-            } else if (cur === key && !parentKey) {
+              //  data.addressArray.push(JSON.stringify(dataObj[cur]));
+               /// updateAddressArray(JSON.stringify(dataObj[cur]))
+               console.log("new values===" + JSON.stringify(dataObj[cur]) + value +  parentKey.split('.').length + parentKey.split('.')[1] + key)
+            }
+            else if (typeof dataObj[cur] === 'object' && Array.isArray(dataObj[cur]) ) {
+                console.log("inside array")
+            }
+            else if (cur === key && !parentKey) {
                 dataObj[cur] = value;
             }
         }
@@ -88,26 +92,41 @@ const RegisterUser = props => {
                 value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
             }
         }
+        console.log("onchange data===" + JSON.stringify(newData));
         findAndUpdate(newData, value, node, subNode);
         updateData(newData)
         updateCookData(newData);
     }
 
     const handleSubmit = () => {
-        console.log("ownercliekd")
+        console.log("ownercliekd" + data.address)
+        const temp = [];
+        temp.push(data.address);
+        console.log(temp)
+      
+        const formData = {
+            name : data.name,
+            email: "",
+            phone: Number(phoneNum),
+            address: temp,
+            services: {
+            cook: data.services.cook,
+            maid: data.services.maid
+           },
+            onboarded: 1,
+            subscriptionType: null,
+            userType: userType
+          }
+          console.log(formData)
+      //  axios.post(window.apiDomain + '/v1/users/register' , formData).then(res => {
         axios({
             method: 'post',
             url: window.apiDomain + '/v1/users/register',
-            data: {
-                ...data,
-                phone: Number(phoneNum),
-                onboarded: 1,
-                SubscriptionType: null,
-                userType
-            }
+            data:formData
+            
         }).then(res => {
             if (res.status === 200) {
-                console.log("owner response data" + JSON.stringify(res.data.data))
+              //  console.log("owner response data" + JSON.stringify(res.data.data))
                 console.log("owner response data" + JSON.stringify(res.data.data.services))
                 props.setSession({
                     ...props.session,
@@ -115,9 +134,11 @@ const RegisterUser = props => {
                 })
                 setCookie('isLoggedIn', true, 30);
                 setCookie('userId', res.data.data._id, 30);
+                let userId = getCookie('userId');
+                console.log("userid in register page==" + userId)
                 // setCookie('cookName', res.data.data.services.cook.name , 30)
-                window.location.pathname('/home');
-            //    history.replace('/home');
+           //  window.location.pathname('/home');
+               history.push('/home');
             }
         }).catch(err => {
             console.log(err)
@@ -243,7 +264,7 @@ const RegisterUser = props => {
                                     sx={{ width: 1 / 2.09 }}
                                     placeholder="Apartment/Road/Area"
                                     inputProps={{
-                                        value: data.address.society,
+                                        value: data.address.society || '',
                                         onChange: e => handleChange('address', e.target.value, 'society')
                                     }}
                                 />
@@ -331,4 +352,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { setSession })(RegisterUser);
+export default connect(mapStateToProps, { setSession }) (withRouter(RegisterUser));

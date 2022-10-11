@@ -16,14 +16,14 @@ const Header = props => {
     let cookName = getCookie('cookName');
     console.log("cookName in  header" + cookName)
     let userId = getCookie('userId');
-    console.log("usrid"+ userId)
+    console.log("userid in header===="+ userId)
  
    
 
     let customerName = getCookie('customerName');
     console.log(customerName)
     const location = useLocation();
-    const [orderStatus, updateOrderStatus] = useState('REQUESTED');
+    const [orderStatus, updateOrderStatus] = useState('');
     const [orderId,  updateOrderId] = useState('');
     const [isLoginPage, updatePage] = useState(location.pathname === '/login');
     const history = useHistory();
@@ -41,7 +41,8 @@ const Header = props => {
         '/add-owner-list': ['back', 'search'],
         '/todays-dish': ['back' , 'search'],
         '/grocery-history': ['back', 'search'],
-        '/payment': ['back', 'search']
+        '/payment': ['back', 'search'],
+        '/my-reward': ['back', 'search']
     }
 
     useEffect(() => {
@@ -54,28 +55,35 @@ const Header = props => {
     }, [location.pathname])
 
 
-    // useEffect(()=>{
-    //     axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
-    //         .then((res) => {
-    //             console.log(res)
-    //             console.log("values" + res.data.data[0])
-    //             //updateOrderLIst(res.data.data[0].items);
-    //             let items = [];
-    //             Object.keys(res.data.data[0].items).map((cur) => {
-    //                 items = [...items, ...res.data.data[0].items[cur]]
-    //             })
+    useEffect(()=>{
+        axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
+            .then((res) => {
+                console.log(res)
+                console.log("values" + res.data.data[0])
+                //updateOrderLIst(res.data.data[0].items);
+                let items = [];
+                Object.keys(res.data.data[0].items).map((cur) => {
+                    items = [...items, ...res.data.data[0].items[cur]]
+                })
 
-    //             //updateOrderStatus(res.data.data[0].status)
-    //             props.updateOrderStatus(res.data.data[0].status)
-    //             updateOrderId(res.data.data[0]._id)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // })
+                Object.keys(res.data.data).map((cur) => {
+                  
+                    if(res.data.data[cur].status == 'REQUESTED'){
+                       // console.log(res.data.data[cur].status)
+                        updateOrderStatus(res.data.data[cur].status)
+                    }
+                })
+                //updateOrderStatus(res.data.data[0].status)
+               
+                updateOrderId(res.data.data[0]._id)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    })
 
     const headings = {
-        '/home': '',
+        '/home': 'HOME',
         '/stock-refill': 'STOCK REFILL',
         '/add-address': 'Choose Address',
         '/my-prefrences': 'My Preferences',
@@ -84,15 +92,16 @@ const Header = props => {
         '/add-owner-list': 'Add Customer',
         '/payment': 'Payment',
         '/grocery-history': "Grocery History",
-        '/todays-dish': "Today Dish"
+        '/todays-dish': "Today Dish",
+        '/my-reward': "My Rewards"
     }
    
       
     return (
         !isLoginPage ?
-            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '')}>
+            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '') +  (orderStatus == 'APPROVED' ? 'order-arroved' : 'order-req')}>
                 <div className='fake-div' />
-                <div className='header-top'>
+                <div className={'header-top ' + (orderStatus == 'APPROVED' ? 'order-arroved' : 'order-req') }>
                     <div className='left'>
                         {sectionToShow?.includes('back') ?
                             <BackIcon style={{ height: '12px', width: '12px', marginRight: '10px' }} onClick={() => history.goBack()} /> : null}
@@ -124,7 +133,7 @@ const Header = props => {
 
                     </div>
                 </div>
-               
+             
                  {orderStatus == 'REQUESTED' && location.pathname === '/home' ? 
                     <div className='header-bottom'>
                         <div className='grocey-sec'>

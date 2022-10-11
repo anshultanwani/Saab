@@ -4,15 +4,18 @@ import { toggleSliderDrawer } from '../actions/index';
 import BottomDrawer from './BottomDrawer';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
+import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import './complete-address.scss';
 import AddressUpdate from "./AddressUpdate";
 import axios from "axios";
 import { getCookie, setCookie } from '../utils';
+import { setSession } from '../actions';
 
 const CompleteAddress = (props) => {
     let userId = getCookie('userId');
     console.log("userId for complete address" + userId)
     const [showvalue, updateShowValue] = useState({
+        // locationType: "",
         address: {
             houseNo: '',
             floor: "",
@@ -28,12 +31,16 @@ const CompleteAddress = (props) => {
         for (var cur in dataObj) {
             if (typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
                 findAndUpdate(dataObj[cur], value, parentKey.split('.').length > 1 ? parentKey.split('.')[1] : '', key);
+                console.log("inside if" + dataObj[cur])
             } else if (cur === key && !parentKey) {
                 dataObj[cur] = value;
+                console.log("inside elese" + JSON.stringify(dataObj[cur]))
             }
         }
     }
     const handleChange = (node, value, subNode) => {
+        console.log("btutno click")
+        console.log(value);
         let newData;
         newData = { ...showvalue };
         findAndUpdate(newData, value, node, subNode);
@@ -45,10 +52,13 @@ const CompleteAddress = (props) => {
         <>
             <p className="completeaddlable">Save address as*</p>
             <div className="comlete-address-btn-sec">
-                <Button variant="contained">Home</Button>
-                <Button variant="contained">Work</Button>
-                <Button variant="contained">Hotel</Button>
-                <Button variant="contained">Others</Button>
+                <Button variant="contained" 
+                >
+                Home
+                </Button>
+                <Button variant="contained" value="Works"onClick={(e)=> handleChange(e.target.value)}>Work</Button>
+                <Button variant="contained" value="Hotels"onClick={(e)=> handleChange(e.target.value)}>Hotel</Button>
+                <Button variant="contained" value="Others" onClick={(e)=> handleChange(e.target.value)}>Others</Button>
             </div>
             <div className='field-holder comaddsec'>
                 <TextField
@@ -107,10 +117,10 @@ const CompleteAddress = (props) => {
             if (res.status === 200) {
                 console.log("owner response data" + JSON.stringify(res.data.data))
                 console.log("owner response data" + JSON.stringify(res.data.data.services))
-                props.setSession({
-                    ...props.session,
-                    ...res.data.data
-                })
+                // props.setSession({
+                //     ...props.session,
+                //     ...res.data.data
+                // })
             }
         }).catch(err => {
             console.log(err)
@@ -146,4 +156,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { toggleSliderDrawer })(CompleteAddress);
+export default connect(mapStateToProps , { toggleSliderDrawer })(withRouter(CompleteAddress));

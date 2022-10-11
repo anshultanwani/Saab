@@ -17,11 +17,11 @@ const SelectAddress = (props) => {
     console.log("userId for address" + userId)
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
-        useEffect(() => {
+      //  useEffect(() => {
         console.log("userId for address" + userType)
-        let userId = getCookie('userId');
+       // let userId = getCookie('userId');
         axios.get(window.apiDomain + '/v1/users/' +userId).then(res => {
-            console.log("users address" + res.data.data)
+           // console.log("users address" + res.data.data)
             if (res.status === 200) {
                 updateUserAddress(res.data.data.address)
                 console.log("users address" + JSON.stringify(res.data.data))
@@ -31,7 +31,7 @@ const SelectAddress = (props) => {
             console.log(err)
             console.log("Please add customer");
         })
-    }, [])
+  //  }, [])
 
 
 

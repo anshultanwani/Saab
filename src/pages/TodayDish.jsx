@@ -86,6 +86,7 @@ const TodayDish = (props) => {
                         <div className='dish-details'>
                             {getSection()}
                             {console.log(getSection())}
+                            
                         </div>
                         <div className='banner-sec'>
                             {getBanner()}

@@ -1,10 +1,14 @@
 import React from "react";
 import { connect } from 'react-redux';
 import './stock-row.scss';
+import { Button } from "@mui/material";
 import Slider from "react-slick";
 import {  TextField } from '@mui/material';
 const TodayDishList = (props) => {
 
+    const handleReward = () =>{
+        console.log("reward button click")
+    }
     return (
         <div className="dish-sec">
             {
@@ -33,12 +37,24 @@ const TodayDishList = (props) => {
                             <div className="right-sec">
                                 {index.foodVideoUrl}
                             </div>
-
+                        
 
                         </div>
                     )
                 })
             }
+             <div className='dish-button'>
+                            <Button
+                                    variant='contained'
+                                    className='reward-button'
+                                    onClick={handleReward}
+                                    children={(
+                                        <div className='btn-content'>
+                                            <p>Accept and Start</p>
+                                        </div>
+                                    )}
+                                />  
+            </div>
         </div>
     )
 }
