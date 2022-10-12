@@ -15,6 +15,9 @@ import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import EmptyCart from '../components/EmptyCart';
 import { getCookie, setCookie } from '../utils';
+import {orderIdAction} from '../actions/orderidaction';
+
+
 import axios from 'axios';
 const StockRefill = props => {
     const {
@@ -29,8 +32,10 @@ const StockRefill = props => {
     console.log(userType)
     let customerId = getCookie('customerId');
     console.log("customerid" + customerId)
-    let userId = getCookie('userId');
+    //let userId = getCookie('userId');
+    var userId = sessionStorage.getItem("userId");
     console.log("userId in stockrefill" + userId)
+  
     const history = useHistory();
     const [stockCat, updatestockCat] = useState([]);
     const [currentView, updateView] = useState('cart');
@@ -71,11 +76,14 @@ const StockRefill = props => {
             })
         console.log("usertype for get all order api" + userType)
         if (userType == "OWNER") {
-            let userId = getCookie('userId');
+           // let userId = getCookie('userId');
+          // var userId = sessionStorage.getItem("userId");
+           // props.getOrder(userId);
             console.log("get Owner order" + userId)
             axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
                 .then((res) => {
                     if (res.status === 200) {
+                        
                         // setCookie('orderId', res.data.data._id);
                         // console.log(getCookie('orderId'))
                         console.log("cook request for data items" + JSON.stringify(res.data.data[0].items));
@@ -291,7 +299,7 @@ const StockRefill = props => {
             curView != 'cart' && updateView('cart');
             if (curView == 'cart') {
                 console.log("proceed to pay clicked");
-                let userId = getCookie('userId');
+               // let userId = getCookie('userId');
                 console.log("get Owner order" + userId)
                 console.log("get order status" + orderStatus)
                
@@ -386,4 +394,14 @@ const mapStateToProps = state => {
         session: state.session
     }
 }
+
+// const mapDispatchToProps = dispatch =>{
+//     getOrder: () =>{
+//         dispatch(orderIdAction())
+//     }
+// }
+
+
+//export default connect(mapStateToProps, mapDispatchToProps)({ updateCart, toggleSliderDrawer , updateOrderStatus})(withRouter(StockRefill));
+
 export default connect(mapStateToProps, { updateCart, toggleSliderDrawer , updateOrderStatus})(withRouter(StockRefill));

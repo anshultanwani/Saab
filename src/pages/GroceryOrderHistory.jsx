@@ -25,7 +25,8 @@ const GroceryOrderHistory = props => {
     const [orderList, updateOrderLIst] = useState([])
     const [orderStatus, updateOrderStatus] = useState('');
     const [dp,setDp] = useState();
-    let userId = getCookie('userId');
+    var userId = sessionStorage.getItem("userId");
+   // let userId = getCookie('userId');
     console.log("get Owner order" + userId)
     useEffect(() => {
         axios.get(window.apiDomain + "/v1/orders?userId=" + userId)

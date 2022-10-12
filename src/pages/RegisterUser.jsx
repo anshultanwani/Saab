@@ -17,6 +17,8 @@ const RegisterUser = props => {
     const phoneNum = queryString.parse(searchParams).phone;
     const userType = queryString.parse(searchParams).userType;
     console.log("usertype=" + userType);
+   // var userId = sessionStorage.getItem("userId");
+   // console.log("userid in register page==" + userId)
     const [switchStatus, updateStatus] = useState({
         cook: false,
         maid: false
@@ -132,10 +134,14 @@ const RegisterUser = props => {
                     ...props.session,
                     ...res.data.data
                 })
-                setCookie('isLoggedIn', true, 30);
-                setCookie('userId', res.data.data._id, 30);
-                let userId = getCookie('userId');
-                console.log("userid in register page==" + userId)
+                sessionStorage.setItem('isLoggedIn' , true)
+                sessionStorage.setItem('userId' , res.data.data._id)
+                // setCookie('isLoggedIn', true, 30);
+               // setCookie('userId', res.data.data._id, 30);
+             //  var userId = sessionStorage.getItem("userId");
+              // SessionStorage.setItem('userIdNew' , res.data.data._id)
+              //  let userId = getCookie('userId');
+               // console.log("userid in register page==" + userId)
                 // setCookie('cookName', res.data.data.services.cook.name , 30)
            //  window.location.pathname('/home');
                history.push('/home');
@@ -179,9 +185,11 @@ const RegisterUser = props => {
                     ...props.session,
                     ...res.data.data
                 })
-
-                setCookie('isLoggedIn', true, 30);
-                setCookie('userId', res.data.data._id, 30);
+                sessionStorage.setItem('isLoggedIn' , true)
+                sessionStorage.setItem('userId' , res.data.data._id)
+             
+                // setCookie('isLoggedIn', true, 30);
+                // setCookie('userId', res.data.data._id, 30);
                
                 history.push('/select-owner?userType='+userType);
             }

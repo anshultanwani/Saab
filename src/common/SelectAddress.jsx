@@ -13,7 +13,8 @@ import queryString from 'query-string';
 const SelectAddress = (props) => {
     const [userAddress, updateUserAddress] = useState([]);
     const history = useHistory();
-    let userId = getCookie('userId');
+   // let userId = getCookie('userId');
+   var userId = sessionStorage.getItem("userId");
     console.log("userId for address" + userId)
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;

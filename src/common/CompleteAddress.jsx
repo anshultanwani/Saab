@@ -12,7 +12,8 @@ import { getCookie, setCookie } from '../utils';
 import { setSession } from '../actions';
 
 const CompleteAddress = (props) => {
-    let userId = getCookie('userId');
+    //let userId = getCookie('userId');
+    var userId = sessionStorage.getItem("userId");
     console.log("userId for complete address" + userId)
     const [showvalue, updateShowValue] = useState({
         // locationType: "",

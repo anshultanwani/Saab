@@ -15,7 +15,8 @@ const Header = props => {
 
     let cookName = getCookie('cookName');
     console.log("cookName in  header" + cookName)
-    let userId = getCookie('userId');
+   // let userId = getCookie('userId');
+   var userId = sessionStorage.getItem("userId");
     console.log("userid in header===="+ userId)
  
    

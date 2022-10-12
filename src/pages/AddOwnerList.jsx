@@ -131,11 +131,11 @@ const AddOwnerList = (props) => {
                 {position: toast.POSITION.BOTTOM_RIGHT})
                 console.log("addownerlistrespo"+ res.data.data)
                 console.log("addcustomeruserId"+userId);
-                props.setSession({
-                    ...props.session,
-                    ...res.data.data
-                })
-                setCookie('isLoggedIn', true, 30);
+                // props.setSession({
+                //     ...props.session,
+                //     ...res.data.data
+                // })
+              //  setCookie('isLoggedIn', true, 30);
                 // setCookie('userId', res.data.data._id, 30);
                 history.push('/select-owner?userType='+userType);
             }

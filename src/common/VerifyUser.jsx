@@ -6,7 +6,8 @@ import { getCookie } from "../utils";
 import axios from "axios";
 
 const VerifyUser = (props) => {
-    let userId = getCookie('userId');
+  var userId = sessionStorage.getItem("userId");
+   // let userId = getCookie('userId');
     let customerPhone = getCookie('customerPhone');
     console.log(userId);
     const handleVerification = () =>{

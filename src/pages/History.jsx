@@ -5,8 +5,9 @@ import './my-preferences-details.scss';
 import { getCookie } from '../utils';
 import axios from "axios";
 const History = (props) => {
-    let userId = getCookie('userId');
-    console.log(userId);
+    var userId = sessionStorage.getItem("userId");
+    //let userId = getCookie('userId');
+    console.log("userid in history" + userId);
     const handleAssign = () => {
         console.log("Cliked");
     }

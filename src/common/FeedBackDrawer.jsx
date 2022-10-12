@@ -8,7 +8,8 @@ import axios from 'axios';
 import BoxWithSideBorder from '../components/BoxWithSideBorder';
 import { setCookie } from '../utils';
 const FeedBackDrawer = props => {
-    let userId = getCookie('userId');
+   // let userId = getCookie('userId');
+   var userId = sessionStorage.getItem("userId");
     // console.log(userId);
     const [infoData, updateInfo] = useState({
         taste: '',
@@ -37,11 +38,11 @@ const FeedBackDrawer = props => {
         }).then(res => {
             if (res.status === 200) {
                 console.log("owner feedback response data" + JSON.stringify(res.data.data))
-                props.setSession({
-                    ...props.session,
-                    ...res.data.data
-                })
-                setCookie('isLoggedIn', true, 30);
+                // props.setSession({
+                //     ...props.session,
+                //     ...res.data.data
+                // })
+              //  setCookie('isLoggedIn', true, 30);
             }
         }).catch(err => {
             console.log(err)

@@ -13,7 +13,8 @@ const AddMember = props => {
         userType
     } = props
 
-    let userId = getCookie('userId');
+   // let userId = getCookie('userId');
+   var userId = sessionStorage.getItem("userId");
     console.log("add memeber userid==" + userId)
 
     const [mobileNum, updateNum] = useState('');
@@ -72,13 +73,13 @@ const AddMember = props => {
             if (res.status === 200) {
                 console.log(res);
                 console.log("cook response data" + res.data.data)
-                props.setSession({
-                    ...props.session,
-                    ...res.data.data
-                })
+                // props.setSession({
+                //     ...props.session,
+                //     ...res.data.data
+                // })
 
-                setCookie('isLoggedIn', true, 30);
-                setCookie('userId', res.data.data._id, 30);
+                // setCookie('isLoggedIn', true, 30);
+                // setCookie('userId', res.data.data._id, 30);
             }
         })
     }

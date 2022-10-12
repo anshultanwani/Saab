@@ -21,7 +21,8 @@ const StockRefillButton = props => {
     console.log(userType)
     console.log("curview"+curView)
     const history = useHistory();
-    let customerId = getCookie('customerId');
+   // let customerId = getCookie('customerId');
+   var customerId = sessionStorage.getItem("customerId");
     console.log("customerid in stockrefill cook" + customerId)
     const [showModal, toggleModal] = useState(false)
    

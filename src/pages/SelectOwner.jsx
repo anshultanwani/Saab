@@ -30,8 +30,8 @@ const SelectOwner = (props) => {
     const textCustomerStatus = useRef({});
     const textCustomerPhone = useRef({});
     const history = useHistory();
-    
-    let userId = getCookie('userId');
+    var userId = sessionStorage.getItem("userId");
+   // let userId = getCookie('userId');
     console.log("userid==" + userId)
 
 
@@ -46,13 +46,17 @@ const SelectOwner = (props) => {
         // var customerPhone = textCustomerPhone.current[id].value
         
        // console.log(customerId + "====" + customerName + "======" + customerStatus);
-        setCookie('customerName', list.name, 30);
-        setCookie('customerId', list._id, 30);
-        setCookie('customerStatus', list.customerStatus, 30);
-        setCookie('customerPhone', list.phone, 30);
+        // setCookie('customerName', list.name, 30);
+        // setCookie('customerId', list._id, 30);
+        // setCookie('customerStatus', list.customerStatus, 30);
+        // setCookie('customerPhone', list.phone, 30);
+        sessionStorage.setItem('customerName' , list.name)
+        sessionStorage.setItem('customerId', list._id)
+        sessionStorage.setItem('customerStatus', list.customerStatus)
+        sessionStorage.setItem('customerPhone', list.phone)
         //console.log("todaydishusetype"+userType)
        
-        setCookie('userType', userType, 30);
+      //  setCookie('userType', userType, 30);
         if(list.customerStatus == 'UNVERIFIED'){
                 console.log("user is unverified") 
                 toggleModal(true) 
@@ -72,12 +76,12 @@ const SelectOwner = (props) => {
                     console.log(res.data.data.customers.length)
                     console.log(res.data.data._id);
                     setUsers(res.data.data.customers)
-                    props.setSession({
-                        ...props.session,
-                        ...res.data.data
-                    })
-                    setCookie('isLoggedIn', true, 30);
-                    setCookie('userId', res.data.data._id, 30);
+                    // props.setSession({
+                    //     ...props.session,
+                    //     ...res.data.data
+                    // })
+                    // setCookie('isLoggedIn', true, 30);
+                    // setCookie('userId', res.data.data._id, 30);
                 }
                 else {
                     console.log("customers are not avaiable")

@@ -44,8 +44,10 @@ const VerificationCode = props => {
                 })
                 if(res.data.data.onboarded) {
                     console.log("use is registered"+ res.data.data)
-                    setCookie('isLoggedIn',true,30);
-                    setCookie('userId',res.data.data._id,30)
+                // setCookie('isLoggedIn',true,30);
+                   sessionStorage.setItem('isLoggedIn' , true)
+                   // setCookie('userId',res.data.data._id,30)
+                   sessionStorage.setItem('userId' , res.data.data._id)
                     //setCookie('cookName', JSON.stringify(res.data.data.services.cook.name) , 30)
 
                     // setCookie('cookName', res.data.data.services.cook.name , 30)

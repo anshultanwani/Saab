@@ -100,9 +100,10 @@ const SideMenu = props => {
     }
 
     const logout = () => {
-        props.setSession({});
-        setCookie("isLoggedIn",'',0);
-        setCookie("userId",'',0)
+        // props.setSession({});
+        sessionStorage.clear() 
+       // setCookie("isLoggedIn",'',0);
+       // setCookie("userId",'',0)
         closeSlider();
         history.replace('/login');
     }

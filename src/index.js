@@ -5,6 +5,10 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import {orderReducer} from './reducers/ordervaluereducer'
+//const store = createStore(orderReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   // <React.StrictMode>

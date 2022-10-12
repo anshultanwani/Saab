@@ -15,17 +15,18 @@ const AutoApprove = props => {
                 <br /><br/>It was popularised in the 1960s with the release of Letraset sheets containing.</p>
         </div>
     )
-
+    var userId = sessionStorage.getItem("userId");
     const onSubmit = () => {
         axios.put(window.apiDomain+'/v1/users/payment/auto-approve',{
-            userId: props.session._id,
+           // userId: props.session._id,
+            userId: userId,
             paymentAutoApproved: approveStatus ? 1:0
         }).then(res => {
             console.log(res.data.data)
             if(res.status === 200) {
-                props.setSession({
-                   ...res.data.data
-               })
+            //     props.setSession({
+            //        ...res.data.data
+            //    })
                 props.toggleSliderDrawer({
                     autoApprove : false
                 })
