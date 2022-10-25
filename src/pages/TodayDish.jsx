@@ -14,9 +14,10 @@ import queryString from 'query-string';
 const TodayDish = (props) => {
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
-    let customerId = getCookie('customerId');
-    let customerName = getCookie('customerName');
-    let customerStatus = getCookie('customerStatus');
+    var customerId = sessionStorage.getItem("customerId");
+    var customerName = sessionStorage.getItem("customerName");
+    var customerStatus = sessionStorage.getItem("customerStatus");
+   
     console.log("customerid"+customerId+"and"+"customerName"+customerName+"customerStatus"+customerStatus);
     const [showModal, toggleModal] = useState(false)
     const {

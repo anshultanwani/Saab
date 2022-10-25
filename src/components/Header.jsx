@@ -15,17 +15,17 @@ const Header = props => {
 
     let cookName = getCookie('cookName');
     console.log("cookName in  header" + cookName)
-   // let userId = getCookie('userId');
+    let userType = getCookie('userType');
    var userId = sessionStorage.getItem("userId");
     console.log("userid in header===="+ userId)
- 
+    let orderstatus = sessionStorage.getItem("orderStatusValue")
    
 
     let customerName = getCookie('customerName');
     console.log(customerName)
     const location = useLocation();
-    const [orderStatus, updateOrderStatus] = useState('');
-    const [orderId,  updateOrderId] = useState('');
+   // const [orderStatus, updateOrderStatus] = useState('');
+   // const [orderId,  updateOrderId] = useState('');
     const [isLoginPage, updatePage] = useState(location.pathname === '/login');
     const history = useHistory();
     const [sectionToShow, updateSection] = useState([]);
@@ -38,9 +38,9 @@ const Header = props => {
         '/addedit-combo': ['back', 'search'],
         '/my-prefrences': ['back', 'search'],
         '/history': ['back', 'search'],
-        '/select-owner': ['back', 'search'],
-        '/add-owner-list': ['back', 'search'],
-        '/todays-dish': ['back' , 'search'],
+        '/select-owner': ['back', 'burger' , 'search'],
+        '/add-owner-list': ['back', 'burger' , 'search'],
+        '/todays-dish': ['back' , 'burger' , 'search'],
         '/grocery-history': ['back', 'search'],
         '/payment': ['back', 'search'],
         '/my-reward': ['back', 'search']
@@ -53,36 +53,38 @@ const Header = props => {
             updatePage(false);
         }
         updateSection(showSection[location.pathname])
+      
     }, [location.pathname])
 
-
-    useEffect(()=>{
+    if(sessionStorage.getItem('isLoggedIn')) {
         axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
-            .then((res) => {
-                console.log(res)
-                console.log("values" + res.data.data[0])
-                //updateOrderLIst(res.data.data[0].items);
-                let items = [];
-                Object.keys(res.data.data[0].items).map((cur) => {
-                    items = [...items, ...res.data.data[0].items[cur]]
-                })
+        .then((res) => {
+            console.log(res)
+            console.log("values" + res.data.data[0])
 
-                Object.keys(res.data.data).map((cur) => {
-                  
-                    if(res.data.data[cur].status == 'REQUESTED'){
-                       // console.log(res.data.data[cur].status)
-                        updateOrderStatus(res.data.data[cur].status)
-                    }
-                })
-                //updateOrderStatus(res.data.data[0].status)
+            Object.keys(res.data.data).map((cur) => {
+                console.log("proceed to pay req" + res.data.data[cur].status)
+                   // updateOrderStatus(res.data.data[cur].status)
                
-                updateOrderId(res.data.data[0]._id)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    })
+                   // updateOrderId(res.data.data[cur]._id)
+                sessionStorage.setItem('orderIdValue' , res.data.data[cur]._id) 
+                if(res.data.data[cur].status == 'REQUESTED'){
+                    setTimeout(() => {
+                        sessionStorage.setItem('orderStatusValue' , res.data.data[cur].status)
+                    }, 2000);
+                }
+                else{
+                    sessionStorage.setItem('orderStatusValue' , 'APPROVED')
+                } 
+            })  
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
 
+
+ 
     const headings = {
         '/home': 'HOME',
         '/stock-refill': 'STOCK REFILL',
@@ -100,9 +102,9 @@ const Header = props => {
       
     return (
         !isLoginPage ?
-            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '') +  (orderStatus == 'APPROVED' ? 'order-arroved' : 'order-req')}>
+            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '') +  (orderstatus == 'APPROVED' ? 'order-arroved' : 'order-req')}>
                 <div className='fake-div' />
-                <div className={'header-top ' + (orderStatus == 'APPROVED' ? 'order-arroved' : 'order-req') }>
+                <div className={'header-top ' + (sessionStorage.getItem("orderStatusValue") == 'APPROVED' ? 'order-arroved' : 'order-req') }>
                     <div className='left'>
                         {sectionToShow?.includes('back') ?
                             <BackIcon style={{ height: '12px', width: '12px', marginRight: '10px' }} onClick={() => history.goBack()} /> : null}
@@ -134,8 +136,8 @@ const Header = props => {
 
                     </div>
                 </div>
-             
-                 {orderStatus == 'REQUESTED' && location.pathname === '/home' ? 
+                {orderstatus}
+                 {orderstatus == 'REQUESTED' && location.pathname === '/home' ? 
                     <div className='header-bottom'>
                         <div className='grocey-sec'>
                             <div className='left'>

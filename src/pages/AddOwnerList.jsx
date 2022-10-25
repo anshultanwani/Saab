@@ -14,11 +14,11 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
 
 const AddOwnerList = (props) => {
-    let userType = getCookie('userType');
+   let userType = getCookie('userType');
     console.log("addsutomerlistusertype=="+userType)
     const history = useHistory();
     const [showModal, toggleModal] = useState(false)
-    let userId = getCookie('userId');
+    var userId = sessionStorage.getItem("userId");
     console.log("addownerlistuserid==="+userId);
     const [selectedType, updateUser] = useState(0)
     const [data, updateData] = useState({

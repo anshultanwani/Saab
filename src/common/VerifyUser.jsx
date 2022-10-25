@@ -8,9 +8,12 @@ import axios from "axios";
 const VerifyUser = (props) => {
   var userId = sessionStorage.getItem("userId");
    // let userId = getCookie('userId');
-    let customerPhone = getCookie('customerPhone');
+   var customerPhone = sessionStorage.getItem("customerPhone");
+  
     console.log(userId);
     const handleVerification = () =>{
+      let close = props.onClose;
+      console.log(close)
             console.log(
               {
                     userId,
@@ -47,7 +50,7 @@ const VerifyUser = (props) => {
         aria-describedby="modal-modal-description"
       >
         <div className="popupsec">
-          <img src={require('../assets/images/' + "cart.svg").default} alt="not loaded" />
+        <img src={require('../assets/images/' + "success.png").default} alt="not loaded" />
           <p className="verifyuserheading">Customer verification is pending.</p>
           {/* <p>Ask customer to verify</p> */}
           <Button variant="contained" onClick={handleVerification} onClose={props.onClose}>Ask customer to verify</Button>

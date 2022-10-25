@@ -3,11 +3,18 @@ import React from 'react';
 const RewardList = (props) =>{
     return (
         <>
-        <p>Reward list</p>
-        <div className=''>
+        <div className='rewardlist-sec'>
             <ul>
-                <li>Refer your friend</li>
-                <li>Grocery 30 percent discount</li>
+                <li>
+                <p><img src={require('../assets/images/' + "refer-new.png").default} alt="not loaded" /></p>
+                <p>Refer your friend</p>
+                </li>
+
+                <li>
+                <p><img src={require('../assets/images/' + "gro.jpg").default} alt="not loaded" /></p>
+   
+                <p>Grocery 30 percent discount</p>
+                </li>
             </ul>
         </div>
         </>

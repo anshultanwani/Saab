@@ -18,21 +18,19 @@ const SelectAddress = (props) => {
     console.log("userId for address" + userId)
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
-      //  useEffect(() => {
-        console.log("userId for address" + userType)
-       // let userId = getCookie('userId');
-        axios.get(window.apiDomain + '/v1/users/' +userId).then(res => {
-           // console.log("users address" + res.data.data)
-            if (res.status === 200) {
-                updateUserAddress(res.data.data.address)
-                console.log("users address" + JSON.stringify(res.data.data))
 
-            }
-        }).catch(err => {
-            console.log(err)
-            console.log("Please add customer");
-        })
-  //  }, [])
+
+      // useEffect(() => {
+      //  console.log("userId for address" + userType)
+       //let userId = getCookie('userId');
+        //  axios.get(window.apiDomain + '/v1/users/' +userId).then(res => {
+        //      console.log("users address" + res)
+        //      updateUserAddress(res.data.data.address)
+        //  }).catch(err => {
+        //     console.log(err)
+        //      console.log("Please add customer");
+        //  })
+ //  }, [])
 
 
 
@@ -57,36 +55,16 @@ const SelectAddress = (props) => {
             </div>
             <div className="addresslist-inner">
                 <p>Saved Address</p>
-                <ul>
-                    <li>
-                    <div className="deliverhead">Delivers To</div>
-                    <div className="deliveraddress">
-                        <div className="left-sec">
-                        <img src={require('../assets/images/home.png').default} alt="not loaded" />
-                            <p>1.5km</p>
-                        </div>
-                        <div className="right-sec"> 
-                            <p>Home</p>
-                            <p>390 b block Lorem Ipsum WIpro, 3rd Floor,
-                            Lorem Ipsum, Road, Carmelaram, Hadosiddapura, Chik...</p>
-                        </div>
-                    </div>
-                    </li>
-                    <li>
-                    <div className="deliverhead">Delivers To</div>
-                    <div className="deliveraddress">
-                        <div className="left-sec">
-                        <img src={require('../assets/images/home.png').default} alt="not loaded" />
-                        <p>4.5km</p>
-                        </div>
-                        <div className="right-sec">
-                            <p>Hotel</p>
-                            <p>401 c block Lorem Ipsum Dummy, 4th Floor, 
-                                Lorem Ipsum, Road, Bangalore</p>
-                        </div>
-                    </div>
-                    </li>
-                </ul>
+               {/* <ul>
+                {
+                    userAddress.map((cur)=>{
+                        return(
+                            <li>{cur}</li>
+                        )
+                     
+                    })
+                }
+               </ul> */}
             </div>
         </div>
 

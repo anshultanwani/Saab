@@ -20,7 +20,7 @@ const EmptyCart = (props) => {
                         <img src={require('../assets/images/' + "cart.svg").default} alt="not loaded" />
                     </div>
                     <p>Your Shopping Cart Is Empty</p>
-                    <p>Your favourite items are just a cick away</p>
+                    <p>Your favourite items are just a click away</p>
                     <div className='btn-holder'>
                         <Button
                             variant='contained'
@@ -39,13 +39,13 @@ const EmptyCart = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="checkout-pro">
+            {/* <div className="checkout-pro">
                 <span>Before You  Checkout</span>
                 <span>VIEW ALL</span>
                 <div className="pro-list">
                   <CartSuggetionList {...props} /> 
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 

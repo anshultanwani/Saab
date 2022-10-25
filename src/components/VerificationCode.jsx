@@ -53,7 +53,7 @@ const VerificationCode = props => {
                     // setCookie('cookName', res.data.data.services.cook.name , 30)
                     if(userType == "OWNER"){
                         setCookie('userType', "OWNER");
-                        history.push('/home');
+                        history.push('/home?userType='+"OWNER");
                     }
                     if(userType == "COOK"){
                         setCookie('userType', "COOK");

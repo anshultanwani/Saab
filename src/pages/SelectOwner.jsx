@@ -101,7 +101,7 @@ const SelectOwner = (props) => {
         <div className="select-owner">
             <div className='border-card'>
                 <div className="owner-list">
-                    {users.length}
+                   
                     {
                         users.length >= 1 ?
                            // users.map(({ name, customerStatus, _id , phone}) => (
@@ -144,40 +144,6 @@ const SelectOwner = (props) => {
                                     )
                                 })
                 
-                                // <div className={"owner-list-index" + "  " + (customerStatus == "UNVERIFIED" ? 'verification-pending' : "verification-complete")} onClick={() => handleAssignedDish(_id)}>
-                                //     <input type="hidden" ref={ref=> textCustomerId.current[_id] = ref} value={_id} name="customerid" />
-                                //     <input type="hidden" ref={ref => textCustomerName.current[_id] = ref} value={name} name="customername" />
-                                //     <input type="hidden" ref={ref => textCustomerStatus.current[_id] = ref} value={customerStatus} name="customerstatus" />
-                                //     <input type="hidden" ref={ref => textCustomerPhone.current[_id] = ref} value={phone} name="customerphone" />
-                                //     <p>
-                                //         <div className="left">
-                                //             <p className="namethumb">
-                                //                 {name.slice(0, 2)}</p>
-                                //             {/* <img src={require("../assets/images/" + "owner1.png").default} /> */}
-                                //         </div>
-                                //         <div className="right">
-                                //             <div className="top">
-                                //                 <span>{name}</span>
-                                //                 <span>
-                                //                 {
-                                //                  customerStatus === "UNVERIFIED" ? "Pending"   : "Verified" 
-                                //                 }
-                                //                 </span>
-                                        
-                                //             </div>
-
-                                //             <div className="bottum">
-                                //                 <span>
-                                //                     <img src={require("../assets/images/" + "location.png").default} />
-                                //                 </span>
-                                //                 <span>
-                                //                 401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore                                                </span>
-                                //             </div>
-                                //         </div>
-
-                                //     </p>
-                                // </div>
-                          //  ))
                             :
                             <div className="addnewcustomersec">
                                 <p>Please click below to add new customer to your account</p>

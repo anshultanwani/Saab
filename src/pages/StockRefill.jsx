@@ -35,14 +35,15 @@ const StockRefill = props => {
     //let userId = getCookie('userId');
     var userId = sessionStorage.getItem("userId");
     console.log("userId in stockrefill" + userId)
-  
+    var orderStatusValue;
+    var orderIdValue;
     const history = useHistory();
     const [stockCat, updatestockCat] = useState([]);
     const [currentView, updateView] = useState('cart');
     const [cartTotal, updateTotal] = useState('');
-    const [orderStatus, updateOrderStatus] = useState('');
-    const [orderId, updateOrderId] = useState('');
-    const [catSection, toggleSection] = useState({
+    // const [orderStatus, updateOrderStatus] = useState('');
+    // const [orderId, updateOrderId] = useState('');
+     const [catSection, toggleSection] = useState({
         Veggies: {
             show: true,
             list: [],
@@ -76,60 +77,63 @@ const StockRefill = props => {
             })
         console.log("usertype for get all order api" + userType)
         if (userType == "OWNER") {
-           // let userId = getCookie('userId');
-          // var userId = sessionStorage.getItem("userId");
-           // props.getOrder(userId);
-            console.log("get Owner order" + userId)
             axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
-                .then((res) => {
-                    if (res.status === 200) {
-                        
-                        // setCookie('orderId', res.data.data._id);
-                        // console.log(getCookie('orderId'))
-                        console.log("cook request for data items" + JSON.stringify(res.data.data[0].items));
+            .then((res) => {
+                console.log(res)
+                console.log("values" + res.data.data[0])
+                //updateOrderLIst(res.data.data[0].items);
+              
+                // Object.keys(res.data.data[0].items).map((cur) => {
+                //     items = [...items, ...res.data.data[0].items[cur]]
+                // })
+
+                Object.keys(res.data.data).map((cur) => {
+                    console.log("proceed to pay req" + res.data.data[cur].status)
+                    sessionStorage.setItem('orderStatusValue' , res.data.data[cur].status)
+                    sessionStorage.setItem('orderIdValue' , res.data.data[cur]._id)
+                    console.log("cur value" + res.data.data[cur])
+                     if(sessionStorage.getItem("orderStatusValue") == 'REQUESTED'){
+                        // if(res.data.data[cur].status == 'REQUESTED'){
+                        //     props.updateCart(res.data.data[cur].items)    
+                        //     console.log("update stock" + JSON.stringify(res.data.data[cur].items))
+                        // }
+                        //items = [...items, res.data.data[cur].items]
                         let items = [];
-                        Object.keys(res.data.data[0].items).map((cur) => {
-                            items = [...items, ...res.data.data[0].items[cur]]
-                        })
-                        console.log("test")
-                        props.updateCart(items)
+                        // res.data.data[cur].items.forEach(function(item){
+                        //     items.push(item);
+                        // })
+                        // for (const item of res.data.data[cur].items) {
+                        //     items.push(item)
+                        //    // console.log(`${property}: ${object[property]}`);
+                           
+                        //   }
+                          Object.keys(res.data.data[cur].items).map((item) => {
+                     items = [...items, ...res.data.data[cur].items[item]]
+                 })
+                        props.updateCart(items)    
+                        console.log("update stock" + JSON.stringify(res.data.data[cur].items))
+                   
+                       
+                        
+                        // props.updateCart(items)
+                    }
+                    else{
+                        console.log("update not stock") 
                     }
                 })
-                .catch((err) => {
-                    console.log(err);
-                })
+               
+               
+            })
+            .catch((err) => {
+                console.log(err);
+            })
         }
         else {
             console.log("cartlist empty")
         }
     }, [])
 
-    useEffect(() => {
-        axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
-            .then((res) => {
-                console.log(res)
-                console.log("values" + res.data.data[0])
-                //updateOrderLIst(res.data.data[0].items);
-                let items = [];
-                Object.keys(res.data.data[0].items).map((cur) => {
-                    items = [...items, ...res.data.data[0].items[cur]]
-                })
-
-                Object.keys(res.data.data).map((cur) => {
-                  
-                    if(res.data.data[cur].status == 'REQUESTED'){
-                       console.log("proceed to pay req" + res.data.data[cur].status)
-                        updateOrderStatus(res.data.data[cur].status)
-                        updateOrderId(res.data.data[cur]._id)
-                    }
-                })
-                //props.updateOrderStatus(res.data.data[0].status)
-               
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }, [])
+  
 
 
     const changeAddress = () => {
@@ -301,8 +305,10 @@ const StockRefill = props => {
                 console.log("proceed to pay clicked");
                // let userId = getCookie('userId');
                 console.log("get Owner order" + userId)
-                console.log("get order status" + orderStatus)
                
+                var orderId = sessionStorage.getItem("orderIdValue");
+                var orderStatus = sessionStorage.getItem("orderStatusValue");
+                console.log(orderId + "get order values" + orderStatus)
                 axios({
                     method: 'put',
                     url: window.apiDomain + '/v1/orders/approve/status',
