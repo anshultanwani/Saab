@@ -38,12 +38,12 @@ const Header = props => {
         '/addedit-combo': ['back', 'search'],
         '/my-prefrences': ['back', 'search'],
         '/history': ['back', 'search'],
-        '/select-owner': ['back', 'burger' , 'search'],
-        '/add-owner-list': ['back', 'burger' , 'search'],
-        '/todays-dish': ['back' , 'burger' , 'search'],
-        '/grocery-history': ['back', 'search'],
-        '/payment': ['back', 'search'],
-        '/my-reward': ['back', 'search']
+        '/select-owner': [ ' ' ],
+        '/add-owner-list': [ 'back' ],
+        '/todays-dish': [ ' ' ],
+        '/grocery-history': ['back'],
+        '/payment': ['back'],
+        '/my-reward': ['back']
     }
 
     useEffect(() => {

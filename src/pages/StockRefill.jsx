@@ -277,9 +277,9 @@ const StockRefill = props => {
                         <BoxWithSideBorder
                             title={cur}
                             subTitle={'(' + catSection[cur].list.length + ' items)'}
-                            rightSec={(
-                                <div className='add-more' onClick={() => updateView(cur.toLowerCase())}>ADD MORE </div>
-                            )}
+                            // rightSec={(
+                            //     <div className='add-more' onClick={() => updateView(cur.toLowerCase())}>ADD MORE </div>
+                            // )}
                             onClick={() => toggleSection({ ...catSection, [cur]: { ...catSection[cur], show: !catSection[cur].show } })}
                         />
                         {catSection[cur].show && catSection[cur].list?.length ?

@@ -44,7 +44,7 @@ const TodayDish = (props) => {
         return (
             <div className='grocey-sec'>
                 <div className='left'>
-                    <p>Help your owner to order grocery</p>
+                    <p>Help your customer to order grocery</p>
                     <Button color="inherit" onClick={() => props.history.push('/stock-refill?userType='+userType)}>
                         Order Now
                     </Button>
@@ -82,7 +82,9 @@ const TodayDish = (props) => {
         <>
             <div className="today-dish">
                 <div className='border-card'>
-                    <div className='title'>Meals assigned by <span>{customerName}</span></div>
+                <div className='title'><span>{customerName}</span></div>
+
+                    {/* <div className='title'>Meals assigned by <span>{customerName}</span></div> */}
                     <div className="owner-list">
                         <div className='dish-details'>
                             {getSection()}
@@ -103,7 +105,7 @@ const TodayDish = (props) => {
                                     onClick={handleOpen}
                                     children={(
                                         <div className='btn-content'>
-                                            <p>Ask your owner to rate you</p>
+                                            <p>Ask your customer to rate you</p>
                                             <p><img src={require('../assets/images/' + "left-arrow.png").default} /></p>
                                         </div>
                                     )}

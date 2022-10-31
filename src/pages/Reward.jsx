@@ -13,12 +13,12 @@ const Reward = (props) => {
         return (
             <>
                 <div className="tabs">
-                    <button
+                    {/* <button
                         className={`tab ${checkActive(1, "active")}`}
                         onClick={() => handleClick(1)}
                     >
                         Rewards
-                    </button>
+                    </button> */}
                     <button
                         className={`tab ${checkActive(2, "active")}`}
                         onClick={() => handleClick(2)}
@@ -33,9 +33,9 @@ const Reward = (props) => {
                     </button>
                 </div>
                 <div className="panels">
-                    <div className={`panel ${checkActive(1, "active")}`}>
+                    {/* <div className={`panel ${checkActive(1, "active")}`}>
                         <RewardList />
-                    </div>
+                    </div> */}
                     <div className={`panel ${checkActive(2, "active")}`}>
                         <RewardBudges />
                     </div>

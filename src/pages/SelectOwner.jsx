@@ -114,27 +114,34 @@ const SelectOwner = (props) => {
                                         <p>
                                         <div className="left">
                                             <p className="namethumb">
-                                                {/* {item.name.slice(0, 2)}</p> */}
-                                                {item.name}
-                                                </p>
+                                            
+                                               {item.name.substring(0,2)}
+                                            </p>
                                          </div>
                                          <div className="right">
                                              <div className="top">
                                                  <span>{item.name}</span>
-                                             <span>
+                                             {/* <span>
+                                                {
+                                                 item.customerStatus === "UNVERIFIED" ? "Pending"   : "Verified" 
+                                                }
+                                                </span>
+                                         */}
+                                            </div>
+
+                                            <div className="bottum">
+                                                {/* <span>
+                                                    <img src={require("../assets/images/" + "location.png").default} />
+                                                </span>
+                                                <span>
+                                                401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore                                                
+                                                </span> */}
+                                                <span>
                                                 {
                                                  item.customerStatus === "UNVERIFIED" ? "Pending"   : "Verified" 
                                                 }
                                                 </span>
                                         
-                                            </div>
-
-                                            <div className="bottum">
-                                                <span>
-                                                    <img src={require("../assets/images/" + "location.png").default} />
-                                                </span>
-                                                <span>
-                                                401 c block Lorem Ipsum Dummy, 4th Floor, Lorem Ipsum, Road, Bangalore                                                </span>
                                             </div>
                                         </div>
 

@@ -9,8 +9,8 @@ import axios from 'axios';
 const LoginHome = props => {
     const userType = [
         { label: 'Owner', image: 'owner.png' } ,
-        { label: 'Cook', image: 'cook.png' },
-        { label: 'Helper', image: 'maid.png' }
+        { label: 'Cook', image: 'cook.png' }
+        // { label: 'Helper', image: 'maid.png' }
     ];
     const [selectedType,updateUser] = useState(0)
     const [errors,updateErrors] = useState('');
