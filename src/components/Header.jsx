@@ -18,13 +18,13 @@ const Header = props => {
     let userType = getCookie('userType');
    var userId = sessionStorage.getItem("userId");
     console.log("userid in header===="+ userId)
-    let orderstatus = sessionStorage.getItem("orderStatusValue")
+   // let orderstatus = sessionStorage.getItem("orderStatusValue")
    
 
     let customerName = getCookie('customerName');
     console.log(customerName)
     const location = useLocation();
-   // const [orderStatus, updateOrderStatus] = useState('');
+    const [orderStatus, updateOrderStatus] = useState('APPROVED');
    // const [orderId,  updateOrderId] = useState('');
     const [isLoginPage, updatePage] = useState(location.pathname === '/login');
     const history = useHistory();
@@ -38,7 +38,7 @@ const Header = props => {
         '/addedit-combo': ['back', 'search'],
         '/my-prefrences': ['back', 'search'],
         '/history': ['back', 'search'],
-        '/select-owner': [ ' ' ],
+        '/select-owner': [ 'back' ],
         '/add-owner-list': [ 'back' ],
         '/todays-dish': [ ' ' ],
         '/grocery-history': ['back'],
@@ -56,6 +56,12 @@ const Header = props => {
       
     }, [location.pathname])
 
+    useEffect(()=>{
+        if(orderStatus === 'REQUESTED'){
+            alert(orderStatus)
+        }
+    },[orderStatus])
+    
     if(sessionStorage.getItem('isLoggedIn')) {
         axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
         .then((res) => {
@@ -68,14 +74,18 @@ const Header = props => {
                
                    // updateOrderId(res.data.data[cur]._id)
                 sessionStorage.setItem('orderIdValue' , res.data.data[cur]._id) 
+                console.log("req values" + res.data.data[cur].status)
                 if(res.data.data[cur].status == 'REQUESTED'){
                     setTimeout(() => {
-                        sessionStorage.setItem('orderStatusValue' , res.data.data[cur].status)
+                        // alert("req1")
+                       // sessionStorage.setItem('orderStatusValue' , res.data.data[cur].status)
+                        updateOrderStatus(res.data.data[cur].status)
+                        // alert("req")
                     }, 2000);
                 }
-                else{
-                    sessionStorage.setItem('orderStatusValue' , 'APPROVED')
-                } 
+                // else{
+                //     sessionStorage.setItem('orderStatusValue' , 'APPROVED')
+                // } 
             })  
         })
         .catch((err) => {
@@ -98,11 +108,9 @@ const Header = props => {
         '/todays-dish': "Today Dish",
         '/my-reward': "My Rewards"
     }
-   
-      
-    return (
+     return (
         !isLoginPage ?
-            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '') +  (orderstatus == 'APPROVED' ? 'order-arroved' : 'order-req')}>
+            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '') +  (orderStatus == 'APPROVED' ? 'order-arroved' : 'order-req')}>
                 <div className='fake-div' />
                 <div className={'header-top ' + (sessionStorage.getItem("orderStatusValue") == 'APPROVED' ? 'order-arroved' : 'order-req') }>
                     <div className='left'>
@@ -136,8 +144,8 @@ const Header = props => {
 
                     </div>
                 </div>
-                {orderstatus}
-                 {orderstatus == 'REQUESTED' && location.pathname === '/home' ? 
+                {/* {orderstatus} */}
+                 {orderStatus == 'REQUESTED' && location.pathname === '/home' ? 
                     <div className='header-bottom'>
                         <div className='grocey-sec'>
                             <div className='left'>

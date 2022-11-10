@@ -3,8 +3,30 @@ import './reward.scss';
 import RewardList from "../components/RewardList";
 import RewardHistory from "../components/RewardHistory";
 import RewardBudges from "../components/RewardBudges";
+import axios from 'axios';
 
 const Reward = (props) => {
+    var userId = sessionStorage.getItem("userId");
+    const [rewardHistory , getRewardHistory] = useState([])
+    const [totalPoints, updateTotalPoints] = useState([])
+    useEffect(() => {
+    axios.get(window.apiDomain + "/v1/users/find/ratings?userId=" + userId )
+                .then((res) => {
+                    if (res.status === 200) {
+                        let ratingsArr = [];
+                        console.log("rating value" + JSON.stringify(res.data.data.ratings[0].rating))
+                    
+                            
+                         getRewardHistory(ratingsArr)
+                        updateTotalPoints(res.data.data.totalPoints) 
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+            },[])
+      
+
 
     const Tabs = () => {
         const [activeIndex, setActiveIndex] = useState(3);
@@ -33,6 +55,7 @@ const Reward = (props) => {
                     </button>
                 </div>
                 <div className="panels">
+            
                     {/* <div className={`panel ${checkActive(1, "active")}`}>
                         <RewardList />
                     </div> */}
@@ -40,8 +63,9 @@ const Reward = (props) => {
                         <RewardBudges />
                     </div>
                     <div className={`panel ${checkActive(3, "active")}`}>
-                        <RewardHistory />
+                        <RewardHistory rewardValue={rewardHistory} />
                     </div>
+                   
                 </div>
             </>
         );
@@ -60,7 +84,7 @@ const Reward = (props) => {
                         <p>
                         <p>Current Points</p>
                         <span>
-                                3,110
+                        {totalPoints}
                         </span></p>
                     </div>
                     <div className="reward-bottom">

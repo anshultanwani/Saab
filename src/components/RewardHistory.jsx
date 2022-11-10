@@ -1,10 +1,30 @@
 import React from 'react';
-
+import axios from 'axios';
+import { useState } from 'react';
 const RewardHistory = (props) => {
+    const {
+        rewardValue
+    } = props;
+
+   
     return (
         <>
             <div className='list-history'>
                 <ul>
+                   <li>
+                   {
+                    rewardValue
+                                        //    rewardValue.map(item =>{
+                                        //         return (
+                                        //             <>
+                                                   
+                                        //             {item}
+                                        //             </>
+                                        //         )
+                                        //     })
+                                        }
+                   </li>
+
                     <li>
                         <div className="left">
                             <p className='title'>Punctuality</p>

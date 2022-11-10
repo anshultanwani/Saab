@@ -52,7 +52,7 @@ const StockRefillButton = props => {
                 console.log(res.status)
                 if (res.status === 200) {
                     console.log(res)
-                     props.updateCart([]);
+                 
                     console.log("create order api" + JSON.stringify(res.data.data)) 
                 }
             }).catch(err => {
@@ -71,7 +71,7 @@ const StockRefillButton = props => {
                         onClick={handleStock}
                         children={(
                             <div className='btn-content'>
-                                send to owner
+                                send to customer
                             </div>
                         )}
                     />

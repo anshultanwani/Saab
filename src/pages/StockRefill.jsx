@@ -16,8 +16,6 @@ import queryString from 'query-string';
 import EmptyCart from '../components/EmptyCart';
 import { getCookie, setCookie } from '../utils';
 import {orderIdAction} from '../actions/orderidaction';
-
-
 import axios from 'axios';
 const StockRefill = props => {
     const {
