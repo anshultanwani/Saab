@@ -35,7 +35,8 @@ const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
 function App(props) {
-  window.apiDomain = 'http://44.205.231.204';
+  // window.apiDomain = 'http://44.205.231.204';
+  window.apiDomain = 'ec2-18-206-147-239.compute-1.amazonaws.com:3000';
 
   const getPath = () => {
     if(!getCookie('isLoggedIn') && window.location.pathname !== "/login") {
