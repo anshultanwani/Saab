@@ -15,7 +15,7 @@ const Main = props => {
                 <div className="main-content">
 
                     <Suggestions />
-                    <MostCooked />
+                    {/* <MostCooked /> */}
                     <MyPreferences />
                     <ManageVaggie />
                 </div>

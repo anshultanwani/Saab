@@ -35,22 +35,42 @@ const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
 function App(props) {
-  // window.apiDomain = 'http://44.205.231.204';
-  window.apiDomain = 'ec2-18-206-147-239.compute-1.amazonaws.com:3000';
+   window.apiDomain = 'http://44.204.116.205';
+ 
+   if(sessionStorage.getItem('isLoggedIn') === 'true'){
+    console.log("userlogin" + sessionStorage.getItem('isLoggedIn'))
+  }
+  // const getPath = () => {
+  //   if(!getCookie('isLoggedIn') && window.location.pathname !== "/login") {
+  //     console.log("userlogout")
+  //     window.location.replace('/login')
+  //   }else if(!props.session._id && getCookie("userId")){
+  //       let userId = getCookie('userId');
+  //       axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
+  //         if(window.location.pathname === '/') {
+  //           window.location.replace('/home')
+  //         }
+  //           props.setSession({
+  //               ...res.data.data
+  //           })
+  //       })
+  //   }
+  // }
 
   const getPath = () => {
-    if(!getCookie('isLoggedIn') && window.location.pathname !== "/login") {
+    if(sessionStorage.getItem('isLoggedIn') === 'false' && window.location.pathname !== "/login") {
       console.log("userlogout")
       window.location.replace('/login')
-    }else if(!props.session._id && getCookie("userId")){
-        let userId = getCookie('userId');
+    }else if(sessionStorage.getItem("userId") && sessionStorage.getItem('isLoggedIn') === 'true'){
+      console.log("userlogin")
+        let userId = sessionStorage.getItem("userId")
         axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
           if(window.location.pathname === '/') {
             window.location.replace('/home')
           }
-            props.setSession({
-                ...res.data.data
-            })
+            // props.setSession({
+            //     ...res.data.data
+            // })
         })
     }
   }
