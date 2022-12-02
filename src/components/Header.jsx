@@ -62,7 +62,7 @@ const Header = props => {
         }
     },[orderStatus])
     
-    if(sessionStorage.getItem('isLoggedIn')) {
+    if(sessionStorage.getItem('isLoggedIn') === 'true') {
         axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
         .then((res) => {
             console.log(res)

@@ -58,7 +58,7 @@ function App(props) {
   // }
 
   const getPath = () => {
-    if(sessionStorage.getItem('isLoggedIn') === 'false' && window.location.pathname !== "/login") {
+    if(!sessionStorage.getItem('isLoggedIn') && window.location.pathname !== "/login") {
       console.log("userlogout")
       window.location.replace('/login')
     }else if(sessionStorage.getItem("userId") && sessionStorage.getItem('isLoggedIn') === 'true'){

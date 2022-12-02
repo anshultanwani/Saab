@@ -29,6 +29,7 @@ const GroceryOrderHistory = props => {
    // let userId = getCookie('userId');
     console.log("get Owner order" + userId)
     useEffect(() => {
+        if(sessionStorage.getItem('isLoggedIn') === 'true') {
         axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
             .then((res) => {
                 console.log(res)
@@ -44,7 +45,7 @@ const GroceryOrderHistory = props => {
             .catch((err) => {
                 console.log(err);
             })
-
+        }
     }, [])
 
     const BillingSection = props => {
