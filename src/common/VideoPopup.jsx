@@ -7,15 +7,12 @@ import './auto-approve.scss';
 const VideoPopup = props => {
     const content = (
         <div className='youtube-video-popup'>
-            {/* <iframe
-                src={videoUrl}
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                title="video"
-                width="100%"
-                height="200px"
-            /> */}
+        { 
+        <div>
+         <iframe width="330" height="300" src="https://www.youtube.com/embed/ghXyNveJXFA" title="पालक पनीर ऐसे बनाएंगे तो उंगलिया चाटते रह जायेंगे| NO MIXIE Lehsuni Palak Paneer recipe -NO GRINDER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         <a href="/mealviodepopup">Veiw Details</a>
+        </div>
+            }
         </div>
     )
 

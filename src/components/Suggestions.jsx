@@ -18,6 +18,9 @@ const Suggestions = props => {
         //history.push('/addedit-combo?cat=' + comboId)
     }
 
+    const handleButtonClick = () =>{
+        history.push('/meal-plan')
+    }
     const handleEdit = (comboId) => {
       //  console.log(combo)
        // history.push('/editcombo')
@@ -80,7 +83,7 @@ const Suggestions = props => {
         <div className='main-holder'>
             <div className='title-holder'>
                 <div className='title'>Today's Suggestions</div>
-                <div className='plan-title'>Plan Your Meal</div>
+                <Button  className='plan-title' variant="contained" onClick={handleButtonClick}>PLAN YOUR MEAL</Button>
             </div>
             <div className='card-holder'>
                 {dishData}

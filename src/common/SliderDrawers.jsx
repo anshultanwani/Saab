@@ -8,6 +8,7 @@ import CompleteAddress from './CompleteAddress';
 import VideoPopup from './VideoPopup';
 import LatestFeedback from './LatestFeedback';
 import SelectAddres from './SelectAddress';
+import MealVideoPopup from './MealVideoPopup';
 
 const SliderDrawers = props => {
     const {
@@ -18,7 +19,8 @@ const SliderDrawers = props => {
         completeAddress,
         videoPopup ,
         latestFeedback,
-        selectaddress
+        selectaddress,
+        mealvideopopup
     } = props;
     return (
         <>
@@ -30,6 +32,7 @@ const SliderDrawers = props => {
             <VideoPopup open={videoPopup} />
             <LatestFeedback open={latestFeedback} />
             <SelectAddres open={selectaddress}/>
+            <MealVideoPopup open={mealvideopopup}/>
         </>
     )
 };

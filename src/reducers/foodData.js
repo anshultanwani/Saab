@@ -9,7 +9,8 @@ const initialState = {
     foodCombo:[],
     history:[],
     ownerlist:[],
-    todayDish:[]
+    todayDish:[],
+    mealplan:[]
 };
 
 export default (state = initialState, action) => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import './meal-plan.scss';
-
-const CollapsableSwitch = props => {
+const CollapsableSwitchMealPlan = props => {
     const {
         label
     } = props;
@@ -24,4 +23,4 @@ const CollapsableSwitch = props => {
     )
 };
 
-export default CollapsableSwitch;
+export default CollapsableSwitchMealPlan;

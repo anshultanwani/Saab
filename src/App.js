@@ -26,6 +26,8 @@ import TodayDish from './pages/TodayDish';
 import Payment from './pages/Payment';
 import GroceryOrderHistory from './pages/GroceryOrderHistory';
 import Reward from './pages/Reward';
+import MealPlan from './components/MealPlan';
+import MealFoodRecipe from './components/MealFoodRecipe';
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
 const ComboPage = React.lazy(() => import('./pages/ComboPage'));
@@ -34,6 +36,7 @@ const StockRefill = React.lazy(() => import('./pages/StockRefill'));
 //const AddEditCombo = React.lazy(() => import('./pages/AddEditCombo'));
 const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
+
 function App(props) {
    window.apiDomain = 'http://44.204.116.205';
  
@@ -92,7 +95,7 @@ function App(props) {
 
   const ignoreFooter = ['/login','/signup','/','/add-address'   ];
   const customHeader = ['/stock-refill','/add-address' , '/addedit-combo' , 'my-prefrences' , "/history"
-   , "/select-owner" , "add-owner-list" , '/todays-dish' , "/payment"];
+   , "/select-owner" , "add-owner-list" , '/todays-dish' , , '/meal-plan', "/payment" , "/meal-food-recipe"];
   
   return (
     <React.Suspense fallback={<Loader />}>
@@ -100,7 +103,7 @@ function App(props) {
         <div className="App">
           <Header customHeader={customHeader} />
           <Switch>
-            <Route exact path='/' render={() => <SplashScreen />}></Route>
+            {/* <Route exact path='/' render={() => <SplashScreen />}></Route> */}
             <Route exact path='/home' render={() => <HomePage/>}></Route>
             <Route exact path='/login' component={LoginHome}></Route>
             <Route exact path='/signup' component={RegisterUser}></Route>
@@ -116,6 +119,8 @@ function App(props) {
             <Route exact path='/payment' component={Payment}></Route>
             <Route exact path='/my-reward' component={Reward}></Route>
             <Route exact path='/grocery-history' component={GroceryOrderHistory}></Route>
+            <Route exact path='/meal-plan' component={MealPlan}></Route>
+            <Route exact path='/meal-food-recipe' component={MealFoodRecipe}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />
           {/* <Loader/> */}

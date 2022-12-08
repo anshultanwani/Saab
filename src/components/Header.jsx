@@ -43,7 +43,9 @@ const Header = props => {
         '/todays-dish': [ ' ' ],
         '/grocery-history': ['back'],
         '/payment': ['back'],
-        '/my-reward': ['back']
+        '/my-reward': ['back'],
+        '/meal-plan': ['back'],
+        '/meal-food-recipe': ['back']
     }
 
     useEffect(() => {
@@ -106,7 +108,8 @@ const Header = props => {
         '/payment': 'Payment',
         '/grocery-history': "Grocery History",
         '/todays-dish': "Today Dish",
-        '/my-reward': "My Rewards"
+        '/my-reward': "My Rewards",
+        '/meal-food-recipe': "Recipe"
     }
      return (
         !isLoginPage ?
