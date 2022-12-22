@@ -35,12 +35,24 @@ const GroceryOrderHistory = props => {
                 console.log(res)
                 console.log("values" + res.data.data[0])
                 //updateOrderLIst(res.data.data[0].items);
-                let items = [];
-                Object.keys(res.data.data[0].items).map((cur) => {
-                    items = [...items, ...res.data.data[0].items[cur]]
+              //  let items = [];
+                Object.keys(res.data.data).map((index)=>{
+                    console.log("index======" + index)
+                    Object.keys(res.data.data[index].items).map((cur) => {
+                 //  Object.keys(res.data.data[index].map((cur) => {
+                        console.log("cur=====" + res.data.data[index].items[cur])
+                        res.data.data[index].items[cur].map((val)=>{
+                            console.log("cur=====" + val.name)
+                           // items = [...items, ...res.data.data.items[cur]]
+                           // items.push(val.name);
+                            //updateOrderLIst(items)
+                            orderList.push(val.name)
+                           
+                        })
+                      
+                    })
+                    updateOrderStatus(res.data.data[index].status)  
                 })
-                updateOrderLIst(items)
-                updateOrderStatus(res.data.data[0].status)
             })
             .catch((err) => {
                 console.log(err);
@@ -126,7 +138,7 @@ const GroceryOrderHistory = props => {
                                             orderList.map((cur) => {
                                                 return (
                                                     <li>
-                                                        {cur.name}
+                                                        {cur}
                                                     </li>
                                                 )
                                             })

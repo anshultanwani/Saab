@@ -18,7 +18,6 @@ const LoginHome = props => {
     const [mobileNum,updateNum] = useState('');
 
     const getOtp = () => {
-        console.log("api res");
         if(mobileNum.length < 10) {
             updateErrors('Please Enter Valid Mobile Number');
             return;
@@ -30,9 +29,7 @@ const LoginHome = props => {
             phone: Number(mobileNum),
             userType: userType[selectedType].label.toUpperCase()
         }}).then(res => {
-            console.log("api res" + res.status);
             if(res.status === 200) {
-                console.log("api res" + res.status);
                 updateView('otp');
             }
         }).catch(err => {

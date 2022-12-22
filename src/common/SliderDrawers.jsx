@@ -20,7 +20,7 @@ const SliderDrawers = props => {
         videoPopup ,
         latestFeedback,
         selectaddress,
-        mealvideopopup
+        mealvideoPopup
     } = props;
     return (
         <>
@@ -32,7 +32,7 @@ const SliderDrawers = props => {
             <VideoPopup open={videoPopup} />
             <LatestFeedback open={latestFeedback} />
             <SelectAddres open={selectaddress}/>
-            <MealVideoPopup open={mealvideopopup}/>
+            <MealVideoPopup open={mealvideoPopup}/>
         </>
     )
 };
@@ -46,7 +46,8 @@ const mapStateToProps = state => {
         sideMenu: state.sliderDrawer.sideMenu,
         videoPopup: state.sliderDrawer.videoPopup ,
         latestFeedback: state.sliderDrawer.latestFeedback,
-        selectaddress:state.sliderDrawer.selectaddress
+        selectaddress:state.sliderDrawer.selectaddress,
+        mealvideoPopup: state.sliderDrawer.mealvideoPopup
     }
 }
 

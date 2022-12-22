@@ -9,10 +9,10 @@ const MealVideoPopup = props => {
         <div className='youtube-video-popup'>
             {
                 <div>
-              <iframe width="784" height="441" src="https://www.youtube.com/embed/ghXyNveJXFA" title="पालक पनीर ऐसे बनाएंगे तो उंगलिया चाटते रह जायेंगे| NO MIXIE Lehsuni Palak Paneer recipe -NO GRINDER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <a href='/meal-food-recipe'>Veiw Details</a>
+                    <iframe width="330" height="300" src="https://www.youtube.com/embed/ghXyNveJXFA" title="पालक पनीर ऐसे बनाएंगे तो उंगलिया चाटते रह जायेंगे| NO MIXIE Lehsuni Palak Paneer recipe -NO GRINDER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <a href="/meal-food-recipe" className='viewdetailbtn'>Veiw Details</a>
                 </div>
-              
+
             }
         </div>
     )
@@ -21,7 +21,7 @@ const MealVideoPopup = props => {
         <BottomDrawer
             {...props}
             onClose={() => props.toggleSliderDrawer({
-                mealvideopopup: false
+                mealvideoPopup: false
             })}
             children={content}
         />

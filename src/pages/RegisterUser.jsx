@@ -17,8 +17,6 @@ const RegisterUser = props => {
     const phoneNum = queryString.parse(searchParams).phone;
     const userType = queryString.parse(searchParams).userType;
     console.log("usertype=" + userType);
-   // var userId = sessionStorage.getItem("userId");
-   // console.log("userid in register page==" + userId)
     const [switchStatus, updateStatus] = useState({
         cook: false,
         maid: false
@@ -63,14 +61,12 @@ const RegisterUser = props => {
     const findAndUpdate = (dataObj, value, parentKey, key) => {
         for (var cur in dataObj) {
             if (typeof dataObj[cur] === 'object' && !Array.isArray(dataObj[cur]) && cur === parentKey.split('.')[0]) {
-                console.log("data object inside=====" + JSON.stringify(dataObj[cur]));
                 findAndUpdate(dataObj[cur], value, parentKey.split('.').length > 1 ? parentKey.split('.')[1] : '', key);
               //  data.addressArray.push(JSON.stringify(dataObj[cur]));
                /// updateAddressArray(JSON.stringify(dataObj[cur]))
-               console.log("new values===" + JSON.stringify(dataObj[cur]) + value +  parentKey.split('.').length + parentKey.split('.')[1] + key)
+              // console.log("new values===" + JSON.stringify(dataObj[cur]) + value +  parentKey.split('.').length + parentKey.split('.')[1] + key)
             }
             else if (typeof dataObj[cur] === 'object' && Array.isArray(dataObj[cur]) ) {
-                console.log("inside array")
             }
             else if (cur === key && !parentKey) {
                 dataObj[cur] = value;
@@ -80,7 +76,6 @@ const RegisterUser = props => {
     const handleChange = (node, value, subNode) => {
        let newData;
         if (userType == "OWNER") {
-            console.log("owner data" + JSON.stringify({ ...data }))
             newData = { ...data };
 
             if (subNode == 'phone') {
@@ -88,23 +83,19 @@ const RegisterUser = props => {
             }
         }
         if (userType == "COOK") {
-            console.log("cook data" + JSON.stringify({ ...cookData }))
             newData = { ...cookData };
             if (subNode == 'phone') {
                 value = isNaN(Number(value)) ? newData[node][subNode] : Number(value);
             }
         }
-        console.log("onchange data===" + JSON.stringify(newData));
         findAndUpdate(newData, value, node, subNode);
         updateData(newData)
         updateCookData(newData);
     }
 
     const handleSubmit = () => {
-        console.log("ownercliekd" + data.address)
         const temp = [];
         temp.push(data.address);
-        console.log(temp)
       
         const formData = {
             name : data.name,
@@ -119,7 +110,6 @@ const RegisterUser = props => {
             subscriptionType: null,
             userType: userType
           }
-          console.log(formData)
       //  axios.post(window.apiDomain + '/v1/users/register' , formData).then(res => {
         axios({
             method: 'post',
@@ -129,21 +119,12 @@ const RegisterUser = props => {
         }).then(res => {
             if (res.status === 200) {
               //  console.log("owner response data" + JSON.stringify(res.data.data))
-                console.log("owner response data" + JSON.stringify(res.data.data.services))
                 props.setSession({
                     ...props.session,
                     ...res.data.data
                 })
                 sessionStorage.setItem('isLoggedIn' , true)
                 sessionStorage.setItem('userId' , res.data.data._id)
-                // setCookie('isLoggedIn', true, 30);
-               // setCookie('userId', res.data.data._id, 30);
-             //  var userId = sessionStorage.getItem("userId");
-              // SessionStorage.setItem('userIdNew' , res.data.data._id)
-              //  let userId = getCookie('userId');
-               // console.log("userid in register page==" + userId)
-                // setCookie('cookName', res.data.data.services.cook.name , 30)
-           //  window.location.pathname('/home');
                history.push('/home');
             }
         }).catch(err => {
@@ -152,14 +133,7 @@ const RegisterUser = props => {
     }
 
     const handleCookSubmit = () => {
-        console.log("cookcLicked"+
-        {
-            ...cookData,
-            onboarded: 1,
-            subscriptionType: null,
-            userType
-        })
-        console.log(userType);
+        console.log("cookcLicked")
         axios({
             method: 'post',
             url: window.apiDomain + '/v1/users/register',
@@ -170,27 +144,14 @@ const RegisterUser = props => {
                 userType
             }
         }).then((res) => {
-            console.log(
-             {
-                ...cookData,
-                onboarded: 1,
-                subscriptionType: null,
-                userType
-            })
-            console.log(res.status)
             if (res.status === 200) {
-                console.log(res);
-                console.log("cook response data" + res.data.data)
+                console.log("cook response data")
                 props.setSession({
                     ...props.session,
                     ...res.data.data
                 })
                 sessionStorage.setItem('isLoggedIn' , true)
-                sessionStorage.setItem('userId' , res.data.data._id)
-             
-                // setCookie('isLoggedIn', true, 30);
-                // setCookie('userId', res.data.data._id, 30);
-               
+                sessionStorage.setItem('userId' , res.data.data._id) 
                 history.push('/select-owner?userType='+userType);
             }
         })

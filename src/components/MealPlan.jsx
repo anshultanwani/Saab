@@ -9,7 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import { toggleSliderDrawer } from '../actions';
+import { updateCart, toggleSliderDrawer, updateOrderStatus } from '../actions';
 import CollapsableSwitchMealPlan from '../components/CollapsableSwitchMealPlan';
 const MealPlan = props => {
     const [value, setValue] = React.useState('1');
@@ -23,8 +23,8 @@ const MealPlan = props => {
 
     const openRecipe = () => {
         console.log("recipde video")
-        props.toggleSliderDrawer({
-            mealvideopopup: true
+       props.toggleSliderDrawer({
+            mealvideoPopup: true
         })
     }
 
@@ -54,6 +54,7 @@ const MealPlan = props => {
                                 </ul>
                             </TabPanel>
                             <TabPanel value="2">
+                                <ul>
                                 <li>
                                     <a><img src={require("../assets/images/Palak-Panner.png").default} /></a>
                                     <p>Palak Panner</p>
@@ -62,8 +63,10 @@ const MealPlan = props => {
                                     <a><img src={require("../assets/images/panner-lab.png").default} /></a>
                                     <p>Butter Chiken</p>
                                 </li>
+                                </ul>
                             </TabPanel>
                             <TabPanel value="3">
+                                <ul>
                                 <li>
                                     <a><img src={require("../assets/images/daalchawal.jpg").default} /></a>
                                     <p>Daal Chawal</p>
@@ -72,6 +75,7 @@ const MealPlan = props => {
                                     <a> <img src={require("../assets/images/panner-lab.png").default} /></a>
                                     <p>Panner Lababdar</p>
                                 </li>
+                                </ul>
                             </TabPanel>
                         </TabContext>
                     </Box>
@@ -84,7 +88,7 @@ const MealPlan = props => {
         return (
             <>
                 <div className='none-veg-food'>
-                    <div className="title">Please seelct preferred day</div>
+                    <div className="title">Please select prefered day</div>
                     <ul>
                         {
                             ["MONDAY", "TUESDAY", "WEDNESDAY", "THRUSDAY", "FRIDAY", "SATURDAY", "SUNDAY"].map((index) => {
@@ -128,6 +132,7 @@ const MealPlan = props => {
                                     </ul>
                                 </TabPanel>
                                 <TabPanel value="2">
+                                    <ul>
                                     <li>
                                         <a><img src={require("../assets/images/Palak-Panner.png").default} /></a>
                                         <p>Palak Panner</p>
@@ -136,8 +141,11 @@ const MealPlan = props => {
                                         <a><img src={require("../assets/images/panner-lab.png").default} /></a>
                                         <p>Butter Chiken</p>
                                     </li>
+                                    </ul>
+                                   
                                 </TabPanel>
                                 <TabPanel value="3">
+                                    <ul>
                                     <li>
                                         <a><img src={require("../assets/images/daalchawal.jpg").default} /></a>
                                         <p>Daal Chawal</p>
@@ -146,6 +154,8 @@ const MealPlan = props => {
                                         <a> <img src={require("../assets/images/panner-lab.png").default} /></a>
                                         <p>Panner Lababdar</p>
                                     </li>
+                                    </ul>
+                                   
                                 </TabPanel>
                             </TabContext>
                         </Box>
@@ -158,8 +168,15 @@ const MealPlan = props => {
     return (
         <div className='meal-plan-outer'>
             <div className='border-card'>
-                <p>Plan your meal</p>
-                <div className="have-cook">
+                <div className='top-banner'>
+             
+                <p className='meal-head'>Enjoy Your Planned Meal</p>
+                
+               
+                <img src={require("../assets/images/meal3.gif").default} />
+              
+                </div>
+                 <div className="chose-cat">
 
                     <CollapsableSwitchMealPlan status={switchStatus.veg} updateStatus={status => updateStatus({ ...switchStatus, veg: status })}>
                         {switchStatus.veg ? NONVegFoodSection({}) : VegFoodSection({})}
@@ -179,4 +196,5 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps , { toggleSliderDrawer })(withRouter(MealPlan));
+
+export default connect(mapStateToProps, { updateCart, toggleSliderDrawer, updateOrderStatus })(withRouter(MealPlan));

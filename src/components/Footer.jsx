@@ -58,10 +58,8 @@ const Footer = props => {
                 }}
               >
                 <BottomNavigationAction label="Home" onClick={() => props.history.push('/home')} />
-                <BottomNavigationAction label="Meal Planing" onClick={() => props.history.push('/history')} />
+                <BottomNavigationAction label="Meal Planing" onClick={() => props.history.push('/meal-plan?userType=' + "OWNER")} />
                 <BottomNavigationAction label="Stock" onClick={() => props.history.push('/stock-refill?userType=' + "OWNER")} />
-                <BottomNavigationAction label="Payment" onClick={() => props.history.push('/payment')} />
-
               </BottomNavigation>
             </Paper>
           </>

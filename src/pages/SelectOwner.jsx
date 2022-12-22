@@ -34,29 +34,22 @@ const SelectOwner = (props) => {
    // let userId = getCookie('userId');
     console.log("userid==" + userId)
 
+    if(sessionStorage.getItem('isLoggedIn')) {
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function(event) {
+          window.history.go(1);
+        };
+      }
 
     const handleSubmit = () => {
         history.push('/add-owner-list');
     }
     
     const handleAssignedDish = (list) => {
-        // var customerName = textCustomerName.current[id].value
-        // var customerId = textCustomerId.current[id].value
-        // var customerStatus = textCustomerStatus.current[id].value
-        // var customerPhone = textCustomerPhone.current[id].value
-        
-       // console.log(customerId + "====" + customerName + "======" + customerStatus);
-        // setCookie('customerName', list.name, 30);
-        // setCookie('customerId', list._id, 30);
-        // setCookie('customerStatus', list.customerStatus, 30);
-        // setCookie('customerPhone', list.phone, 30);
         sessionStorage.setItem('customerName' , list.name)
         sessionStorage.setItem('customerId', list._id)
         sessionStorage.setItem('customerStatus', list.customerStatus)
         sessionStorage.setItem('customerPhone', list.phone)
-        //console.log("todaydishusetype"+userType)
-       
-      //  setCookie('userType', userType, 30);
         if(list.customerStatus == 'UNVERIFIED'){
                 console.log("user is unverified") 
                 toggleModal(true) 

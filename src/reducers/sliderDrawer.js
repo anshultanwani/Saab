@@ -7,7 +7,7 @@ const initialState = {
     videoPopup : false,
     latestFeedback: false ,
     selectaddress:false,
-    mealvideopopup: false
+    mealvideoPopup: false
 }
 
 export default (state = initialState, action) => {

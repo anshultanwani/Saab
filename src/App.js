@@ -12,6 +12,7 @@ import {
 	Switch,
 } from 'react-router-dom';
 import data from './assets/data/data.json';
+import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import SliderDrawer from './common/SliderDrawers';
 import { getCookie } from './utils';
 import axios from 'axios';
@@ -39,26 +40,13 @@ const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
 
 function App(props) {
    window.apiDomain = 'http://44.204.116.205';
- 
+   const history = useHistory();
+  
    if(sessionStorage.getItem('isLoggedIn') === 'true'){
     console.log("userlogin" + sessionStorage.getItem('isLoggedIn'))
   }
-  // const getPath = () => {
-  //   if(!getCookie('isLoggedIn') && window.location.pathname !== "/login") {
-  //     console.log("userlogout")
-  //     window.location.replace('/login')
-  //   }else if(!props.session._id && getCookie("userId")){
-  //       let userId = getCookie('userId');
-  //       axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
-  //         if(window.location.pathname === '/') {
-  //           window.location.replace('/home')
-  //         }
-  //           props.setSession({
-  //               ...res.data.data
-  //           })
-  //       })
-  //   }
-  // }
+
+  
 
   const getPath = () => {
     if(!sessionStorage.getItem('isLoggedIn') && window.location.pathname !== "/login") {
@@ -77,8 +65,12 @@ function App(props) {
         })
     }
   }
-
-
+  
+  useEffect(()=>{
+    console.log("app.js get user details")
+    getPath();
+  })
+ 
   useEffect(() => {
     if(window.location.pathname === '/') {
       setTimeout(() => {
@@ -93,9 +85,9 @@ function App(props) {
     }
   })
 
-  const ignoreFooter = ['/login','/signup','/','/add-address'   ];
+  const ignoreFooter = ['/login','/signup','/' ];
   const customHeader = ['/stock-refill','/add-address' , '/addedit-combo' , 'my-prefrences' , "/history"
-   , "/select-owner" , "add-owner-list" , '/todays-dish' , , '/meal-plan', "/payment" , "/meal-food-recipe"];
+   , "/select-owner" , "add-owner-list" , '/todays-dish' , , '/meal-plan', "/payment" ];
   
   return (
     <React.Suspense fallback={<Loader />}>

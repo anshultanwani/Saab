@@ -15,7 +15,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import EmptyCart from '../components/EmptyCart';
 import { getCookie, setCookie } from '../utils';
-import { orderIdAction } from '../actions/orderidaction';
 import axios from 'axios';
 const StockRefill = props => {
     const {
@@ -261,9 +260,6 @@ const StockRefill = props => {
                         <BoxWithSideBorder
                             title={cur}
                             subTitle={'(' + catSection[cur].list.length + ' items)'}
-                            // rightSec={(
-                            //     <div className='add-more' onClick={() => updateView(cur.toLowerCase())}>ADD MORE </div>
-                            // )}
                             onClick={() => toggleSection({ ...catSection, [cur]: { ...catSection[cur], show: !catSection[cur].show } })}
                         />
                         {catSection[cur].show && catSection[cur].list?.length ?
@@ -349,7 +345,7 @@ const StockRefill = props => {
                 {!cartList.length && currentView === 'cart' ?
                     <EmptyCart updateQuantity={checkAndUpdateCart} curTab={['fruits'].indexOf(currentView)} count={cartList.length} /> : <>
                         {section()}
-                        {!props.session.paymentAutoApproved && userType == "OWNER" ? <div className='btn-holder'>
+                        {/* {!props.session.paymentAutoApproved && userType == "OWNER" ? <div className='btn-holder'>
                             <Button
                                 variant='contained'
                                 className='enable-btn'
@@ -363,7 +359,7 @@ const StockRefill = props => {
                                 )}
                             />
                         </div> :
-                            null}
+                            null} */}
                     </>}
             </div>
             {cartList.length ?

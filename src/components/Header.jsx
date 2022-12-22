@@ -12,40 +12,42 @@ const Header = props => {
     const {
         name,
     } = props.session
-
+   
     let cookName = getCookie('cookName');
     console.log("cookName in  header" + cookName)
     let userType = getCookie('userType');
-   var userId = sessionStorage.getItem("userId");
-    console.log("userid in header===="+ userId)
-   // let orderstatus = sessionStorage.getItem("orderStatusValue")
-   
+    var userId = sessionStorage.getItem("userId");
+    console.log("userid in header====" + userId)
+    // let orderstatus = sessionStorage.getItem("orderStatusValue")
 
+    var showGroceryBanner = "";
     let customerName = getCookie('customerName');
     console.log(customerName)
     const location = useLocation();
-    const [orderStatus, updateOrderStatus] = useState('APPROVED');
-   // const [orderId,  updateOrderId] = useState('');
+    const [orderStatusNew, updateOrderStatusNew] = useState([]);
+    // const [orderId,  updateOrderId] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [posts, setPosts] = useState([]);
     const [isLoginPage, updatePage] = useState(location.pathname === '/login');
     const history = useHistory();
     const [sectionToShow, updateSection] = useState([]);
     let showSection = {
         // '/home': ['burger', 'notification', 'profile'],
-        '/home': ['burger' , 'search'],
+        '/home': ['burger'],
         // '/stock-refill': ['back', 'search', 'notification', 'profile'],
-        '/stock-refill': ['back', 'search'],
-        '/add-address': ['back', 'search'],
-        '/addedit-combo': ['back', 'search'],
-        '/my-prefrences': ['back', 'search'],
-        '/history': ['back', 'search'],
-        '/select-owner': [ 'back' ],
-        '/add-owner-list': [ 'back' ],
-        '/todays-dish': [ ' ' ],
-        '/grocery-history': ['back'],
+        '/stock-refill': ['back' , 'burger'],
+        '/add-address': ['back'],
+        '/addedit-combo': ['back'],
+        '/my-prefrences': ['back'],
+        '/history': ['back'],
+        '/select-owner': ['back' , 'burger'],
+        '/add-owner-list': ['back'],
+        '/todays-dish': ['burger'],
+        '/grocery-history': ['back' , 'burger'],
         '/payment': ['back'],
         '/my-reward': ['back'],
         '/meal-plan': ['back'],
-        '/meal-food-recipe': ['back']
+        '/meal-food-recipe': ['']
     }
 
     useEffect(() => {
@@ -55,48 +57,14 @@ const Header = props => {
             updatePage(false);
         }
         updateSection(showSection[location.pathname])
-      
+
     }, [location.pathname])
 
-    useEffect(()=>{
-        if(orderStatus === 'REQUESTED'){
-            alert(orderStatus)
-        }
-    },[orderStatus])
-    
-    if(sessionStorage.getItem('isLoggedIn') === 'true') {
-        axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
-        .then((res) => {
-            console.log(res)
-            console.log("values" + res.data.data[0])
-
-            Object.keys(res.data.data).map((cur) => {
-                console.log("proceed to pay req" + res.data.data[cur].status)
-                   // updateOrderStatus(res.data.data[cur].status)
-               
-                   // updateOrderId(res.data.data[cur]._id)
-                sessionStorage.setItem('orderIdValue' , res.data.data[cur]._id) 
-                console.log("req values" + res.data.data[cur].status)
-                if(res.data.data[cur].status == 'REQUESTED'){
-                    setTimeout(() => {
-                        // alert("req1")
-                       // sessionStorage.setItem('orderStatusValue' , res.data.data[cur].status)
-                        updateOrderStatus(res.data.data[cur].status)
-                        // alert("req")
-                    }, 2000);
-                }
-                // else{
-                //     sessionStorage.setItem('orderStatusValue' , 'APPROVED')
-                // } 
-            })  
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
 
 
- 
+  
+
+
     const headings = {
         '/home': 'HOME',
         '/stock-refill': 'STOCK REFILL',
@@ -108,14 +76,14 @@ const Header = props => {
         '/payment': 'Payment',
         '/grocery-history': "Grocery History",
         '/todays-dish': "Today Dish",
-        '/my-reward': "My Rewards",
-        '/meal-food-recipe': "Recipe"
+        '/my-reward': "My Rewards"
     }
-     return (
+    return (
         !isLoginPage ?
-            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '') +  (orderStatus == 'APPROVED' ? 'order-arroved' : 'order-req')}>
+            <div className={'header-ui ' + (location.pathname !== '/home' ? 'no-groc' : '') + (orderStatusNew == 'APPROVED' ? 'order-arroved' : 'order-req')}>
+                {console.log("inside div 3===" + showGroceryBanner)}
                 <div className='fake-div' />
-                <div className={'header-top ' + (sessionStorage.getItem("orderStatusValue") == 'APPROVED' ? 'order-arroved' : 'order-req') }>
+                <div className={'header-top'}>
                     <div className='left'>
                         {sectionToShow?.includes('back') ?
                             <BackIcon style={{ height: '12px', width: '12px', marginRight: '10px' }} onClick={() => history.goBack()} /> : null}
@@ -140,33 +108,14 @@ const Header = props => {
                             : null}
                         {sectionToShow.includes('logo') ?
                             <span className="namethumb">
-                              
-                            <img src={require('../assets/images/logo.png').default} className="loginphoto" alt="not loaded" /> 
+
+                                <img src={require('../assets/images/logo.png').default} className="loginphoto" alt="not loaded" />
                             </span>
                             : null}
 
                     </div>
                 </div>
-                {/* {orderstatus} */}
-                 {orderStatus == 'REQUESTED' && location.pathname === '/home' ? 
-                    <div className='header-bottom'>
-                        <div className='grocey-sec'>
-                            <div className='left'>
-                                <h1>{'Hi ' + name + "!"}</h1>
-                                <p>{cookName + '  requested for stock refill'}</p>
-                                {/* <Button color="inherit" onClick={handleApproveOrder}> */}
-                                <Button color="inherit" onClick={() => props.history.push('/stock-refill?userType=OWNER')}>
-                                    Approve Order
-                                </Button>
-                            </div>
-                            <div className='right'>
-                                <img src={require('../assets/images/groceyrightimg.svg').default} />
-
-                            </div>
-                        </div>
-                    </div>
-                : null}
-            </div>
+             </div>
             : null
     )
 };
