@@ -5,34 +5,20 @@ import { toggleSliderDrawer } from '../actions/index';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Button } from '@mui/material';
-import './selectaddress.scss' ;
+import './selectaddress.scss';
 import { getCookie, setCookie } from '../utils';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 import queryString from 'query-string';
 const SelectAddress = (props) => {
-    const [userAddress, updateUserAddress] = useState([]);
+    const {
+        userAddress
+    } = props
     const history = useHistory();
-   // let userId = getCookie('userId');
-   var userId = sessionStorage.getItem("userId");
-    console.log("userId for address" + userId)
+    var userId = sessionStorage.getItem("userId");
+    console.log("userId in stockrefill" + userId)
     const searchParams = useLocation().search;
     const userType = queryString.parse(searchParams).userType;
-
-
-      // useEffect(() => {
-      //  console.log("userId for address" + userType)
-       //let userId = getCookie('userId');
-        //  axios.get(window.apiDomain + '/v1/users/' +userId).then(res => {
-        //      console.log("users address" + res)
-        //      updateUserAddress(res.data.data.address)
-        //  }).catch(err => {
-        //     console.log(err)
-        //      console.log("Please add customer");
-        //  })
- //  }, [])
-
-
 
     const content = (
 
@@ -42,7 +28,7 @@ const SelectAddress = (props) => {
                     variant='text'
                     className='enable-btn'
                     onClick={() => props.toggleSliderDrawer({
-                        selectaddress: false ,
+                        selectaddress: false,
                         completeAddress: true
                     })}
                     // onClick={changeAddress}
@@ -54,17 +40,40 @@ const SelectAddress = (props) => {
                 />
             </div>
             <div className="addresslist-inner">
-                <p>Saved Address</p>
-               {/* <ul>
-                {
-                    userAddress.map((cur)=>{
-                        return(
-                            <li>{cur}</li>
-                        )
-                     
-                    })
-                }
-               </ul> */}
+                <p class="save-add">Saved Address</p>
+                <ul>
+                    {
+                        Object.keys(userAddress).map((item) => {
+                            return (
+                                <>
+                                    <li>
+                                        <div className="del">Delivers To</div>
+                                        <div className="default-address">
+                                        </div>
+                                        <div className="add-detail">
+                                            <div className="left-icon">
+                                                home icon
+                                            </div>
+                                            <div className="mid-sec">
+                                                <p className="loc-tag"> {userAddress[item].locationType} </p>
+                                                <p>
+                                                    {userAddress[item].houseNo} ,
+                                                    {userAddress[item].floor}  ,
+                                                    {userAddress[item].society}
+                                                </p>
+                                                <p>
+                                                    {userAddress[item].locality}
+                                                    {userAddress[item].pin}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </>
+                            )
+                        })
+                    }
+                </ul>
             </div>
         </div>
 
@@ -87,7 +96,8 @@ const SelectAddress = (props) => {
 
 const mapStateToProps = state => {
     return {
-        session: state.session
+        session: state.session,
+        userAddress: state.cart.userAddress
     }
 }
 

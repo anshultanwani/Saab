@@ -18,15 +18,11 @@ const AutoApprove = props => {
     var userId = sessionStorage.getItem("userId");
     const onSubmit = () => {
         axios.put(window.apiDomain+'/v1/users/payment/auto-approve',{
-           // userId: props.session._id,
             userId: userId,
             paymentAutoApproved: approveStatus ? 1:0
         }).then(res => {
             console.log(res.data.data)
             if(res.status === 200) {
-            //     props.setSession({
-            //        ...res.data.data
-            //    })
                 props.toggleSliderDrawer({
                     autoApprove : false
                 })

@@ -69,12 +69,6 @@ const SelectOwner = (props) => {
                     console.log(res.data.data.customers.length)
                     console.log(res.data.data._id);
                     setUsers(res.data.data.customers)
-                    // props.setSession({
-                    //     ...props.session,
-                    //     ...res.data.data
-                    // })
-                    // setCookie('isLoggedIn', true, 30);
-                    // setCookie('userId', res.data.data._id, 30);
                 }
                 else {
                     console.log("customers are not avaiable")

@@ -59,9 +59,6 @@ function App(props) {
           if(window.location.pathname === '/') {
             window.location.replace('/home')
           }
-            // props.setSession({
-            //     ...res.data.data
-            // })
         })
     }
   }

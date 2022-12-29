@@ -25,16 +25,12 @@ const Main = props => {
     const [posts, setPosts] = useState([]);
 
     const loadPost = async () => {
-        console.log("post function call")
         setLoading(true);
         const res = await axios.get(window.apiDomain + "/v1/orders?userId=" + userId)
             .then((res) => {
-                console.log("res data====" + JSON.stringify(res.data.data))
                 Object.keys(res.data.data).map((cur) => {
                     sessionStorage.setItem('orderIdValue', res.data.data[cur]._id)
-                    console.log("outside if 1" + cur + res.data.data[cur].status)
                     if (res.data.data[cur].status == 'REQUESTED') {
-                        console.log("inside if 1" + res.data.data[cur].status)
                         updateOrderStatusNew("REQUESTED")
 
                     }
@@ -42,7 +38,6 @@ const Main = props => {
             })
     }
     useEffect(() => {
-        console.log("inside useeffect fun")
         loadPost();
     }, [])
 
@@ -55,7 +50,6 @@ const Main = props => {
 
     return (
         <div className='homepage-sec-outer'>
-            {console.log("showgorcerybanner====2" + orderStatusNew)}
             {orderStatusNew == 'REQUESTED' && location.pathname === '/home' ?
                 <div className='header-bottom'>
                     <div className='grocey-sec'>

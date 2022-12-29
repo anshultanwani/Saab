@@ -20,7 +20,7 @@ const SliderDrawers = props => {
         videoPopup ,
         latestFeedback,
         selectaddress,
-        mealvideoPopup
+        mealvideoPopup, 
     } = props;
     return (
         <>

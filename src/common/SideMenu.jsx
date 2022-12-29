@@ -22,7 +22,18 @@ const SideMenu = props => {
         session
     } = props;
 
-  
+    // useEffect(()=>{
+    //     console.log("userid for get info" + userId)
+    //     axios.get(window.apiDomain+'/v1/users/'+userId).then(res => {
+    //         if (res.status === 200) {
+    //             updateCustomerAddress(res.data.data.address)
+    //             console.log(JSON.stringify(res.data.data))
+    //         }
+    //       })
+    //       .catch(err => {
+    //         console.log(err)
+    //     })
+    // },[])
 
     const profiles = [
         {
@@ -65,6 +76,7 @@ const SideMenu = props => {
         let profileArr = profiles.map((cur,index) => {
             const nameArr = cur.name.split(' ');
             const nameInitial = nameArr.length > 1 ? nameArr[0][0].toUpperCase()+nameArr[1][0].toUpperCase(): nameArr[0][0].toUpperCase();
+            
             return (
                 <div className={'single-profile '+(cur.role?'':'admin')} key={index} >
                     <Avatar className="avtar" src={cur.profilePic.default} >{!cur.profilePic?nameInitial:null}</Avatar>

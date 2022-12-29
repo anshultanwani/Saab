@@ -1,15 +1,16 @@
 const initialState = {
-    cartList: [    
-  ],
-    finalComboList:[
+    cartList: [
+    ],
+    userAddress: [],
+    finalComboList: [
         {
-            name:"alloo paratha",
-            quantity:1
+            name: "alloo paratha",
+            quantity: 1
         }
     ],
     deliveryCharges: 60,
     highDemandCharges: 50,
-    orderStatus:"",
+    orderStatus: "",
     stockCat: {
         "fruits":
         {
@@ -117,6 +118,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 cartList: [...action.payload]
+            }
+        }
+        case 'UPDATE_USER_ADDRESS': {
+            return {
+                ...state,
+                userAddress: [...action.payload]
             }
         }
         case 'UPDATE_ORDER_STATUS': {

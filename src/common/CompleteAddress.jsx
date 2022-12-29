@@ -15,8 +15,8 @@ const CompleteAddress = (props) => {
     //let userId = getCookie('userId');
     var userId = sessionStorage.getItem("userId");
     console.log("userId for complete address" + userId)
+    const [locationtype , updateLocationType] = useState("")
     const [showvalue, updateShowValue] = useState({
-        // locationType: "",
         address: {
             houseNo: '',
             floor: "",
@@ -27,6 +27,11 @@ const CompleteAddress = (props) => {
     });
     const [showModal, toggleModal] = useState(false)
 
+    const handleLocationType = (locationValue) => {
+        console.log("location type lcicked" + locationValue)
+        updateLocationType(locationValue)
+       
+    }
 
     const findAndUpdate = (dataObj, value, parentKey, key) => {
         for (var cur in dataObj) {
@@ -40,7 +45,7 @@ const CompleteAddress = (props) => {
         }
     }
     const handleChange = (node, value, subNode) => {
-        console.log("btutno click")
+        console.log("button click")
         console.log(value);
         let newData;
         newData = { ...showvalue };
@@ -53,13 +58,10 @@ const CompleteAddress = (props) => {
         <>
             <p className="completeaddlable">Save address as*</p>
             <div className="comlete-address-btn-sec">
-                <Button variant="contained" 
-                >
-                Home
-                </Button>
-                <Button variant="contained" value="Works"onClick={(e)=> handleChange(e.target.value)}>Work</Button>
-                <Button variant="contained" value="Hotels"onClick={(e)=> handleChange(e.target.value)}>Hotel</Button>
-                <Button variant="contained" value="Others" onClick={(e)=> handleChange(e.target.value)}>Others</Button>
+                <Button variant="contained" value="Home" onClick={(e) => handleLocationType(e.target.value)}>Home</Button>
+                <Button variant="contained" value="Works" onClick={(e) => handleLocationType(e.target.value)}>Work</Button>
+                <Button variant="contained" value="Hotels" onClick={(e) => handleLocationType(e.target.value)}>Hotel</Button>
+                <Button variant="contained" value="Others" onClick={(e) => handleLocationType(e.target.value)}>Others</Button>
             </div>
             <div className='field-holder comaddsec'>
                 <TextField
@@ -101,7 +103,7 @@ const CompleteAddress = (props) => {
         console.log("updated" +
             JSON.stringify({
                 userId: userId,
-                locationType: "OFFICE",
+                locationType: locationtype,
                 ...showvalue
             })
         )
@@ -111,17 +113,12 @@ const CompleteAddress = (props) => {
             url: window.apiDomain + '/v1/users/add/address',
             data: {
                 userId: userId,
-                locationType: "OFFICE",
+                locationType: locationtype,
                 ...showvalue
             }
         }).then(res => {
             if (res.status === 200) {
                 console.log("owner response data" + JSON.stringify(res.data.data))
-                console.log("owner response data" + JSON.stringify(res.data.data.services))
-                // props.setSession({
-                //     ...props.session,
-                //     ...res.data.data
-                // })
             }
         }).catch(err => {
             console.log(err)
@@ -157,4 +154,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps , { toggleSliderDrawer })(withRouter(CompleteAddress));
+export default connect(mapStateToProps, { toggleSliderDrawer })(withRouter(CompleteAddress));

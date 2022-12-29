@@ -23,6 +23,16 @@ export const setSession = payload => ({
     payload
 })
 
+export const updateUserAddress = payload => (dispatch) => {
+    dispatch({
+        type: 'UPDATE_USER_ADDRESS',
+        payload
+    })
+}
+
+
+
+
 export const updateCart = payload => (dispatch) => {
     dispatch({
         type: 'UPDATE_CART',

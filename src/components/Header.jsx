@@ -76,7 +76,7 @@ const Header = props => {
         '/payment': 'Payment',
         '/grocery-history': "Grocery History",
         '/todays-dish': "Today Dish",
-        '/my-reward': "My Rewards"
+        '/my-reward': "My Rewards",
     }
     return (
         !isLoginPage ?

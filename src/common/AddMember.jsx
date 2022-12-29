@@ -73,13 +73,6 @@ const AddMember = props => {
             if (res.status === 200) {
                 console.log(res);
                 console.log("cook response data" + res.data.data)
-                // props.setSession({
-                //     ...props.session,
-                //     ...res.data.data
-                // })
-
-                // setCookie('isLoggedIn', true, 30);
-                // setCookie('userId', res.data.data._id, 30);
             }
         })
     }

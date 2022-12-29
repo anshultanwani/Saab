@@ -146,10 +146,6 @@ const RegisterUser = props => {
         }).then((res) => {
             if (res.status === 200) {
                 console.log("cook response data")
-                props.setSession({
-                    ...props.session,
-                    ...res.data.data
-                })
                 sessionStorage.setItem('isLoggedIn' , true)
                 sessionStorage.setItem('userId' , res.data.data._id) 
                 history.push('/select-owner?userType='+userType);
