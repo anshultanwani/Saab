@@ -4,12 +4,10 @@ import { toggleSliderDrawer } from '../actions/index';
 import BottomDrawer from './BottomDrawer';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
-import { useHistory, useLocation, withRouter } from 'react-router-dom';
+import {withRouter } from 'react-router-dom';
 import './complete-address.scss';
 import AddressUpdate from "./AddressUpdate";
 import axios from "axios";
-import { getCookie, setCookie } from '../utils';
-import { setSession } from '../actions';
 
 const CompleteAddress = (props) => {
     //let userId = getCookie('userId');

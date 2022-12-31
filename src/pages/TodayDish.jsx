@@ -3,12 +3,9 @@ import BoxWithSideBorder from '../components/BoxWithSideBorder';
 import "./todays-dish.scss";
 import Button from '@mui/material/Button';
 import CookLatestFeedback from "../components/CookLatestFeedback"
-import { connect } from 'react-redux';
-import { toggleSliderDrawer, setSession } from '../actions/index';
 import FeedbackRequest from '../common/FeedbackRequest';
-import { useHistory, useLocation } from 'react-router-dom';
+import {useLocation } from 'react-router-dom';
 import TodayDishList from '../components/TodayDishList';
-import { getCookie } from '../utils';
 import queryString from 'query-string';
 
 const TodayDish = (props) => {
@@ -20,9 +17,6 @@ const TodayDish = (props) => {
    
     console.log("customerid"+customerId+"and"+"customerName"+customerName+"customerStatus"+customerStatus);
     const [showModal, toggleModal] = useState(false)
-    const {
-        toggleSliderDrawer
-    } = props;
     const [catSection, toggleSection] = useState({
         Breakfast: {
             show: true
@@ -110,7 +104,6 @@ const TodayDish = (props) => {
                                         </div>
                                     )}
                                 />
-
                             </div>
                         </div>
 

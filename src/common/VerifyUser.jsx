@@ -2,7 +2,6 @@ import React from "react";
 import Button from '@mui/material/Button';
 import './complete-address.scss';
 import Modal from '@mui/material/Modal';
-import { getCookie } from "../utils";
 import axios from "axios";
 
 const VerifyUser = (props) => {

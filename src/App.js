@@ -12,9 +12,7 @@ import {
 	Switch,
 } from 'react-router-dom';
 import data from './assets/data/data.json';
-import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import SliderDrawer from './common/SliderDrawers';
-import { getCookie } from './utils';
 import axios from 'axios';
 import { setSession } from './actions/index';
 import Loader from './components/Loader';
@@ -28,19 +26,18 @@ import Payment from './pages/Payment';
 import GroceryOrderHistory from './pages/GroceryOrderHistory';
 import Reward from './pages/Reward';
 import MealPlan from './components/MealPlan';
+import Services from './pages/Services';
 import MealFoodRecipe from './components/MealFoodRecipe';
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const LoginHome = React.lazy(() => import('./pages/LoginHome'));
 const ComboPage = React.lazy(() => import('./pages/ComboPage'));
 const RegisterUser = React.lazy(() => import('./pages/RegisterUser'));
 const StockRefill = React.lazy(() => import('./pages/StockRefill'));
-//const AddEditCombo = React.lazy(() => import('./pages/AddEditCombo'));
-const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
+// const SplashScreen = React.lazy(() => import('./pages/SplashScreen'));
 const AddressWithMap = React.lazy(() => import('./pages/AddressWithMap'));
 
 function App(props) {
    window.apiDomain = 'http://44.204.116.205';
-   const history = useHistory();
   
    if(sessionStorage.getItem('isLoggedIn') === 'true'){
     console.log("userlogin" + sessionStorage.getItem('isLoggedIn'))
@@ -109,6 +106,7 @@ function App(props) {
             <Route exact path='/my-reward' component={Reward}></Route>
             <Route exact path='/grocery-history' component={GroceryOrderHistory}></Route>
             <Route exact path='/meal-plan' component={MealPlan}></Route>
+            <Route exact path='/services' component={Services}></Route>
             <Route exact path='/meal-food-recipe' component={MealFoodRecipe}></Route>
           </Switch>
           <Footer ignoreFooter={ignoreFooter} />

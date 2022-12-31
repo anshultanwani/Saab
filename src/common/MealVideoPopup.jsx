@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { toggleSliderDrawer } from '../actions/index'
 import BottomDrawer from './BottomDrawer';

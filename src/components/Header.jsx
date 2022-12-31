@@ -47,7 +47,9 @@ const Header = props => {
         '/payment': ['back'],
         '/my-reward': ['back'],
         '/meal-plan': ['back'],
+        '/services': ['back'],
         '/meal-food-recipe': ['']
+
     }
 
     useEffect(() => {
@@ -77,6 +79,7 @@ const Header = props => {
         '/grocery-history': "Grocery History",
         '/todays-dish': "Today Dish",
         '/my-reward': "My Rewards",
+        '/services': "Our Services"
     }
     return (
         !isLoginPage ?

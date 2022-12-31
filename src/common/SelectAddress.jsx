@@ -1,24 +1,15 @@
 import React from "react";
-import { Rating, TextareaAutosize } from '@mui/material';
 import BottomDrawer from './BottomDrawer';
 import { toggleSliderDrawer } from '../actions/index';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { Button } from '@mui/material';
 import './selectaddress.scss';
-import { getCookie, setCookie } from '../utils';
-import { useHistory, useLocation } from 'react-router-dom';
-import { useEffect, useState } from "react";
-import queryString from 'query-string';
 const SelectAddress = (props) => {
     const {
         userAddress
     } = props
-    const history = useHistory();
     var userId = sessionStorage.getItem("userId");
     console.log("userId in stockrefill" + userId)
-    const searchParams = useLocation().search;
-    const userType = queryString.parse(searchParams).userType;
 
     const content = (
 

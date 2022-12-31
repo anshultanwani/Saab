@@ -145,7 +145,7 @@ const AddOwnerList = (props) => {
     }
 
 
-    const label = { inputProps: { 'aria-label': 'mondaty' } };
+    const label = { inputProps: { 'aria-label': 'monday' } };
     return (
         <div className="add-owner-list">
             <div className='border-card'>

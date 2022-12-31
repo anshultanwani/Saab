@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Rating, TextareaAutosize } from '@mui/material';
+import { Rating } from '@mui/material';
 import BottomDrawer from './BottomDrawer';
 import { toggleSliderDrawer } from '../actions/index';
 import { connect } from 'react-redux';

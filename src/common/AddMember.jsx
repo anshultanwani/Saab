@@ -3,17 +3,9 @@ import { TextField, InputAdornment } from '@mui/material';
 import BottomDrawer from './BottomDrawer';
 import { toggleSliderDrawer } from '../actions/index'
 import { connect } from 'react-redux';
-import ReplayIcon from '@mui/icons-material/Replay';
-import { setCookie } from '../utils';
-import { getCookie } from '../utils';
 import axios from 'axios';
 
 const AddMember = props => {
-    const {
-        userType
-    } = props
-
-   // let userId = getCookie('userId');
    var userId = sessionStorage.getItem("userId");
     console.log("add memeber userid==" + userId)
 

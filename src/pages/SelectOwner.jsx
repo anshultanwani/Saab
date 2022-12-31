@@ -6,9 +6,7 @@ import { Button } from '@mui/material';
 import "./select-owner.scss";
 import axios from 'axios';
 import { useHistory, useLocation } from 'react-router-dom';
-import { getCookie } from '../utils';
 import { useEffect } from "react";
-import { setCookie } from '../utils';
 import { setSession } from '../actions';
 import queryString from 'query-string';
 import { toast } from 'react-toastify';
@@ -25,10 +23,6 @@ const SelectOwner = (props) => {
     const userType = queryString.parse(searchParams).userType;
     const [showModal, toggleModal] = useState(false)
     const [users, setUsers] = useState([])
-    const textCustomerId = useRef({});
-    const textCustomerName = useRef({});
-    const textCustomerStatus = useRef({});
-    const textCustomerPhone = useRef({});
     const history = useHistory();
     var userId = sessionStorage.getItem("userId");
    // let userId = getCookie('userId');

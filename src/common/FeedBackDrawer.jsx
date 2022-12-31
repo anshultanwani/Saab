@@ -3,10 +3,8 @@ import { Rating, TextareaAutosize } from '@mui/material';
 import BottomDrawer from './BottomDrawer';
 import { toggleSliderDrawer } from '../actions/index';
 import { connect } from 'react-redux';
-import { getCookie } from '../utils';
 import axios from 'axios';
 import BoxWithSideBorder from '../components/BoxWithSideBorder';
-import { setCookie } from '../utils';
 const FeedBackDrawer = props => {
    // let userId = getCookie('userId');
    var userId = sessionStorage.getItem("userId");

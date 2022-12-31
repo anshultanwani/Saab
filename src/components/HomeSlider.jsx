@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import './home-slider.scss';
 import { Button } from '@mui/material';
 import { getCookie } from '../utils';
+import { useHistory, useLocation } from 'react-router-dom';
+
 const HomeSlider = (props) => {
   const settings = {
     dots: true,
@@ -13,6 +15,11 @@ const HomeSlider = (props) => {
     //  autoplaySpeed: 1500,
     slidesToScroll: 1
   };
+  const history = useHistory();
+
+  const handleOpen = () =>{
+    history.push('/services');
+  }
   
   return (
     <div className={"homeslider"}>
@@ -26,6 +33,7 @@ const HomeSlider = (props) => {
                   <Button
                     variant="outlined"
                     className="slider-btn"
+                    onClick={handleOpen}
                   >
                     Book Now
                   </Button>

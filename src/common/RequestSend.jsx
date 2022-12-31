@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import './complete-address.scss';
 import Modal from '@mui/material/Modal';
 import { getCookie } from '../utils';
-import { alignProperty } from "@mui/material/styles/cssUtils";
 import { connect } from 'react-redux';
 import { updateCart, toggleSliderDrawer ,updateOrderStatus } from '../actions';
 
