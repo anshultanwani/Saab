@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components';
 import { MultiStepForm, Step } from 'react-multi-form'
 import ChefFormStep1 from '../components/ChefFormStep1'
+import ChefFormStep2 from '../components/ChefFormStep2'
 import { Button, TextField, Switch } from '@mui/material';
+import ChefFormSummary from './ChefFormSummary';
 const Container = styled.div`
   max-width: 500px;
   margin: 40px auto;
@@ -15,24 +17,21 @@ const ChefForm = () => {
     
   const [active, setActive] = React.useState(1)
   return (
-    <Container>
-      <MultiStepForm activeStep={active}>
+    <Container className='form-step'>
+      <MultiStepForm activeStep={active} className="step-from">
         <Step label='step1'>
-          {/* <Shipping /> */}
           <ChefFormStep1/>
         </Step>
         <Step label='step2'>
-          {/* <Payment /> */}
-          <p>Panel1122</p>
+          <ChefFormStep2/>
         </Step>
         <Step label='step3'>
-          {/* <Confirmation /> */}
-          <p>Panel112233</p>
+         <ChefFormSummary/>
         </Step>
       </MultiStepForm>
 
       {active !== 1 && (
-        <Button onClick={() => setActive(active - 1)}>Previous</Button>
+        <Button  className="Nextbtn" onClick={() => setActive(active - 1)}>Previous</Button>
       )}
       {active !== 3 && (
         <Button

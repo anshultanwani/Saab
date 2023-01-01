@@ -1,0 +1,57 @@
+.widget {
+    position: relative;
+    background-color: black;
+    background: #fff;
+    box-shadow: 0 0 11px rgb(0 0 0 / 11%);
+    border-radius: 10px;
+    padding: 24px 24px 110px;
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    font-family: Roboto,sans-serif;
+}
+
+.widget-footer {
+    max-width: 100%;
+    right: 0;
+    top: unset;
+    transform: unset;
+    bottom: 0;
+    left: 0;
+    background: #EE7464;
+    display: flex;
+    box-shadow: none;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px;
+    position: absolute;
+}
+
+.summaryPoints{
+    padding-top: 2rem;
+    margin-top: 1rem;
+}
+
+.list-checked {
+    padding-left: 20px;
+}
+.summaryPoints .list-checked li {
+    list-style: none;
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 1.8rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    
+}
+
+.summaryPoints .list-checked li:before {
+    content: '✓';
+    font-family: fontawesome;
+    position: absolute;
+    left: 0;
+    color: #9867DA;
+    width: 1.8rem;
+}
