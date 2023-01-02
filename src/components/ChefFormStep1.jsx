@@ -8,7 +8,6 @@ import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import Box from '@mui/material/Box';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import DiscreteSliderMarks from "./DiscreteSliderMarks";
 import ServicesCatTabs from "./ServiceCatTabs";
@@ -16,6 +15,8 @@ const ChefFormStep1 = (props) => {
     const [value, setValue] = React.useState(dayjs('2023-01-11T21:11:54'));
     const [selGuest, setSelGuest] = useState([]);
     const [selDate, setSelDate] = useState({});
+    const [selFoodCat, setSelFoodCat] = useState('');
+    const [selTime, setSelTime] = useState('');
     const [checked, setChecked] = useState([]);
     const [occasion, setOccasion] = React.useState('');
     const [data, updateData] = useState({
@@ -26,37 +27,41 @@ const ChefFormStep1 = (props) => {
     const [switchStatus, updateStatus] = useState({
         veg: false
     })
+    const {
+        passToParent
+    } = props;
 
-    const ChildCallback = (value) =>  {
+    const ChildCallback = (value) => {
         setSelGuest(value)
     }
-   
+
     const handleChange = (event) => {
-       var value = event.target.value;
+        var value = event.target.value;
         setOccasion(value)
     };
 
 
-    const handleSelDate = (x,event) => {
-       console.log(x,event)
-
+    const handleSelDate = (x) => {
+        setSelDate(x['$d']);
     };
-    const handleCheckbox = (event) => {
-        data.workingDays = [...checked];
-        if (event.target.checked) {
-            data.workingDays = [...checked, event.target.name];
-        } else {
-            data.workingDays.splice(checked.indexOf(event.target.name), 1);
-        }
-        setChecked(data.workingDays);
-        console.log(checked)
-    }
+
+    const handleSelFoodCat = (cat) => {
+        setSelFoodCat(cat);
+        passToParent(cat);
+    };
+
+    const handleSelTime = (time) => {
+        setSelTime(time);
+    };
+
     const label = { inputProps: { 'aria-label': 'Chinese' } };
     return (
         <>
             <div className='service-head-outer'>
                 <div className="service-form">
-                    <div className='field-holder'>
+                    <div className='field-holder' style={{
+                        margin:"0px 0 26px 1px"
+                    }}>
                         <label>Select Occasion</label>
                         <Select
                             value={occasion}
@@ -76,73 +81,82 @@ const ChefFormStep1 = (props) => {
                             <MenuItem value={'daily-basis'}>Daily Basis</MenuItem>
                             <MenuItem value={'weekly-basis'}>Weekly Basis</MenuItem>
                         </Select>
-                        <p>selected occasion== {occasion}</p>
                     </div>
-                    <div className="field-holder">
+                    <div className="field-holder" style={{
+                            margin: '0 0 4px 0 '
+                        }}>
                         <label>Select no of Guests / Person</label>
-                        <DiscreteSliderMarks passToParent={ChildCallback}/>
-                        <p>Selected Guest=== {selGuest}</p>
+                        <DiscreteSliderMarks passToParent={ChildCallback} />
                     </div>
                     <div className="field-holder sel-date">
                         <label> Select Date</label>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <Stack>
-                                <MobileDatePicker
-                                    label="Date mobile"
-                                    inputFormat="MM/DD/YYYY"
-                                    value={value}
-                                    onChange={handleSelDate}
-                                    renderInput={(params) => <TextField {...params} />}
-                                />
-                            </Stack>
-                        </LocalizationProvider>
+                        <div style={{
+                            margin: 'auto',
+                            display: 'block',
+                            width: '100%'
+                        }}>
+                            <TextField
+                                id="date"
+                                label=""
+                                type="date"
+                                defaultValue="2023-01-03"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        </div>
                     </div>
+
                     <div className="field-holder serv-cat-tab">
                         <label>Meal Type</label>
-                        <ServicesCatTabs />
+                        <ServicesCatTabs passToParent={handleSelFoodCat} passToParent2={handleSelTime} />
                     </div>
                     <div>
                         <div className="field-holder cusine-checkbox ser-checkbox">
                             <label>Select Cuisine(s)</label>
-                            {
-                                ["North-Indian", "Chinese", "Italian-American", "Continental", "Thai", "Mexican"].map(key => {
-                                    const isActive = cuisineActive.includes(key)
+                            <div className="cuisine-btn-sec">
+                                {
+                                    ["North-Indian", "Chinese", "Italian-American", "Continental", "Thai", "Mexican"].map(key => {
+                                        const isActive = cuisineActive.includes(key)
 
-                                    return (
-                                        <button className='cuisine-button'
-                                            key={key}
-                                            onClick={() => setCuisineActive(isActive
-                                                ? cuisineActive.filter(current => current !== key)
-                                                : [...cuisineActive, key]
-                                            )}
-                                            style={{ background: isActive ? '#AC6ABE' : 'white', color: isActive ? 'white' : 'black' }}
-                                        >
-                                            <h1>{key}</h1>
-                                        </button>
-                                    )
-                                })
-                            }
+                                        return (
+                                            <button className='cuisine-button'
+                                                key={key}
+                                                onClick={() => setCuisineActive(isActive
+                                                    ? cuisineActive.filter(current => current !== key)
+                                                    : [...cuisineActive, key]
+                                                )}
+                                                style={{ background: isActive ? '#AC6ABE' : 'white', color: isActive ? 'white' : 'black' }}
+                                            >
+                                                <h1>{key}</h1>
+                                            </button>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                         <div className="field-holder burnur-checkbox ser-checkbox">
                             <label>No. of Gas Burners</label>
-                            {
-                                ["1 burners", "2 burners", "3 burners", "4 burners", "5 burners"].map(key => {
-                                    const isActive = burnerActive.includes(key)
+                            <div className="cuisine-btn-sec">
+                                {
+                                    ["1 burners", "2 burners", "3 burners", "4 burners", "5 burners"].map(key => {
+                                        const isActive = burnerActive.includes(key)
 
-                                    return (
-                                        <button className='cuisine-button'
-                                            key={key}
-                                            onClick={() => setBurnerActive(isActive
-                                                ? burnerActive.filter(current => current !== key)
-                                                : [...burnerActive, key]
-                                            )}
-                                            style={{ background: isActive ? '#AC6ABE' : 'white', color: isActive ? 'white' : 'black' }}
-                                        >
-                                            <h1>{key}</h1>
-                                        </button>
-                                    )
-                                })
-                            }
+                                        return (
+                                            <button className='cuisine-button'
+                                                key={key}
+                                                onClick={() => setBurnerActive(isActive
+                                                    ? burnerActive.filter(current => current !== key)
+                                                    : [...burnerActive, key]
+                                                )}
+                                                style={{ background: isActive ? '#AC6ABE' : 'white', color: isActive ? 'white' : 'black' }}
+                                            >
+                                                <h1>{key}</h1>
+                                            </button>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                         <div>
 
@@ -158,5 +172,3 @@ const ChefFormStep1 = (props) => {
     )
 }
 export default ChefFormStep1;
-
-

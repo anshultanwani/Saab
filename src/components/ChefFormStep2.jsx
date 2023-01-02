@@ -10,6 +10,9 @@ const ChefFormStep2 = (props) => {
     const [switchStatus, updateStatus] = useState({
         veg: false
     })
+    const {
+        catState
+      } = props;
     const options = [
         { label: "Upma 🍇", value: "upma" },
         { label: "Poha 🥭", value: "poha" },
@@ -27,7 +30,7 @@ const ChefFormStep2 = (props) => {
                     </span>
                 </div>
                 <div className="field-holder sel-cat-food-list">
-                    <label>BreakFast</label>
+                    <label>{catState}</label>
                     <MultiSelect
                     options={options}
                     value={selected}
@@ -40,5 +43,3 @@ const ChefFormStep2 = (props) => {
     )
 }
 export default ChefFormStep2;
-
-

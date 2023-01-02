@@ -20,6 +20,7 @@ const ServicesHead = (props) => {
                     <button
                         className={`tab ${checkActive(2, "active")}`}
                         onClick={() => handleClick(2)}
+                        disabled
                     >
                         <img src={require('../assets/images/' + "waiter.jpg").default} alt="not loaded" />
                         <h1>Bar Tender</h1>
@@ -27,6 +28,7 @@ const ServicesHead = (props) => {
                     <button
                         className={`tab ${checkActive(3, "active")}`}
                         onClick={() => handleClick(3)}
+                        disabled
                     >
                         <img src={require('../assets/images/' + "waiter-new1.png").default} alt="not loaded" />
                         <h1>Waiter</h1>
@@ -34,6 +36,7 @@ const ServicesHead = (props) => {
                     <button
                         className={`tab ${checkActive(4, "active")}`}
                         onClick={() => handleClick(4)}
+                        disabled
                     >
                         <img src={require('../assets/images/' + "cleaning2.jpg").default} alt="not loaded" />
                         <h1>Cleaner</h1>

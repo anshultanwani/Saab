@@ -4,7 +4,7 @@
     border-radius: 14px;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 10px 12px 10px;
+    padding: 22px 10px 12px 10px;
     width: 93%;
     margin: 0 auto
 }
@@ -20,9 +20,7 @@
     color: #414141;
 
 }
-.css-1v5z18m {
-    width: 100%;
-}
+
 .head {
     margin-top: 0px;
     background: #F0F2FF;
@@ -34,7 +32,7 @@
         font-weight: 400;
     }
 .service-bottom button.tab.active {
-    border: 1px solid #ED7768;
+    border: 2px solid #ED7768;
 }
 .panel {
     display: none;
@@ -52,11 +50,16 @@
 }
 .panels {
     padding: 0;
+    background-color: #fff;
+    border-radius: 55px;
+    // box-shadow: 0px 0px 9px 0px #b1c7ce;
     .genlkQ , .eVhYPn , .jdHdKR, .hrBcsR, .bHYulS, .wQPlu{
         background-color: #ED7768;
     }
     .genlkQ:after , .eVhYPn:after, .jdHdKR:after , .bHYulS:after, .wQPlu:after , .kLfipA:after, .bDDkXZ:after{
         color: #ED7768;
+        text-transform: capitalize;
+        font-size: 12px;
     }
     .hmtWZX{
         background-color: #ED7768;
@@ -73,7 +76,6 @@
     left: 0;
     right: 0;
     top: 91%;
-    border-radius: 30px;
     background-color: #fff;
 }
 .service-form {
@@ -82,28 +84,16 @@
     margin: 0 auto 0;
 }
 .field-holder.serv-cat-tab .tabs  button.tab {
-    width: 103px !important;
-    height: 33px;
-    margin: 0;
+    width: 31%;
     border-radius: 7px;
-    background-color: #ED7768;
-    color: #fff;
-    border: 1px solid #414141;
-    font-size: 6px;
-    padding: 0;
-    background-color: #fff;
-    color: #414141;
-}
-button.Nextbtn{
-    width: 103px !important;
-    height: 38px;
-    margin: 0;
-    border-radius: 7px;
-    background-color: #ED7768;
-    color: #fff;
-    border: 1px solid #ED7768;
-    font-size: 14px;
-    padding: 0;
+    box-shadow: none;
+    height: auto;
+    padding: 0px 15px;
+    word-break: break-all;
+    border: 1px solid #000;
+    h1{
+        opacity: 1;
+    }
 }
 .field-holder.serv-cat-tab .tabs button.tab.active {
     background-color: #AC6ABE;
@@ -116,6 +106,7 @@ button.Nextbtn{
     align-items: flex-start;
     width: 100%;
     padding: 0;
+
 }
 .field-holder lable {
     text-align: left;
@@ -144,17 +135,23 @@ button.Nextbtn{
     margin:0 0 21px 0;
 }
 .service-head-outer{
+    .css-1aznpnh-MuiSlider-root{
+        height: 2px;
+    }
     .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
         padding: 9.5px 10px;
+        border:1px solid #b5afaf;
     }
     .css-1aznpnh-MuiSlider-root {
         color: #ED7768;
     }
     .css-14pt78w-MuiSlider-rail {
-        opacity: 0.7;
+        opacity: 1;
     }
     .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
         padding: 9.5px 10px;
+        border: 1px solid #b5afaf;
+        border-radius: 7px !important;
     }
 
 }
@@ -162,18 +159,18 @@ button.Nextbtn{
     padding: 0;
     margin: 0;
 }
-// .field-holder.ser-checkbox ul li {
-//     display: inline-block;
-// }
 .panels .ser-cat-btn {
     background-color: white;
     border: 1px solid #414141;
     color: #000;
-    width: 99px;
-    padding: 4px 0px;
+    width: 29%;
+    padding: 6px;
     margin-bottom: 10px;
     margin-right: 10px;
-    font-size: 10px;
+    font-size: 9px;
+    text-transform: capitalize;
+    box-shadow: none;
+    border-radius: 7px;
 }
 .panels .css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
     background-color: #ED7768;
@@ -186,22 +183,27 @@ button.Nextbtn{
     .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
         background-color: #fff;
     }
+    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+        width: 100%;
+    }
 .css-1aznpnh-MuiSlider-root {
     padding: 4px 0;
     margin-bottom: 37px;
 }
 .css-1eoe787-MuiSlider-markLabel {
-    top: 25px;
+    top: 15px;
+    color: #ED7768;
 }
 .css-yafthl-MuiSlider-markLabel {
-    top: 26px;
+    top: 16px;
+    color: #ED7768;
 }
 .css-1v5z18m {
-    width: 323px;
+    width: 100%;
 }
 }
 .field-holder.sel-date label {
-    margin: 0 0 13px 0;
+    margin: 0 0 5px 0;
 }
 .serv-cat-tab .panels p {
     margin: 0;
@@ -228,25 +230,13 @@ button.Nextbtn{
         border-bottom:none;
     }
 }
-.service-bottom .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover {
-    background-color: #ED7768;
-    color: #fff;
-    border: 1px solid #ED7768;
-    font-size: 14px;
-}
+
 .cuisine-button {
-    width: 103px !important;
-    height: 33px;
-    margin: 0;
     border-radius: 7px;
-    background-color: #ED7768;
-    color: #fff;
     border: 1px solid #414141;
     font-size: 6px;
-    padding: 0;
-    background-color: #fff;
-    color: #414141;
-    box-shadow: 0px 0px 9px 0px #b1c7ce;
+    padding: 0px 13px;
+    box-shadow: none;
     margin-right: 5px;
     margin-bottom: 5px;
 }
@@ -261,3 +251,11 @@ button.Nextbtn{
     font-weight: bold;
 }
 
+.service-bottom .ffUqYD {
+    width: 73%;
+    margin: 29px auto 0;
+    padding: 37px 8px 0;
+}
+.service-bottom button.tab.active h1{
+    opacity: 1;
+}

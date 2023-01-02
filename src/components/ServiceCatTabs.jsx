@@ -8,27 +8,31 @@ const ServiceCatTabs = (props) => {
         const [activeIndex, setActiveIndex] = useState(1);
         const handleClick = (index) => setActiveIndex(index);
         const checkActive = (index, className) => activeIndex === index ? className : "";
+        const {
+            passToParent, passToParent2
+          } = props;
+          
         const btnHandleClick = (event) => {
-            console.log(event)
+            passToParent2(event);
         }
         return (
             <>
                 <div className="tabs">
                     <button
                         className={`tab ${checkActive(1, "active")}`}
-                        onClick={() => handleClick(1)}
+                        onClick={() => {handleClick(1); passToParent("BREAKFAST");}}
                     >
                         <h1>BreakFast</h1>
                     </button>
                     <button
                         className={`tab ${checkActive(2, "active")}`}
-                        onClick={() => handleClick(2)}
+                        onClick={() => {handleClick(2); passToParent("LUNCH");}}
                     >
                         <h1>Lunch</h1>
                     </button>
                     <button
                         className={`tab ${checkActive(3, "active")}`}
-                        onClick={() => handleClick(3)}
+                        onClick={() => {handleClick(3); passToParent("DINNER");}}
                     >
                         <h1>Dinner</h1>
                     </button>

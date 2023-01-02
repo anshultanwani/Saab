@@ -14,16 +14,22 @@ const Container = styled.div`
 `
 
 const ChefForm = () => {
-    
-  const [active, setActive] = React.useState(1)
+  
+  const [active, setActive] = React.useState(1);
+  const [catState, setCatState] = React.useState('BREAKFAST');
+
+  const ChildCallback = (value) =>  {
+    setCatState(value);
+}
+
   return (
     <Container className='form-step'>
       <MultiStepForm activeStep={active} className="step-from">
         <Step label='step1'>
-          <ChefFormStep1/>
+          <ChefFormStep1 passToParent={ChildCallback}/>
         </Step>
         <Step label='step2'>
-          <ChefFormStep2/>
+          <ChefFormStep2 catState={catState}/>
         </Step>
         <Step label='step3'>
          <ChefFormSummary/>
@@ -31,13 +37,27 @@ const ChefForm = () => {
       </MultiStepForm>
 
       {active !== 1 && (
-        <Button  className="Nextbtn" onClick={() => setActive(active - 1)}>Previous</Button>
+        <Button  
+        style={{
+          float: 'left', 
+          color:"#ED7768",
+          fontWeight: "900",
+          fontSize: "15px",
+          textDecoration: "underline"
+        }}
+         onClick={() => setActive(active - 1)}>Previous</Button>
       )}
       {active !== 3 && (
         <Button
           className="Nextbtn"
           onClick={() => setActive(active + 1)}
-          style={{ float: 'right' }}
+          style={{
+          float: 'right', 
+          color:"#ED7768",
+          fontWeight: "900",
+          fontSize: "15px",
+          textDecoration: "underline"
+        }}
         >
           Next
         </Button>
