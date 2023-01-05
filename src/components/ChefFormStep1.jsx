@@ -5,17 +5,13 @@ import './services-head.scss';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import dayjs from 'dayjs';
-import Stack from '@mui/material/Stack';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import DiscreteSliderMarks from "./DiscreteSliderMarks";
 import ServicesCatTabs from "./ServiceCatTabs";
 const ChefFormStep1 = (props) => {
     const [value, setValue] = React.useState(dayjs('2023-01-11T21:11:54'));
     const [selGuest, setSelGuest] = useState([]);
     const [selDate, setSelDate] = useState({});
-    const [selFoodCat, setSelFoodCat] = useState('');
+    const [selFoodCat, setSelFoodCat] = useState('Breakfast');
     const [selTime, setSelTime] = useState('');
     const [checked, setChecked] = useState([]);
     const [occasion, setOccasion] = React.useState('');
@@ -47,7 +43,6 @@ const ChefFormStep1 = (props) => {
 
     const handleSelFoodCat = (cat) => {
         setSelFoodCat(cat);
-        passToParent(cat);
     };
 
     const handleSelTime = (time) => {
@@ -100,6 +95,9 @@ const ChefFormStep1 = (props) => {
                                 label=""
                                 type="date"
                                 defaultValue="2023-01-03"
+                                inputProps={{
+                                    min: new Date().toISOString().slice(0, 10),
+                                  }}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
@@ -109,22 +107,21 @@ const ChefFormStep1 = (props) => {
 
                     <div className="field-holder serv-cat-tab">
                         <label>Meal Type</label>
-                        <ServicesCatTabs passToParent={handleSelFoodCat} passToParent2={handleSelTime} />
-                    </div>
+                        <ServicesCatTabs passToParent={handleSelFoodCat} passToParent2={handleSelTime}/>                    </div>
                     <div>
                         <div className="field-holder cusine-checkbox ser-checkbox">
                             <label>Select Cuisine(s)</label>
                             <div className="cuisine-btn-sec">
+                            <div className="cuisine-btn-sec">
                                 {
                                     ["North-Indian", "Chinese", "Italian-American", "Continental", "Thai", "Mexican"].map(key => {
                                         const isActive = cuisineActive.includes(key)
-
                                         return (
                                             <button className='cuisine-button'
                                                 key={key}
                                                 onClick={() => setCuisineActive(isActive
                                                     ? cuisineActive.filter(current => current !== key)
-                                                    : [...cuisineActive, key]
+                                                    : cuisineActive.length < 3 ? ([...cuisineActive, key]) : ''
                                                 )}
                                                 style={{ background: isActive ? '#AC6ABE' : 'white', color: isActive ? 'white' : 'black' }}
                                             >
@@ -134,12 +131,13 @@ const ChefFormStep1 = (props) => {
                                     })
                                 }
                             </div>
+                            </div>
                         </div>
                         <div className="field-holder burnur-checkbox ser-checkbox">
                             <label>No. of Gas Burners</label>
                             <div className="cuisine-btn-sec">
                                 {
-                                    ["1 burners", "2 burners", "3 burners", "4 burners", "5 burners"].map(key => {
+                                    ["1 burners", "2 burners", "3 burners", "4 burners", "5 burners",  "6 burners"].map(key => {
                                         const isActive = burnerActive.includes(key)
 
                                         return (

@@ -9,7 +9,7 @@ const ServicesHead = (props) => {
         const checkActive = (index, className) => activeIndex === index ? className : "";
         return (
             <>
-                <div className="tabs">
+                <div className="tabs cat_tab">
                     <button
                         className={`tab ${checkActive(1, "active")}`}
                         onClick={() => handleClick(1)}

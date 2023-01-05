@@ -46,7 +46,9 @@
     line-height: 1.2;
     
 }
-
+.list-checked {
+    padding-left: 0px;
+}
 .summaryPoints .list-checked li:before {
     content: '✓';
     font-family: fontawesome;

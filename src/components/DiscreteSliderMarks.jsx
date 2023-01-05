@@ -21,12 +21,12 @@ const  DiscreteSliderMarks = props => {
         label: '10',
     },
     {
-        value: 50,
-        label: '50',
+        value: 25,
+        label: '25',
     },
     {
-        value: 100,
-        label: '100',
+      value: 50,
+      label: '50',
     }
 ];
 
@@ -48,6 +48,8 @@ function valuetextfun(value) {
         step={1}  
         marks={marks}
         valueLabelDisplay="on"
+        min={1}
+        max={50}
       />
     </Box>
   );
