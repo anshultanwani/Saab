@@ -24,11 +24,12 @@ const ChefFormStep1 = (props) => {
         veg: false
     })
     const {
-        passToParent
+        passToParent,
+        passToParentCuisine
     } = props;
 
     const ChildCallback = (value) => {
-        setSelGuest(value)
+        setSelGuest(value) 
     }
 
     const handleChange = (event) => {
@@ -36,13 +37,9 @@ const ChefFormStep1 = (props) => {
         setOccasion(value)
     };
 
-
-    const handleSelDate = (x) => {
-        setSelDate(x['$d']);
-    };
-
     const handleSelFoodCat = (cat) => {
         setSelFoodCat(cat);
+        passToParent(cat);
     };
 
     const handleSelTime = (time) => {
@@ -110,8 +107,7 @@ const ChefFormStep1 = (props) => {
                         <ServicesCatTabs passToParent={handleSelFoodCat} passToParent2={handleSelTime}/>                    </div>
                     <div>
                         <div className="field-holder cusine-checkbox ser-checkbox">
-                            <label>Select Cuisine(s)</label>
-                            <div className="cuisine-btn-sec">
+                            <label>Select upto 3 Cuisine(s)</label>
                             <div className="cuisine-btn-sec">
                                 {
                                     ["North-Indian", "Chinese", "Italian-American", "Continental", "Thai", "Mexican"].map(key => {
@@ -121,7 +117,7 @@ const ChefFormStep1 = (props) => {
                                                 key={key}
                                                 onClick={() => setCuisineActive(isActive
                                                     ? cuisineActive.filter(current => current !== key)
-                                                    : cuisineActive.length < 3 ? ([...cuisineActive, key]) : ''
+                                                    : (cuisineActive.length < 3 ? ([...cuisineActive, key]) : [...cuisineActive])
                                                 )}
                                                 style={{ background: isActive ? '#AC6ABE' : 'white', color: isActive ? 'white' : 'black' }}
                                             >
@@ -131,7 +127,7 @@ const ChefFormStep1 = (props) => {
                                     })
                                 }
                             </div>
-                            </div>
+                            {passToParentCuisine(cuisineActive)}
                         </div>
                         <div className="field-holder burnur-checkbox ser-checkbox">
                             <label>No. of Gas Burners</label>

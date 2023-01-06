@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import styled from 'styled-components';
 import { MultiStepForm, Step } from 'react-multi-form'
 import ChefFormStep1 from '../components/ChefFormStep1'
@@ -14,22 +14,25 @@ const Container = styled.div`
 `
 
 const ChefForm = () => {
-  
-  const [active, setActive] = React.useState(1);
-  const [catState, setCatState] = React.useState('BREAKFAST');
-
+  const [active, setActive] = useState(1);
+  const [catState, setCatState] = useState('BREAKFAST');
+  const [cuisineArr, setCuisineArr] = useState([]);
   const ChildCallback = (value) =>  {
     setCatState(value);
 }
+    const CuisineCallback = (value) =>  {
+      setCuisineArr(value)
+    }
 
+   
   return (
     <Container className='form-step'>
       <MultiStepForm activeStep={active} className="step-from">
         <Step label='step1'>
-          <ChefFormStep1 passToParent={ChildCallback}/>
+          <ChefFormStep1 passToParent={ChildCallback} passToParentCuisine={CuisineCallback} />
         </Step>
         <Step label='step2'>
-          <ChefFormStep2 catState={catState}/>
+          <ChefFormStep2 catState={catState} cuisineArr={cuisineArr} />
         </Step>
         <Step label='step3'>
          <ChefFormSummary/>
