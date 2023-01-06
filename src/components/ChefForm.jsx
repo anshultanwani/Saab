@@ -14,6 +14,7 @@ const Container = styled.div`
 `
 
 const ChefForm = () => {
+ 
   const [active, setActive] = useState(1);
   const [catState, setCatState] = useState('BREAKFAST');
   const [cuisineArr, setCuisineArr] = useState([]);
@@ -24,6 +25,15 @@ const ChefForm = () => {
       setCuisineArr(value)
     }
 
+    var apiClick = () =>{
+      console.log("butn click")
+    }
+    console.log("apivalue" + apiClick)
+    const apiCallBack = (apiValue) =>{
+      console.log("apivalue" + apiValue)
+      apiClick = apiValue;
+    }
+
    
   return (
     <Container className='form-step'>
@@ -32,7 +42,7 @@ const ChefForm = () => {
           <ChefFormStep1 passToParent={ChildCallback} passToParentCuisine={CuisineCallback} />
         </Step>
         <Step label='step2'>
-          <ChefFormStep2 catState={catState} cuisineArr={cuisineArr} />
+          <ChefFormStep2 catState={catState} cuisineArr={cuisineArr} passToParentApiCallBack={apiCallBack}/>
         </Step>
         <Step label='step3'>
          <ChefFormSummary/>
@@ -53,7 +63,7 @@ const ChefForm = () => {
       {active !== 3 && (
         <Button
           className="Nextbtn"
-          onClick={() => setActive(active + 1)}
+          onClick={() => {setActive(active + 1); apiClick()}}
           style={{
           float: 'right', 
           color:"#ED7768",

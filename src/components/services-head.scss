@@ -8,6 +8,7 @@
     width: 93%;
     margin: 0 auto
 }
+
 .service-bottom button.tab {
     width: 80px;
     height: 80px;
@@ -24,50 +25,72 @@
     margin-top: 0px;
     background: #F0F2FF;
 }
+
 .service-bottom em {
-        font-style: normal;
-        font-size: 13px;
-        color: #414141;
-        font-weight: 400;
-    }
+    font-style: normal;
+    font-size: 13px;
+    color: #414141;
+    font-weight: 400;
+}
+
 .service-bottom button.tab.active {
     border: 2px solid #ED7768;
 }
+
 .panel {
     display: none;
     // background-color: #eaeaea;
     padding: 0;
 }
+
 .panel.active {
     display: block;
 }
+
 .service-bottom button.tab img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     margin-bottom: 4px;
 }
+
 .panels {
     padding: 0;
     background-color: #fff;
     border-radius: 55px;
+
     // box-shadow: 0px 0px 9px 0px #b1c7ce;
-    .genlkQ , .eVhYPn , .jdHdKR, .hrBcsR, .bHYulS, .wQPlu{
+    .genlkQ,
+    .eVhYPn,
+    .jdHdKR,
+    .hrBcsR,
+    .bHYulS,
+    .wQPlu {
         background-color: #ED7768;
     }
-    .genlkQ:after , .eVhYPn:after, .jdHdKR:after , .bHYulS:after, .wQPlu:after , .kLfipA:after, .bDDkXZ:after{
+
+    .genlkQ:after,
+    .eVhYPn:after,
+    .jdHdKR:after,
+    .bHYulS:after,
+    .wQPlu:after,
+    .kLfipA:after,
+    .bDDkXZ:after {
         color: #ED7768;
         text-transform: capitalize;
         font-size: 12px;
     }
-    .hmtWZX{
+
+    .hmtWZX {
         background-color: #ED7768;
     }
 }
-.service-outer{
+
+.service-outer {
     margin-bottom: 68px;
     position: relative;
 }
+
 .services-buttom {
     padding-bottom: 63px;
     box-shadow: 0px -3px 6px rgb(0 0 0 / 6%);
@@ -77,12 +100,14 @@
     top: 91%;
     background-color: #fff;
 }
+
 .service-form {
     padding: 10px 0 0;
     width: 100%;
     margin: 0 auto 0;
 }
-.field-holder.serv-cat-tab .tabs  button.tab {
+
+.field-holder.serv-cat-tab .tabs button.tab {
     width: 31%;
     border-radius: 7px;
     box-shadow: none;
@@ -90,15 +115,18 @@
     padding: 0px 15px;
     word-break: break-all;
     border: 1px solid #000;
-    h1{
+
+    h1 {
         opacity: 1;
     }
 }
+
 .field-holder.serv-cat-tab .tabs button.tab.active {
     background-color: #AC6ABE;
     color: #fff;
     border: 1px solid #AC6ABE;
 }
+
 .field-holder.serv-cat-tab .tabs {
     display: flex;
     justify-content: space-around;
@@ -107,10 +135,12 @@
     padding: 0;
 
 }
+
 .field-holder lable {
     text-align: left;
     width: 100%;
 }
+
 .field-holder label {
     text-align: left;
     width: 100%;
@@ -121,43 +151,53 @@
     font-weight: 600;
     letter-spacing: 0.5px;
 }
-.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
     width: 100%;
     background-color: #fff;
     border-radius: 7px !important;
 }
-.service-form .collapse-switch{
+
+.service-form .collapse-switch {
     border-top: none;
     border-bottom: none;
 }
+
 .service-form .field-holder {
-    margin:0 0 21px 0;
+    margin: 0 0 21px 0;
 }
-.service-head-outer{
-    .css-1aznpnh-MuiSlider-root{
+
+.service-head-outer {
+    .css-1aznpnh-MuiSlider-root {
         height: 2px;
     }
-    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
         padding: 9.5px 10px;
-        border:1px solid #b5afaf;
+        border: 1px solid #b5afaf;
     }
+
     .css-1aznpnh-MuiSlider-root {
         color: #ED7768;
     }
+
     .css-14pt78w-MuiSlider-rail {
         opacity: 1;
     }
-    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+
+    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
         padding: 9.5px 10px;
         border: 1px solid #b5afaf;
         border-radius: 7px !important;
     }
 
 }
+
 .field-holder.ser-checkbox ul {
     padding: 0;
     margin: 0;
 }
+
 .panels .ser-cat-btn {
     background-color: white;
     border: 1px solid #414141;
@@ -171,63 +211,79 @@
     box-shadow: none;
     border-radius: 7px;
 }
-.panels .css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
+
+.panels .css-sghohy-MuiButtonBase-root-MuiButton-root:hover {
     background-color: #ED7768;
     color: #fff;
     border: 1px solid #ED7768;
 }
+
 .services-buttom {
     background-color: #F0F2FF;
     padding-bottom: 63px;
-    .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+
+    .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
         background-color: #fff;
     }
-    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+
+    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
         width: 100%;
     }
-.css-1aznpnh-MuiSlider-root {
-    padding: 4px 0;
-    margin-bottom: 37px;
+
+    .css-1aznpnh-MuiSlider-root {
+        padding: 4px 0;
+        margin-bottom: 37px;
+    }
+
+    .css-1eoe787-MuiSlider-markLabel {
+        top: 15px;
+        color: #ED7768;
+    }
+
+    .css-yafthl-MuiSlider-markLabel {
+        top: 16px;
+        color: #ED7768;
+    }
+
+    .css-1v5z18m {
+        width: 100%;
+    }
 }
-.css-1eoe787-MuiSlider-markLabel {
-    top: 15px;
-    color: #ED7768;
-}
-.css-yafthl-MuiSlider-markLabel {
-    top: 16px;
-    color: #ED7768;
-}
-.css-1v5z18m {
-    width: 100%;
-}
-}
+
 .field-holder.sel-date label {
     margin: 0 0 5px 0;
 }
+
 .serv-cat-tab .panels p {
     margin: 0;
 }
+
 .serv-cat-tab .panels {
     margin: 18px 0 0;
 }
+
 .field-holder.ser-checkbox ul {
     padding: 0;
     margin: 0;
-    li{
+
+    li {
         display: inline-block;
     }
 }
+
 .sel-food-cat {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .step2-form {
     padding: 7px 0 28px;
     min-height: 500px;
-    .collapse-switch{
-        border-top:none;
-        border-bottom:none;
+
+    .collapse-switch {
+        border-top: none;
+        border-bottom: none;
     }
 }
 
@@ -256,37 +312,55 @@
     margin: 29px auto 0;
     padding: 37px 8px 0;
 }
-.service-bottom button.tab.active h1{
+
+.service-bottom button.tab.active h1 {
     opacity: 1;
 }
+
 .veg-nonveg {
     font-size: 0.8em;
     background: white;
     padding: 10px
 }
 
-.veg-nonveg:hover{
-background:#AC6ABE;
-color: #fff;
+.veg-nonveg:hover {
+    background: #AC6ABE;
+    color: #fff;
 }
+
 .sel-food-cat button.cuisine-button {
     padding: 5px 14px;
     font-size: 10px;
     font-weight: 700;
-    span{
+
+    span {
         font-size: 12px;
     }
 }
+
 .field-holder.sel-cat-food-list {
     margin-top: 20px;
 }
-.tabs.cat_tab
-{
+
+.tabs.cat_tab {
     button.tab {
         opacity: 0.7;
     }
+
     button.tab.active {
         opacity: 1;
     }
 
-} 
+}
+
+.sel-food-cat .active {
+    background-color: #AC6ABE;
+    color: #fff;
+    border: 1px solid #AC6ABE;
+}
+
+.panels .panel .active-time {
+    background-color: #ED7768;
+    color: #fff;
+    border: 1px solid #ED7768;
+}

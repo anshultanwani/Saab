@@ -11,18 +11,19 @@ const ChefFormStep2 = (props) => {
     const [selmaincourse, setSelMainCourse] = useState([]);
     const [seldessert, setSelDessert] = useState([]);
     const [options, setOptions] = useState([]);
-    
+    const [activeIndex, setActiveIndex] = useState(1);
+    const handleClick = (index) => setActiveIndex(index);
+    const checkActive = (index, className) => activeIndex === index ? className : "";
     const {
         catState,
-        cuisineArr 
+        cuisineArr ,
+        passToParentApiCallBack
     } = props;
 
-    {console.log("array of cuisne" + cuisineArr[0])}
     const handelFoodCatClick = () => {
         console.log("veg nonveg button clicked" + switchStatus) 
         apiCall();
     }
-
     const apiCall =  () =>{
         console.log("catState value" + catState)
         axios.get(window.apiDomain + '/v1/dishes?mealType=' + catState + "&vegOnly=" + switchStatus + "&cuisine="+cuisineArr[0]+"&cuisine1="+cuisineArr[1]+"cuisine2="+cuisineArr[2])
@@ -54,19 +55,21 @@ const ChefFormStep2 = (props) => {
 
     useEffect(() => {
         console.log("inside useeffect api call")
-        apiCall();
+         passToParentApiCallBack(apiCall())
+     //  apiCall()
     }, [])
+
+    //passToParentApiCallBack(apiCall())
 
     return (
         <>
             <div className="step2-form">
                 <div className="sel-food-cat">
                     <span>Choose from a wide variety</span>
-                    <span>{window.apiDomain + '/v1/dishes?mealType=' + catState + "&vegOnly=" + switchStatus + "&cuisine="+cuisineArr[0]+"&cuisine1="+cuisineArr[1]+"&cuisine2="+cuisineArr[2]}</span>
                     <div className="cuisine-btn-sec">
                         <div className="sel-food-cat">
-                            <button onClick={() => {updateStatus(1); handelFoodCatClick()}} className="cuisine-button veg-nonveg">Veg</button>
-                            <button onClick={() => {updateStatus(0); handelFoodCatClick()}} className="cuisine-button veg-nonveg">NonVeg</button>
+                        <button onClick={() => {updateStatus(true); handleClick(1)}} className={`cuisine-button veg-nonveg ${checkActive(1, "active")}`} >Veg</button>
+                        <button onClick={() => {updateStatus(false); handleClick(2)}} className={`cuisine-button veg-nonveg ${checkActive(2, "active")}`}>NonVeg</button>
                         </div>
                     </div>
                 </div>
@@ -80,6 +83,7 @@ const ChefFormStep2 = (props) => {
                         onChange={setSelected}
                         labelledBy="Select"
                     /> 
+                    
                 </div>
             </div>
         </>
