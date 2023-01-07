@@ -26,11 +26,9 @@ const ChefForm = () => {
     }
 
     var apiClick = () =>{
-      console.log("butn click")
     }
     console.log("apivalue" + apiClick)
     const apiCallBack = (apiValue) =>{
-      console.log("apivalue" + apiValue)
       apiClick = apiValue;
     }
 
