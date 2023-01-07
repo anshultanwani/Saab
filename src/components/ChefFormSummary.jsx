@@ -2,7 +2,11 @@ import React from 'react';
 import { Button } from '@mui/material';
 import './ChefFormSummary.scss';
 
-const ChefFormSummary = () => {
+const ChefFormSummary = (props) => {
+    const {
+        catState,
+        cuisineArr
+    } = props
     return(
         <div className='ChefFormSummary'>
             <div className='summaryPoints'>

@@ -15,9 +15,6 @@ const ChefFormStep1 = (props) => {
     const [selTime, setSelTime] = useState('');
     const [checked, setChecked] = useState([]);
     const [occasion, setOccasion] = React.useState('');
-    const [data, updateData] = useState({
-        workingDays: []
-    })
     const [cuisineActive, setCuisineActive] = useState([]);
     const [burnerActive, setBurnerActive] = useState([]);
     const [switchStatus, updateStatus] = useState({
