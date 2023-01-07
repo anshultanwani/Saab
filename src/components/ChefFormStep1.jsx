@@ -8,6 +8,9 @@ import dayjs from 'dayjs';
 import DiscreteSliderMarks from "./DiscreteSliderMarks";
 import ServicesCatTabs from "./ServiceCatTabs";
 const ChefFormStep1 = (props) => {
+    const [activeIndex, setActiveIndex] = useState(1);
+    const handleClick = (index) => setActiveIndex(index);
+    const checkActive = (index, className) => activeIndex === index ? className : "";
     const [value, setValue] = React.useState(dayjs('2023-01-11T21:11:54'));
     const [selGuest, setSelGuest] = useState([]);
     const [selDate, setSelDate] = useState({});
@@ -15,15 +18,21 @@ const ChefFormStep1 = (props) => {
     const [selTime, setSelTime] = useState('');
     const [checked, setChecked] = useState([]);
     const [occasion, setOccasion] = React.useState('');
+    const [data, updateData] = useState({
+        workingDays: []
+    })
     const [cuisineActive, setCuisineActive] = useState([]);
-    const [burnerActive, setBurnerActive] = useState([]);
+    const [gasBurners, setGasBurners] = useState(1);
     const [switchStatus, updateStatus] = useState({
         veg: false
     })
     const {
         passToParent,
-        passToParentCuisine
+        passToParentCuisine,
+        passToParentStep1Callback
     } = props;
+
+    let summaryObjectStep1 = new Object();
 
     const ChildCallback = (value) => {
         setSelGuest(value) 
@@ -36,12 +45,23 @@ const ChefFormStep1 = (props) => {
 
     const handleSelFoodCat = (cat) => {
         setSelFoodCat(cat);
-        passToParent(cat);
     };
 
     const handleSelTime = (time) => {
         setSelTime(time);
     };
+
+    passToParent(selFoodCat);
+
+    summaryObjectStep1.occasion = occasion
+    summaryObjectStep1.noGuest = selGuest
+    summaryObjectStep1.eventDate = selDate
+    summaryObjectStep1.mealType = selFoodCat
+    summaryObjectStep1.mealTypeStartTime = selTime
+    summaryObjectStep1.cuisineType = cuisineActive
+    summaryObjectStep1.gasBurners = gasBurners
+
+    passToParentStep1Callback(summaryObjectStep1);
 
     const label = { inputProps: { 'aria-label': 'Chinese' } };
     return (
@@ -129,28 +149,47 @@ const ChefFormStep1 = (props) => {
                         <div className="field-holder burnur-checkbox ser-checkbox">
                             <label>No. of Gas Burners</label>
                             <div className="cuisine-btn-sec">
-                                {
-                                    ["1 burners", "2 burners", "3 burners", "4 burners", "5 burners",  "6 burners"].map(key => {
-                                        const isActive = burnerActive.includes(key)
-
-                                        return (
-                                            <button className='cuisine-button'
-                                                key={key}
-                                                onClick={() => setBurnerActive(isActive
-                                                    ? burnerActive.filter(current => current !== key)
-                                                    : [...burnerActive, key]
-                                                )}
-                                                style={{ background: isActive ? '#AC6ABE' : 'white', color: isActive ? 'white' : 'black' }}
-                                            >
-                                                <h1>{key}</h1>
-                                            </button>
-                                        )
-                                    })
-                                }
+                                <button
+                                    className={`burner cuisine-button ${checkActive(1, "active")}`}
+                                    onClick={() => { handleClick(1); setGasBurners(1)}}
+                                >
+                                    <h1>1 burner</h1>
+                                </button>
+                                <button
+                                    className={`burner cuisine-button ${checkActive(2, "active")}`}
+                                    onClick={() => { handleClick(2); setGasBurners(2)}}
+                                >
+                                    <h1>2 burners</h1>
+                                </button>
+                                <button
+                                    className={`burner cuisine-button ${checkActive(3, "active")}`}
+                                    onClick={() => { handleClick(3); setGasBurners(3) }}
+                                >
+                                    <h1>3 burners</h1>
+                                </button>
+                                <button
+                                    className={`burner cuisine-button ${checkActive(4, "active")}`}
+                                    onClick={() => { handleClick(4); setGasBurners(4) }}
+                                >
+                                    <h1>4 burners</h1>
+                                </button>
+                                <button
+                                    className={`burner cuisine-button ${checkActive(5, "active")}`}
+                                    onClick={() => { handleClick(5); setGasBurners(5) }}
+                                >
+                                    <h1>5 burners</h1>
+                                </button>
+                                <button
+                                    className={`burner cuisine-button ${checkActive(6, "active")}`}
+                                    onClick={() => { handleClick(6); setGasBurners(6) }}
+                                >
+                                    <h1>6 burners</h1>
+                                </button>
                             </div>
                         </div>
                         <div>
-
+                               
+                        
                         </div>
 
                     </div>

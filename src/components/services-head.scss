@@ -289,7 +289,8 @@
 
 .cuisine-button {
     border-radius: 7px;
-    border: 1px solid #414141;
+    border: 1px solid black;
+    background-color: white;
     font-size: 6px;
     padding: 0px 13px;
     box-shadow: none;
@@ -363,4 +364,10 @@
     background-color: #ED7768;
     color: #fff;
     border: 1px solid #ED7768;
+}
+button.burner.active {
+    background-color: #AC6ABE;
+    color: #fff;
+    border: 1px solid #AC6ABE;
+    border: 1px solid black;
 }

@@ -2,9 +2,16 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import axios from 'axios';
 import './services-head.scss';
 import { MultiSelect } from "react-multi-select-component";
+import { getBackdropUtilityClass } from "@mui/material";
 
 const ChefFormStep2 = (props) => {
-    const [selected, setSelected] = useState([]);
+    const [selected1, setSelected1] = useState([]);
+    const [selected2, setSelected2] = useState([]);
+    const [selected3, setSelected3] = useState([]);
+    const [selected4, setSelected4] = useState([]);
+    const [selected5, setSelected5] = useState([]);
+    const [selected6, setSelected6] = useState([]);
+    const [selected7, setSelected7] = useState([]);
     const [catHead, setCatHead] = useState("")
     const [switchStatus, updateStatus] = useState(1)
     const [options, setOptions] = useState([]);
@@ -25,18 +32,30 @@ const ChefFormStep2 = (props) => {
     const {
         catState,
         cuisineArr,
-        passToParentApiCallBack
+        passToParentApiCallBack,
+        passToParentStep2Callback,
+        noOfGasBurner
     } = props;
 
-    var vegOnly = 1;
+    let summaryObjectStep2 = new Object();
 
-    const handelFoodCatClick = (value) => {
-        console.log("api call again")
+    summaryObjectStep2.mealItems = [];
+    console.log("selected1" + JSON.stringify(selected1));
+    summaryObjectStep2.mealItems.push(selected1, selected2)
+    console.log(summaryObjectStep2.mealItems);
+
+    const handleFoodClick = (value) => {
+        updateStatus(value);
         apiCall(value);
     }
+    const getBack = () => {
+        console.log("FUnction call");
+
+    }
+    summaryObjectStep2.vegOnly = switchStatus;
+
     const apiCall = (value) => {
-        console.log("veg stats2" + vegOnly)
-        console.log("catState=======" + catState)
+
         axios.get(window.apiDomain + '/v1/dishes?mealType=' + catState + "&vegOnly=" + value + "&cuisine=" + cuisineArr[0] + "&cuisine1=" + cuisineArr[1] + "cuisine2=" + cuisineArr[2])
             .then(res => {
                 console.log(res.data.data)
@@ -109,7 +128,34 @@ const ChefFormStep2 = (props) => {
     }, [])
 
     passToParentApiCallBack(apiCall)
+    passToParentStep2Callback(summaryObjectStep2);
 
+    // let noOfDishes = 0;
+
+    // if (noOfGasBurner === 1)
+    // {
+    //     noOfDishes = 8
+    // }
+    // else if (noOfGasBurner === 2)
+    // {
+    //     noOfDishes = 11
+    // }
+    // else if (noOfGasBurner === 3)
+    // {
+    //     noOfDishes = 12
+    // }
+    // else if (noOfGasBurner === 4)
+    // {
+    //     noOfDishes = 13
+    // }
+    // else if (noOfGasBurner === 5)
+    // {
+    //     noOfDishes = 14
+    // }
+    // else if (noOfGasBurner === 6)
+    // {
+    //     noOfDishes = 15
+    // }
     return (
         <>
             <div className="step2-form">
@@ -117,8 +163,8 @@ const ChefFormStep2 = (props) => {
                     <span>Choose from a wide variety</span>
                     <div className="cuisine-btn-sec">
                         <div className="sel-food-cat">
-                            <button onClick={() => { updateStatus(0); handleClick(1); handelFoodCatClick(1) }} className={`cuisine-button veg-nonveg ${checkActive(1, "active")}`} >Veg</button>
-                            <button onClick={() => { updateStatus(1); handleClick(2); handelFoodCatClick(0) }} className={`cuisine-button veg-nonveg ${checkActive(2, "active")}`}>NonVeg</button>
+                            <button onClick={() => { updateStatus(0); handleClick(1); handleFoodClick(1) }} className={`cuisine-button veg-nonveg ${checkActive(1, "active")}`} >Veg</button>
+                            <button onClick={() => { updateStatus(1); handleClick(2); handleFoodClick(0) }} className={`cuisine-button veg-nonveg ${checkActive(2, "active")}`}>NonVeg</button>
                         </div>
                     </div>
                 </div>
@@ -130,8 +176,8 @@ const ChefFormStep2 = (props) => {
                             <label>{catHead} </label>
                             <MultiSelect
                                 options={options}
-                                value={selected}
-                                onChange={setSelected}
+                                value={selected1}
+                                onChange={setSelected1}
                                 labelledBy="Select"
                             />
                             {soupsAndBeveragesOptions.length > 0 ?
@@ -139,8 +185,8 @@ const ChefFormStep2 = (props) => {
                                     <label>{soupsAndBeveragesCatHead} </label>
                                     <MultiSelect
                                         options={soupsAndBeveragesOptions}
-                                        value={selected}
-                                        onChange={setSelected}
+                                        value={selected2}
+                                        onChange={setSelected2}
                                         labelledBy="Select"
                                     />
                                 </>
@@ -152,29 +198,29 @@ const ChefFormStep2 = (props) => {
                             <label>{mainCourseCatHead} </label>
                             <MultiSelect
                                 options={mainCourseOptions}
-                                value={selected}
-                                onChange={setSelected}
+                                value={selected3}
+                                onChange={setSelected3}
                                 labelledBy="Select"
                             />
                             <label>{mocktailCatHead} </label>
                             <MultiSelect
                                 options={mocktailOptions}
-                                value={selected}
-                                onChange={setSelected}
+                                value={selected4}
+                                onChange={setSelected4}
                                 labelledBy="Select"
                             />
                             <label>{dessertCatHead} </label>
                             <MultiSelect
                                 options={dessertOptions}
-                                value={selected}
-                                onChange={setSelected}
+                                value={selected5}
+                                onChange={setSelected5}
                                 labelledBy="Select"
                             />
                             <label>{soupsAndBeveragesCatHead} </label>
                             <MultiSelect
                                 options={soupsAndBeveragesOptions}
-                                value={selected}
-                                onChange={setSelected}
+                                value={selected6}
+                                onChange={setSelected6}
                                 labelledBy="Select"
                             />
                             {breadRiceAndRaitaOptions.length > 0 ?
@@ -182,8 +228,8 @@ const ChefFormStep2 = (props) => {
                                     <label>{breadRiceAndRaitaCatHead} </label>
                                     <MultiSelect
                                         options={breadRiceAndRaitaOptions}
-                                        value={selected}
-                                        onChange={setSelected}
+                                        value={selected7}
+                                        onChange={setSelected7}
                                         labelledBy="Select"
                                     />
                                 </>

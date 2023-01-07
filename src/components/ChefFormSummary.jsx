@@ -4,9 +4,13 @@ import './ChefFormSummary.scss';
 
 const ChefFormSummary = (props) => {
     const {
-        catState,
-        cuisineArr
-    } = props
+        summaryStep1,
+        summaryStep2
+    } = props;
+
+    console.log(summaryStep1);
+    console.log(summaryStep2);
+
     return(
         <div className='ChefFormSummary'>
             <div className='summaryPoints'>

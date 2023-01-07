@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React , {useState} from 'react'
 import styled from 'styled-components';
 import { MultiStepForm, Step } from 'react-multi-form'
 import ChefFormStep1 from '../components/ChefFormStep1'
@@ -14,66 +14,75 @@ const Container = styled.div`
 `
 
 const ChefForm = () => {
-
+ 
   const [active, setActive] = useState(1);
   const [catState, setCatState] = useState('BREAKFAST');
   const [cuisineArr, setCuisineArr] = useState([]);
-  const [occationValue, setOccationValue] = useState([]);
-  const ChildCallback = (value) => {
+  let summaryObjectStep1 = new Object();
+  let summaryObjectStep2 = new Object();
+
+  
+  const summaryStep1Callback = (value) => {
+    summaryObjectStep1 = Object.assign(summaryObjectStep1, value);
+  }
+
+  const summaryStep2Callback = (value) => {
+    summaryObjectStep2 = Object.assign(summaryObjectStep2, value);
+  }
+
+  const ChildCallback = (value) =>  {
     setCatState(value);
   }
-  const CuisineCallback = (value) => {
-    setCuisineArr(value)
-  }
+    const CuisineCallback = (value) =>  {
+      setCuisineArr(value)
+    }
 
-  // const OccationValueCallBack = (value) =>{
-  //   setOccationValue(value)
-  // }
-
-  var apiClick = () => {
-  }
-  console.log("apivalue" + apiClick)
-  const apiCallBack = (apiValue) => {
-    apiClick = apiValue;
-  }
+    var apiClick = () =>{
+      console.log("butn click")
+    }
 
 
+    const apiCallBack = (apiValue) =>{
+      apiClick = apiValue;
+    }
+
+   
   return (
     <Container className='form-step'>
       <MultiStepForm activeStep={active} className="step-from">
         <Step label='step1'>
-          <ChefFormStep1 passToParent={ChildCallback} passToParentCuisine={CuisineCallback} />
+          <ChefFormStep1 passToParent={ChildCallback} passToParentCuisine={CuisineCallback} passToParentStep1Callback={summaryStep1Callback}/>
         </Step>
         <Step label='step2'>
-          <ChefFormStep2 catState={catState} cuisineArr={cuisineArr} passToParentApiCallBack={apiCallBack} />
+          <ChefFormStep2 catState={catState} cuisineArr={cuisineArr} noOfGasBurner={summaryObjectStep1.noOfGasBurner}passToParentApiCallBack={apiCallBack} passToParentStep2Callback={summaryStep2Callback}/>
         </Step>
         <Step label='step3'>
-          <ChefFormSummary catState={catState} cuisineArr={cuisineArr} />
+         <ChefFormSummary summaryStep1={summaryObjectStep1} summaryStep2={summaryObjectStep2}/>
         </Step>
       </MultiStepForm>
 
       {active !== 1 && (
-        <Button
-          style={{
-            float: 'left',
-            color: "#ED7768",
-            fontWeight: "900",
-            fontSize: "15px",
-            textDecoration: "underline"
-          }}
-          onClick={() => setActive(active - 1)}>Previous</Button>
+        <Button  
+        style={{
+          float: 'left', 
+          color:"#ED7768",
+          fontWeight: "900",
+          fontSize: "15px",
+          textDecoration: "underline"
+        }}
+         onClick={() => setActive(active - 1)}>Previous</Button>
       )}
       {active !== 3 && (
         <Button
           className="Nextbtn"
-          onClick={() => { setActive(active + 1); apiClick(1) }}
+          onClick={() => {setActive(active + 1); apiClick(1)}}
           style={{
-            float: 'right',
-            color: "#ED7768",
-            fontWeight: "900",
-            fontSize: "15px",
-            textDecoration: "underline"
-          }}
+          float: 'right', 
+          color:"#ED7768",
+          fontWeight: "900",
+          fontSize: "15px",
+          textDecoration: "underline"
+        }}
         >
           Next
         </Button>
