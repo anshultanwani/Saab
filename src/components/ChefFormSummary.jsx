@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import './ChefFormSummary.scss';
-
+import axios from 'axios';
 const ChefFormSummary = (props) => {
     const {
         summaryStep1,
@@ -10,6 +10,25 @@ const ChefFormSummary = (props) => {
 
     console.log(summaryStep1);
     console.log(summaryStep2);
+
+
+    const handleSubmit = () => {
+        console.log("cookcLicked")
+        axios({
+            method: 'post',
+            url: window.apiDomain + '/v1/dishes/submit',
+            data: {
+                summaryStep1,
+                summaryStep1  
+            }
+        }).then((res) => {
+            if (res.status === 200) {
+                console.log(res.data.data)
+            }
+        })
+
+    }
+
 
     return(
         <div className='ChefFormSummary'>
@@ -30,7 +49,7 @@ const ChefFormSummary = (props) => {
                 </div>
             </div>
             <div className='paymentButton'>
-            <Button className="Nextbtn" style={{ float: 'right' }} >Submit</Button>  
+            <Button className="Nextbtn" style={{ float: 'right' }} onClick={handleSubmit}>Submit</Button>  
             </div>
         </div>
     );

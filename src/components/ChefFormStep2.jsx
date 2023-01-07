@@ -40,9 +40,13 @@ const ChefFormStep2 = (props) => {
     let summaryObjectStep2 = new Object();
 
     summaryObjectStep2.mealItems = [];
-    console.log("selected1" + JSON.stringify(selected1));
-    summaryObjectStep2.mealItems.push(selected1, selected2)
-    console.log(summaryObjectStep2.mealItems);
+    summaryObjectStep2.mealItems.push({'appetizers':selected1.map(x => x.value)})
+    summaryObjectStep2.mealItems.push({'soupsAndBeverages':selected2.map(x => x.value)})
+    summaryObjectStep2.mealItems.push({'mainCourse':selected3.map(x => x.value)})
+    summaryObjectStep2.mealItems.push({'mocktail':selected4.map(x => x.value)})
+    summaryObjectStep2.mealItems.push({'dessert':selected5.map(x => x.value)})
+    summaryObjectStep2.mealItems.push({'soupsAndBeverages':selected6.map(x => x.value)})
+    summaryObjectStep2.mealItems.push({'breadsRiceAndRaita':selected7.map(x => x.value)})
 
     const handleFoodClick = (value) => {
         updateStatus(value);
@@ -55,7 +59,6 @@ const ChefFormStep2 = (props) => {
     summaryObjectStep2.vegOnly = switchStatus;
 
     const apiCall = (value) => {
-
         axios.get(window.apiDomain + '/v1/dishes?mealType=' + catState + "&vegOnly=" + value + "&cuisine=" + cuisineArr[0] + "&cuisine1=" + cuisineArr[1] + "cuisine2=" + cuisineArr[2])
             .then(res => {
                 console.log(res.data.data)
@@ -112,9 +115,6 @@ const ChefFormStep2 = (props) => {
                             setdessertCatHead(des_val["type"])
                         })
                         setdessertOptions(tempArr)
-
-
-
                     }
                 }
             }).catch(err => {
