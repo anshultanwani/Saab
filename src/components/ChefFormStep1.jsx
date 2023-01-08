@@ -60,6 +60,8 @@ const ChefFormStep1 = (props) => {
     summaryObjectStep1.mealTypeStartTime = selTime
     summaryObjectStep1.cuisineType = cuisineActive
     summaryObjectStep1.gasBurners = gasBurners
+    summaryObjectStep1.kitchenApplicances = {"tandoor": 1, "oven": 1,"microwave": 0 }
+
 
     passToParentStep1Callback(summaryObjectStep1);
 
@@ -104,7 +106,7 @@ const ChefFormStep1 = (props) => {
                             display: 'block',
                             width: '100%'
                         }}>
-                            <TextField
+                           <TextField
                                 id="date"
                                 label=""
                                 type="date"
@@ -115,6 +117,7 @@ const ChefFormStep1 = (props) => {
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
+                                onChange = {(e) => setSelDate(e.target.value)}
                             />
                         </div>
                     </div>
