@@ -47,7 +47,7 @@ const ChefFormStep2 = (props) => {
     summaryObjectStep2.mealItems.push({'dessert':selected5.map(x => x.value)})
     summaryObjectStep2.mealItems.push({'soupsAndBeverages':selected6.map(x => x.value)})
     summaryObjectStep2.mealItems.push({'breadsRiceAndRaita':selected7.map(x => x.value)})
-
+    
     const handleFoodClick = (value) => {
         updateStatus(value);
         apiCall(value);
@@ -56,8 +56,47 @@ const ChefFormStep2 = (props) => {
         console.log("FUnction call");
 
     }
+    
+    let noOfDishesSelected = selected1.length + selected2.length + selected3.length + selected4.length + 
+    selected5.length + selected6.length + selected7.length
+    const handleBurnerAlert = (setSelected, selected) => {
+         if (noOfGasBurner === 1 && noOfDishesSelected > 7)
+        {
+            alert("With 1 gas burner, you can choose max 8 dishes that are prepared on gas.");
+            setSelected(selected.slice(0, selected.length - 1));
+        }
+        else if (noOfGasBurner === 2 && noOfDishesSelected > 10)
+        {
+            alert("With 2 gas burners, you can choose max 11 dishes that are prepared on gas.");
+            setSelected(selected.slice(0, selected.length - 1));
+        }
+        else if (noOfGasBurner === 3 && noOfDishesSelected > 11)
+        {
+            alert("With 3 gas burners, you can choose max 12 dishes that are prepared on gas.");
+            setSelected(selected.slice(0, selected.length - 1));
+        }
+        else if (noOfGasBurner === 4 && noOfDishesSelected > 12)
+        {
+            alert("With 4 gas burners, you can choose max 13 dishes that are prepared on gas.");
+            setSelected(selected.slice(0, selected.length - 1));
+        }
+        else if (noOfGasBurner === 5 && noOfDishesSelected > 13)
+        {
+            alert("With 5 gas burners, you can choose max 14 dishes that are prepared on gas.");
+            setSelected(selected.slice(0, selected.length - 1));
+        }
+        else if (noOfGasBurner === 6 && noOfDishesSelected > 14)
+        {
+            alert("With 6 gas burners, you can choose max 15 dishes that are prepared on gas.");
+            setSelected(selected.slice(0, selected.length - 1));
+        }
+        else{
+            setSelected(selected);
+        }
+    }
     summaryObjectStep2.vegOnly = switchStatus;
-
+    summaryObjectStep2.selDish = noOfDishesSelected;
+    console.log("----------" + noOfDishesSelected + summaryObjectStep2.selDish)
     const apiCall = (value) => {
         axios.get(window.apiDomain + '/v1/dishes?mealType=' + catState + "&vegOnly=" + value + "&cuisine=" + cuisineArr[0] + "&cuisine1=" + cuisineArr[1] + "cuisine2=" + cuisineArr[2])
             .then(res => {
@@ -130,32 +169,6 @@ const ChefFormStep2 = (props) => {
     passToParentApiCallBack(apiCall)
     passToParentStep2Callback(summaryObjectStep2);
 
-    // let noOfDishes = 0;
-
-    // if (noOfGasBurner === 1)
-    // {
-    //     noOfDishes = 8
-    // }
-    // else if (noOfGasBurner === 2)
-    // {
-    //     noOfDishes = 11
-    // }
-    // else if (noOfGasBurner === 3)
-    // {
-    //     noOfDishes = 12
-    // }
-    // else if (noOfGasBurner === 4)
-    // {
-    //     noOfDishes = 13
-    // }
-    // else if (noOfGasBurner === 5)
-    // {
-    //     noOfDishes = 14
-    // }
-    // else if (noOfGasBurner === 6)
-    // {
-    //     noOfDishes = 15
-    // }
     return (
         <>
             <div className="step2-form">
@@ -177,8 +190,9 @@ const ChefFormStep2 = (props) => {
                             <MultiSelect
                                 options={options}
                                 value={selected1}
-                                onChange={setSelected1}
+                                onChange={(selected1)=>{handleBurnerAlert(setSelected1, selected1);}}
                                 labelledBy="Select"
+                                hasSelectAll={false}
                             />
                             {soupsAndBeveragesOptions.length > 0 ?
                                 <>
@@ -186,8 +200,9 @@ const ChefFormStep2 = (props) => {
                                     <MultiSelect
                                         options={soupsAndBeveragesOptions}
                                         value={selected2}
-                                        onChange={setSelected2}
+                                        onChange={(selected2)=>{handleBurnerAlert(setSelected2, selected2);}}
                                         labelledBy="Select"
+                                        hasSelectAll={false}
                                     />
                                 </>
                                 : " "
@@ -199,29 +214,33 @@ const ChefFormStep2 = (props) => {
                             <MultiSelect
                                 options={mainCourseOptions}
                                 value={selected3}
-                                onChange={setSelected3}
+                                onChange={(selected3)=>{handleBurnerAlert(setSelected3, selected3);}}
                                 labelledBy="Select"
+                                hasSelectAll={false}
                             />
                             <label>{mocktailCatHead} </label>
                             <MultiSelect
                                 options={mocktailOptions}
                                 value={selected4}
-                                onChange={setSelected4}
+                                onChange={(selected4)=>{handleBurnerAlert(setSelected4, selected4);}}
                                 labelledBy="Select"
+                                hasSelectAll={false}
                             />
                             <label>{dessertCatHead} </label>
                             <MultiSelect
                                 options={dessertOptions}
                                 value={selected5}
-                                onChange={setSelected5}
+                                onChange={(selected5)=>{handleBurnerAlert(setSelected5, selected5);}}
                                 labelledBy="Select"
+                                hasSelectAll={false}
                             />
                             <label>{soupsAndBeveragesCatHead} </label>
                             <MultiSelect
                                 options={soupsAndBeveragesOptions}
                                 value={selected6}
-                                onChange={setSelected6}
+                                onChange={(selected6)=>{handleBurnerAlert(setSelected6, selected6);}}
                                 labelledBy="Select"
+                                hasSelectAll={false}
                             />
                             {breadRiceAndRaitaOptions.length > 0 ?
                                 <>
@@ -229,8 +248,9 @@ const ChefFormStep2 = (props) => {
                                     <MultiSelect
                                         options={breadRiceAndRaitaOptions}
                                         value={selected7}
-                                        onChange={setSelected7}
+                                        onChange={(selected7)=>{handleBurnerAlert(setSelected7, selected7);}}
                                         labelledBy="Select"
+                                        hasSelectAll={false}
                                     />
                                 </>
                                 : " "

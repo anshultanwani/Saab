@@ -18,6 +18,7 @@ const ChefForm = () => {
   const [active, setActive] = useState(1);
   const [catState, setCatState] = useState('BREAKFAST');
   const [cuisineArr, setCuisineArr] = useState([]);
+  const [noOfGasBurner, setNoOfGasBurner] = useState(1);
   let summaryObjectStep1 = new Object();
   let summaryObjectStep2 = new Object();
 
@@ -41,6 +42,10 @@ const ChefForm = () => {
       console.log("butn click")
     }
 
+    const handleGasBurnerCallBack = (value) => 
+  {
+    setNoOfGasBurner(value);
+  }
 
     const apiCallBack = (apiValue) =>{
       apiClick = apiValue;
@@ -51,10 +56,10 @@ const ChefForm = () => {
     <Container className='form-step'>
       <MultiStepForm activeStep={active} className="step-from">
         <Step label='step1'>
-          <ChefFormStep1 passToParent={ChildCallback} passToParentCuisine={CuisineCallback} passToParentStep1Callback={summaryStep1Callback}/>
+          <ChefFormStep1 passToParent={ChildCallback} passToParentCuisine={CuisineCallback} passToParentStep1Callback={summaryStep1Callback} passToParentBurnerCallback={handleGasBurnerCallBack}/>
         </Step>
         <Step label='step2'>
-          <ChefFormStep2 catState={catState} cuisineArr={cuisineArr} noOfGasBurner={summaryObjectStep1.noOfGasBurner}passToParentApiCallBack={apiCallBack} passToParentStep2Callback={summaryStep2Callback}/>
+          <ChefFormStep2 catState={catState} cuisineArr={cuisineArr} noOfGasBurner={noOfGasBurner} passToParentApiCallBack={apiCallBack} passToParentStep2Callback={summaryStep2Callback}/>
         </Step>
         <Step label='step3'>
          <ChefFormSummary summaryStep1={summaryObjectStep1} summaryStep2={summaryObjectStep2}/>

@@ -18,18 +18,19 @@ const ChefFormStep1 = (props) => {
     const [selTime, setSelTime] = useState('');
     const [checked, setChecked] = useState([]);
     const [occasion, setOccasion] = React.useState('');
+    const [gasBurners, setGasBurners] = useState(1);
     const [data, updateData] = useState({
         workingDays: []
     })
     const [cuisineActive, setCuisineActive] = useState([]);
-    const [gasBurners, setGasBurners] = useState(1);
     const [switchStatus, updateStatus] = useState({
         veg: false
     })
     const {
         passToParent,
         passToParentCuisine,
-        passToParentStep1Callback
+        passToParentStep1Callback,
+        passToParentBurnerCallback
     } = props;
 
     let summaryObjectStep1 = new Object();
@@ -64,7 +65,7 @@ const ChefFormStep1 = (props) => {
 
 
     passToParentStep1Callback(summaryObjectStep1);
-
+    passToParentBurnerCallback(gasBurners);
     const label = { inputProps: { 'aria-label': 'Chinese' } };
     return (
         <>
