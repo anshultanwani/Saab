@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { Button } from '@mui/material';
 import './ChefFormSummary.scss';
 import axios from 'axios';
@@ -8,8 +8,12 @@ const ChefFormSummary = (props) => {
         summaryStep1,
         summaryStep2
     } = props;
-
-    var address =  "Kendriya Vihar, Sector 56, Gurugram , Gurugram, Haryana";
+    const [address, setAddress] = useState('');
+    const [chefCount, setChefCount] = useState(0);
+    const [dishCount, setDishCount] = useState(0);
+    const [finalAmount, setFinalAmount] = useState(0);
+    const [guestCount, setGuestCount] = useState(0);
+    const [totalAmount, setTotalAmount] = useState(0);
     console.log(summaryStep1);
     console.log(summaryStep2);
     const summaryObject = Object.assign(summaryStep1, summaryStep2)
@@ -31,7 +35,6 @@ const ChefFormSummary = (props) => {
                 console.log(res.data.data)
             }
         })
-
     }
 
     useEffect(() => {
@@ -40,6 +43,12 @@ const ChefFormSummary = (props) => {
         .then((res) => {
             if (res.status === 200) {
                 console.log(res.data.data)
+                setAddress(res.data.data.address);
+                setChefCount(res.data.data.chefCount);
+                setDishCount(res.data.data.dishCount);
+                setFinalAmount(res.data.data.finalAmount);
+                setGuestCount(res.data.data.guestCount);
+                setTotalAmount(res.data.data.totalAmount);
             }
         })
     },[])
@@ -47,8 +56,7 @@ const ChefFormSummary = (props) => {
         <div className='ChefFormSummary'>
             <div className='summaryPoints'>
                 <ul className='list-checked'>
-                {/* {chefCount} */}
-                    <li><strong> Chef will come</strong>(Profile is visible once chef accepts Booking)</li>
+                    <li><strong> {chefCount} Chef will come</strong>(Profile is visible once chef accepts Booking)</li>
                     <li><strong>Ingredients list is shared after booking</strong>(List is simple after easily available items) </li>
                     <li><strong>Chef doesn't carry anything</strong></li>
                     <li><strong>{chefComingTimeValue} to {chefComingTimeValue1}</strong>(Chef will arrive at {chefComingTimeValue} )</li>
@@ -57,16 +65,18 @@ const ChefFormSummary = (props) => {
                 </ul>
             </div>
             <div className='payment-total'>
-                <h1>  Payment Summary </h1>
+                <h1>Payment Summary </h1>
                 <ul>
-                    <li><span>Total Dishes:</span> {summaryStep2.selDish}</li>
-                    <li><span>Persons:</span> {summaryStep1.noGuest}</li>
-                    <li><span>Total Amount:</span> 3000</li>
+                    <li><span>Total Dishes:</span> {dishCount}</li>
+                    <li><span>Persons:</span> {guestCount}</li>
+                    <li><span>Total Amount:</span> {finalAmount}</li>
                     <li><span>GST:</span> 18%</li>
-                    <li><span>Final Amount:</span> 3540</li>
+                    <li><span>Final Amount:</span> {totalAmount}</li>
                 </ul>
-                <div className='payment-total'>
-                <ul>
+            
+            </div>
+            {/* <div className='summaryPoints'>
+                <ul className='list-checked'>
                 <li>Advance payment is for booking confirmation and is non-refundable</li>
                 <li>Balance payment can be done in cash or online</li>
                 <li>Full address needs to be filled after payment</li>
@@ -75,8 +85,7 @@ const ChefFormSummary = (props) => {
                 <li>View cancellation policy from here</li>
                 <li>I agree to the T&C, privacy policy, covid-19 guidelines</li>
                 </ul>
-             </div>
-            </div>
+             </div> */}
             <div className='paymentButton'>
                 <Button className="Nextbtn" style={{ float: 'right' }} onClick={handleSubmit}>Submit</Button>
             </div>

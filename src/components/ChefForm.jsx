@@ -69,12 +69,9 @@ const ChefForm = () => {
       {active !== 1 && (
         <Button  
         style={{
-          float: 'left', 
-          color:"#ED7768",
-          fontWeight: "900",
-          fontSize: "15px",
-          textDecoration: "underline"
+          float: 'left'
         }}
+        className="prebtn"
          onClick={() => setActive(active - 1)}>Previous</Button>
       )}
       {active !== 3 && (
@@ -82,11 +79,7 @@ const ChefForm = () => {
           className="Nextbtn"
           onClick={() => {setActive(active + 1); apiClick(1)}}
           style={{
-          float: 'right', 
-          color:"#ED7768",
-          fontWeight: "900",
-          fontSize: "15px",
-          textDecoration: "underline"
+          float: 'right'
         }}
         >
           Next
